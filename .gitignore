@@ -1,6 +1,9 @@
 # Entorno
 .env
 docker/data/
+# Zips de Bricks y WPML descargados de vuestras cuentas (con licencia: no se versionan)
+docker/licensed/*
+!docker/licensed/README.md
 
 # WordPress core y terceros: se instalan, no se versionan
 wp-content/plugins/*
