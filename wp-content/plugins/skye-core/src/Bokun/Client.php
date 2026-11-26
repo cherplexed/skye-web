@@ -26,15 +26,27 @@ final class Client {
 		$this->transport = $transport ?? [ self::class, 'wp_transport' ];
 	}
 
-	/** Client built from the constants that docker-compose defines from .env; null when not configured. */
+	/**
+	 * Client built from configuration; null when not configured. Each value is read from the constant
+	 * that docker-compose defines for the web container (SKYE_BOKUN_*), or from the environment variable
+	 * of the same name without the SKYE_ prefix (the WP-CLI container only has the latter).
+	 */
 	public static function from_config(): ?self {
-		$access = defined( 'SKYE_BOKUN_ACCESS_KEY' ) ? (string) SKYE_BOKUN_ACCESS_KEY : '';
-		$secret = defined( 'SKYE_BOKUN_SECRET_KEY' ) ? (string) SKYE_BOKUN_SECRET_KEY : '';
+		$access = self::config( 'BOKUN_ACCESS_KEY' );
+		$secret = self::config( 'BOKUN_SECRET_KEY' );
 		if ( '' === $access || '' === $secret ) {
 			return null;
 		}
-		$base = defined( 'SKYE_BOKUN_BASE_URL' ) && '' !== (string) SKYE_BOKUN_BASE_URL ? (string) SKYE_BOKUN_BASE_URL : self::PRODUCTION;
-		return new self( $access, $secret, rtrim( $base, '/' ) );
+		$base = self::config( 'BOKUN_BASE_URL' );
+		return new self( $access, $secret, rtrim( '' !== $base ? $base : self::PRODUCTION, '/' ) );
+	}
+
+	private static function config( string $name ): string {
+		if ( defined( 'SKYE_' . $name ) && '' !== (string) constant( 'SKYE_' . $name ) ) {
+			return trim( (string) constant( 'SKYE_' . $name ) );
+		}
+		$env = getenv( $name );
+		return false === $env ? '' : trim( $env );
 	}
 
 	/**
