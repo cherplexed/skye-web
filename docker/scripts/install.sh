@@ -25,7 +25,8 @@ wp option update blog_public 0 >/dev/null   # local/test: no indexar
 if [ -n "${ACF_PRO_KEY:-}" ]; then
   if ! wp plugin is-installed advanced-custom-fields-pro; then
     echo "→ Installing ACF Pro"
-    wp plugin install "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&k=${ACF_PRO_KEY}" --activate
+    # --quiet: WP-CLI would otherwise print the download URL, which contains the licence key.
+    wp plugin install "https://connect.advancedcustomfields.com/v2/plugins/download?p=pro&k=${ACF_PRO_KEY}" --activate --quiet
   fi
   wp plugin is-active advanced-custom-fields-pro || wp plugin activate advanced-custom-fields-pro
   # Pro sustituye al gratuito: con los dos activos los campos salen duplicados.
