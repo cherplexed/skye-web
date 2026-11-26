@@ -1,5 +1,5 @@
 {
-  "_note": "PLACEHOLDERS so the API and templates have something to render. Only the product codes, the number of days and the brand list are real. The stops per day are a guess built from the 10 pilot places and MUST be replaced with the real itineraries; descriptions, inclusions, departure time, meeting point and Bókun product IDs are deliberately empty until TA Scotland provides them.",
+  "_note": "PLACEHOLDERS so the API and templates have something to render. Real: product codes, number of days, and the Bókun product ID and booking page per brand (provided by Sergio, 26 Nov 2026). The 2-day tour has no English product, so markets served by Loch Ness Bus get no price for it. The stops per day are a guess built from the 10 pilot places and MUST be replaced with the real itineraries; descriptions, inclusions, departure time and meeting point are deliberately empty until TA Scotland provides them.",
   "tours": [
     {
       "slug": "isle-of-skye-3-day-tour",
@@ -11,14 +11,40 @@
       "departure_city": "edinburgh",
       "includes_audioguide": true,
       "days": [
-        { "stops": [] },
-        { "stops": ["portree", "old-man-of-storr", "kilt-rock-and-mealt-falls", "quiraing", "fairy-glen"] },
-        { "stops": ["sligachan"] }
+        {
+          "stops": []
+        },
+        {
+          "stops": [
+            "portree",
+            "old-man-of-storr",
+            "kilt-rock-and-mealt-falls",
+            "quiraing",
+            "fairy-glen"
+          ]
+        },
+        {
+          "stops": [
+            "sligachan"
+          ]
+        }
       ],
       "products": [
-        { "brand": "viajar-por-escocia", "bokun_product_id": "", "fallback_booking_url": "" },
-        { "brand": "scozia-tour", "bokun_product_id": "", "fallback_booking_url": "" },
-        { "brand": "loch-ness-bus", "bokun_product_id": "", "fallback_booking_url": "" }
+        {
+          "brand": "viajar-por-escocia",
+          "bokun_product_id": "60870",
+          "fallback_booking_url": "https://viajarporescocia.com/tour/isla-skye/"
+        },
+        {
+          "brand": "scozia-tour",
+          "bokun_product_id": "154317",
+          "fallback_booking_url": "https://scoziatour.com/tour/isola-skye/"
+        },
+        {
+          "brand": "loch-ness-bus",
+          "bokun_product_id": "318823",
+          "fallback_booking_url": ""
+        }
       ]
     },
     {
@@ -31,13 +57,30 @@
       "departure_city": "edinburgh",
       "includes_audioguide": true,
       "days": [
-        { "stops": ["sligachan", "portree"] },
-        { "stops": ["old-man-of-storr", "kilt-rock-and-mealt-falls"] }
+        {
+          "stops": [
+            "sligachan",
+            "portree"
+          ]
+        },
+        {
+          "stops": [
+            "old-man-of-storr",
+            "kilt-rock-and-mealt-falls"
+          ]
+        }
       ],
       "products": [
-        { "brand": "viajar-por-escocia", "bokun_product_id": "", "fallback_booking_url": "" },
-        { "brand": "scozia-tour", "bokun_product_id": "", "fallback_booking_url": "" },
-        { "brand": "loch-ness-bus", "bokun_product_id": "", "fallback_booking_url": "" }
+        {
+          "brand": "viajar-por-escocia",
+          "bokun_product_id": "910659",
+          "fallback_booking_url": "https://viajarporescocia.com/tour/tour-de-2-dias-a-la-isla-de-skye-y-las-tierras-altas-con-salida-desde-edimburgo/"
+        },
+        {
+          "brand": "scozia-tour",
+          "bokun_product_id": "1092372",
+          "fallback_booking_url": "https://scoziatour.com/tour/tour-di-2-giorni-allisola-di-skye-e-highlands/"
+        }
       ]
     }
   ]

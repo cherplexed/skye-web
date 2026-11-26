@@ -1,3 +1,6 @@
+# Always run from the repo root with --env-file .env: with -f pointing into docker/, Compose would
+# otherwise look for docker/.env and silently fall back to the defaults below.
+#   docker compose --env-file .env -f docker/docker-compose.yml up -d
 name: skye-web
 
 services:
