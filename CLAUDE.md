@@ -45,10 +45,10 @@ No se versiona el core de WordPress, ni plugins de terceros (Bricks, ACF Pro, WP
 
 ```bash
 cp .env.example .env          # rellenar licencias si las hay; sin ellas el stack arranca igual
-docker compose -f docker/docker-compose.yml up -d
-docker compose -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
+docker compose --env-file .env -f docker/docker-compose.yml up -d
+docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
 # → http://localhost:8080  (admin: ver .env)
-docker compose -f docker/docker-compose.yml run --rm wpcli wp skye seed places   # 10 lugares piloto
+docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed places   # 10 lugares piloto
 curl http://localhost:8080/wp-json/skye/v1/places
 ```
 
