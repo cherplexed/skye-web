@@ -1,0 +1,67 @@
+name: skye-web
+
+services:
+  db:
+    image: mariadb:11
+    environment:
+      MARIADB_DATABASE: ${DB_NAME:-skye}
+      MARIADB_USER: ${DB_USER:-skye}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-skye}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+    volumes:
+      - ./data/db:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  wordpress:
+    image: wordpress:6.7-php8.3-apache
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "${WP_PORT:-8080}:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${DB_NAME:-skye}
+      WORDPRESS_DB_USER: ${DB_USER:-skye}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-skye}
+      WORDPRESS_DEBUG: ${WP_DEBUG:-1}
+      WORDPRESS_CONFIG_EXTRA: |
+        define( 'WP_ENVIRONMENT_TYPE', '${WP_ENV:-local}' );
+        define( 'SKYE_BOKUN_ACCESS_KEY', '${BOKUN_ACCESS_KEY:-}' );
+        define( 'SKYE_BOKUN_SECRET_KEY', '${BOKUN_SECRET_KEY:-}' );
+        define( 'SKYE_BOKUN_VENDOR_ID', '${BOKUN_VENDOR_ID:-}' );
+        define( 'WP_HOME', '${WP_HOME:-http://localhost:8080}' );
+        define( 'WP_SITEURL', '${WP_HOME:-http://localhost:8080}' );
+    volumes:
+      - ./data/wp:/var/www/html
+      - ../wp-content/plugins/skye-core:/var/www/html/wp-content/plugins/skye-core
+      - ../wp-content/themes/skye-child:/var/www/html/wp-content/themes/skye-child
+      - ./php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+
+  wpcli:
+    image: wordpress:cli-2.11-php8.3
+    depends_on:
+      db:
+        condition: service_healthy
+    user: "33:33"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_NAME: ${DB_NAME:-skye}
+      WORDPRESS_DB_USER: ${DB_USER:-skye}
+      WORDPRESS_DB_PASSWORD: ${DB_PASSWORD:-skye}
+      WP_HOME: ${WP_HOME:-http://localhost:8080}
+      WP_ADMIN_USER: ${WP_ADMIN_USER:-admin}
+      WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-admin}
+      WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@example.com}
+      ACF_PRO_KEY: ${ACF_PRO_KEY:-}
+    volumes:
+      - ./data/wp:/var/www/html
+      - ../wp-content/plugins/skye-core:/var/www/html/wp-content/plugins/skye-core
+      - ../wp-content/themes/skye-child:/var/www/html/wp-content/themes/skye-child
+      - ../seed:/seed:ro
+      - ./scripts:/scripts:ro
+    profiles: ["tools"]

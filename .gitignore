@@ -1,0 +1,20 @@
+# Entorno
+.env
+docker/data/
+
+# WordPress core y terceros: se instalan, no se versionan
+wp-content/plugins/*
+!wp-content/plugins/skye-core/
+wp-content/themes/*
+!wp-content/themes/skye-child/
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+wp-content/languages/
+
+# Dependencias y artefactos
+vendor/
+node_modules/
+*.log
+.phpunit.result.cache
+.DS_Store

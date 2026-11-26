@@ -1,0 +1,17 @@
+/*
+Theme Name: Skye Child
+Template: bricks
+Version: 0.1.0
+Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
+Text Domain: skye-child
+*/
+
+:root {
+  --skye-bg: #F5F7F6;
+  --skye-ink: #15221F;
+  --skye-accent: #1E5F6B;
+  --skye-accent-dark: #15454E;
+  --skye-muted: #4B5B57;
+  --skye-line: #D9E0DE;
+  --skye-heather: #5F3F7E;
+}
