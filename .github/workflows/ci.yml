@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          tools: composer
+      - name: PHP syntax
+        run: find wp-content/plugins/skye-core -name '*.php' -print0 | xargs -0 -n1 php -l
+      - name: Validate JSON
+        run: |
+          for f in $(find seed wp-content/plugins/skye-core/acf-json -name '*.json'); do php -r 'json_decode(file_get_contents($argv[1]), true, 512, JSON_THROW_ON_ERROR);' "$f" && echo "ok $f"; done
+      - name: ACF JSON is in sync with Fields.php
+        run: |
+          cd wp-content/plugins/skye-core
+          cp acf-json/group_skye_place.json /tmp/before.json
+          php tools/generate-acf-json.php
+          php -r '$a=json_decode(file_get_contents("/tmp/before.json"),true); $b=json_decode(file_get_contents("acf-json/group_skye_place.json"),true); unset($a["modified"],$b["modified"]); exit($a===$b?0:1);' || { echo "::error::acf-json out of date: run php tools/generate-acf-json.php"; exit 1; }
+      - name: Composer install
+        run: composer install --no-interaction --prefer-dist
+      - name: Unit tests
+        run: composer run test
+      - name: Coding standard (advisory until the baseline is clean)
+        run: composer run lint
+        continue-on-error: true

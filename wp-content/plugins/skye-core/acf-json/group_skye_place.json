@@ -1,0 +1,562 @@
+{
+    "key": "group_skye_place",
+    "title": "Skye: Place",
+    "fields": [
+        {
+            "key": "field_skye_place_gaelic_name",
+            "label": "Gaelic name",
+            "name": "gaelic_name",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_place_summary",
+            "label": "Summary",
+            "name": "summary",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_place_location",
+            "label": "Location",
+            "name": "location",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "group",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_location_lat",
+                    "label": "Lat",
+                    "name": "lat",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_skye_place_location_lng",
+                    "label": "Lng",
+                    "name": "lng",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_parking_location",
+            "label": "Parking location",
+            "name": "parking_location",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "group",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_parking_location_lat",
+                    "label": "Lat",
+                    "name": "lat",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_skye_place_parking_location_lng",
+                    "label": "Lng",
+                    "name": "lng",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_directions",
+            "label": "Directions",
+            "name": "directions",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_place_duration_min",
+            "label": "Duration min",
+            "name": "duration_min",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_duration_typical",
+            "label": "Duration typical",
+            "name": "duration_typical",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_difficulty",
+            "label": "Difficulty",
+            "name": "difficulty",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "none": "None",
+                "easy": "Easy",
+                "moderate": "Moderate",
+                "hard": "Hard",
+                "alpine": "Alpine"
+            },
+            "default_value": "none",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_place_distance_km",
+            "label": "Distance km",
+            "name": "distance_km",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_elevation_gain_m",
+            "label": "Elevation gain m",
+            "name": "elevation_gain_m",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_price_type",
+            "label": "Price type",
+            "name": "price_type",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "free": "Free",
+                "ticket": "Ticket",
+                "paid_parking": "Paid parking"
+            },
+            "default_value": "free",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_place_price_gbp",
+            "label": "Price gbp",
+            "name": "price_gbp",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_opening_hours",
+            "label": "Opening hours",
+            "name": "opening_hours",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_opening_hours_season",
+                    "label": "Season",
+                    "name": "season",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_place_opening_hours_hours",
+                    "label": "Hours",
+                    "name": "hours",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_best_time",
+            "label": "Best time",
+            "name": "best_time",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_place_suitable_for",
+            "label": "Suitable for",
+            "name": "suitable_for",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "children": "Children",
+                "stroller": "Stroller",
+                "dogs": "Dogs",
+                "reduced_mobility": "Reduced mobility"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_place_motorhome_parking",
+            "label": "Motorhome parking",
+            "name": "motorhome_parking",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "yes": "Yes",
+                "yes_length_limit": "Yes, with length limit",
+                "no": "No"
+            },
+            "default_value": "no",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_place_overnight_allowed",
+            "label": "Overnight allowed",
+            "name": "overnight_allowed",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_skye_place_services_nearby",
+            "label": "Services nearby",
+            "name": "services_nearby",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "toilets": "Toilets",
+                "cafe": "Café",
+                "restaurant": "Restaurant",
+                "shop": "Shop",
+                "fuel": "Fuel"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_place_gallery",
+            "label": "Gallery",
+            "name": "gallery",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "gallery",
+            "return_format": "id"
+        },
+        {
+            "key": "field_skye_place_tips",
+            "label": "Tips",
+            "name": "tips",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_tips_tip",
+                    "label": "Tip",
+                    "name": "tip",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "text"
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_audioguide_enabled",
+            "label": "Audioguide enabled",
+            "name": "audioguide_enabled",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_skye_place_audioguide_stop_number",
+            "label": "Audioguide stop number",
+            "name": "audioguide_stop_number",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_place_audioguide_tracks",
+            "label": "Audioguide tracks",
+            "name": "audioguide_tracks",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_audioguide_tracks_lang",
+                    "label": "Lang",
+                    "name": "lang",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_place_audioguide_tracks_audio_url",
+                    "label": "Audio url",
+                    "name": "audio_url",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "url"
+                },
+                {
+                    "key": "field_skye_place_audioguide_tracks_transcript",
+                    "label": "Transcript",
+                    "name": "transcript",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_audioguide_radius_m",
+            "label": "Audioguide radius m",
+            "name": "audioguide_radius_m",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": 150
+        },
+        {
+            "key": "field_skye_place_nearby_places",
+            "label": "Nearby places",
+            "name": "nearby_places",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "place"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ]
+        },
+        {
+            "key": "field_skye_place_nearby_lodging",
+            "label": "Nearby lodging",
+            "name": "nearby_lodging",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "lodging"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ]
+        },
+        {
+            "key": "field_skye_place_experiences_here",
+            "label": "Experiences here",
+            "name": "experiences_here",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "experience"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ]
+        },
+        {
+            "key": "field_skye_place_in_tours",
+            "label": "In tours",
+            "name": "in_tours",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "tour"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "place"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795720166
+}

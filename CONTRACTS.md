@@ -1,0 +1,150 @@
+# CONTRACTS — modelo de datos y API de skye-web
+
+Versión 1.0 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+
+## 0. Reglas transversales
+
+- **Almacenamiento:** métrico (km, m, minutos, litros, °C) y GBP. La API devuelve siempre estas unidades; convierte quien muestra (§9).
+- **Traducible / no traducible** marcado por campo. Lo no traducible se escribe una vez (WPML: "copiar").
+- **Relaciones en una dirección:** Ruta → Lugares; Tour → Lugares; Tour → Marca; Lugar → Tours.
+- **Verificación (§10)** en todos los tipos.
+- Identificadores: `id` (entero de WordPress), `slug` por idioma, `uuid` estable (meta `skye_uuid`, generado al crear) para que bot y app no dependan de IDs de WordPress.
+
+## 1. Lugar — post type `place`
+
+| Campo (ACF) | Tipo | Trad. | Notas |
+|---|---|---|---|
+| `title` (post_title) | texto | sí | |
+| `gaelic_name` | texto | no | opcional |
+| `summary` | texto ≤ 160 | sí | primera frase = la respuesta; meta description |
+| `description` (post_content) | HTML | sí | |
+| `skye_category` | taxonomía multi | términos sí | viewpoint · hike · castle · distillery · beach · waterfall · village · wildlife · museum · restaurant · cafe · shop · fuel |
+| `skye_zone` | taxonomía | términos sí | trotternish · portree · duirinish-waternish · minginish-cuillin · sleat · broadford · raasay · en-route |
+| `skye_profile` | taxonomía multi | términos sí | instagram · nature · hiking · history · whisky · wildlife · families · rainy-day |
+| `location` | lat, lng | no | |
+| `parking_location` | lat, lng | no | si difiere |
+| `directions` | texto | sí | |
+| `duration_min` / `duration_typical` | minutos | no | |
+| `difficulty` | enum | no | none · easy · moderate · hard · alpine |
+| `distance_km` / `elevation_gain_m` | número | no | rutas a pie |
+| `price_type` | enum | no | free · ticket · paid_parking |
+| `price_gbp` | número | no | |
+| `opening_hours` | repetidor: season, text | text sí | o "open access" |
+| `best_time` | texto corto | sí | |
+| `suitable_for` | checkboxes | no | children · stroller · dogs · reduced_mobility |
+| `motorhome_parking` | enum | no | yes · yes_length_limit · no |
+| `overnight_allowed` | bool | no | |
+| `services_nearby` | checkboxes | no | toilets · cafe · restaurant · shop · fuel |
+| `gallery` | imágenes | alt sí | |
+| `tips` | repetidor: text | sí | |
+| `audioguide_enabled` | bool | no | |
+| `audioguide_stop_number` | entero | no | |
+| `audioguide_tracks` | repetidor: lang, audio_url, transcript | audio y transcript sí | lo que lee la app |
+| `audioguide_radius_m` | entero | no | 150 por defecto |
+| `nearby_places` | relación multi (place) | no | opcional; si vacío → por distancia |
+| `nearby_lodging` | relación multi (lodging) | no | opcional; "dormir cerca" se calcula |
+| `experiences_here` | relación multi (experience) | no | |
+| `in_tours` | relación multi (tour) | no | bloque "sin coche" |
+| verificación | §10 | no | |
+
+## 2. Ruta — post type `route`
+
+`title`, `summary`, `description` (sí). `route_type`: itinerary · drive · walk. `skye_profile` multi. `days_count`. `vehicle`: no_car · car · motorhome · any. `days` repetidor → `stops` repetidor: `place` (relación), `time_hint`, `note` (sí), `stop_type`: visit · meal · night · en_route. `night_zone` + `night_lodging` por día. `total_km`, `total_drive_minutes`. `gpx_file`. `equivalent_tour` (relación tour). `motorhome_ok` bool + `motorhome_notes` (sí). Verificación.
+
+## 3. Marca operadora — post type `brand`
+
+| Marca | `domain` | `markets` | `tour_language` |
+|---|---|---|---|
+| Viajar por Escocia | viajarporescocia.com | es | es |
+| Scozia Tour | scoziatour.com | it | it |
+| Loch Ness Bus | lochnessbus.com | `*` (todos los demás) | en |
+
+Campos: `title`, `domain`, `markets` (lista de códigos; `*` = comodín), `tour_language`, `bokun_vendor_id`, `attribution_param`, `ga4_property`, `logo`, `rating`, `review_count`, `operator_legal_name` (TA Scotland Limited).
+
+Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` contiene el código; si ninguna, la del comodín.
+
+## 4. Tour — post type `tour`
+
+`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor → `stops` (relación place). `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
+
+## 5. Alojamiento — post type `lodging`
+
+`title`, `summary` (sí). `lodging_type`: hotel · bnb · cabin · hostel · campsite. `skye_zone`. `location`. `price_from_gbp`. `amenities`: breakfast · parking · dogs · family · kitchen · free_cancellation. `good_for` (sí). `booking_url`, `provider`: booking · direct. Calculado: minutos a los 3 Lugares más cercanos. Verificación.
+
+## 6. Área de autocaravana — post type `motorhome_spot`
+
+`title`. `spot_type`: campsite · aire · parking · dump_station · ev_charger. `location`. `services`: electricity · water · dump · showers · wifi; `ev_kw`. `overnight_allowed`. `max_length_m`. `price_gbp`. `booking_url` o `no_booking`. `season`. `notes` (sí). Verificación.
+
+## 7. Experiencia — post type `experience`
+
+`title`, `summary`, `description` (sí). `experience_type`: tasting · cruise · wildlife · kayak · fishing · mountain_guide · private_tour · ticket. `departure_place` (relación). `duration_min`. `price_from_gbp`. `languages`. `season`. `suitable_for`. `provider`, `booking_url`. `commission_pct` (interno, no público). Verificación.
+
+## 8. Taxonomías
+
+`skye_zone`, `skye_category`, `skye_profile`, `skye_suitability`. Traducibles, con slug fijo por idioma.
+
+## 9. Unidades, moneda y mercados
+
+| Mercado | Distancia | Altitud | Combustible | Temp. | Moneda | Marca |
+|---|---|---|---|---|---|---|
+| en-gb | mi | ft | l, mpg (UK) | °C | GBP | Loch Ness Bus |
+| en-us | mi | ft | gal US, mpg (US) | °F | USD | Loch Ness Bus |
+| es | km | m | l, l/100 km | °C | EUR | Viajar por Escocia |
+| it | km | m | l, l/100 km | °C | EUR | Scozia Tour |
+| de, fr, pt, nl | km | m | l, l/100 km | °C | EUR | Loch Ness Bus |
+| zh, ja | km | m | l | °C | CNY / JPY | Loch Ness Bus |
+
+Distancias en coche siempre en ambos sistemas ("72 km / 45 mi"). Galón US 3,785 l; imperial 4,546 l. Precios base GBP; conversión orientativa con fecha.
+
+## 10. Verificación y registro de cambios
+
+Meta en todos los tipos: `skye_verified_by` (user ID), `skye_verified_at` (fecha), `skye_valid_until` (fecha; por defecto +12 meses), `skye_change_log` (lista: fecha, user ID, campos cambiados). Al vencer `valid_until`, la ficha se marca "pendiente de revisión" en el panel. En público: "Comprobado por [nombre] el [fecha]" y "Actualizado el [fecha]" si hubo cambios posteriores. JSON-LD: `dateModified`, `reviewedBy`.
+
+## 11. API REST — namespace `skye/v1`
+
+Lectura pública. Escritura solo con autenticación de WordPress (no en v1).
+
+Parámetros comunes: `lang` (código WPML; por defecto el de la petición), `market` (ver §9; por defecto derivado de `lang`), `page`, `per_page` (≤ 100), `fields` (lista para reducir respuesta).
+
+| Endpoint | Filtros | Devuelve |
+|---|---|---|
+| `GET /places` | `zone`, `category`, `profile`, `suitable_for`, `audioguide=1`, `near=lat,lng&radius_km=` | lista de Lugar |
+| `GET /places/{id|uuid|slug}` | | Lugar completo + `nearby` calculado |
+| `GET /routes`, `GET /routes/{id}` | `type`, `profile`, `vehicle`, `days` | Ruta con paradas expandidas (id, uuid, título, coordenadas) |
+| `GET /tours`, `GET /tours/{id}` | | Tour; `offer` resuelto para `market`: marca, `bokun_product_id`, `price_from` (de Bókun, caché), `currency`, `booking_url` |
+| `GET /brands` | | lista de Marca |
+| `GET /lodging`, `GET /motorhome-spots`, `GET /experiences` | filtros por tipo, zona, `near` | listas |
+| `GET /audioguide/stops` | `lang` | Lugares con `audioguide_enabled`, ordenados por `audioguide_stop_number`, con pista del idioma pedido y radio GPS |
+
+Forma de respuesta:
+
+```json
+{
+  "data": [ { "id": 12, "uuid": "…", "slug": "old-man-of-storr", "title": "Old Man of Storr", "…": "…" } ],
+  "meta": { "lang": "en", "market": "en-gb", "total": 1, "page": 1, "generated_at": "2026-11-26T19:00:00Z" }
+}
+```
+
+Cada objeto incluye `verification: { verified_by, verified_at, valid_until, updated_at }`.
+
+## 12. Bókun
+
+`skye-core` guarda credenciales en `.env` (`BOKUN_ACCESS_KEY`, `BOKUN_SECRET_KEY`, `BOKUN_VENDOR_ID`). Consulta precio "desde" y próxima disponibilidad por `bokun_product_id` con caché (transient) de 30 min. La creación de reservas y el pago los hace `skye-booking-widget` (ShyPig como revendedora), no este repo.
+
+## 13. JSON-LD
+
+| Tipo | schema.org |
+|---|---|
+| place | `TouristAttraction` (+ `geo`, `openingHoursSpecification`, `isAccessibleForFree`) |
+| route, tour | `TouristTrip` (`itinerary` = lista de `TouristAttraction`); tour además `Product` + `Offer` (precio de Bókun, `seller` = Marca) |
+| brand | `Organization` (`parentOrganization` TA Scotland Limited) |
+| lodging | `LodgingBusiness` |
+| experience | `Product` |
+| motorhome_spot | `Place` + `amenityFeature` |
+
+Todos con `dateModified` y `reviewedBy` (§10).
+
+## Decisiones abiertas
+
+- EN-GB / EN-US como idiomas separados en WPML o detección de país.
+- Pago externo para revendedores en Bókun (afecta a `skye-booking-widget`, no a este contrato).

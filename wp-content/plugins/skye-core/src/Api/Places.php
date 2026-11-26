@@ -1,0 +1,125 @@
+<?php
+declare(strict_types=1);
+
+namespace Skye\Api;
+
+use Skye\Geo;
+use Skye\Meta;
+use Skye\PostTypes;
+use Skye\Taxonomies;
+use Skye\Uuid;
+use WP_Query;
+use WP_REST_Request;
+use WP_REST_Response;
+
+final class Places {
+
+	/** @return array<string, array<string, mixed>> */
+	public static function args(): array {
+		return [
+			'zone'         => [ 'type' => 'string', 'default' => '' ],
+			'category'     => [ 'type' => 'string', 'default' => '' ],
+			'profile'      => [ 'type' => 'string', 'default' => '' ],
+			'suitable_for' => [ 'type' => 'string', 'default' => '' ],
+			'audioguide'   => [ 'type' => 'boolean', 'default' => false ],
+			'near'         => [ 'type' => 'string', 'default' => '', 'description' => 'lat,lng' ],
+			'radius_km'    => [ 'type' => 'number', 'default' => 25 ],
+			'search'       => [ 'type' => 'string', 'default' => '' ],
+		];
+	}
+
+	public static function index( WP_REST_Request $r ): WP_REST_Response {
+		[ 'lang' => $lang, 'market' => $market ] = Router::context( $r );
+
+		$tax = [];
+		foreach ( [ 'zone' => Taxonomies::ZONE, 'category' => Taxonomies::CATEGORY, 'profile' => Taxonomies::PROFILE, 'suitable_for' => Taxonomies::SUITABILITY ] as $param => $taxonomy ) {
+			$v = (string) $r->get_param( $param );
+			if ( '' !== $v ) {
+				$tax[] = [ 'taxonomy' => $taxonomy, 'field' => 'slug', 'terms' => array_map( 'trim', explode( ',', $v ) ) ];
+			}
+		}
+
+		$meta = [];
+		if ( $r->get_param( 'audioguide' ) ) {
+			$meta[] = [ 'key' => 'audioguide_enabled', 'value' => '1' ];
+		}
+
+		$near = Geo::parse_latlng( (string) $r->get_param( 'near' ) );
+
+		$q = new WP_Query(
+			[
+				'post_type'      => PostTypes::PLACE,
+				'post_status'    => 'publish',
+				'posts_per_page' => $near ? 500 : (int) $r->get_param( 'per_page' ),
+				'paged'          => $near ? 1 : (int) $r->get_param( 'page' ),
+				'tax_query'      => $tax ? [ 'relation' => 'AND', ...$tax ] : [],
+				'meta_query'     => $meta,
+				's'              => (string) $r->get_param( 'search' ),
+				'orderby'        => $r->get_param( 'search' ) ? 'relevance' : 'title',
+				'order'          => 'ASC',
+				'no_found_rows'  => (bool) $near,
+			]
+		);
+
+		$items = [];
+		foreach ( $q->posts as $p ) {
+			$item = PlaceSerializer::summary( $p, $lang, $market );
+			if ( $near ) {
+				if ( ! $item['location'] ) {
+					continue;
+				}
+				$d = Geo::distance_km( $near, $item['location'] );
+				if ( $d > (float) $r->get_param( 'radius_km' ) ) {
+					continue;
+				}
+				$item['distance_km'] = round( $d, 1 );
+			}
+			$items[] = Router::pick( $item, (string) $r->get_param( 'fields' ) );
+		}
+
+		if ( $near ) {
+			usort( $items, static fn( $a, $b ) => $a['distance_km'] <=> $b['distance_km'] );
+			$total    = count( $items );
+			$per_page = (int) $r->get_param( 'per_page' );
+			$page     = (int) $r->get_param( 'page' );
+			$items    = array_slice( $items, ( $page - 1 ) * $per_page, $per_page );
+		} else {
+			$total = (int) $q->found_posts;
+			$page  = (int) $r->get_param( 'page' );
+		}
+
+		return Router::ok( $items, [ 'lang' => $lang, 'market' => $market, 'total' => $total, 'page' => $page ] );
+	}
+
+	public static function show( WP_REST_Request $r ): WP_REST_Response {
+		[ 'lang' => $lang, 'market' => $market ] = Router::context( $r );
+		$p = self::resolve( (string) $r->get_param( 'id' ) );
+		if ( ! $p ) {
+			return Router::not_found( 'place' );
+		}
+		$item = PlaceSerializer::full( $p, $lang, $market );
+
+		// Computed "nearby" when the editor left the relation empty.
+		if ( ! $item['nearby_places'] && $item['location'] ) {
+			$item['nearby_places'] = Geo::nearest( PostTypes::PLACE, $item['location'], 3, [ $p->ID ] );
+		}
+		if ( ! $item['nearby_lodging'] && $item['location'] ) {
+			$item['nearby_lodging'] = Geo::nearest( PostTypes::LODGING, $item['location'], 3 );
+		}
+
+		return Router::ok( Router::pick( $item, (string) $r->get_param( 'fields' ) ), [ 'lang' => $lang, 'market' => $market ] );
+	}
+
+	/** Accepts numeric ID, UUID or slug. */
+	public static function resolve( string $key ): ?\WP_Post {
+		if ( ctype_digit( $key ) ) {
+			$p = get_post( (int) $key );
+		} elseif ( wp_is_uuid( $key ) ) {
+			$id = Uuid::find( $key );
+			$p  = $id ? get_post( $id ) : null;
+		} else {
+			$p = get_page_by_path( $key, OBJECT, PostTypes::PLACE );
+		}
+		return ( $p && PostTypes::PLACE === $p->post_type && 'publish' === $p->post_status ) ? $p : null;
+	}
+}
