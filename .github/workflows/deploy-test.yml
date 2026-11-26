@@ -1,4 +1,4 @@
-# Deploys to the TEST server on every merge to main.
+# Deploys to the TEST server. Run it by hand: Actions → Deploy to test → Run workflow.
 #
 # Required repository secrets (Settings → Secrets → Actions):
 #   TEST_SSH_HOST   e.g. test.skyeguide.example
@@ -11,9 +11,10 @@
 
 name: Deploy to test
 
+# Manual only until a test server exists. To deploy on every merge again, add back:
+#   push:
+#     branches: [main]
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
