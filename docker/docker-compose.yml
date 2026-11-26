@@ -38,6 +38,7 @@ services:
         define( 'SKYE_BOKUN_SECRET_KEY', '${BOKUN_SECRET_KEY:-}' );
         define( 'SKYE_BOKUN_VENDOR_ID', '${BOKUN_VENDOR_ID:-}' );
         define( 'SKYE_BOKUN_BASE_URL', '${BOKUN_BASE_URL:-}' );
+        if ( '${WPML_SITE_KEY:-}' ) { define( 'OTGS_INSTALLER_SITE_KEY_WPML', '${WPML_SITE_KEY:-}' ); }
         define( 'WP_HOME', '${WP_HOME:-http://localhost:8080}' );
         define( 'WP_SITEURL', '${WP_HOME:-http://localhost:8080}' );
     volumes:
@@ -72,4 +73,5 @@ services:
       - ../wp-content/themes/skye-child:/var/www/html/wp-content/themes/skye-child
       - ../seed:/seed:ro
       - ./scripts:/scripts:ro
+      - ./licensed:/vendor-zips:ro
     profiles: ["tools"]

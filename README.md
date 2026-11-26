@@ -11,10 +11,12 @@ Web de la Isla de Skye: directorio turístico, rutas, tours de 2 y 3 días desde
 cp .env.example .env
 docker compose --env-file .env -f docker/docker-compose.yml up -d
 docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
-docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed places
+docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed all
 open http://localhost:8080
 curl http://localhost:8080/wp-json/skye/v1/places | jq .
 ```
+
+Bricks y WPML se instalan desde zips con licencia: ver [`docker/licensed/README.md`](docker/licensed/README.md).
 
 ## Repos relacionados
 
