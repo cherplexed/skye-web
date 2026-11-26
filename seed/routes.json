@@ -1,0 +1,32 @@
+{
+  "_note": "One pilot route to exercise /routes. Distances and times are approximate and unverified: a guide must drive it and correct them.",
+  "routes": [
+    {
+      "slug": "trotternish-loop",
+      "title": "Trotternish loop",
+      "summary": "The classic one-day drive north of Portree: the Storr, Kilt Rock, the Quiraing and the Fairy Glen on one circular road.",
+      "content": "<p>A circular drive around the Trotternish peninsula, starting and ending in Portree. Go anticlockwise (north on the A855) so the Storr car park comes first, before it fills. Much of the northern section is single-track with passing places.</p>",
+      "route_type": "drive",
+      "days_count": 1,
+      "vehicle": "car",
+      "profiles": ["instagram", "nature", "hiking"],
+      "days": [
+        {
+          "stops": [
+            { "place": "portree", "time_hint": "08:30", "note": "Fuel and food before leaving: there is little on the loop.", "stop_type": "visit" },
+            { "place": "old-man-of-storr", "time_hint": "09:00", "note": "Allow two hours for the walk to the upper viewpoint.", "stop_type": "visit" },
+            { "place": "kilt-rock-and-mealt-falls", "time_hint": "11:30", "note": "A ten-minute stop at the railing.", "stop_type": "visit" },
+            { "place": "quiraing", "time_hint": "12:30", "note": "Walk the first kilometre of the path for the view even if you skip the full circuit.", "stop_type": "visit" },
+            { "place": "fairy-glen", "time_hint": "15:30", "note": "Park in Uig or at the signed car park, not on the verges.", "stop_type": "visit" }
+          ],
+          "night_zone": "portree"
+        }
+      ],
+      "total_km": 80,
+      "total_drive_minutes": 130,
+      "equivalent_tour": "isle-of-skye-3-day-tour",
+      "motorhome_ok": true,
+      "motorhome_notes": "Possible, but the Quiraing road from Staffin is steep, narrow and single-track: large motorhomes should reach the Quiraing car park from the Uig side or skip it."
+    }
+  ]
+}

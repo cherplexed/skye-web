@@ -1,0 +1,98 @@
+{
+  "_note": "Taken from the public tour pages of viajarporescocia.com on 26 Nov 2026 (same itinerary for the three brands) plus the Bókun product IDs provided by Sergio. Still unverified. Known gaps: (1) `days` only lists stops that already exist as Places, so the mainland stops (Glencoe, Glenfinnan, Eilean Donan, Loch Ness, Inverness, Pitlochry…) and Lealt Falls are missing, and days 1 and 3 of the 3-day tour are empty; (2) the 3-day tour is seeded with its peak-season day on Skye; from mid-October to late March that day is Sligachan, Fairy Pools, Portree, Fairy Glen, Quiraing, Kilt Rock and the Storr, and the model has no seasonal itineraries yet; (3) there is also a Glasgow departure sold as a separate product; (4) Loch Ness Bus has no booking pages yet, so its offer links to the brand's home page.",
+  "tours": [
+    {
+      "slug": "isle-of-skye-3-day-tour",
+      "title": "Isle of Skye and the Highlands, 3 days from Edinburgh",
+      "summary": "Three days from Edinburgh with a driver-guide: Glencoe and Eilean Donan on the way, a full day on Skye, and Loch Ness and Inverness on the way back.",
+      "product_code": "SK3D",
+      "days_count": 3,
+      "nights_count": 2,
+      "departure_city": "edinburgh",
+      "includes_audioguide": true,
+      "days": [
+        {
+          "stops": []
+        },
+        {
+          "stops": [
+            "dunvegan-castle",
+            "portree",
+            "quiraing",
+            "kilt-rock-and-mealt-falls",
+            "old-man-of-storr"
+          ]
+        },
+        {
+          "stops": []
+        }
+      ],
+      "products": [
+        {
+          "brand": "viajar-por-escocia",
+          "bokun_product_id": "60870",
+          "fallback_booking_url": "https://viajarporescocia.com/tour/isla-skye/"
+        },
+        {
+          "brand": "scozia-tour",
+          "bokun_product_id": "154317",
+          "fallback_booking_url": "https://scoziatour.com/tour/isola-skye/"
+        },
+        {
+          "brand": "loch-ness-bus",
+          "bokun_product_id": "318823",
+          "fallback_booking_url": ""
+        }
+      ],
+      "departure_time": "07:30",
+      "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
+      "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Accommodation only if you book one of the packages that include it.",
+      "excludes": "Accommodation in the tour-only option. Entry to Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle. Meals. Travel insurance."
+    },
+    {
+      "slug": "isle-of-skye-2-day-tour",
+      "title": "Isle of Skye and the Highlands, 2 days from Edinburgh",
+      "summary": "Two days from Edinburgh with a driver-guide: Eilean Donan, Sligachan and Portree on day one; Kilt Rock, the Storr, Loch Ness and Inverness on day two.",
+      "product_code": "SK2D",
+      "days_count": 2,
+      "nights_count": 1,
+      "departure_city": "edinburgh",
+      "includes_audioguide": true,
+      "days": [
+        {
+          "stops": [
+            "sligachan",
+            "portree"
+          ]
+        },
+        {
+          "stops": [
+            "kilt-rock-and-mealt-falls",
+            "old-man-of-storr"
+          ]
+        }
+      ],
+      "products": [
+        {
+          "brand": "viajar-por-escocia",
+          "bokun_product_id": "910659",
+          "fallback_booking_url": "https://viajarporescocia.com/tour/tour-de-2-dias-a-la-isla-de-skye-y-las-tierras-altas-con-salida-desde-edimburgo/"
+        },
+        {
+          "brand": "scozia-tour",
+          "bokun_product_id": "1092372",
+          "fallback_booking_url": "https://scoziatour.com/tour/tour-di-2-giorni-allisola-di-skye-e-highlands/"
+        },
+        {
+          "brand": "loch-ness-bus",
+          "bokun_product_id": "911390",
+          "fallback_booking_url": ""
+        }
+      ],
+      "departure_time": "07:30",
+      "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
+      "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Entry to Urquhart Castle. Accommodation only if you book one of the packages that include it.",
+      "excludes": "Accommodation in the tour-only option. Entry to other attractions. Loch Ness cruise. Meals. Travel insurance."
+    }
+  ]
+}

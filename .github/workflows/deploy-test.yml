@@ -26,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Deploy over SSH
         uses: appleboy/ssh-action@v1.2.0
         with:
@@ -39,7 +39,7 @@ jobs:
             cd "${TEST_PATH:-/srv/skye-web}"
             git fetch --depth=1 origin main
             git reset --hard origin/main
-            docker compose -f docker/docker-compose.yml up -d --remove-orphans
-            docker compose -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
-            docker compose -f docker/docker-compose.yml run --rm wpcli wp skye terms
+            docker compose --env-file .env -f docker/docker-compose.yml up -d --remove-orphans
+            docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
+            docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye terms
             bash docker/scripts/smoke.sh "$(grep -E '^WP_HOME=' .env | cut -d= -f2-)"

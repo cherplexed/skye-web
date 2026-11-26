@@ -23,6 +23,24 @@ final class Router {
 		register_rest_route( self::NS, '/places', $read + [ 'callback' => [ Places::class, 'index' ], 'args' => self::common_args() + Places::args() ] );
 		register_rest_route( self::NS, '/places/(?P<id>[A-Za-z0-9\-]+)', $read + [ 'callback' => [ Places::class, 'show' ], 'args' => self::common_args() ] );
 		register_rest_route( self::NS, '/audioguide/stops', $read + [ 'callback' => [ Audioguide::class, 'stops' ], 'args' => self::common_args() ] );
+		foreach ( Collection::endpoints() as $base => $cfg ) {
+			register_rest_route(
+				self::NS,
+				'/' . $base,
+				$read + [
+					'callback' => static fn( WP_REST_Request $r ) => Collection::index( $r, $cfg ),
+					'args'     => self::common_args() + Collection::args( $cfg ),
+				]
+			);
+			register_rest_route(
+				self::NS,
+				'/' . $base . '/(?P<id>[A-Za-z0-9\-]+)',
+				$read + [
+					'callback' => static fn( WP_REST_Request $r ) => Collection::show( $r, $cfg ),
+					'args'     => self::common_args(),
+				]
+			);
+		}
 		register_rest_route( self::NS, '/health', $read + [ 'callback' => static fn() => self::ok( [ 'version' => SKYE_CORE_VERSION ] ) ] );
 	}
 

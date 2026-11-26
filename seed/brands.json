@@ -1,0 +1,8 @@
+{
+  "_note": "The three operating brands of TA Scotland (CONTRACTS.md §3). bokun_vendor_id, attribution_param, ga4_property, rating and review_count are left empty until TA Scotland provides them.",
+  "brands": [
+    { "slug": "viajar-por-escocia", "title": "Viajar por Escocia", "domain": "viajarporescocia.com", "markets": "es", "tour_language": "es", "operator_legal_name": "TA Scotland Limited" },
+    { "slug": "scozia-tour", "title": "Scozia Tour", "domain": "scoziatour.com", "markets": "it", "tour_language": "it", "operator_legal_name": "TA Scotland Limited" },
+    { "slug": "loch-ness-bus", "title": "Loch Ness Bus", "domain": "lochnessbus.com", "markets": "*", "tour_language": "en", "operator_legal_name": "TA Scotland Limited" }
+  ]
+}

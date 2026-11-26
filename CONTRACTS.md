@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.1 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.2 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -110,11 +110,27 @@ Parámetros comunes: `lang` (código WPML; por defecto el de la petición), `mar
 |---|---|---|
 | `GET /places` | `zone`, `category`, `profile`, `suitable_for`, `audioguide=1`, `near=lat,lng&radius_km=` | lista de Lugar |
 | `GET /places/{id|uuid|slug}` | | Lugar completo + `nearby` calculado |
-| `GET /routes`, `GET /routes/{id}` | `type`, `profile`, `vehicle`, `days` | Ruta con paradas expandidas (id, uuid, título, coordenadas) |
-| `GET /tours`, `GET /tours/{id}` | | Tour; `offer` resuelto para `market`: marca, `bokun_product_id`, `price_from` (de Bókun, caché), `currency`, `booking_url` |
-| `GET /brands` | | lista de Marca |
-| `GET /lodging`, `GET /motorhome-spots`, `GET /experiences` | filtros por tipo, zona, `near` | listas |
+| `GET /routes`, `GET /routes/{id}` | `type`, `profile`, `vehicle`, `days` | Ruta; en detalle, `days[].stops[]` con `place` expandido (id, uuid, slug, título, coordenadas) y `display` (distancia en ambos sistemas, tiempo) |
+| `GET /tours`, `GET /tours/{id}` | `days`, `departure` | Tour con `offer` resuelto para `market` (ver abajo); nunca la lista cruda de productos |
+| `GET /brands`, `GET /brands/{id}` | | Marca |
+| `GET /lodging`, `GET /motorhome-spots`, `GET /experiences` (y `/{id}`) | `type`, `zone`, `near=lat,lng&radius_km=`; además `overnight=1` en áreas y `suitable_for` en experiencias | listas; con `near`, ordenadas por `distance_km` |
 | `GET /audioguide/stops` | `lang` | Lugares con `audioguide_enabled`, ordenados por `audioguide_stop_number`, con pista del idioma pedido y radio GPS |
+
+`{id}` admite ID numérico, `uuid` o slug en todos los tipos. Las listas omiten repetidores, relaciones y galerías; el detalle lo trae todo más `description_html`. Los valores de filtro admiten varios separados por comas. Los campos marcados `internal` en el esquema (p. ej. `commission_pct`) no salen nunca.
+
+`offer` de un Tour:
+
+```json
+{
+  "market": "de",
+  "brand": { "id": 31, "slug": "loch-ness-bus", "title": "Loch Ness Bus", "domain": "lochnessbus.com", "tour_language": "en" },
+  "bokun_product_id": "60870",
+  "price_from": 399.2, "currency": "EUR", "next_available": "2026-11-30", "price_stale": false,
+  "booking_url": "https://lochnessbus.com/"
+}
+```
+
+La marca sale de §3; la moneda pedida a Bókun, de §9. `price_from`, `currency` y `next_available` son `null` si la marca no tiene producto, Bókun no está configurado o no hay salidas. `booking_url` es el `fallback_booking_url` del producto o, si falta, la portada del dominio de la marca, con el `attribution_param` de la marca añadido.
 
 Forma de respuesta:
 
