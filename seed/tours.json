@@ -1,0 +1,44 @@
+{
+  "_note": "PLACEHOLDERS so the API and templates have something to render. Only the product codes, the number of days and the brand list are real. The stops per day are a guess built from the 10 pilot places and MUST be replaced with the real itineraries; descriptions, inclusions, departure time, meeting point and Bókun product IDs are deliberately empty until TA Scotland provides them.",
+  "tours": [
+    {
+      "slug": "isle-of-skye-3-day-tour",
+      "title": "Isle of Skye 3-day tour",
+      "summary": "Three days from Edinburgh to the Isle of Skye and back with a guide, without driving.",
+      "product_code": "SK3D",
+      "days_count": 3,
+      "nights_count": 2,
+      "departure_city": "edinburgh",
+      "includes_audioguide": true,
+      "days": [
+        { "stops": [] },
+        { "stops": ["portree", "old-man-of-storr", "kilt-rock-and-mealt-falls", "quiraing", "fairy-glen"] },
+        { "stops": ["sligachan"] }
+      ],
+      "products": [
+        { "brand": "viajar-por-escocia", "bokun_product_id": "", "fallback_booking_url": "" },
+        { "brand": "scozia-tour", "bokun_product_id": "", "fallback_booking_url": "" },
+        { "brand": "loch-ness-bus", "bokun_product_id": "", "fallback_booking_url": "" }
+      ]
+    },
+    {
+      "slug": "isle-of-skye-2-day-tour",
+      "title": "Isle of Skye 2-day tour",
+      "summary": "Two days from Edinburgh to the Isle of Skye and back with a guide, without driving.",
+      "product_code": "SK2D",
+      "days_count": 2,
+      "nights_count": 1,
+      "departure_city": "edinburgh",
+      "includes_audioguide": true,
+      "days": [
+        { "stops": ["sligachan", "portree"] },
+        { "stops": ["old-man-of-storr", "kilt-rock-and-mealt-falls"] }
+      ],
+      "products": [
+        { "brand": "viajar-por-escocia", "bokun_product_id": "", "fallback_booking_url": "" },
+        { "brand": "scozia-tour", "bokun_product_id": "", "fallback_booking_url": "" },
+        { "brand": "loch-ness-bus", "bokun_product_id": "", "fallback_booking_url": "" }
+      ]
+    }
+  ]
+}

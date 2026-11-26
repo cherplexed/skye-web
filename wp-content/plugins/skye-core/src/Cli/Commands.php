@@ -7,6 +7,7 @@ use Skye\Bokun\BokunException;
 use Skye\Bokun\Client;
 use Skye\Bokun\Offers;
 use Skye\Bokun\Pricing;
+use Skye\Fields;
 use Skye\Meta;
 use Skye\PostTypes;
 use Skye\Taxonomies;
@@ -35,7 +36,7 @@ final class Commands {
 	 *
 	 * ## OPTIONS
 	 * <type>
-	 * : places
+	 * : places, brands, tours, routes or all (in that order: later types reference earlier ones by slug)
 	 *
 	 * [--file=<path>]
 	 * : JSON file. Default: /seed/<type>.json (docker) or ../../../../seed/<type>.json
@@ -44,13 +45,25 @@ final class Commands {
 	 * : Mark items as verified by this user login (only for real data checked by a guide).
 	 *
 	 * ## EXAMPLES
-	 *     wp skye seed places
+	 *     wp skye seed all
 	 *     wp skye seed places --file=/seed/places.json
 	 */
 	public function seed( array $args, array $assoc ): void {
 		[ $type ] = $args;
+		// Order matters for `all`: tours point to places and brands, routes to places and tours.
+		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE ];
+		if ( 'all' === $type ) {
+			foreach ( [ 'places', ...array_keys( $generic ) ] as $t ) {
+				$this->seed( [ $t ], array_diff_key( $assoc, [ 'file' => 1 ] ) );
+			}
+			return;
+		}
+		if ( isset( $generic[ $type ] ) ) {
+			$this->seed_generic( $type, $generic[ $type ], $assoc );
+			return;
+		}
 		if ( 'places' !== $type ) {
-			WP_CLI::error( "Unknown seed type '$type'. Available: places" );
+			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, all" );
 		}
 		Taxonomies::seed_terms();
 
@@ -93,6 +106,95 @@ final class Commands {
 			WP_CLI::log( sprintf( '  %s %s (#%d)', $existing ? '~' : '+', $row['title'], $id ) );
 		}
 		WP_CLI::success( "Places: $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED: a guide must check them.' ) );
+	}
+
+	/**
+	 * Schema-driven seed for types without special handling. Rows use field names from Fields; relations
+	 * are written as slugs (a string, or a list) and resolved to IDs here.
+	 */
+	private function seed_generic( string $name, string $post_type, array $assoc ): void {
+		Taxonomies::seed_terms();
+		$file = $assoc['file'] ?? ( is_dir( '/seed' ) ? "/seed/$name.json" : dirname( SKYE_CORE_DIR, 3 ) . "/seed/$name.json" );
+		if ( ! is_file( $file ) ) {
+			WP_CLI::error( "Seed file not found: $file" );
+		}
+		$json     = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
+		$verifier = isset( $assoc['verify-as'] ) ? get_user_by( 'login', (string) $assoc['verify-as'] ) : null;
+		$schema   = Fields::for( $post_type );
+		$created  = 0;
+		$updated  = 0;
+
+		foreach ( $json[ $name ] as $row ) {
+			$existing = get_page_by_path( $row['slug'], OBJECT, $post_type );
+			$postarr  = [
+				'post_type'    => $post_type,
+				'post_status'  => 'publish',
+				'post_name'    => $row['slug'],
+				'post_title'   => $row['title'],
+				'post_content' => $row['content'] ?? '',
+				'post_excerpt' => $row['summary'] ?? '',
+			];
+			if ( $existing ) {
+				$postarr['ID'] = $existing->ID;
+			}
+			$id = $existing ? wp_update_post( $postarr, true ) : wp_insert_post( $postarr, true );
+			if ( is_wp_error( $id ) ) {
+				WP_CLI::warning( "{$row['slug']}: " . $id->get_error_message() );
+				continue;
+			}
+			$existing ? ++$updated : ++$created;
+			$id = (int) $id;
+
+			foreach ( $schema as $field => $def ) {
+				if ( array_key_exists( $field, $row ) && null !== $row[ $field ] ) {
+					Meta::set( $id, $field, $this->seed_value( $def, $row[ $field ], "{$row['slug']}.$field" ) );
+				}
+			}
+			if ( isset( $row['profiles'] ) ) {
+				wp_set_object_terms( $id, $row['profiles'], Taxonomies::PROFILE );
+			}
+			Uuid::ensure( $id );
+			if ( $verifier ) {
+				Verification::mark_verified( $id, (int) $verifier->ID );
+			}
+			WP_CLI::log( sprintf( '  %s %s (#%d)', $existing ? '~' : '+', $row['title'], $id ) );
+		}
+		WP_CLI::success( ucfirst( $name ) . ": $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED.' ) );
+	}
+
+	/** Seed value → stored value: slugs become IDs, booleans become 0/1, repeaters recurse. */
+	private function seed_value( array $def, mixed $value, string $path ): mixed {
+		switch ( $def['type'] ) {
+			case 'relation':
+				$ids = [];
+				foreach ( (array) $value as $slug ) {
+					$p = get_page_by_path( (string) $slug, OBJECT, $def['to'] );
+					if ( $p ) {
+						$ids[] = $p->ID;
+					} else {
+						WP_CLI::warning( "$path: no {$def['to']} with slug '$slug' (seed that type first)" );
+					}
+				}
+				return $ids;
+			case 'repeater':
+				$rows = [];
+				foreach ( (array) $value as $i => $row ) {
+					$out = [];
+					foreach ( $def['sub'] as $sub => $sub_def ) {
+						if ( array_key_exists( $sub, $row ) && null !== $row[ $sub ] ) {
+							$out[ $sub ] = $this->seed_value( $sub_def, $row[ $sub ], "$path[$i].$sub" );
+						}
+					}
+					$rows[] = $out;
+				}
+				return $rows;
+			case 'bool':
+				return $value ? 1 : 0;
+			case 'latlng':
+				return [ 'lat' => (float) $value['lat'], 'lng' => (float) $value['lng'] ];
+			default:
+				return $value;
+		}
 	}
 
 	private function apply_place( int $id, array $r ): void {

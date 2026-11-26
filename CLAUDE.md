@@ -48,7 +48,7 @@ cp .env.example .env          # rellenar licencias si las hay; sin ellas el stac
 docker compose -f docker/docker-compose.yml up -d
 docker compose -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
 # → http://localhost:8080  (admin: ver .env)
-docker compose -f docker/docker-compose.yml run --rm wpcli wp skye seed places   # 10 lugares piloto
+docker compose -f docker/docker-compose.yml run --rm wpcli wp skye seed all      # 10 lugares, 3 marcas, 2 tours y 1 ruta piloto
 curl http://localhost:8080/wp-json/skye/v1/places
 ```
 
