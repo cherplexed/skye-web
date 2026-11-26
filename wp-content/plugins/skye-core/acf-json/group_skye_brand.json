@@ -1,0 +1,151 @@
+{
+    "key": "group_skye_brand",
+    "title": "Skye: Brand",
+    "fields": [
+        {
+            "key": "field_skye_brand_domain",
+            "label": "Domain",
+            "name": "domain",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_brand_markets",
+            "label": "Markets",
+            "name": "markets",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_brand_tour_language",
+            "label": "Tour language",
+            "name": "tour_language",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "en": "English",
+                "es": "Spanish",
+                "it": "Italian"
+            },
+            "default_value": "en",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_brand_bokun_vendor_id",
+            "label": "Bokun vendor id",
+            "name": "bokun_vendor_id",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_brand_attribution_param",
+            "label": "Attribution param",
+            "name": "attribution_param",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_brand_ga4_property",
+            "label": "Ga4 property",
+            "name": "ga4_property",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_brand_logo",
+            "label": "Logo",
+            "name": "logo",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "image",
+            "return_format": "id"
+        },
+        {
+            "key": "field_skye_brand_rating",
+            "label": "Rating",
+            "name": "rating",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_brand_review_count",
+            "label": "Review count",
+            "name": "review_count",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_brand_operator_legal_name",
+            "label": "Operator legal name",
+            "name": "operator_legal_name",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text",
+            "default_value": "TA Scotland Limited"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "brand"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

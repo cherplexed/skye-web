@@ -3,6 +3,10 @@ declare(strict_types=1);
 
 namespace Skye\Cli;
 
+use Skye\Bokun\BokunException;
+use Skye\Bokun\Client;
+use Skye\Bokun\Offers;
+use Skye\Bokun\Pricing;
 use Skye\Meta;
 use Skye\PostTypes;
 use Skye\Taxonomies;
@@ -137,5 +141,44 @@ final class Commands {
 			}
 		}
 		WP_CLI\Utils\format_items( 'table', $rows, [ 'type', 'title', 'status', 'verified_by', 'valid_until' ] );
+	}
+
+	/**
+	 * Asks Bókun for the "from" price and next bookable date of a product. Checks credentials end to end.
+	 *
+	 * ## OPTIONS
+	 * <product_id>
+	 * : Bókun product (activity) ID.
+	 *
+	 * [--currency=<code>]
+	 * : Default GBP.
+	 *
+	 * [--category=<id>]
+	 * : Adult pricing category ID. Without it, the highest per-person price of the default rate is used.
+	 *
+	 * ## EXAMPLES
+	 *     wp skye bokun 123456 --currency=EUR
+	 */
+	public function bokun( array $args, array $assoc ): void {
+		$client = Client::from_config();
+		if ( ! $client ) {
+			WP_CLI::error( 'Bókun is not configured: set BOKUN_ACCESS_KEY and BOKUN_SECRET_KEY in .env and restart the stack.' );
+		}
+		$currency = strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) );
+		$category = isset( $assoc['category'] ) ? (int) $assoc['category'] : null;
+		try {
+			$start = gmdate( 'Y-m-d' );
+			$end   = gmdate( 'Y-m-d', time() + ( Offers::WINDOW_DAYS - 1 ) * DAY_IN_SECONDS );
+			$list  = $client->availabilities( (string) $args[0], $start, $end, $currency );
+		} catch ( BokunException $e ) {
+			WP_CLI::error( $e->getMessage() );
+		}
+		WP_CLI::log( sprintf( '%d departures returned for %s → %s', count( $list ), $start, $end ) );
+		$sum = Pricing::summarize( $list, $category );
+		if ( ! $sum ) {
+			WP_CLI::warning( 'Nothing bookable in this window.' );
+			return;
+		}
+		WP_CLI::success( sprintf( 'From %s %s · next departure %s · %d bookable departures', $sum['price_from'], $sum['currency'], $sum['next_available'], $sum['departures'] ) );
 	}
 }
