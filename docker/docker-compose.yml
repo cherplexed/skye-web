@@ -59,6 +59,10 @@ services:
       WP_ADMIN_PASSWORD: ${WP_ADMIN_PASSWORD:-admin}
       WP_ADMIN_EMAIL: ${WP_ADMIN_EMAIL:-admin@example.com}
       ACF_PRO_KEY: ${ACF_PRO_KEY:-}
+      BOKUN_ACCESS_KEY: ${BOKUN_ACCESS_KEY:-}
+      BOKUN_SECRET_KEY: ${BOKUN_SECRET_KEY:-}
+      BOKUN_VENDOR_ID: ${BOKUN_VENDOR_ID:-}
+      BOKUN_BASE_URL: ${BOKUN_BASE_URL:-}
     volumes:
       - ./data/wp:/var/www/html
       - ../wp-content/plugins/skye-core:/var/www/html/wp-content/plugins/skye-core
