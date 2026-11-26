@@ -1,5 +1,5 @@
 {
-  "_note": "PLACEHOLDERS so the API and templates have something to render. Real: product codes, number of days, and the Bókun product ID and booking page per brand (provided by Sergio, 26 Nov 2026). The 2-day tour has no English product, so markets served by Loch Ness Bus get no price for it. The stops per day are a guess built from the 10 pilot places and MUST be replaced with the real itineraries; descriptions, inclusions, departure time and meeting point are deliberately empty until TA Scotland provides them.",
+  "_note": "PLACEHOLDERS so the API and templates have something to render. Real: product codes, number of days, and the Bókun product ID and booking page per brand (provided by Sergio, 26 Nov 2026; Loch Ness Bus booking pages still missing, so its offer links to the brand's home page). The stops per day are a guess built from the 10 pilot places and MUST be replaced with the real itineraries; descriptions, inclusions, departure time and meeting point are deliberately empty until TA Scotland provides them.",
   "tours": [
     {
       "slug": "isle-of-skye-3-day-tour",
@@ -80,6 +80,11 @@
           "brand": "scozia-tour",
           "bokun_product_id": "1092372",
           "fallback_booking_url": "https://scoziatour.com/tour/tour-di-2-giorni-allisola-di-skye-e-highlands/"
+        },
+        {
+          "brand": "loch-ness-bus",
+          "bokun_product_id": "911390",
+          "fallback_booking_url": ""
         }
       ]
     }
