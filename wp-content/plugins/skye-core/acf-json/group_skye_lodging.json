@@ -1,0 +1,163 @@
+{
+    "key": "group_skye_lodging",
+    "title": "Skye: Lodging",
+    "fields": [
+        {
+            "key": "field_skye_lodging_summary",
+            "label": "Summary",
+            "name": "summary",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_lodging_lodging_type",
+            "label": "Lodging type",
+            "name": "lodging_type",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "hotel": "Hotel",
+                "bnb": "B&B",
+                "cabin": "Cabin",
+                "hostel": "Hostel",
+                "campsite": "Campsite"
+            },
+            "default_value": "hotel",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_lodging_location",
+            "label": "Location",
+            "name": "location",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "group",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_skye_lodging_location_lat",
+                    "label": "Lat",
+                    "name": "lat",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_skye_lodging_location_lng",
+                    "label": "Lng",
+                    "name": "lng",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_skye_lodging_price_from_gbp",
+            "label": "Price from gbp",
+            "name": "price_from_gbp",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_lodging_amenities",
+            "label": "Amenities",
+            "name": "amenities",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "breakfast": "Breakfast",
+                "parking": "Parking",
+                "dogs": "Dogs",
+                "family": "Family",
+                "kitchen": "Kitchen",
+                "free_cancellation": "Free cancellation"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_lodging_good_for",
+            "label": "Good for",
+            "name": "good_for",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_lodging_booking_url",
+            "label": "Booking url",
+            "name": "booking_url",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "url"
+        },
+        {
+            "key": "field_skye_lodging_provider",
+            "label": "Provider",
+            "name": "provider",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "booking": "Booking.com",
+                "direct": "Direct"
+            },
+            "default_value": "booking",
+            "return_format": "value"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "lodging"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

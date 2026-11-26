@@ -1,0 +1,278 @@
+{
+    "key": "group_skye_tour",
+    "title": "Skye: Tour",
+    "fields": [
+        {
+            "key": "field_skye_tour_summary",
+            "label": "Summary",
+            "name": "summary",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_tour_includes",
+            "label": "Includes",
+            "name": "includes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_tour_excludes",
+            "label": "Excludes",
+            "name": "excludes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_tour_product_code",
+            "label": "Product code",
+            "name": "product_code",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_tour_days_count",
+            "label": "Days count",
+            "name": "days_count",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_tour_nights_count",
+            "label": "Nights count",
+            "name": "nights_count",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_tour_departure_city",
+            "label": "Departure city",
+            "name": "departure_city",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "edinburgh": "Edinburgh",
+                "glasgow": "Glasgow"
+            },
+            "default_value": "edinburgh",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_tour_departure_time",
+            "label": "Departure time",
+            "name": "departure_time",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_tour_meeting_point",
+            "label": "Meeting point",
+            "name": "meeting_point",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_tour_days",
+            "label": "Days",
+            "name": "days",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_tour_days_stops",
+                    "label": "Stops",
+                    "name": "stops",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "relationship",
+                    "post_type": [
+                        "place"
+                    ],
+                    "return_format": "id",
+                    "filters": [
+                        "search"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "field_skye_tour_products",
+            "label": "Products",
+            "name": "products",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_tour_products_brand",
+                    "label": "Brand",
+                    "name": "brand",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "relationship",
+                    "post_type": [
+                        "brand"
+                    ],
+                    "return_format": "id",
+                    "filters": [
+                        "search"
+                    ],
+                    "max": 1
+                },
+                {
+                    "key": "field_skye_tour_products_bokun_product_id",
+                    "label": "Bokun product id",
+                    "name": "bokun_product_id",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_tour_products_fallback_booking_url",
+                    "label": "Fallback booking url",
+                    "name": "fallback_booking_url",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "url"
+                }
+            ]
+        },
+        {
+            "key": "field_skye_tour_rating",
+            "label": "Rating",
+            "name": "rating",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_tour_review_count",
+            "label": "Review count",
+            "name": "review_count",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_tour_includes_audioguide",
+            "label": "Includes audioguide",
+            "name": "includes_audioguide",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tour"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

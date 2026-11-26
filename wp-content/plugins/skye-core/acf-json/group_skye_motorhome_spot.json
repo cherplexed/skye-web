@@ -1,0 +1,196 @@
+{
+    "key": "group_skye_motorhome_spot",
+    "title": "Skye: Motorhome spot",
+    "fields": [
+        {
+            "key": "field_skye_motorhome_spot_spot_type",
+            "label": "Spot type",
+            "name": "spot_type",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "campsite": "Campsite",
+                "aire": "Overnight area",
+                "parking": "Parking",
+                "dump_station": "Dump station",
+                "ev_charger": "EV charger"
+            },
+            "default_value": "campsite",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_motorhome_spot_location",
+            "label": "Location",
+            "name": "location",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "group",
+            "layout": "table",
+            "sub_fields": [
+                {
+                    "key": "field_skye_motorhome_spot_location_lat",
+                    "label": "Lat",
+                    "name": "lat",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                },
+                {
+                    "key": "field_skye_motorhome_spot_location_lng",
+                    "label": "Lng",
+                    "name": "lng",
+                    "type": "number",
+                    "step": "any",
+                    "wpml_cf_preferences": 1
+                }
+            ]
+        },
+        {
+            "key": "field_skye_motorhome_spot_services",
+            "label": "Services",
+            "name": "services",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "electricity": "Electricity",
+                "water": "Water",
+                "dump": "Waste disposal",
+                "showers": "Showers",
+                "wifi": "Wi-Fi"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_motorhome_spot_ev_kw",
+            "label": "Ev kw",
+            "name": "ev_kw",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_motorhome_spot_overnight_allowed",
+            "label": "Overnight allowed",
+            "name": "overnight_allowed",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_skye_motorhome_spot_max_length_m",
+            "label": "Max length m",
+            "name": "max_length_m",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_motorhome_spot_price_gbp",
+            "label": "Price gbp",
+            "name": "price_gbp",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_motorhome_spot_booking_url",
+            "label": "Booking url",
+            "name": "booking_url",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "url"
+        },
+        {
+            "key": "field_skye_motorhome_spot_no_booking",
+            "label": "No booking",
+            "name": "no_booking",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_skye_motorhome_spot_season",
+            "label": "Season",
+            "name": "season",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_motorhome_spot_notes",
+            "label": "Notes",
+            "name": "notes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "motorhome_spot"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

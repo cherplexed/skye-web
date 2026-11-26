@@ -1,0 +1,198 @@
+{
+    "key": "group_skye_experience",
+    "title": "Skye: Experience",
+    "fields": [
+        {
+            "key": "field_skye_experience_summary",
+            "label": "Summary",
+            "name": "summary",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_experience_experience_type",
+            "label": "Experience type",
+            "name": "experience_type",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "tasting": "Tasting",
+                "cruise": "Cruise",
+                "wildlife": "Wildlife",
+                "kayak": "Kayak",
+                "fishing": "Fishing",
+                "mountain_guide": "Mountain guide",
+                "private_tour": "Private tour",
+                "ticket": "Ticket"
+            },
+            "default_value": "ticket",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_experience_departure_place",
+            "label": "Departure place",
+            "name": "departure_place",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "place"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ],
+            "max": 1
+        },
+        {
+            "key": "field_skye_experience_duration_min",
+            "label": "Duration min",
+            "name": "duration_min",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_experience_price_from_gbp",
+            "label": "Price from gbp",
+            "name": "price_from_gbp",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_experience_languages",
+            "label": "Languages",
+            "name": "languages",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "en": "English",
+                "es": "Spanish",
+                "it": "Italian",
+                "de": "German",
+                "fr": "French",
+                "pt": "Portuguese",
+                "nl": "Dutch",
+                "zh": "Chinese",
+                "ja": "Japanese"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_experience_season",
+            "label": "Season",
+            "name": "season",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_experience_suitable_for",
+            "label": "Suitable for",
+            "name": "suitable_for",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "checkbox",
+            "choices": {
+                "children": "Children",
+                "stroller": "Stroller",
+                "dogs": "Dogs",
+                "reduced_mobility": "Reduced mobility"
+            },
+            "return_format": "value",
+            "layout": "horizontal"
+        },
+        {
+            "key": "field_skye_experience_provider",
+            "label": "Provider",
+            "name": "provider",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "text"
+        },
+        {
+            "key": "field_skye_experience_booking_url",
+            "label": "Booking url",
+            "name": "booking_url",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "url"
+        },
+        {
+            "key": "field_skye_experience_commission_pct",
+            "label": "Commission pct",
+            "name": "commission_pct",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "experience"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

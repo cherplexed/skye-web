@@ -1,0 +1,313 @@
+{
+    "key": "group_skye_route",
+    "title": "Skye: Route",
+    "fields": [
+        {
+            "key": "field_skye_route_summary",
+            "label": "Summary",
+            "name": "summary",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_route_route_type",
+            "label": "Route type",
+            "name": "route_type",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "itinerary": "Itinerary (several days)",
+                "drive": "Drive (one day)",
+                "walk": "Walk"
+            },
+            "default_value": "drive",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_route_days_count",
+            "label": "Days count",
+            "name": "days_count",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": 1
+        },
+        {
+            "key": "field_skye_route_vehicle",
+            "label": "Vehicle",
+            "name": "vehicle",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "select",
+            "choices": {
+                "no_car": "No car",
+                "car": "Car",
+                "motorhome": "Motorhome",
+                "any": "Any"
+            },
+            "default_value": "any",
+            "return_format": "value"
+        },
+        {
+            "key": "field_skye_route_days",
+            "label": "Days",
+            "name": "days",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_route_days_stops",
+                    "label": "Stops",
+                    "name": "stops",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add row",
+                    "sub_fields": [
+                        {
+                            "key": "field_skye_route_days_stops_place",
+                            "label": "Place",
+                            "name": "place",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "relationship",
+                            "post_type": [
+                                "place"
+                            ],
+                            "return_format": "id",
+                            "filters": [
+                                "search"
+                            ],
+                            "max": 1
+                        },
+                        {
+                            "key": "field_skye_route_days_stops_time_hint",
+                            "label": "Time hint",
+                            "name": "time_hint",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_skye_route_days_stops_note",
+                            "label": "Note",
+                            "name": "note",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 2,
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_skye_route_days_stops_stop_type",
+                            "label": "Stop type",
+                            "name": "stop_type",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "select",
+                            "choices": {
+                                "visit": "Visit",
+                                "meal": "Meal",
+                                "night": "Night",
+                                "en_route": "En route"
+                            },
+                            "default_value": "visit",
+                            "return_format": "value"
+                        }
+                    ]
+                },
+                {
+                    "key": "field_skye_route_days_night_zone",
+                    "label": "Night zone",
+                    "name": "night_zone",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "select",
+                    "choices": {
+                        "": "—",
+                        "trotternish": "Trotternish",
+                        "portree": "Portree",
+                        "duirinish-waternish": "Duirinish & Waternish",
+                        "minginish-cuillin": "Minginish & Cuillin",
+                        "sleat": "Sleat",
+                        "broadford": "Broadford",
+                        "raasay": "Raasay",
+                        "en-route": "En route (off the island)"
+                    },
+                    "default_value": "",
+                    "return_format": "value"
+                },
+                {
+                    "key": "field_skye_route_days_night_lodging",
+                    "label": "Night lodging",
+                    "name": "night_lodging",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "relationship",
+                    "post_type": [
+                        "lodging"
+                    ],
+                    "return_format": "id",
+                    "filters": [
+                        "search"
+                    ],
+                    "max": 1
+                }
+            ]
+        },
+        {
+            "key": "field_skye_route_total_km",
+            "label": "Total km",
+            "name": "total_km",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_route_total_drive_minutes",
+            "label": "Total drive minutes",
+            "name": "total_drive_minutes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "number",
+            "default_value": ""
+        },
+        {
+            "key": "field_skye_route_gpx_file",
+            "label": "Gpx file",
+            "name": "gpx_file",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "file",
+            "return_format": "url"
+        },
+        {
+            "key": "field_skye_route_equivalent_tour",
+            "label": "Equivalent tour",
+            "name": "equivalent_tour",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "relationship",
+            "post_type": [
+                "tour"
+            ],
+            "return_format": "id",
+            "filters": [
+                "search"
+            ],
+            "max": 1
+        },
+        {
+            "key": "field_skye_route_motorhome_ok",
+            "label": "Motorhome ok",
+            "name": "motorhome_ok",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "true_false",
+            "ui": 1
+        },
+        {
+            "key": "field_skye_route_motorhome_notes",
+            "label": "Motorhome notes",
+            "name": "motorhome_notes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "route"
+            }
+        ]
+    ],
+    "position": "normal",
+    "style": "default",
+    "active": true,
+    "show_in_rest": 1,
+    "modified": 1795722646
+}

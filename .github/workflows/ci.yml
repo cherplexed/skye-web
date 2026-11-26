@@ -22,9 +22,7 @@ jobs:
       - name: ACF JSON is in sync with Fields.php
         run: |
           cd wp-content/plugins/skye-core
-          cp acf-json/group_skye_place.json /tmp/before.json
-          php tools/generate-acf-json.php
-          php -r '$a=json_decode(file_get_contents("/tmp/before.json"),true); $b=json_decode(file_get_contents("acf-json/group_skye_place.json"),true); unset($a["modified"],$b["modified"]); exit($a===$b?0:1);' || { echo "::error::acf-json out of date: run php tools/generate-acf-json.php"; exit 1; }
+          php tools/generate-acf-json.php --check || { echo "::error::acf-json out of date: run php tools/generate-acf-json.php"; exit 1; }
       - name: Composer install
         run: composer install --no-interaction --prefer-dist
       - name: Unit tests

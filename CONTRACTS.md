@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.0 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.1 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -59,13 +59,13 @@ Versión 1.0 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es l
 | Scozia Tour | scoziatour.com | it | it |
 | Loch Ness Bus | lochnessbus.com | `*` (todos los demás) | en |
 
-Campos: `title`, `domain`, `markets` (lista de códigos; `*` = comodín), `tour_language`, `bokun_vendor_id`, `attribution_param`, `ga4_property`, `logo`, `rating`, `review_count`, `operator_legal_name` (TA Scotland Limited).
+Campos: `title`, `domain`, `markets` (texto: códigos separados por comas; `*` = comodín), `tour_language`, `bokun_vendor_id`, `attribution_param`, `ga4_property`, `logo`, `rating`, `review_count`, `operator_legal_name` (TA Scotland Limited).
 
 Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` contiene el código; si ninguna, la del comodín.
 
 ## 4. Tour — post type `tour`
 
-`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor → `stops` (relación place). `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
+`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor → `stops` (relación multi place). `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
 
 ## 5. Alojamiento — post type `lodging`
 
@@ -73,11 +73,11 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 
 ## 6. Área de autocaravana — post type `motorhome_spot`
 
-`title`. `spot_type`: campsite · aire · parking · dump_station · ev_charger. `location`. `services`: electricity · water · dump · showers · wifi; `ev_kw`. `overnight_allowed`. `max_length_m`. `price_gbp`. `booking_url` o `no_booking`. `season`. `notes` (sí). Verificación.
+`title`. `spot_type`: campsite · aire · parking · dump_station · ev_charger. `location`. `services`: electricity · water · dump · showers · wifi; `ev_kw`. `overnight_allowed`. `max_length_m`. `price_gbp`. `booking_url` o `no_booking` (bool). `season` (sí). `notes` (sí). Verificación.
 
 ## 7. Experiencia — post type `experience`
 
-`title`, `summary`, `description` (sí). `experience_type`: tasting · cruise · wildlife · kayak · fishing · mountain_guide · private_tour · ticket. `departure_place` (relación). `duration_min`. `price_from_gbp`. `languages`. `season`. `suitable_for`. `provider`, `booking_url`. `commission_pct` (interno, no público). Verificación.
+`title`, `summary`, `description` (sí). `experience_type`: tasting · cruise · wildlife · kayak · fishing · mountain_guide · private_tour · ticket. `departure_place` (relación). `duration_min`. `price_from_gbp`. `languages` (códigos de idioma). `season` (sí). `suitable_for`. `provider`, `booking_url`. `commission_pct` (interno, no público). Verificación.
 
 ## 8. Taxonomías
 
@@ -129,7 +129,14 @@ Cada objeto incluye `verification: { verified_by, verified_at, valid_until, upda
 
 ## 12. Bókun
 
-`skye-core` guarda credenciales en `.env` (`BOKUN_ACCESS_KEY`, `BOKUN_SECRET_KEY`, `BOKUN_VENDOR_ID`). Consulta precio "desde" y próxima disponibilidad por `bokun_product_id` con caché (transient) de 30 min. La creación de reservas y el pago los hace `skye-booking-widget` (ShyPig como revendedora), no este repo.
+`skye-core` guarda credenciales en `.env` (`BOKUN_ACCESS_KEY`, `BOKUN_SECRET_KEY`, `BOKUN_VENDOR_ID`, y `BOKUN_BASE_URL` opcional: vacío = producción `https://api.bokun.io`; pruebas `https://api.bokuntest.com`). La creación de reservas y el pago los hace `skye-booking-widget` (ShyPig como revendedora), no este repo: aquí solo se lee.
+
+- **Firma** (`Skye\Bokun\Signer`): cabeceras `X-Bokun-Date` (UTC, `yyyy-MM-dd HH:mm:ss`), `X-Bokun-AccessKey` y `X-Bokun-Signature` = base64(HMAC-SHA1(secreto, fecha + clave de acceso + MÉTODO + ruta con query)).
+- **Lectura** (`Skye\Bokun\Client`): `GET /activity.json/{id}/availabilities?start=&end=&currency=`.
+- **Precio "desde"** (`Skye\Bokun\Pricing`): entre las salidas reservables (ni `soldOut` ni `unavailable`, con plazas), el menor precio por persona de la tarifa por defecto (`defaultRateId`). Categoría de precio: la de adulto si se indica su ID; si no, la más cara de la tarifa, para no mostrar nunca un precio de niño.
+- **Caché** (`Skye\Bokun\Offers`): 30 min por producto y moneda. Si Bókun falla se sirve la última respuesta buena (hasta 7 días) marcada `stale: true`, y no se reintenta en 5 min (o lo que diga `Retry-After` en un 429; el límite de Bókun es 400 peticiones/min por vendedor). Se consulta en ventanas de 60 días, hasta 6, y se para en la primera con salidas.
+- **Forma del resultado:** `{ price_from, currency, next_available (Y-m-d), departures, fetched_at, stale }` o `null` si no hay nada a la venta o Bókun no está configurado.
+- Comprobación manual: `wp skye bokun <product_id> [--currency=EUR] [--category=<id>]`.
 
 ## 13. JSON-LD
 

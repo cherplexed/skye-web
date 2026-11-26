@@ -34,6 +34,7 @@ services:
         define( 'SKYE_BOKUN_ACCESS_KEY', '${BOKUN_ACCESS_KEY:-}' );
         define( 'SKYE_BOKUN_SECRET_KEY', '${BOKUN_SECRET_KEY:-}' );
         define( 'SKYE_BOKUN_VENDOR_ID', '${BOKUN_VENDOR_ID:-}' );
+        define( 'SKYE_BOKUN_BASE_URL', '${BOKUN_BASE_URL:-}' );
         define( 'WP_HOME', '${WP_HOME:-http://localhost:8080}' );
         define( 'WP_SITEURL', '${WP_HOME:-http://localhost:8080}' );
     volumes:
