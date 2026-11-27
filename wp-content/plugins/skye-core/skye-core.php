@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Skye Core
  * Description: Content model, verification, units and REST API for the Isle of Skye guide. All custom code of skye-web lives here.
- * Version: 0.4.0
+ * Version: 0.5.0
  * Requires PHP: 8.2
  * Author: ShyPig
  * Text Domain: skye-core
