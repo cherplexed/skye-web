@@ -13,6 +13,8 @@ final class Frontend {
 		add_shortcode( 'skye_place', [ self::class, 'place_shortcode' ] );
 		add_shortcode( 'skye_tour', [ self::class, 'tour_shortcode' ] );
 		add_shortcode( 'skye_tours', [ self::class, 'tours_shortcode' ] );
+		add_shortcode( 'skye_route', [ self::class, 'route_shortcode' ] );
+		add_shortcode( 'skye_routes', [ self::class, 'routes_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
 		add_action( 'after_setup_theme', static fn() => register_nav_menus( [ 'skye_primary' => __( 'Skye primary navigation', 'skye-core' ) ] ) );
@@ -123,6 +125,62 @@ final class Frontend {
 			$tours[] = self::tour_item( $post, $market, false );
 		}
 		return Render\TourBlocks::listing( $tours, $market );
+	}
+
+	/** A route's API object for this page view: site links, stop links and photos, and its equivalent tour. */
+	private static function route_item( \WP_Post $post, string $market, bool $full ): array {
+		$item           = Api\Collection::item( $post, $market, $full );
+		$item['_links'] = [ 'home' => home_url( '/' ), 'routes' => self::archive( PostTypes::ROUTE ) ];
+		$item['image']  = self::picture( $item['image'] ?? null, $full ? '(min-width: 1264px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw', $full );
+		if ( ! $full ) {
+			return $item;
+		}
+		foreach ( $item['days'] ?? [] as $d => $day ) {
+			foreach ( $day['stops'] ?? [] as $i => $stop ) {
+				if ( empty( $stop['place']['id'] ) ) {
+					continue;
+				}
+				$id = (int) $stop['place']['id'];
+				$item['days'][ $d ]['stops'][ $i ]['place']['url']   = get_permalink( $id );
+				$item['days'][ $d ]['stops'][ $i ]['place']['image'] = self::picture( Api\PlaceSerializer::image_by_id( (int) get_post_thumbnail_id( $id ) ), '(min-width: 768px) 160px, 96px' );
+			}
+			if ( ! empty( $day['night_lodging']['id'] ) ) {
+				$item['days'][ $d ]['night_lodging']['url'] = get_permalink( (int) $day['night_lodging']['id'] );
+			}
+		}
+		$tour = ! empty( $item['equivalent_tour']['id'] ) ? get_post( (int) $item['equivalent_tour']['id'] ) : null;
+		if ( $tour && 'publish' === $tour->post_status ) {
+			$item['_tour'] = self::tour_item( $tour, $market, false );
+		}
+		return $item;
+	}
+
+	/**
+	 * [skye_route part="itinerary"]: one block of the current Route (or of `id`). Parts: see Render\RouteBlocks::PARTS.
+	 *
+	 * @param array<string, string>|string $atts
+	 */
+	public static function route_shortcode( $atts ): string {
+		$atts = shortcode_atts( [ 'part' => 'itinerary', 'id' => '' ], is_array( $atts ) ? $atts : [], 'skye_route' );
+		$post = get_post( '' !== $atts['id'] ? (int) $atts['id'] : get_the_ID() );
+		if ( ! $post || PostTypes::ROUTE !== $post->post_type || ! in_array( $atts['part'], Render\RouteBlocks::PARTS, true ) ) {
+			return '';
+		}
+		[ 'market' => $market ] = self::context();
+		static $items = [];
+		$key = $post->ID . '|' . $market;
+		$items[ $key ] ??= self::route_item( $post, $market, true );
+		return Render\RouteBlocks::render( $atts['part'], $items[ $key ], $market );
+	}
+
+	/** [skye_routes]: the routes listing. */
+	public static function routes_shortcode(): string {
+		[ 'market' => $market ] = self::context();
+		$routes = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::ROUTE, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$routes[] = self::route_item( $post, $market, false );
+		}
+		return Render\RouteBlocks::listing( $routes, $market );
 	}
 
 	/** Main navigation: the "Skye primary" menu when one is assigned, else the archives that exist. */

@@ -1,0 +1,221 @@
+{
+  "slug": "skye-single-route",
+  "title": "Skye: Route",
+  "type": "content",
+  "conditions": [
+    {
+      "main": "postType",
+      "postType": [
+        "route"
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "id": "skrt01",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "skrt02"
+      ],
+      "settings": {
+        "_cssClasses": "skye-place skye-place__top"
+      },
+      "label": "Top"
+    },
+    {
+      "id": "skrt02",
+      "name": "div",
+      "parent": "skrt01",
+      "children": [
+        "skrt03",
+        "skrt04"
+      ],
+      "settings": {
+        "_cssClasses": "skye-wrap skye-stack"
+      },
+      "label": "Wrap"
+    },
+    {
+      "id": "skrt03",
+      "name": "shortcode",
+      "parent": "skrt02",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"breadcrumb\"]"
+      },
+      "label": "Breadcrumb"
+    },
+    {
+      "id": "skrt04",
+      "name": "shortcode",
+      "parent": "skrt02",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"cover\"]"
+      },
+      "label": "Photo"
+    },
+    {
+      "id": "skrt10",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "skrt11"
+      ],
+      "settings": {
+        "_cssClasses": "skye-place skye-place__body"
+      },
+      "label": "Body"
+    },
+    {
+      "id": "skrt11",
+      "name": "div",
+      "parent": "skrt10",
+      "children": [
+        "skrt20",
+        "skrt30",
+        "skrt40"
+      ],
+      "settings": {
+        "_cssClasses": "skye-wrap skye-layout"
+      },
+      "label": "Two columns"
+    },
+    {
+      "id": "skrt20",
+      "name": "div",
+      "parent": "skrt11",
+      "children": [
+        "skrt21",
+        "skrt22",
+        "skrt23"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__intro"
+      },
+      "label": "Title"
+    },
+    {
+      "id": "skrt21",
+      "name": "shortcode",
+      "parent": "skrt20",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"eyebrow\"]"
+      },
+      "label": "Eyebrow"
+    },
+    {
+      "id": "skrt22",
+      "name": "heading",
+      "parent": "skrt20",
+      "children": [],
+      "settings": {
+        "text": "{post_title}",
+        "tag": "h1",
+        "_cssClasses": "skye-place__title"
+      }
+    },
+    {
+      "id": "skrt23",
+      "name": "shortcode",
+      "parent": "skrt20",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"summary\"]"
+      },
+      "label": "Summary"
+    },
+    {
+      "id": "skrt30",
+      "name": "div",
+      "parent": "skrt11",
+      "children": [
+        "skrt31",
+        "skrt32"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__aside",
+        "tag": "aside"
+      },
+      "label": "Sidebar"
+    },
+    {
+      "id": "skrt31",
+      "name": "shortcode",
+      "parent": "skrt30",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"facts\"]"
+      },
+      "label": "At a glance"
+    },
+    {
+      "id": "skrt32",
+      "name": "shortcode",
+      "parent": "skrt30",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"tour\"]"
+      },
+      "label": "No car"
+    },
+    {
+      "id": "skrt40",
+      "name": "div",
+      "parent": "skrt11",
+      "children": [
+        "skrt41",
+        "skrt42",
+        "skrt43",
+        "skrt44"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__main"
+      },
+      "label": "Content"
+    },
+    {
+      "id": "skrt41",
+      "name": "post-content",
+      "parent": "skrt40",
+      "children": [],
+      "settings": {
+        "dataSource": "editor",
+        "_cssClasses": "skye-place__description"
+      },
+      "label": "Description"
+    },
+    {
+      "id": "skrt42",
+      "name": "shortcode",
+      "parent": "skrt40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"itinerary\"]"
+      },
+      "label": "Stops"
+    },
+    {
+      "id": "skrt43",
+      "name": "shortcode",
+      "parent": "skrt40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"motorhome\"]"
+      },
+      "label": "For motorhomes"
+    },
+    {
+      "id": "skrt44",
+      "name": "shortcode",
+      "parent": "skrt40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_route part=\"verification\"]"
+      },
+      "label": "Verification"
+    }
+  ]
+}

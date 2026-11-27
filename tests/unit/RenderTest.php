@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
 use Skye\Render\PlaceBlocks;
+use Skye\Render\RouteBlocks;
 use Skye\Render\TourBlocks;
 
 final class RenderTest extends TestCase {
@@ -164,7 +165,7 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 5, $files );
+		self::assertCount( 7, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
@@ -183,14 +184,14 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|(place|tour) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
 					if ( isset( $m[3] ) ) {
-						self::assertContains( $m[3], 'tour' === $m[2] ? TourBlocks::PARTS : PlaceBlocks::PARTS );
+						self::assertContains( $m[3], [ 'place' => PlaceBlocks::PARTS, 'tour' => TourBlocks::PARTS, 'route' => RouteBlocks::PARTS ][ $m[2] ] );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-tour' ], $slugs );
+		self::assertSame( [ 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {
@@ -292,6 +293,84 @@ final class RenderTest extends TestCase {
 
 		self::assertStringNotContainsString( 'featured', TourBlocks::listing( [ $two ], 'de' ), 'a single tour is not "the most complete"' );
 		self::assertStringContainsString( 'No tours are on sale right now.', TourBlocks::listing( [], 'de' ) );
+	}
+
+	private static function route( array $over = [] ): array {
+		$stop = static fn( int $id, string $title, float $lat, string $time, string $type = 'visit', string $note = '' ) => [
+			'place'     => [ 'id' => $id, 'title' => $title, 'url' => "http://x/places/$id/", 'location' => [ 'lat' => $lat, 'lng' => -6.2 ] ],
+			'time_hint' => $time,
+			'note'      => $note,
+			'stop_type' => $type,
+		];
+		return $over + [
+			'title'               => 'Trotternish loop',
+			'url'                 => 'http://x/routes/trotternish-loop/',
+			'summary'             => 'The classic drive.',
+			'route_type'          => 'drive',
+			'days_count'          => 1,
+			'vehicle'             => 'car',
+			'total_km'            => 80,
+			'total_drive_minutes' => 130,
+			'motorhome_ok'        => true,
+			'motorhome_notes'     => 'Steep and narrow near the Quiraing.',
+			'image'               => null,
+			'display'             => [ 'total_drive' => '80 km (49.7 mi)', 'drive_time' => '2h 10' ],
+			'days'                => [
+				[
+					'stops'         => [ $stop( 1, 'Portree', 57.41, '08:30', 'meal', 'Fuel & food first.' ), $stop( 2, 'Old Man of Storr', 57.50, '09:00' ), $stop( 3, 'Quiraing', 57.64, '12:30' ), [ 'place' => null, 'time_hint' => '', 'note' => '', 'stop_type' => 'visit' ] ],
+					'night_zone'    => 'portree',
+					'night_lodging' => null,
+				],
+			],
+			'verification'        => [ 'status' => 'unverified' ],
+		];
+	}
+
+	public function test_route_facts_and_itinerary(): void {
+		$r     = self::route();
+		$facts = RouteBlocks::facts( $r, 'es' );
+		self::assertStringContainsString( '<dt>Distance</dt><dd>80 km (49.7 mi)</dd>', $facts );
+		self::assertStringContainsString( '<dt>Driving time</dt><dd>2h 10, without stops</dd>', $facts );
+		self::assertStringContainsString( '<dt>Stops</dt><dd>3</dd>', $facts );
+		self::assertStringContainsString( '<dt>Getting around</dt><dd>Car</dd>', $facts );
+		self::assertStringContainsString( '<dd>Suitable, with care</dd>', $facts );
+		self::assertStringContainsString( '49.7 mi (80 km)', RouteBlocks::facts( $r, 'en-gb' ) );
+		self::assertSame( '<span class="skye-eyebrow">Route by car · 1 day</span>', RouteBlocks::eyebrow( $r ) );
+
+		$it = RouteBlocks::itinerary( $r );
+		self::assertSame( 3, substr_count( $it, '<li class="skye-stop">' ), 'a stop whose place is gone is skipped' );
+		self::assertStringContainsString( '<div class="skye-stop__time">08:30</div>', $it );
+		self::assertStringContainsString( '<a href="http://x/places/1/">Portree</a> <span class="skye-tag">Meal</span>', $it );
+		self::assertStringContainsString( '<p>Fuel &amp; food first.</p>', $it );
+		self::assertStringNotContainsString( 'Day 1', $it, 'a one-day route needs no day heading' );
+		self::assertStringContainsString( 'Night in Portree', $it );
+		self::assertStringContainsString( 'origin=57.41000,-6.20000&amp;destination=57.64000,-6.20000&amp;waypoints=57.50000,-6.20000&amp;travelmode=driving', $it );
+
+		$two = self::route( [ 'days' => [ self::route()['days'][0], self::route()['days'][0] ], 'days_count' => 2 ] );
+		self::assertSame( 2, substr_count( RouteBlocks::itinerary( $two ), 'skye-day__n' ) );
+		self::assertStringContainsString( 'Open this day in a route planner', RouteBlocks::itinerary( $two ) );
+
+		self::assertNull( RouteBlocks::directions_url( [ [ 'lat' => 57.0, 'lng' => -6.0 ] ] ) );
+		$long = RouteBlocks::directions_url( array_fill( 0, 14, [ 'lat' => 57.0, 'lng' => -6.0 ] ), true );
+		self::assertSame( 8, substr_count( (string) $long, '%7C' ), 'nine waypoints at most' );
+		self::assertStringContainsString( 'travelmode=walking', (string) $long );
+		foreach ( RouteBlocks::PARTS as $part ) {
+			self::assertIsString( RouteBlocks::render( $part, $r, 'en-gb' ) );
+		}
+	}
+
+	public function test_route_tour_card_and_listing(): void {
+		self::assertSame( '', RouteBlocks::tour( self::route(), 'es' ) );
+		$card = RouteBlocks::tour( self::route( [ '_tour' => self::tour() ] ), 'de' );
+		self::assertStringContainsString( 'Rather not drive? See Skye on our guided tour: Skye &amp; the Highlands, 3 days', $card );
+		self::assertStringContainsString( 'From 283 € per person', $card );
+		self::assertStringContainsString( '<a class="skye-btn skye-btn--primary" href="http://x/tours/3/">See the tour</a>', $card );
+
+		$list = RouteBlocks::listing( [ self::route() ], 'es' );
+		self::assertStringContainsString( '<a class="skye-card skye-tourcard skye-routecard" href="http://x/routes/trotternish-loop/">', $list );
+		self::assertStringContainsString( '1 day · 80 km (49.7 mi) · 2h 10 driving', $list );
+		self::assertStringContainsString( 'No routes have been published yet.', RouteBlocks::listing( [], 'es' ) );
+		self::assertStringContainsString( 'Steep and narrow', RouteBlocks::motorhome( self::route() ) );
 	}
 
 	public function test_header_and_footer(): void {

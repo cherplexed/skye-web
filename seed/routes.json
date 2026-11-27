@@ -1,5 +1,5 @@
 {
-  "_note": "One pilot route to exercise /routes. Distances and times are approximate and unverified: a guide must drive it and correct them.",
+  "_note": "DRAFTS written from general knowledge of the island (27 Nov 2026) so the templates have content. Stops, order and notes are sensible but nobody has driven them for this site: every time, distance and driving time is approximate and must be checked by a guide before the routes are marked as verified.",
   "routes": [
     {
       "slug": "trotternish-loop",
@@ -9,15 +9,44 @@
       "route_type": "drive",
       "days_count": 1,
       "vehicle": "car",
-      "profiles": ["instagram", "nature", "hiking"],
+      "profiles": [
+        "instagram",
+        "nature",
+        "hiking"
+      ],
       "days": [
         {
           "stops": [
-            { "place": "portree", "time_hint": "08:30", "note": "Fuel and food before leaving: there is little on the loop.", "stop_type": "visit" },
-            { "place": "old-man-of-storr", "time_hint": "09:00", "note": "Allow two hours for the walk to the upper viewpoint.", "stop_type": "visit" },
-            { "place": "kilt-rock-and-mealt-falls", "time_hint": "11:30", "note": "A ten-minute stop at the railing.", "stop_type": "visit" },
-            { "place": "quiraing", "time_hint": "12:30", "note": "Walk the first kilometre of the path for the view even if you skip the full circuit.", "stop_type": "visit" },
-            { "place": "fairy-glen", "time_hint": "15:30", "note": "Park in Uig or at the signed car park, not on the verges.", "stop_type": "visit" }
+            {
+              "place": "portree",
+              "time_hint": "08:30",
+              "note": "Fuel and food before leaving: there is little on the loop.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "old-man-of-storr",
+              "time_hint": "09:00",
+              "note": "Allow two hours for the walk to the upper viewpoint.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "kilt-rock-and-mealt-falls",
+              "time_hint": "11:30",
+              "note": "A ten-minute stop at the railing.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "quiraing",
+              "time_hint": "12:30",
+              "note": "Walk the first kilometre of the path for the view even if you skip the full circuit.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "fairy-glen",
+              "time_hint": "15:30",
+              "note": "Park in Uig or at the signed car park, not on the verges.",
+              "stop_type": "visit"
+            }
           ],
           "night_zone": "portree"
         }
@@ -27,6 +56,216 @@
       "equivalent_tour": "isle-of-skye-3-day-tour",
       "motorhome_ok": true,
       "motorhome_notes": "Possible, but the Quiraing road from Staffin is steep, narrow and single-track: large motorhomes should reach the Quiraing car park from the Uig side or skip it."
+    },
+    {
+      "slug": "skye-in-one-day",
+      "title": "Skye in one day",
+      "summary": "If you only have a day: Sligachan and the Cuillin, Portree, and the east side of Trotternish with the Storr, Kilt Rock and the Quiraing.",
+      "content": "<p>A full day that starts at Sligachan, on the road in from the Skye Bridge, and ends in Portree. It keeps to the north-east of the island, where the best-known sights are close together, and leaves the west for another day.</p><p>The only long walk is the Old Man of Storr. If the weather closes in, shorten it and spend the time at the Quiraing instead, where the view starts at the car park.</p>",
+      "route_type": "drive",
+      "days_count": 1,
+      "vehicle": "car",
+      "profiles": [
+        "instagram",
+        "nature",
+        "hiking"
+      ],
+      "days": [
+        {
+          "stops": [
+            {
+              "place": "sligachan",
+              "time_hint": "09:00",
+              "note": "Half an hour at the old bridge for the view of the Cuillin.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "portree",
+              "time_hint": "10:00",
+              "note": "Coffee, fuel and something for lunch: there is little further north.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "old-man-of-storr",
+              "time_hint": "10:45",
+              "note": "Allow two hours for the walk; go only as far as the first viewpoint if you are short of time.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "kilt-rock-and-mealt-falls",
+              "time_hint": "13:15",
+              "note": "A short stop at the railing, and a good place to eat what you bought in Portree.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "quiraing",
+              "time_hint": "14:00",
+              "note": "Walk the first kilometre of the path. Return to Portree by Uig rather than back the way you came.",
+              "stop_type": "visit"
+            }
+          ],
+          "night_zone": "portree"
+        }
+      ],
+      "total_km": 85,
+      "total_drive_minutes": 135,
+      "equivalent_tour": "isle-of-skye-2-day-tour",
+      "motorhome_ok": true,
+      "motorhome_notes": "Fine as far as Staffin. The road over to the Quiraing car park is steep and single-track: large motorhomes should skip it or approach from Uig."
+    },
+    {
+      "slug": "west-skye",
+      "title": "West Skye: castle, lighthouse and whisky",
+      "summary": "A long day in the quieter west: Dunvegan Castle, the cliffs at Neist Point, a tour at Talisker and the Fairy Pools under the Cuillin.",
+      "content": "<p>This is the day with the most driving, much of it on single-track roads with passing places, so start early. In winter there is not enough daylight for all four stops: drop the Fairy Pools or the lighthouse.</p><p>Two of the stops need planning. Dunvegan Castle is closed in winter, and Talisker's tours sell out in summer, so book the distillery before you set the rest of the day.</p>",
+      "route_type": "drive",
+      "days_count": 1,
+      "vehicle": "car",
+      "profiles": [
+        "history",
+        "whisky",
+        "nature",
+        "hiking"
+      ],
+      "days": [
+        {
+          "stops": [
+            {
+              "place": "dunvegan-castle",
+              "time_hint": "09:30",
+              "note": "Castle and gardens take about two hours. Check the opening dates: it closes for the winter.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "neist-point",
+              "time_hint": "12:00",
+              "note": "The path down is steep concrete; allow an hour there and back, more if you go on to the lighthouse.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "talisker-distillery",
+              "time_hint": "15:00",
+              "note": "Book the tour in advance. The driver gets a sample to take away instead of a dram.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "fairy-pools",
+              "time_hint": "16:45",
+              "note": "The first pools are about twenty minutes from the car park. There is a river crossing on stepping stones.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "sligachan",
+              "time_hint": "18:45",
+              "note": "On the way back to Portree; the hotel bar serves food.",
+              "stop_type": "en_route"
+            }
+          ],
+          "night_zone": "portree"
+        }
+      ],
+      "total_km": 145,
+      "total_drive_minutes": 210,
+      "motorhome_ok": false,
+      "motorhome_notes": "Not advised in a large motorhome: the roads to Neist Point and down Glen Brittle to the Fairy Pools are narrow single-track with few places to turn. A campervan can manage with care."
+    },
+    {
+      "slug": "skye-in-three-days",
+      "title": "Skye in three days",
+      "summary": "The whole island at an easy pace, based in Portree: the Cuillin and Talisker, the Trotternish loop, and the west with Dunvegan and Neist Point.",
+      "content": "<p>Three days is what most of the island needs. Each day is a loop from Portree, so you unpack once and can swap the days around to suit the weather: keep the Trotternish day for the clearest forecast.</p><p>Day one starts at Sligachan, which you pass on the way in from the Skye Bridge, so it works as an arrival day.</p>",
+      "route_type": "itinerary",
+      "days_count": 3,
+      "vehicle": "car",
+      "profiles": [
+        "nature",
+        "hiking",
+        "instagram",
+        "whisky",
+        "history"
+      ],
+      "days": [
+        {
+          "stops": [
+            {
+              "place": "sligachan",
+              "time_hint": "10:30",
+              "note": "First view of the Cuillin, at the old bridge.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "fairy-pools",
+              "time_hint": "11:30",
+              "note": "Two hours with the walk. Bring something to eat: there is no café.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "talisker-distillery",
+              "time_hint": "14:30",
+              "note": "Book the tour ahead; the visitor centre is worth it even without one.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "portree",
+              "time_hint": "17:00",
+              "note": "Check in and have dinner by the harbour. Book a table in summer.",
+              "stop_type": "night"
+            }
+          ],
+          "night_zone": "portree"
+        },
+        {
+          "stops": [
+            {
+              "place": "old-man-of-storr",
+              "time_hint": "09:00",
+              "note": "Be at the car park early: it fills by mid-morning in summer.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "kilt-rock-and-mealt-falls",
+              "time_hint": "11:30",
+              "note": "A short stop at the railing.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "quiraing",
+              "time_hint": "12:30",
+              "note": "The day's second walk. The full circuit takes about two hours.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "fairy-glen",
+              "time_hint": "15:30",
+              "note": "A gentle end to the day. Park at the signed car park.",
+              "stop_type": "visit"
+            }
+          ],
+          "night_zone": "portree"
+        },
+        {
+          "stops": [
+            {
+              "place": "dunvegan-castle",
+              "time_hint": "10:00",
+              "note": "Castle and gardens; closed in winter.",
+              "stop_type": "visit"
+            },
+            {
+              "place": "neist-point",
+              "time_hint": "13:00",
+              "note": "Allow an hour for the path to the viewpoint and back.",
+              "stop_type": "visit"
+            }
+          ],
+          "night_zone": "portree"
+        }
+      ],
+      "total_km": 245,
+      "total_drive_minutes": 355,
+      "equivalent_tour": "isle-of-skye-3-day-tour",
+      "motorhome_ok": true,
+      "motorhome_notes": "Days one and two are manageable with care. On day three the road to Neist Point is narrow single-track: leave a large motorhome in Dunvegan or Glendale and skip the lighthouse."
     }
   ]
 }
