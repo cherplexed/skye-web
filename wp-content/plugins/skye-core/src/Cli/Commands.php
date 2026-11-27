@@ -226,6 +226,8 @@ final class Commands {
 			// One identity for an item, whatever the language.
 			update_post_meta( $id, Uuid::META, Uuid::get( $original->ID ) );
 		} else {
+			// Items created before WPML handled this type have no language on record: file them as originals.
+			Lang::claim_post( $id, $post_type );
 			Uuid::ensure( $id );
 		}
 		return [ $id, (bool) $existing ];
@@ -317,7 +319,7 @@ final class Commands {
 					$out = [];
 					foreach ( $def['sub'] as $sub => $sub_def ) {
 						if ( array_key_exists( $sub, $row ) && null !== $row[ $sub ] ) {
-							$out[ $sub ] = $this->seed_value( $sub_def, $row[ $sub ], "$path[$i].$sub" );
+							$out[ $sub ] = $this->seed_value( $sub_def, $row[ $sub ], "{$path}[{$i}].{$sub}" );
 						}
 					}
 					$rows[] = $out;
