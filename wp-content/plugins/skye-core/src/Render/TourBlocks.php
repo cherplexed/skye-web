@@ -65,7 +65,7 @@ final class TourBlocks {
 
 	/** "FROM EDINBURGH · 3 DAYS · 2 NIGHTS" above the title. */
 	public static function eyebrow( array $t ): string {
-		$city  = self::CITIES[ (string) ( $t['departure_city'] ?? '' ) ] ?? '';
+		$city  = Html::t( self::CITIES[ (string) ( $t['departure_city'] ?? '' ) ] ?? '' );
 		$parts = array_filter( [ '' !== $city ? sprintf( Html::t( 'From %s' ), $city ) : '', self::length( $t ) ] );
 		return $parts ? '<span class="skye-eyebrow">' . Html::e( implode( ' · ', $parts ) ) . '</span>' : '';
 	}
@@ -129,7 +129,7 @@ final class TourBlocks {
 	/** Departure card: city, time and meeting point. */
 	public static function departure( array $t ): string {
 		$rows = [];
-		$city = self::CITIES[ (string) ( $t['departure_city'] ?? '' ) ] ?? '';
+		$city = Html::t( self::CITIES[ (string) ( $t['departure_city'] ?? '' ) ] ?? '' );
 		$time = trim( (string) ( $t['departure_time'] ?? '' ) );
 		if ( '' !== $city ) {
 			$rows[ Html::t( 'Departure' ) ] = '' !== $time ? sprintf( Html::t( '%1$s at %2$s' ), $city, $time ) : $city;
