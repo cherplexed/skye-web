@@ -17,6 +17,7 @@ final class Frontend {
 		add_shortcode( 'skye_routes', [ self::class, 'routes_shortcode' ] );
 		add_shortcode( 'skye_places', [ self::class, 'places_shortcode' ] );
 		add_shortcode( 'skye_home', [ self::class, 'home_shortcode' ] );
+		add_shortcode( 'skye_motorhome', [ self::class, 'motorhome_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
 		add_filter( 'wp_robots', [ self::class, 'robots' ] );
@@ -194,6 +195,44 @@ final class Frontend {
 		return Render\RouteBlocks::render( $atts['part'], $items[ $key ], $market );
 	}
 
+	/**
+	 * The car and motorhome page: every spot of the language being viewed with the name of its
+	 * area, and the routes marked as suitable for a motorhome. Built once per request.
+	 */
+	public static function motorhome_view(): array {
+		static $view = null;
+		if ( null !== $view ) {
+			return $view;
+		}
+		[ 'market' => $market ] = self::context();
+		$spots = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::MOTORHOME, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 200, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$item  = Api\Collection::item( $post, $market, true );
+			$terms = get_the_terms( $post, Taxonomies::ZONE );
+			$item['zone_name'] = is_array( $terms ) && $terms ? Text::plain( $terms[0]->name ) : '';
+			$spots[]           = $item;
+		}
+		$routes = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::ROUTE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$item = Api\Collection::item( $post, $market, false );
+			if ( ! empty( $item['motorhome_ok'] ) ) {
+				$routes[] = $item;
+			}
+		}
+		$view = [
+			'links'  => [ 'home' => home_url( '/' ), 'routes' => self::archive( PostTypes::ROUTE ) ],
+			'spots'  => $spots,
+			'routes' => $routes,
+		];
+		return $view;
+	}
+
+	/** [skye_motorhome]: the car and motorhome page. */
+	public static function motorhome_shortcode(): string {
+		[ 'market' => $market ] = self::context();
+		return Render\Motorhome::page( self::motorhome_view(), $market );
+	}
+
 	/** [skye_routes]: the routes listing. */
 	public static function routes_shortcode(): string {
 		[ 'market' => $market ] = self::context();
@@ -297,7 +336,7 @@ final class Frontend {
 			}
 		}
 		return [
-			'links'      => [ 'tours' => self::archive( PostTypes::TOUR ), 'places' => self::archive( PostTypes::PLACE ), 'routes' => self::archive( PostTypes::ROUTE ) ],
+			'links'      => [ 'tours' => self::archive( PostTypes::TOUR ), 'places' => self::archive( PostTypes::PLACE ), 'routes' => self::archive( PostTypes::ROUTE ), 'motorhome' => self::archive( PostTypes::MOTORHOME ) ],
 			'hero_image' => $hero,
 			'own_image'  => $own,
 			'tours'      => $tours,
@@ -395,7 +434,8 @@ final class Frontend {
 
 	/** Filtered views are for people, not for the index: only the directory and the zone pages are canonical. */
 	public static function robots( array $robots ): array {
-		if ( self::is_directory() && array_filter( self::requested_filters() ) ) {
+		// A spot has no page of its own yet: everything about it is on the car and motorhome page.
+		if ( is_singular( PostTypes::MOTORHOME ) || ( self::is_directory() && array_filter( self::requested_filters() ) ) ) {
 			$robots['noindex'] = true;
 			unset( $robots['index'] );
 			// Links stay followable unless the whole site already says otherwise (a private or test site).
@@ -408,7 +448,9 @@ final class Frontend {
 
 	/** Browser title of the directory and the zone pages: what a visitor would call them. */
 	public static function title_parts( array $parts ): array {
-		if ( is_post_type_archive( PostTypes::PLACE ) ) {
+		if ( is_post_type_archive( PostTypes::MOTORHOME ) ) {
+			$parts['title'] = __( 'Skye by car or motorhome', 'skye-core' );
+		} elseif ( is_post_type_archive( PostTypes::PLACE ) ) {
 			$parts['title'] = __( 'What to see on the Isle of Skye', 'skye-core' );
 		} elseif ( is_tax( Taxonomies::ZONE ) ) {
 			$term = get_queried_object();

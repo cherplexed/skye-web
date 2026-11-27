@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.12.0
+Version: 0.13.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -371,4 +371,37 @@ a.skye-zonecard:hover { border-color: var(--skye-accent); color: inherit; }
   .skye-path__photo { height: 180px; }
   .skye-path__body { padding: 20px; }
   .skye-path .skye-btn { width: 100%; }
+}
+
+/* Car and motorhome page */
+.skye-mh__section { margin-top: 48px; }
+.skye-mh__section > .skye-block__title { margin-bottom: 20px; }
+.skye-advice { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.skye-advice__item, .skye-mhroute { padding: 24px; }
+.skye-advice__item h3, .skye-mhroute h3, .skye-spot h3 { font-size: 19px; line-height: 1.25; margin: 0 0 8px; }
+.skye-advice__item p, .skye-mhroute p { color: var(--skye-muted); font-size: 15px; line-height: 1.55; margin: 0; }
+a.skye-mhroute, a.skye-mhroute:hover { color: inherit; text-decoration: none; }
+a.skye-mhroute:hover { border-color: var(--skye-accent); }
+.skye-mh__more { font-size: 15px; margin: 16px 0 0; }
+.skye-spots { display: grid; gap: 16px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.skye-spot { display: flex; flex-direction: column; gap: 14px; padding: 24px; scroll-margin-top: 96px; }
+.skye-spot h3 { margin: 0; }
+.skye-spot__services { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.skye-spot__services li { background: var(--skye-bg, #f4f6f5); border-radius: 999px; font-size: 13px; font-weight: 500; padding: 4px 12px; }
+.skye-spot__facts { display: grid; gap: 8px; margin: 0; }
+.skye-spot__facts div { display: grid; gap: 12px; grid-template-columns: 110px minmax(0, 1fr); }
+.skye-spot__facts dt { color: var(--skye-muted); font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
+.skye-spot__facts dd { font-size: 15px; line-height: 1.45; margin: 0; }
+.skye-spot__notes { font-size: 15px; line-height: 1.55; margin: 0; }
+.skye-spot__links { align-items: center; display: flex; flex-wrap: wrap; gap: 16px; margin-top: auto; }
+.skye-spot__map { font-size: 15px; font-weight: 500; }
+.skye-spot__meta, .skye-mh__small { color: var(--skye-muted); font-size: 13px; line-height: 1.5; margin: 0; }
+.skye-mh__small { margin-top: 20px; }
+.skye-mh__sources ul { color: var(--skye-muted); display: grid; font-size: 14px; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.skye-path__actions { align-items: center; display: flex; flex-wrap: wrap; gap: 12px 20px; }
+.skye-path__more { font-size: 15px; font-weight: 500; }
+@media (max-width: 767px) {
+  .skye-advice, .skye-spots { grid-template-columns: 1fr; }
+  .skye-mh__section { margin-top: 36px; }
+  .skye-spot__facts div { grid-template-columns: 1fr; gap: 2px; }
 }

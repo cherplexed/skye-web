@@ -1,0 +1,295 @@
+{
+ "_note": "Campsites that take motorhomes, paid overnight stops and service points on Skye (CONTRACTS.md §6). Researched on 27 Nov 2026. Campsites come from each site's own page; the overnight stops and service points come from motorhome guides published in 2026 and say so in their notes. No coordinates yet: the page links to a map search by name until someone records them on site. Left out for lack of a source of its own: Camus More (Kilmuir), South Skye Motorhome Park (Sleat), Blà Bheinn car park, Portnalong pier, Isle of Skye Candle Co. All unverified.",
+ "spots": [
+  {
+   "slug": "camping-skye",
+   "title": "Camping Skye",
+   "spot_type": "campsite",
+   "zone": "broadford",
+   "services": [
+    "electricity",
+    "water",
+    "dump",
+    "showers",
+    "wifi"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://booking.camping.care/camping-skye",
+   "season": "22 March to 1 November 2027",
+   "notes": "On the edge of Broadford. 26 pitches for motorhomes and caravans, each with a 16-amp electric hook-up. The site says it is often very busy in season and recommends booking ahead.",
+   "sources": [
+    {
+     "title": "Camping Skye, official site",
+     "url": "https://campingskye.com/"
+    },
+    {
+     "title": "UKCampsite.co.uk: Camping Skye, opening dates",
+     "url": "https://www.ukcampsite.co.uk/sites/location.asp?revid=19332"
+    }
+   ]
+  },
+  {
+   "slug": "sligachan-campsite",
+   "title": "Sligachan Campsite",
+   "spot_type": "campsite",
+   "zone": "minginish-cuillin",
+   "services": [
+    "electricity",
+    "water",
+    "dump",
+    "showers",
+    "wifi"
+   ],
+   "overnight_allowed": true,
+   "price_gbp": 25,
+   "booking_url": "https://booking.camping.care/sligachan-campsite",
+   "season": "22 March to 24 October 2027. Closed in 2026.",
+   "notes": "Under the Cuillin, at the Sligachan junction. 43 hardstanding pitches can be booked ahead, 32 of them with electric hook-up; the open grass pitches are first come, first served. The price is for a hardstanding pitch without electricity for two adults; with hook-up it is from £35. Check-in from 3pm to 8pm.",
+   "sources": [
+    {
+     "title": "Glen Sligachan: Sligachan Campsite, official page",
+     "url": "https://www.glensligachan.com/sligachan-campsite"
+    }
+   ]
+  },
+  {
+   "slug": "glenbrittle-campsite",
+   "title": "Glenbrittle Campsite",
+   "spot_type": "campsite",
+   "zone": "minginish-cuillin",
+   "services": [
+    "electricity",
+    "dump",
+    "showers"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://glenbrittlecampsite.pitchedbooking.com/",
+   "season": "26 March to 15 October",
+   "notes": "On the shore of Loch Brittle, where the Fairy Pools road ends. The 50 pitches with electric hook-up can be booked online; pitches without electricity are first come, first served. The few hardstanding pitches only take campervans up to 6 m, and longer vehicles go on grass. Rates on the site's page: £14.50 per adult plus £11 a night for hook-up. Dogs welcome under control.",
+   "sources": [
+    {
+     "title": "Dunvegan Castle & Gardens: Glenbrittle Campsite & Café, official page",
+     "url": "https://www.dunvegancastle.com/glenbrittle/campsite/"
+    }
+   ]
+  },
+  {
+   "slug": "kinloch-campsite",
+   "title": "Kinloch Campsite",
+   "spot_type": "campsite",
+   "zone": "duirinish-waternish",
+   "services": [
+    "dump"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://kinlochcampsite.innstyle.co.uk",
+   "season": "Opens on 19 March 2027",
+   "notes": "At the head of Loch Dunvegan, by the village and close to the castle. Takes motorhomes, campervans, caravans and tents, with online booking. The site's own page does not list its services; the local community council names it as one of the campsites with a toilet waste disposal point.",
+   "sources": [
+    {
+     "title": "Kinloch Campsite, official site",
+     "url": "https://kinloch-campsite.co.uk/"
+    },
+    {
+     "title": "Dunvegan and District Community Council: Facilities for visitors",
+     "url": "https://skye.scot/facilities/"
+    }
+   ]
+  },
+  {
+   "slug": "portree-campsite",
+   "title": "Portree Campsite",
+   "spot_type": "campsite",
+   "zone": "portree",
+   "services": [
+    "electricity",
+    "water",
+    "dump",
+    "showers",
+    "wifi"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://www.portreecampsite.co.uk/",
+   "season": "In 2026 it was open from 1 April to 31 October. Check the dates for 2027.",
+   "notes": "At Torvaig, on the Staffin road just outside Portree. Hardstanding pitches with electric hook-up for motorhomes, campervans and caravans. The service point has fresh water and disposal for chemical toilets and grey water. Wi-Fi is included.",
+   "sources": [
+    {
+     "title": "Portree Campsite, official site",
+     "url": "https://www.portreecampsite.co.uk/"
+    },
+    {
+     "title": "UKCampsite.co.uk: Portree Campsite, opening dates",
+     "url": "https://www.ukcampsite.co.uk/sites/location.asp?revid=2874"
+    }
+   ]
+  },
+  {
+   "slug": "skye-camping-and-caravanning-club-site",
+   "title": "Skye Camping and Caravanning Club Site",
+   "spot_type": "campsite",
+   "zone": "duirinish-waternish",
+   "services": [
+    "electricity",
+    "dump",
+    "showers",
+    "wifi"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://www.campingandcaravanningclub.co.uk/campsites/uk/isle-of-skye/portree/skye-camping-and-caravanning-club-site/",
+   "season": "22 March to 7 October 2027",
+   "notes": "On a croft beside Loch Greshornish, at Edinbane, between Portree and Dunvegan. Grass and hardstanding pitches with electric hook-up, a motorhome service point and a dog walk. The prices shown on the Club's page are for members.",
+   "sources": [
+    {
+     "title": "The Camping and Caravanning Club: Skye Club Site",
+     "url": "https://www.campingandcaravanningclub.co.uk/campsites/uk/isle-of-skye/portree/skye-camping-and-caravanning-club-site/"
+    }
+   ]
+  },
+  {
+   "slug": "staffin-campsite",
+   "title": "Staffin Caravan and Camping Site",
+   "spot_type": "campsite",
+   "zone": "trotternish",
+   "services": [
+    "electricity",
+    "dump",
+    "showers"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://www.staffincampsite.co.uk/booking-enquiry-form.php",
+   "season": "In 2026: 2 April to 26 September. The site answers enquiries for 2027 from November 2026.",
+   "notes": "At Staffin, in the north of Trotternish. Electric hook-ups and free hot showers. Tents are only taken from late April. Bookings are made by enquiry, not instantly.",
+   "sources": [
+    {
+     "title": "Staffin Caravan & Camping Site, official site",
+     "url": "http://www.staffincampsite.co.uk/home"
+    },
+    {
+     "title": "Dunvegan and District Community Council: Facilities for visitors",
+     "url": "https://skye.scot/facilities/"
+    }
+   ]
+  },
+  {
+   "slug": "uig-bay-campsite",
+   "title": "Uig Bay Campsite",
+   "spot_type": "campsite",
+   "zone": "trotternish",
+   "services": [
+    "electricity",
+    "water",
+    "dump",
+    "showers"
+   ],
+   "overnight_allowed": true,
+   "booking_url": "https://www.uig-camping-skye.co.uk/contact",
+   "notes": "On the shore road just beyond the ferry terminal at Uig: a practical first or last night around the ferry to the Outer Hebrides. Pitches for campervans and motorhomes, some of them powered. Showers, water and disposal are for people staying on the site. The site's page gives no opening dates: ask before you go.",
+   "sources": [
+    {
+     "title": "Uig Bay Campsite, official site",
+     "url": "https://www.uig-camping-skye.co.uk/index.html"
+    }
+   ]
+  },
+  {
+   "slug": "carbost-pier",
+   "title": "Carbost Pier",
+   "spot_type": "aire",
+   "zone": "minginish-cuillin",
+   "services": [
+    "water"
+   ],
+   "overnight_allowed": true,
+   "price_gbp": 10,
+   "no_booking": true,
+   "notes": "Paid overnight stop on the pier at Carbost, by the Talisker distillery, from 4pm to 10am. Pay at the harbour office. From 2026 motorhomes can no longer park here during the day, because of harbour works. Fresh water costs £1 for 50 litres. Details from a motorhome guide published in 2026, not yet checked on site.",
+   "sources": [
+    {
+     "title": "Rolling Bothy: Skye motorhome aire and campsite guide",
+     "url": "https://rollingbothy.com/blog/resources/isle-of-skye-motorhome-stopover-aire-guide"
+    }
+   ]
+  },
+  {
+   "slug": "portree-lisigarry-court",
+   "title": "Lisigarry Court car park, Portree",
+   "spot_type": "aire",
+   "zone": "portree",
+   "services": [],
+   "overnight_allowed": true,
+   "no_booking": true,
+   "notes": "Four tight bays for campervans in the coach car park in the centre of Portree; large motorhomes will struggle. It is an overnight stop only: nothing may be set up outside the vehicle. Buy a ticket from the long-stay machine; it costs between £3 and £5 depending on the hours. Public toilets nearby. Details from two motorhome guides published in 2026, not yet checked on site.",
+   "sources": [
+    {
+     "title": "Rolling Bothy: Skye motorhome aire and campsite guide",
+     "url": "https://rollingbothy.com/blog/resources/isle-of-skye-motorhome-stopover-aire-guide"
+    },
+    {
+     "title": "Atlas Hire Drive: Isle of Skye motorhome guide",
+     "url": "https://atlashiredrive.co.uk/trip-ideas/isle-of-skye-motorhome-guide/"
+    }
+   ]
+  },
+  {
+   "slug": "portree-waterfront-disposal-point",
+   "title": "Portree waterfront disposal point",
+   "spot_type": "dump_station",
+   "zone": "portree",
+   "services": [
+    "dump"
+   ],
+   "overnight_allowed": false,
+   "price_gbp": 3,
+   "no_booking": true,
+   "notes": "Gated chemical toilet disposal point on the waterfront, by the Bayfield car park in Portree. Pay by card. There is no fresh water and no grey water disposal. Details from two guides published in 2026, not yet checked on site.",
+   "sources": [
+    {
+     "title": "Rolling Bothy: Skye motorhome aire and campsite guide",
+     "url": "https://rollingbothy.com/blog/resources/isle-of-skye-motorhome-stopover-aire-guide"
+    },
+    {
+     "title": "Scotland Tourism: Where to stay on the Isle of Skye",
+     "url": "https://www.scotlandtourism.org/where-to-stay-isle-of-skye/"
+    }
+   ]
+  },
+  {
+   "slug": "old-man-of-storr-disposal-point",
+   "title": "Old Man of Storr car park disposal point",
+   "spot_type": "dump_station",
+   "zone": "trotternish",
+   "services": [
+    "dump"
+   ],
+   "overnight_allowed": false,
+   "no_booking": true,
+   "notes": "Two chemical toilet disposal points, free to use, and large bins beside the toilets at the Storr car park. No fresh water and no grey water disposal. Details from a motorhome guide published in 2026, not yet checked on site.",
+   "sources": [
+    {
+     "title": "Rolling Bothy: Skye motorhome aire and campsite guide",
+     "url": "https://rollingbothy.com/blog/resources/isle-of-skye-motorhome-stopover-aire-guide"
+    }
+   ]
+  },
+  {
+   "slug": "elgol-service-point",
+   "title": "Elgol motorhome service point",
+   "spot_type": "dump_station",
+   "zone": "broadford",
+   "services": [
+    "water",
+    "dump"
+   ],
+   "overnight_allowed": false,
+   "price_gbp": 8,
+   "no_booking": true,
+   "notes": "Community-run service point at Elgol, at the end of 23 km of single-track road from Broadford. The price covers fresh water and chemical toilet disposal, paid by card. The grey water grate is free, with a donation suggested. Details from a motorhome guide published in 2026, not yet checked on site.",
+   "sources": [
+    {
+     "title": "Rolling Bothy: Skye motorhome aire and campsite guide",
+     "url": "https://rollingbothy.com/blog/resources/isle-of-skye-motorhome-stopover-aire-guide"
+    }
+   ]
+  }
+ ]
+}

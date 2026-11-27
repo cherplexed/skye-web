@@ -44,6 +44,34 @@ final class SchemaTest extends TestCase {
 		self::assertCount( 46, $seed['places'] );
 	}
 
+	public function test_seed_spots_only_use_known_fields_choices_and_zones(): void {
+		$seed   = json_decode( (string) file_get_contents( __DIR__ . '/../../seed/spots.json' ), true, 512, JSON_THROW_ON_ERROR );
+		$fields = Fields::motorhome_spot();
+		$zones  = Taxonomies::terms()[ Taxonomies::ZONE ];
+		$slugs  = [];
+		foreach ( $seed['spots'] as $s ) {
+			$slugs[] = $s['slug'];
+			foreach ( array_keys( $s ) as $k ) {
+				self::assertTrue( isset( $fields[ $k ] ) || in_array( $k, [ 'slug', 'title', 'zone' ], true ), "Unknown field '$k' in {$s['slug']}" );
+			}
+			self::assertArrayHasKey( $s['zone'], $zones, "{$s['slug']}: zone" );
+			self::assertArrayHasKey( $s['spot_type'], $fields['spot_type']['choices'], "{$s['slug']}: spot_type" );
+			foreach ( $s['services'] as $service ) {
+				self::assertArrayHasKey( $service, $fields['services']['choices'], "{$s['slug']}: service $service" );
+			}
+			// Nothing is published without saying where it comes from, and a spot is booked or it is not.
+			self::assertNotEmpty( $s['sources'], "{$s['slug']}: sources" );
+			foreach ( $s['sources'] as $src ) {
+				self::assertSame( 1, preg_match( '#^https?://#', $src['url'] ), "{$s['slug']}: source url" );
+				self::assertTrue( '' !== trim( $src['title'] ), "{$s['slug']}: source title" );
+			}
+			self::assertTrue( empty( $s['booking_url'] ) !== empty( $s['no_booking'] ), "{$s['slug']}: booking_url or no_booking, one of them" );
+			self::assertTrue( '' !== trim( $s['notes'] ), "{$s['slug']}: notes" );
+		}
+		self::assertSame( $slugs, array_unique( $slugs ) );
+		self::assertCount( 13, $seed['spots'] );
+	}
+
 	public function test_acf_json_matches_fields_for_every_type(): void {
 		foreach ( Fields::all() as $type => $fields ) {
 			$json  = json_decode( (string) file_get_contents( SKYE_CORE_DIR . "/acf-json/group_skye_$type.json" ), true, 512, JSON_THROW_ON_ERROR );

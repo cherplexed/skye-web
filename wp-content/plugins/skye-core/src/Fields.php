@@ -198,6 +198,7 @@ final class Fields {
 			'no_booking'        => [ 'type' => 'bool', 'i18n' => false ],
 			'season'            => [ 'type' => 'text', 'i18n' => true ],
 			'notes'             => [ 'type' => 'textarea', 'i18n' => true ],
+			'sources'           => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'title' => [ 'type' => 'text', 'i18n' => false ], 'url' => [ 'type' => 'url', 'i18n' => false ] ] ],
 		];
 	}
 

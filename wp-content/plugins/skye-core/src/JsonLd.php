@@ -19,6 +19,10 @@ final class JsonLd {
 			self::emit( self::item_list( (string) $view['title'], $view['places'] ) );
 			return;
 		}
+		if ( is_post_type_archive( PostTypes::MOTORHOME ) ) {
+			self::emit( self::spot_list( __( 'Skye by car or motorhome', 'skye-core' ), Frontend::motorhome_view()['spots'] ) );
+			return;
+		}
 		if ( is_singular( PostTypes::TOUR ) ) {
 			$post = get_queried_object();
 			if ( $post instanceof \WP_Post ) {
@@ -47,6 +51,33 @@ final class JsonLd {
 			// JSON_HEX_TAG keeps a "</script>" inside any text from closing the tag.
 			echo '<script type="application/ld+json">' . wp_json_encode( $block, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG ) . "</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
+	}
+
+	/**
+	 * ItemList of the car and motorhome page: campsites as Campground, overnight stops as
+	 * ParkingFacility, the rest as Place. A spot points at its own website when it has one.
+	 *
+	 * @param list<array<string, mixed>> $spots
+	 * @return array<string, mixed>|null
+	 */
+	public static function spot_list( string $name, array $spots ): ?array {
+		$types = [ 'campsite' => 'Campground', 'aire' => 'ParkingFacility', 'parking' => 'ParkingFacility' ];
+		$items = [];
+		foreach ( $spots as $s ) {
+			if ( '' === trim( (string) ( $s['title'] ?? '' ) ) ) {
+				continue;
+			}
+			$thing = array_filter(
+				[
+					'@type'       => $types[ (string) ( $s['spot_type'] ?? '' ) ] ?? 'Place',
+					'name'        => (string) $s['title'],
+					'description' => trim( (string) ( $s['notes'] ?? '' ) ),
+					'url'         => (string) ( $s['booking_url'] ?? '' ),
+				]
+			);
+			$items[] = [ '@type' => 'ListItem', 'position' => count( $items ) + 1, 'item' => $thing ];
+		}
+		return $items ? [ '@context' => 'https://schema.org', '@type' => 'ItemList', 'name' => $name, 'numberOfItems' => count( $items ), 'itemListElement' => $items ] : null;
 	}
 
 	/**

@@ -1,0 +1,64 @@
+{
+ "_note": "Traducción al español de seed/spots.json: solo los textos.",
+ "spots": {
+  "camping-skye": {
+   "title": "Camping Skye",
+   "season": "Del 22 de marzo al 1 de noviembre de 2027",
+   "notes": "A las afueras de Broadford. 26 parcelas para autocaravanas y caravanas, todas con toma eléctrica de 16 amperios. El propio camping avisa de que en temporada suele estar muy lleno y recomienda reservar con antelación."
+  },
+  "sligachan-campsite": {
+   "title": "Sligachan Campsite",
+   "season": "Del 22 de marzo al 24 de octubre de 2027. Cerrado en 2026.",
+   "notes": "Bajo los Cuillin, en el cruce de Sligachan. Se pueden reservar 43 parcelas de suelo firme, 32 de ellas con toma eléctrica; las de hierba se ocupan por orden de llegada. El precio es el de una parcela de suelo firme sin electricidad para dos adultos; con toma eléctrica, desde 35 £. Entrada de 15:00 a 20:00."
+  },
+  "glenbrittle-campsite": {
+   "title": "Glenbrittle Campsite",
+   "season": "Del 26 de marzo al 15 de octubre",
+   "notes": "A orillas de Loch Brittle, donde termina la carretera de las Fairy Pools. Las 50 parcelas con toma eléctrica se reservan por internet; las que no tienen electricidad se ocupan por orden de llegada. Las pocas parcelas de suelo firme solo admiten campers de hasta 6 m; los vehículos más largos van sobre hierba. Tarifas en la página del camping: 14,50 £ por adulto más 11 £ por noche por la toma eléctrica. Se admiten perros bajo control."
+  },
+  "kinloch-campsite": {
+   "title": "Kinloch Campsite",
+   "season": "Abre el 19 de marzo de 2027",
+   "notes": "En el fondo de Loch Dunvegan, junto al pueblo y cerca del castillo. Admite autocaravanas, campers, caravanas y tiendas, con reserva por internet. La página del camping no detalla sus servicios; el consejo comunitario local lo cita entre los campings con punto de vaciado de WC."
+  },
+  "portree-campsite": {
+   "title": "Portree Campsite",
+   "season": "En 2026 abrió del 1 de abril al 31 de octubre. Comprueba las fechas de 2027.",
+   "notes": "En Torvaig, en la carretera de Staffin, a la salida de Portree. Parcelas de suelo firme con toma eléctrica para autocaravanas, campers y caravanas. El punto de servicio tiene agua potable y vaciado de WC químico y aguas grises. Wifi incluido."
+  },
+  "skye-camping-and-caravanning-club-site": {
+   "title": "Skye Camping and Caravanning Club Site",
+   "season": "Del 22 de marzo al 7 de octubre de 2027",
+   "notes": "En una granja a orillas de Loch Greshornish, en Edinbane, entre Portree y Dunvegan. Parcelas de hierba y de suelo firme con toma eléctrica, punto de servicio para autocaravanas y zona para pasear perros. Los precios que muestra la página del Club son para socios."
+  },
+  "staffin-campsite": {
+   "title": "Staffin Caravan and Camping Site",
+   "season": "En 2026: del 2 de abril al 26 de septiembre. El camping responde a las consultas para 2027 desde noviembre de 2026.",
+   "notes": "En Staffin, al norte de Trotternish. Tomas eléctricas y duchas calientes gratuitas. Solo admite tiendas desde finales de abril. La reserva se hace por solicitud, no es inmediata."
+  },
+  "uig-bay-campsite": {
+   "title": "Uig Bay Campsite",
+   "notes": "En la carretera de la orilla, justo pasada la terminal del ferri de Uig: práctico para la primera o la última noche si coges el ferri a las Hébridas Exteriores. Parcelas para campers y autocaravanas, algunas con electricidad. Las duchas, el agua y el vaciado son para quienes se alojan. La página del camping no indica fechas de apertura: pregunta antes de ir."
+  },
+  "carbost-pier": {
+   "title": "Muelle de Carbost",
+   "notes": "Parada nocturna de pago en el muelle de Carbost, junto a la destilería Talisker, de 16:00 a 10:00. Se paga en la oficina del puerto. Desde 2026 las autocaravanas ya no pueden aparcar aquí de día, por las obras del puerto. El agua potable cuesta 1 £ los 50 litros. Datos de una guía para autocaravanas publicada en 2026, aún sin comprobar sobre el terreno."
+  },
+  "portree-lisigarry-court": {
+   "title": "Aparcamiento de Lisigarry Court, Portree",
+   "notes": "Cuatro plazas estrechas para campers en el aparcamiento de autocares del centro de Portree; las autocaravanas grandes lo tendrán difícil. Es solo para pasar la noche: no se puede sacar nada fuera del vehículo. El tique se compra en la máquina de larga estancia y cuesta entre 3 y 5 £ según las horas. Hay aseos públicos cerca. Datos de dos guías para autocaravanas publicadas en 2026, aún sin comprobar sobre el terreno."
+  },
+  "portree-waterfront-disposal-point": {
+   "title": "Punto de vaciado del paseo marítimo de Portree",
+   "notes": "Punto de vaciado de WC químico, con puerta, en el paseo marítimo, junto al aparcamiento de Bayfield, en Portree. Se paga con tarjeta. No hay agua potable ni vaciado de aguas grises. Datos de dos guías publicadas en 2026, aún sin comprobar sobre el terreno."
+  },
+  "old-man-of-storr-disposal-point": {
+   "title": "Punto de vaciado del aparcamiento del Old Man of Storr",
+   "notes": "Dos puntos de vaciado de WC químico, gratuitos, y contenedores grandes junto a los aseos del aparcamiento del Storr. No hay agua potable ni vaciado de aguas grises. Datos de una guía para autocaravanas publicada en 2026, aún sin comprobar sobre el terreno."
+  },
+  "elgol-service-point": {
+   "title": "Punto de servicio para autocaravanas de Elgol",
+   "notes": "Punto de servicio gestionado por la comunidad en Elgol, al final de 23 km de carretera de un solo carril desde Broadford. El precio incluye agua potable y vaciado de WC químico, y se paga con tarjeta. La rejilla de aguas grises es gratuita; se sugiere un donativo. Datos de una guía para autocaravanas publicada en 2026, aún sin comprobar sobre el terreno."
+  }
+ }
+}
