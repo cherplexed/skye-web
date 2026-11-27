@@ -25,4 +25,11 @@ final class GeoTest extends TestCase {
 		// 10 km straight line → ~14 km road → ~19 min at 45 km/h
 		self::assertSame( 19, Geo::drive_minutes_estimate( 10 ) );
 	}
+
+	public function test_an_unset_coordinate_group_is_not_the_point_zero_zero(): void {
+		$this->assertNull( \Skye\Meta::point( [ 'lat' => '', 'lng' => '' ] ) );
+		$this->assertNull( \Skye\Meta::point( [ 'lat' => 0, 'lng' => 0 ] ) );
+		$this->assertNull( \Skye\Meta::point( null ) );
+		$this->assertSame( [ 'lat' => 57.504, 'lng' => -6.169 ], \Skye\Meta::point( [ 'lat' => '57.504', 'lng' => '-6.169' ] ) );
+	}
 }
