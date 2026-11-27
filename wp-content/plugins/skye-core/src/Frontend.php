@@ -295,8 +295,11 @@ final class Frontend {
 	public static function robots( array $robots ): array {
 		if ( self::is_directory() && array_filter( self::requested_filters() ) ) {
 			$robots['noindex'] = true;
-			$robots['follow']  = true;
 			unset( $robots['index'] );
+			// Links stay followable unless the whole site already says otherwise (a private or test site).
+			if ( empty( $robots['nofollow'] ) ) {
+				$robots['follow'] = true;
+			}
 		}
 		return $robots;
 	}
