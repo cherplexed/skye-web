@@ -133,7 +133,7 @@ final class Places {
 		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $tour ) {
 			foreach ( (array) Meta::get( $tour->ID, 'days', [] ) as $day ) {
 				if ( is_array( $day ) && in_array( $place_id, Serializer::ids( $day['stops'] ?? [] ), true ) ) {
-					$out[] = [ 'id' => $tour->ID, 'uuid' => Uuid::get( $tour->ID ), 'slug' => $tour->post_name, 'title' => get_the_title( $tour ), 'type' => $tour->post_type ];
+					$out[] = [ 'id' => $tour->ID, 'uuid' => Uuid::get( $tour->ID ), 'slug' => $tour->post_name, 'title' => \Skye\Text::title( $tour ), 'type' => $tour->post_type ];
 					break;
 				}
 			}

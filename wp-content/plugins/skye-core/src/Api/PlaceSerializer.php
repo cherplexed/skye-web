@@ -24,7 +24,7 @@ final class PlaceSerializer {
 			'id'               => $id,
 			'uuid'             => Uuid::get( $id ),
 			'slug'             => $p->post_name,
-			'title'            => get_the_title( $p ),
+			'title'            => \Skye\Text::title( $p ),
 			'summary'          => (string) Meta::get( $id, 'summary', '' ),
 			'url'              => get_permalink( $p ),
 			'zone'             => self::terms( $id, Taxonomies::ZONE )[0] ?? null,
@@ -89,7 +89,7 @@ final class PlaceSerializer {
 		if ( ! is_array( $t ) ) {
 			return [];
 		}
-		return array_values( array_map( static fn( $x ) => [ 'slug' => $x->slug, 'name' => $x->name ], $t ) );
+		return array_values( array_map( static fn( $x ) => [ 'slug' => $x->slug, 'name' => \Skye\Text::plain( $x->name ) ], $t ) );
 	}
 
 	/** @return list<array{id:int,uuid:string,slug:string,title:string,type:string}> */
@@ -98,7 +98,7 @@ final class PlaceSerializer {
 		foreach ( $ids as $rid ) {
 			$rp = get_post( $rid );
 			if ( $rp && 'publish' === $rp->post_status ) {
-				$out[] = [ 'id' => $rp->ID, 'uuid' => Uuid::get( $rp->ID ), 'slug' => $rp->post_name, 'title' => get_the_title( $rp ), 'type' => $rp->post_type ];
+				$out[] = [ 'id' => $rp->ID, 'uuid' => Uuid::get( $rp->ID ), 'slug' => $rp->post_name, 'title' => \Skye\Text::title( $rp ), 'type' => $rp->post_type ];
 			}
 		}
 		return $out;

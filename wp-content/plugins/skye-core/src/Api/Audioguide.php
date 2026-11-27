@@ -40,7 +40,7 @@ final class Audioguide {
 				'id'        => $id,
 				'uuid'      => Uuid::get( $id ),
 				'slug'      => $p->post_name,
-				'title'     => get_the_title( $p ),
+				'title'     => \Skye\Text::title( $p ),
 				'summary'   => (string) Meta::get( $id, 'summary', '' ),
 				'location'  => Meta::latlng( $id, 'location' ),
 				'radius_m'  => Meta::int( $id, 'audioguide_radius_m', 150 ),

@@ -192,6 +192,15 @@ final class RenderTest extends TestCase {
 		self::assertSame( [ 'skye-footer', 'skye-header', 'skye-single-place' ], $slugs );
 	}
 
+	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {
+		self::assertSame( 'Minginish & Cuillin', \Skye\Text::plain( 'Minginish &amp; Cuillin' ) );
+		self::assertSame( "Skye\u{2019}s \"best\"", \Skye\Text::plain( 'Skye&#8217;s &quot;best&quot;' ) );
+		$p = self::place( [ 'zone' => [ 'slug' => 'minginish', 'name' => \Skye\Text::plain( 'Minginish &amp; Cuillin' ) ] ] );
+		self::assertStringContainsString( ' Minginish &amp; Cuillin ', PlaceBlocks::breadcrumb( $p ) );
+		self::assertStringNotContainsString( '&amp;amp;', PlaceBlocks::breadcrumb( $p ) . PlaceBlocks::facts( $p, 'es' ) );
+		self::assertSame( 'Minginish & Cuillin, Isle of Skye', JsonLd::place( $p )['containedInPlace']['name'] );
+	}
+
 	public function test_header_and_footer(): void {
 		$langs = [ [ 'code' => 'en', 'label' => 'English', 'url' => 'http://x/', 'active' => true ], [ 'code' => 'es', 'label' => 'Español', 'url' => 'http://x/es/', 'active' => false ] ];
 		$h     = Chrome::header(
