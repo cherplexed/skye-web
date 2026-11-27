@@ -41,6 +41,7 @@ final class Uuid {
 				'meta_value'     => $uuid,
 				'fields'         => 'ids',
 				'posts_per_page' => 1,
+				'suppress_filters' => false, // the translation in the current language, when there is one
 			]
 		);
 		return $ids ? (int) $ids[0] : null;

@@ -62,6 +62,11 @@ final class Router {
 			$lang = function_exists( 'apply_filters' ) ? (string) apply_filters( 'wpml_current_language', null ) : '';
 			$lang = $lang ?: substr( get_locale(), 0, 2 );
 		}
+		$lang = strtolower( $lang );
+		// ?lang=es on the default-language endpoint must return the Spanish items, not just say so in `meta`.
+		if ( \Skye\Lang::active() && in_array( $lang, \Skye\Lang::codes(), true ) && \Skye\Lang::current() !== $lang ) {
+			\Skye\Lang::switch( $lang );
+		}
 		$market = (string) $r->get_param( 'market' ) ?: \Skye\Units::market_for_lang( $lang );
 		return [ 'lang' => strtolower( $lang ), 'market' => strtolower( $market ) ];
 	}

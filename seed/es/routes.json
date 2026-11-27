@@ -1,0 +1,136 @@
+{
+ "_note": "Traducción al español de seed/routes.json: solo los textos, por slug. Las paradas van en el mismo orden que en el original.",
+ "routes": {
+  "trotternish-loop": {
+   "title": "La vuelta a Trotternish",
+   "summary": "La ruta clásica de un día al norte de Portree: el Storr, Kilt Rock, el Quiraing y el Fairy Glen en una sola carretera circular.",
+   "content": "<p>Un recorrido circular en coche por la península de Trotternish, con salida y llegada en Portree. Hazlo en sentido contrario a las agujas del reloj (hacia el norte por la A855), para que el aparcamiento del Storr sea lo primero, antes de que se llene. Buena parte del tramo norte es de un solo carril con apartaderos.</p>",
+   "days": [
+    {
+     "stops": [
+      {
+       "note": "Gasolina y comida antes de salir: en la ruta hay poco."
+      },
+      {
+       "note": "Calcula dos horas para la subida al mirador de arriba."
+      },
+      {
+       "note": "Parada de diez minutos en la barandilla."
+      },
+      {
+       "note": "Recorre el primer kilómetro del sendero por la vista, aunque no hagas la ruta completa."
+      },
+      {
+       "note": "Aparca en Uig o en el aparcamiento señalizado, no en los arcenes."
+      }
+     ]
+    }
+   ],
+   "motorhome_notes": "Se puede, pero la carretera al Quiraing desde Staffin es empinada, estrecha y de un solo carril: las autocaravanas grandes deberían llegar al aparcamiento del Quiraing por el lado de Uig, o saltárselo."
+  },
+  "skye-in-one-day": {
+   "title": "Skye en un día",
+   "summary": "Si solo tienes un día: Sligachan y los Cuillin, Portree, y la cara este de Trotternish con el Storr, Kilt Rock y el Quiraing.",
+   "content": "<p>Una jornada completa que empieza en Sligachan, en la carretera que viene del puente de Skye, y termina en Portree. Se queda en el noreste de la isla, donde los lugares más conocidos están cerca unos de otros, y deja el oeste para otro día.</p><p>La única caminata larga es la del Old Man of Storr. Si el tiempo se cierra, acórtala y dedica ese rato al Quiraing, donde la vista empieza en el aparcamiento.</p>",
+   "days": [
+    {
+     "stops": [
+      {
+       "note": "Media hora en el puente viejo para ver los Cuillin."
+      },
+      {
+       "note": "Café, gasolina y algo para comer: más al norte hay poco."
+      },
+      {
+       "note": "Calcula dos horas para la caminata; si vas justo de tiempo, llega solo hasta el primer mirador."
+      },
+      {
+       "note": "Parada corta en la barandilla, y un buen sitio para comer lo que compraste en Portree."
+      },
+      {
+       "note": "Recorre el primer kilómetro del sendero. Vuelve a Portree por Uig en lugar de deshacer el camino."
+      }
+     ]
+    }
+   ],
+   "motorhome_notes": "Sin problema hasta Staffin. La carretera que sube al aparcamiento del Quiraing es empinada y de un solo carril: las autocaravanas grandes deberían saltárselo o entrar por Uig."
+  },
+  "west-skye": {
+   "title": "El oeste de Skye: castillo, faro y whisky",
+   "summary": "Un día largo por el oeste, más tranquilo: el castillo de Dunvegan, los acantilados de Neist Point, visita a Talisker y las Fairy Pools.",
+   "content": "<p>Es el día con más kilómetros al volante, muchos de ellos por carreteras de un solo carril con apartaderos, así que sal temprano. En invierno no hay horas de luz para las cuatro paradas: quita las Fairy Pools o el faro.</p><p>Dos de las paradas piden organización. El castillo de Dunvegan cierra en invierno, y las visitas a Talisker se agotan en verano, así que reserva la destilería antes de fijar el resto del día.</p>",
+   "days": [
+    {
+     "stops": [
+      {
+       "note": "El castillo y los jardines llevan unas dos horas. Comprueba las fechas de apertura: cierra en invierno."
+      },
+      {
+       "note": "El sendero de bajada es de hormigón y empinado; calcula una hora entre ida y vuelta, más si sigues hasta el faro."
+      },
+      {
+       "note": "Reserva la visita con antelación. A quien conduce le dan la muestra para llevar en lugar de servírsela."
+      },
+      {
+       "note": "Las primeras pozas están a unos veinte minutos del aparcamiento. Un tramo del sendero es empinado y pedregoso."
+      },
+      {
+       "note": "De vuelta a Portree; el bar del hotel sirve comidas."
+      }
+     ]
+    }
+   ],
+   "motorhome_notes": "No recomendable con una autocaravana grande: las carreteras a Neist Point y la que baja por Glen Brittle a las Fairy Pools son estrechas, de un solo carril y con pocos sitios para dar la vuelta. Una camper puede hacerlo con cuidado."
+  },
+  "skye-in-three-days": {
+   "title": "Skye en tres días",
+   "summary": "Toda la isla sin prisas, con base en Portree: los Cuillin y Talisker, la vuelta a Trotternish, y el oeste con Dunvegan y Neist Point.",
+   "content": "<p>Tres días es lo que pide casi toda la isla. Cada día es un circuito desde Portree, así que solo deshaces la maleta una vez y puedes cambiar el orden según el tiempo: guarda el día de Trotternish para la previsión más despejada.</p><p>El primer día empieza en Sligachan, por donde pasas al venir del puente de Skye, así que sirve como día de llegada.</p>",
+   "days": [
+    {
+     "stops": [
+      {
+       "note": "La primera vista de los Cuillin, desde el puente viejo."
+      },
+      {
+       "note": "Dos horas contando la caminata. Lleva algo de comer: no hay cafetería."
+      },
+      {
+       "note": "Reserva la visita con antelación; el centro de visitantes merece la pena aunque no la hagas."
+      },
+      {
+       "note": "Instálate y cena junto al puerto. En verano, reserva mesa."
+      }
+     ]
+    },
+    {
+     "stops": [
+      {
+       "note": "Llega temprano al aparcamiento: en verano se llena a media mañana."
+      },
+      {
+       "note": "Parada corta en la barandilla."
+      },
+      {
+       "note": "La segunda caminata del día. La ruta completa lleva unas dos horas."
+      },
+      {
+       "note": "Un final de jornada tranquilo. Aparca en el aparcamiento señalizado."
+      }
+     ]
+    },
+    {
+     "stops": [
+      {
+       "note": "Castillo y jardines; cerrado en invierno."
+      },
+      {
+       "note": "Calcula una hora para el sendero hasta el mirador y la vuelta."
+      }
+     ]
+    }
+   ],
+   "motorhome_notes": "Los dos primeros días se pueden hacer con cuidado. El tercero, la carretera a Neist Point es estrecha y de un solo carril: deja la autocaravana grande en Dunvegan o en Glendale y sáltate el faro."
+  }
+ }
+}

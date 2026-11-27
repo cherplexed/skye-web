@@ -35,7 +35,9 @@ final class Places {
 		foreach ( [ 'zone' => Taxonomies::ZONE, 'category' => Taxonomies::CATEGORY, 'profile' => Taxonomies::PROFILE, 'suitable_for' => Taxonomies::SUITABILITY ] as $param => $taxonomy ) {
 			$v = (string) $r->get_param( $param );
 			if ( '' !== $v ) {
-				$tax[] = [ 'taxonomy' => $taxonomy, 'field' => 'slug', 'terms' => array_map( 'trim', explode( ',', $v ) ) ];
+				// Slugs are canonical (default language); the query needs the terms of the language being served.
+				$ids   = array_filter( array_map( static fn( string $s ) => \Skye\Lang::term_id( $taxonomy, trim( $s ) ), explode( ',', $v ) ) );
+				$tax[] = [ 'taxonomy' => $taxonomy, 'field' => 'term_id', 'terms' => $ids ?: [ 0 ] ];
 			}
 		}
 
@@ -130,7 +132,7 @@ final class Places {
 	/** Tours whose itinerary (days → stops) includes the place. @return list<array{id:int,uuid:string,slug:string,title:string,type:string}> */
 	public static function tours_stopping_at( int $place_id ): array {
 		$out = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $tour ) {
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $tour ) {
 			foreach ( (array) Meta::get( $tour->ID, 'days', [] ) as $day ) {
 				if ( is_array( $day ) && in_array( $place_id, Serializer::ids( $day['stops'] ?? [] ), true ) ) {
 					$out[] = [ 'id' => $tour->ID, 'uuid' => Uuid::get( $tour->ID ), 'slug' => $tour->post_name, 'title' => \Skye\Text::title( $tour ), 'type' => $tour->post_type ];
@@ -149,7 +151,7 @@ final class Places {
 			$id = Uuid::find( $key );
 			$p  = $id ? get_post( $id ) : null;
 		} else {
-			$p = get_page_by_path( $key, OBJECT, PostTypes::PLACE );
+			$p = \Skye\Lang::resolve_post( $key, PostTypes::PLACE );
 		}
 		return ( $p && PostTypes::PLACE === $p->post_type && 'publish' === $p->post_status ) ? $p : null;
 	}

@@ -5,6 +5,7 @@ namespace Skye\Tests;
 
 use PHPUnit\Framework\TestCase;
 use Skye\Fields;
+use Skye\Lang;
 use Skye\PostTypes;
 use Skye\Taxonomies;
 
@@ -93,5 +94,80 @@ final class I18nTest extends TestCase {
 			$this->assertTrue( '' !== trim( $translation ), $en );
 			$this->assertSame( $placeholders( $en ), $placeholders( $translation ), $en );
 		}
+	}
+
+	public function test_a_translation_overlays_its_original_without_repeating_what_is_not_translated(): void {
+		$original = [
+			'slug'  => 'tour',
+			'title' => 'Tour',
+			'price' => 10,
+			'tips'  => [ 'One', 'Two', 'Three' ],
+			'days'  => [
+				[ 'title' => 'Day one', 'stops' => [ [ 'place' => 'a', 'note' => 'Note a' ], [ 'place' => 'b', 'note' => 'Note b' ] ] ],
+				[ 'title' => 'Day two', 'stops' => [ [ 'place' => 'c', 'note' => 'Note c' ] ] ],
+			],
+		];
+		$translation = [
+			'title' => 'Tour (es)',
+			'tips'  => [ 'Uno', 'Dos' ],
+			'days'  => [
+				[ 'title' => 'Primer día', 'stops' => [ [ 'note' => 'Nota a' ], [ 'note' => 'Nota b' ] ] ],
+				[ 'title' => 'Segundo día' ],
+			],
+		];
+		$out = Lang::overlay( $original, $translation );
+		$this->assertSame( 'tour', $out['slug'] );
+		$this->assertSame( 10, $out['price'] );
+		$this->assertSame( 'Tour (es)', $out['title'] );
+		$this->assertSame( [ 'Uno', 'Dos' ], $out['tips'], 'a list of texts is replaced whole' );
+		$this->assertSame( [ 'place' => 'a', 'note' => 'Nota a' ], $out['days'][0]['stops'][0], 'a translated row keeps what it does not translate' );
+		$this->assertSame( 'b', $out['days'][0]['stops'][1]['place'] );
+		$this->assertSame( [ [ 'place' => 'c', 'note' => 'Note c' ] ], $out['days'][1]['stops'], 'untouched rows stay as they were' );
+	}
+
+	/** @return array<string, mixed> */
+	private static function json( string $path ): array {
+		return json_decode( (string) file_get_contents( __DIR__ . '/../../seed/' . $path ), true, 512, JSON_THROW_ON_ERROR );
+	}
+
+	public function test_spanish_seed_translates_every_item_and_only_translatable_fields(): void {
+		$types = [ 'places' => PostTypes::PLACE, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE ];
+		foreach ( $types as $name => $post_type ) {
+			$originals    = array_column( self::json( "$name.json" )[ $name ], null, 'slug' );
+			$translations = self::json( "es/$name.json" )[ $name ];
+			$this->assertSame( array_keys( $originals ), array_keys( $translations ), "$name: same items, same order" );
+
+			$schema = Fields::for( $post_type );
+			foreach ( $translations as $slug => $row ) {
+				$this->assertTrue( '' !== trim( (string) ( $row['title'] ?? '' ) ), "$name/$slug has a title" );
+				foreach ( $row as $field => $value ) {
+					if ( in_array( $field, [ 'title', 'content' ], true ) ) {
+						continue;
+					}
+					$this->assertTrue( isset( $schema[ $field ] ), "$name/$slug.$field is a field of the type" );
+					$this->assertTrue( $schema[ $field ]['i18n'], "$name/$slug.$field is translatable in Fields.php" );
+				}
+				$merged = Lang::overlay( $originals[ $slug ], $row );
+				foreach ( [ 'faq', 'tips', 'opening_hours', 'days' ] as $list ) {
+					if ( isset( $originals[ $slug ][ $list ] ) ) {
+						$this->assertCount( count( $originals[ $slug ][ $list ] ), $merged[ $list ], "$name/$slug.$list has as many rows as the original" );
+					}
+				}
+				foreach ( $merged['days'] ?? [] as $d => $day ) {
+					$this->assertCount( count( $originals[ $slug ]['days'][ $d ]['stops'] ), $day['stops'], "$name/$slug day $d keeps its stops" );
+				}
+				if ( isset( $row['summary'] ) ) {
+					$this->assertTrue( mb_strlen( $row['summary'] ) <= 160, "$name/$slug summary fits in 160 characters" );
+				}
+			}
+		}
+	}
+
+	public function test_spanish_terms_name_every_canonical_term(): void {
+		$es = self::json( 'es/terms.json' );
+		foreach ( Taxonomies::terms() as $taxonomy => $terms ) {
+			$this->assertSame( array_keys( $terms ), array_keys( $es[ $taxonomy ] ), $taxonomy );
+		}
+		$this->assertSame( array_keys( Taxonomies::zone_intros() ), array_keys( $es['zone_intros'] ) );
 	}
 }

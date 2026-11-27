@@ -1,0 +1,1121 @@
+{
+ "_note": "Traducción al español de seed/places.json: solo los textos. Cada entrada se superpone a su original por slug; coordenadas, precios, categorías y fuentes se escriben una sola vez, en el original.",
+ "places": {
+  "old-man-of-storr": {
+   "title": "Old Man of Storr",
+   "summary": "El símbolo de Skye: una aguja de roca de 50 m bajo la cresta de Trotternish. Se sube por un sendero empinado, unas dos horas entre ida y vuelta.",
+   "content": "<p>El Old Man of Storr es la más alta de un grupo de agujas de roca que se levantan bajo los acantilados del Storr, en la cara este de la península de Trotternish. En un día despejado se ve desde muy lejos por la carretera de la costa, y también desde el mar.</p><p>Es obra de un antiguo deslizamiento de tierras. La cresta de Trotternish es un escarpe de unos 30 km de largo, donde una pesada capa de roca volcánica descansa sobre sedimentos más blandos del Jurásico. Hace mucho tiempo el borde cedió y se deslizó hacia el mar, y las agujas son lo que quedó en pie. El terreno todavía no está del todo quieto: en el verano de 2004 se desprendieron grandes rocas del acantilado, que fueron a parar al pie del Old Man.</p><p>En gaélico se llama Bodach an Stòir. Una leyenda local dice que la aguja es el pulgar de un gigante enterrado en la ladera; otra, que en el acantilado se distingue el rostro de un anciano.</p><p>La caminata empieza en el aparcamiento, junto a la A855. El sendero está bien acondicionado, pero es empinado, está expuesto al mal tiempo y sube sin descanso. La mayoría de la gente llega hasta el pie de la aguja y al mirador que hay justo encima, desde donde se ve el Old Man con el estrecho de Raasay y la costa de Escocia al fondo. Más allá el terreno es más difícil y exige mapa, brújula y experiencia en montaña.</p>",
+   "directions": "A 11 km al norte de Portree por la A855 en dirección a Staffin, unos 15 minutos en coche. El aparcamiento queda a la izquierda; en verano se llena a media mañana.",
+   "best_time": "Antes de las 9:00, por delante de los autocares, o a última hora de la tarde. El verano tiene la mejor luz y también más gente.",
+   "tips": [
+    "Lleva botas o zapatillas con buena suela y un impermeable, aunque la mañana sea buena.",
+    "El aparcamiento principal tiene barrera de altura: las autocaravanas y furgonetas altas usan las plazas señalizadas en la carretera.",
+    "Si el aparcamiento está lleno, vuelve más tarde. No se permite aparcar en los arcenes.",
+    "Los aseos del aparcamiento son gratuitos. Enfrente, un quiosco vende bebidas y algo de comer en verano.",
+    "En la ladera la cobertura va y viene: no cuentes con el móvil para orientarte."
+   ],
+   "faq": [
+    {
+     "question": "¿Por qué se llama Old Man of Storr?",
+     "answer": "El nombre traduce el gaélico Bodach an Stòir, «el viejo de Storr». La tradición local lo explica de dos maneras: la aguja es el pulgar de un gigante enterrado en la ladera, o bien el acantilado de detrás muestra la cara de un anciano."
+    },
+    {
+     "question": "¿Cómo se formó el Old Man of Storr?",
+     "answer": "Por un enorme deslizamiento de tierras. La cresta de Trotternish es de roca volcánica muy pesada apoyada sobre sedimentos jurásicos más blandos. El borde se vino abajo y se deslizó hacia el mar, y las agujas son lo que quedó en pie. Sigue habiendo desprendimientos: en 2004 cayó uno importante."
+    },
+    {
+     "question": "¿Cuánto cuesta aparcar en el Old Man of Storr?",
+     "answer": "6 £ hasta seis horas y 8 £ hasta doce, lo mismo para cualquier vehículo. Se paga en las máquinas, en efectivo o con tarjeta, o con la aplicación RingGo. No se puede reservar plaza, y el aparcamiento principal tiene sitio para unos 140 coches."
+    },
+    {
+     "question": "¿Se puede llegar al Old Man of Storr en autobús?",
+     "answer": "Sí. El autobús 57A de Stagecoach sale de Somerled Square, en Portree, hacia Flodigarry y para en el Old Man of Storr a los 15 minutos; para volver se toma el 57C. Los domingos no hay 57A, y los horarios cambian, así que compruébalos antes de salir."
+    },
+    {
+     "question": "¿Hay aseos en el Old Man of Storr?",
+     "answer": "Sí, junto al aparcamiento. Son gratuitos y tienen cambiador de bebés; el aseo adaptado se abre con llave Radar. Al lado hay un punto gratuito de vaciado para autocaravanas."
+    },
+    {
+     "question": "¿Se puede aparcar una autocaravana o pasar la noche en el Storr?",
+     "answer": "Las autocaravanas no entran en el aparcamiento principal por la barrera de altura, pero tienen plazas en la carretera, igual que otros vehículos grandes. No se puede pernoctar: hay que ir a alguno de los campings cercanos."
+    },
+    {
+     "question": "¿Qué ropa hay que llevar para la caminata?",
+     "answer": "Calzado que sujete el tobillo y agarre en roca mojada, y varias capas con un impermeable encima. El sendero es empinado y está abierto al viento, y el tiempo puede cambiar en minutos. Lleva agua y, en verano, protección solar."
+    },
+    {
+     "question": "¿Hay cargador para coches eléctricos?",
+     "answer": "Sí, el aparcamiento tiene cargadores rápidos y normales. En verano suelen estar ocupados, así que conviene tener una alternativa pensada."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "quiraing": {
+   "title": "Quiraing",
+   "summary": "El mayor deslizamiento de tierras de Gran Bretaña, todavía en movimiento: un mirador junto a la carretera y una ruta circular de 2 horas entre agujas de roca.",
+   "content": "<p>El Quiraing es el extremo norte del gran deslizamiento que recorre toda la cresta de Trotternish, y su parte más espectacular. Bajo los acantilados de Meall na Suiramach el terreno se ha roto en torres, repisas y hondonadas ocultas, y aún no ha terminado de moverse: la carretera que pasa a sus pies hay que repararla una y otra vez.</p><p>Tres formaciones tienen nombre propio. The Needle (la Aguja) es un pináculo afilado; The Prison (la Prisión), un bloque de roca que parece una fortaleza en ruinas; y The Table (la Mesa), un prado llano elevado entre los riscos, invisible desde abajo, donde según la tradición se escondía el ganado de los saqueadores.</p><p>No hace falta caminar mucho. La vista desde el aparcamiento, en lo alto del puerto entre Staffin y Uig, ya abarca toda la línea de acantilados y el mar al fondo, y el primer kilómetro del sendero es casi llano. La ruta completa continúa bajo los riscos y vuelve por arriba: unos 6,8 km y dos horas sin paradas, con tramos estrechos y expuestos que resbalan cuando están mojados.</p>",
+   "directions": "Carretera de un solo carril entre Staffin y Uig. El aparcamiento, de pago, está en lo alto del puerto.",
+   "best_time": "La luz de la mañana. Arriba suele hacer viento.",
+   "tips": [
+    "El primer tramo del sendero da casi todas las vistas; la ruta completa tiene tramos expuestos.",
+    "En julio y agosto, llega temprano: el aparcamiento se llena.",
+    "Arriba suele soplar el viento aunque en Staffin esté en calma. Lleva una capa de abrigo.",
+    "En otoño hay menos gente y los colores están en su mejor momento."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuánto se tarda en hacer la ruta del Quiraing?",
+     "answer": "La ruta circular completa tiene unos 6,8 km y lleva unas dos horas de marcha, más las paradas para hacer fotos. Empieza y termina en el aparcamiento. Si solo tienes media hora, recorre el primer tramo, casi llano, y da la vuelta: esa parte ya tiene las vistas más conocidas."
+    },
+    {
+     "question": "¿Dónde se aparca para visitar el Quiraing?",
+     "answer": "En el aparcamiento de lo alto del puerto, en la carretera de un solo carril entre Staffin y Uig. Está a unos 4 km de Staffin y a 9 km de Uig, y a una media hora en coche de Portree. Es de pago, y en verano se llena a primera hora."
+    },
+    {
+     "question": "¿Qué son la Aguja, la Mesa y la Prisión?",
+     "answer": "Son las tres formaciones rocosas más conocidas del Quiraing. The Needle es un pináculo alto y afilado. The Prison es una masa de roca que recuerda a una fortaleza. The Table es una plataforma llana de hierba escondida entre los riscos, que solo se ve cuando se sube hasta ella."
+    },
+    {
+     "question": "¿El Quiraing sigue moviéndose?",
+     "answer": "Sí. Forma parte del deslizamiento de Trotternish, y esta zona todavía se desplaza ladera abajo un poco cada año. Por eso la carretera de abajo necesita reparaciones continuas."
+    },
+    {
+     "question": "¿Se puede visitar el Quiraing con mal tiempo?",
+     "answer": "Desde el aparcamiento se ve casi con cualquier tiempo, pero el sendero está expuesto, es estrecho en algunos puntos y resbala después de llover. Con viento fuerte o niebla cerrada, no te alejes del principio."
+    },
+    {
+     "question": "¿Es difícil la carretera al Quiraing?",
+     "answer": "Es de un solo carril con apartaderos. La subida desde Staffin es empinada y con curvas cerradas; la vertiente de Uig es más suave. Las autocaravanas grandes suben mejor desde Uig."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "kilt-rock-and-mealt-falls": {
+   "title": "Kilt Rock y la cascada de Mealt",
+   "summary": "Un acantilado de 55 m con columnas de basalto que recuerdan a los pliegues de un kilt, y una cascada que cae directa al mar. Parada de 10 minutos.",
+   "content": "<p>Kilt Rock es un acantilado de unos 55 m de altura en la costa este de Trotternish. Su parte superior está formada por columnas verticales de basalto oscuro apoyadas sobre franjas de roca más clara, y el dibujo recuerda a los pliegues de un kilt, la falda escocesa: de ahí el nombre.</p><p>Justo al lado del mirador, el agua del lago Mealt se asoma al borde del acantilado y cae directamente al mar. Los días de viento, la cascada sale despedida hacia arriba en forma de espuma antes de tocar el agua.</p><p>Es una parada de unos minutos, no una caminata: la barandilla está a pocos pasos del aparcamiento. Mira también hacia abajo, no solo a lo largo del acantilado. En las repisas anidan aves marinas, y a veces se ven delfines y ballenas mar adentro.</p>",
+   "directions": "En la A855, entre Portree y Staffin; apartadero señalizado con aparcamiento.",
+   "best_time": "A cualquier hora. Con viento y lluvia es espectacular.",
+   "tips": [
+    "Combínalo con las huellas de dinosaurio de la playa de An Corran, con marea baja.",
+    "Después de llover mucho la cascada está en su mejor momento; con viento fuerte, llega espuma hasta la barandilla.",
+    "Las cascadas de Lealt están a un paso en coche hacia el sur y llevan otro cuarto de hora."
+   ],
+   "faq": [
+    {
+     "question": "¿Por qué se llama Kilt Rock?",
+     "answer": "Por su aspecto. Las columnas de basalto bajan por el acantilado como pliegues, sobre franjas horizontales de roca más clara, y el conjunto recuerda a los pliegues y al dibujo de un kilt."
+    },
+    {
+     "question": "¿Qué altura tiene la cascada de Kilt Rock?",
+     "answer": "La cascada de Mealt cae unos 55 m desde lo alto del acantilado directamente al mar. La alimenta el lago Mealt, el pequeño lago que queda al otro lado de la carretera."
+    },
+    {
+     "question": "¿Hay que caminar para ver Kilt Rock?",
+     "answer": "No. El mirador es una plataforma con barandilla junto al aparcamiento, así que es una parada corta apta para todo el mundo, también con carrito de bebé o silla de ruedas."
+    },
+    {
+     "question": "¿Se pueden ver huellas de dinosaurio cerca de Kilt Rock?",
+     "answer": "Sí, a pocos minutos en coche hacia el norte, en la playa de An Corran, en Staffin, donde hay huellas conservadas en la roca de la orilla. Solo se ven con marea baja y es fácil pasarlas por alto, así que consulta el horario de mareas."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "fairy-glen": {
+   "title": "Fairy Glen",
+   "summary": "Un paisaje en miniatura de colinas cónicas de hierba, un laguito y una torre de roca llamada Castle Ewen, cerca de Uig. Paseo fácil de 45 minutos.",
+   "content": "<p>El Fairy Glen, el «valle de las hadas», es una pequeña hondonada en las colinas que dominan Uig y parece el resto de Trotternish visto en miniatura: conos de hierba con las laderas estriadas, un laguito, serbales retorcidos y, por encima de todo, una torre de roca conocida como Castle Ewen. Como el Quiraing, lo modeló un deslizamiento de tierras, solo que a una escala mucho menor.</p><p>A pesar del nombre, no tiene ninguna leyenda antigua. La gente empezó a llamarlo Fairy Glen simplemente porque parece el tipo de sitio donde vivirían las hadas.</p><p>Es un lugar para pasear sin rumbo más que para seguir una ruta. Hay senderos entre los montículos y hasta el pie de Castle Ewen, y una trepada corta por una grieta de la roca lleva a la cima. El terreno es de hierba, irregular, y después de llover se llena de barro.</p>",
+   "directions": "Carretera de un solo carril desde Uig, señalizada hacia Balnaknock/Sheader. Aparcamiento pequeño; no aparques en el arcén.",
+   "best_time": "La luz de última hora de la tarde. En verano, evita el mediodía.",
+   "tips": [
+    "La carretera de acceso es muy estrecha: no es para autocaravanas.",
+    "Lleva calzado impermeable. Después de llover la hierba se encharca.",
+    "A última hora de la tarde hay mejor luz y menos gente que a mediodía.",
+    "En primavera las laderas se cubren de flores silvestres."
+   ],
+   "faq": [
+    {
+     "question": "¿Cómo se llega al Fairy Glen?",
+     "answer": "Desde Uig. Justo al sur del pueblo, una carretera secundaria señalizada hacia Sheader y Balnaknock sale de la principal y sube tierra adentro; el valle está a un par de kilómetros. La carretera es muy estrecha, así que usa el aparcamiento señalizado y haz a pie el último tramo, y no aparques nunca en los arcenes."
+    },
+    {
+     "question": "¿El Fairy Glen es lo mismo que las Fairy Pools?",
+     "answer": "No. Son dos lugares distintos en extremos opuestos de la isla. El Fairy Glen está cerca de Uig, en el norte. Las Fairy Pools están en Glen Brittle, en el suroeste, a una hora y media en coche."
+    },
+    {
+     "question": "¿Por qué se llama Fairy Glen?",
+     "answer": "Solo por su aspecto. Ninguna historia tradicional relaciona el lugar con las hadas; el nombre es reciente y viene de su paisaje extraño y en miniatura."
+    },
+    {
+     "question": "¿Se puede subir a Castle Ewen?",
+     "answer": "Sí. Es una trepada corta y empinada por una grieta estrecha hasta una pequeña cima llana con vistas a todo el valle. Resbala cuando está mojada y hay caída, así que no es para niños pequeños ni para quien no se sienta seguro sobre roca."
+    },
+    {
+     "question": "¿Se pueden hacer círculos de piedras en el Fairy Glen?",
+     "answer": "Por favor, no. Hubo un tiempo en que los visitantes colocaban piedras en espiral, y los vecinos las retiran: mover piedras daña el terreno y no forma parte de ninguna tradición del lugar. Deja el valle como lo encuentras."
+    },
+    {
+     "question": "¿Cuándo hay más midges?",
+     "answer": "De junio a agosto, con tiempo húmedo y sin viento, sobre todo a primera y a última hora del día. Los midges son unos mosquitos diminutos muy molestos; en esos meses lleva repelente."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "fairy-pools": {
+   "title": "Fairy Pools",
+   "summary": "Pozas de agua cristalina y pequeñas cascadas bajo los Black Cuillin. Caminata fácil de unos 40 minutos por trayecto desde el aparcamiento.",
+   "content": "<p>Las Fairy Pools, las «pozas de las hadas», son una sucesión de pozas transparentes y pequeñas cascadas en un arroyo de montaña que baja de los Black Cuillin a Glen Brittle. El agua es fría, muy clara y de un azul verdoso sobre la roca pálida, con la pared oscura de los Cuillin detrás.</p><p>Enfrente del aparcamiento sale un sendero que remonta el arroyo y lo cruza por pasarelas. La primera cascada grande con su poza está a unos 1,2 km del inicio, así que el paseo de ida y vuelta es de 2,4 km; calcula entre cuarenta minutos y hora y media, según lo lejos que subas y lo que te quedes. El sendero está bien hecho en casi todo el recorrido, pero hay un tramo corto empinado y pedregoso que descarta sillas de ruedas y carritos.</p><p>Hay quien se baña. El agua baja de la montaña y está muy fría incluso en agosto, así que es un chapuzón rápido, no un baño largo.</p>",
+   "directions": "Desde la carretera de Carbost, toma la carretera de un solo carril señalizada hacia Glenbrittle. El aparcamiento, de pago, queda a la derecha a unos 8 km; el sendero empieza al otro lado de la carretera.",
+   "best_time": "Después de llover, por las cascadas. A primera hora, para evitar las aglomeraciones.",
+   "tips": [
+    "Ve temprano o tarde: en verano, a media mañana el aparcamiento ya está lleno.",
+    "Un tramo del sendero es empinado y pedregoso. Lleva calzado adecuado.",
+    "De mayo a septiembre, con el tiempo en calma, salen los midges.",
+    "En el aparcamiento no hay cafetería. Lleva agua y algo de comer."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuánto se camina hasta las Fairy Pools?",
+     "answer": "Unos 2,4 km entre ida y vuelta hasta la primera cascada grande con su poza. La mayoría de la gente tarda entre cuarenta minutos y hora y media en total. Si tienes tiempo, puedes seguir arroyo arriba hasta otras pozas más pequeñas."
+    },
+    {
+     "question": "¿Se puede uno bañar en las Fairy Pools?",
+     "answer": "Sí, y es gratis, pero el agua está muy fría todo el año. Entra poco a poco, no saltes desde las rocas a un agua que no hayas comprobado y lleva algo de abrigo para después."
+    },
+    {
+     "question": "¿Cuánto cuesta aparcar en las Fairy Pools?",
+     "answer": "El aparcamiento es de pago, y con lo recaudado se mantienen el sendero, las pasarelas y los aseos. El precio ha subido en los últimos años y es distinto para coches y para vehículos grandes, así que míralo en el cartel al llegar. Se puede pagar con tarjeta sin contacto o en efectivo."
+    },
+    {
+     "question": "¿Hay aseos en las Fairy Pools?",
+     "answer": "Sí, en el aparcamiento. Son gratuitos y hay uno adaptado."
+    },
+    {
+     "question": "¿Es difícil la carretera a las Fairy Pools?",
+     "answer": "Los últimos kilómetros son de un solo carril con apartaderos, y en julio y agosto hay mucho tráfico. Conduce despacio y usa los apartaderos para dejar pasar. En invierno puede haber hielo. En el aparcamiento no se admiten vehículos de más de 8 m."
+    },
+    {
+     "question": "¿Cuál es el mejor momento para ir?",
+     "answer": "A primera hora de la mañana o al atardecer, cuando el aparcamiento está tranquilo. Las cascadas llevan más agua después de llover; las pozas están más transparentes tras unos días secos."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "talisker-distillery": {
+   "title": "Destilería Talisker",
+   "summary": "La destilería en activo más antigua de Skye, a orillas de Loch Harport, en Carbost. Visitas y catas casi todos los días; en verano, reserva.",
+   "content": "<p>Talisker elabora whisky en Carbost, a orillas de Loch Harport, desde 1830, lo que la convierte en la destilería en activo más antigua de Skye. Su whisky de malta es conocido por un carácter ahumado, picante y ligeramente salino que mucha gente asocia con el aire de mar de esta costa.</p><p>Se puede visitar de dos maneras. Las visitas guiadas recorren la destilería, desde los alambiques de cobre hasta las barricas, y terminan con una cata; hay catas más cortas sin visita y experiencias más largas y caras para aficionados. O puedes ir simplemente al edificio de visitantes, que tiene tienda y bar y no requiere entrada.</p><p>A pesar del nombre, la destilería no está en la bahía de Talisker. Está en el pueblo de Carbost; la bahía queda varios kilómetros más allá, al final de una carretera secundaria.</p>",
+   "directions": "En el pueblo de Carbost, en la B8009. Aparcamiento en la destilería.",
+   "best_time": "De mayo a septiembre, reserva la visita con antelación.",
+   "tips": [
+    "Reserva la visita antes que nada: marca el horario de todo el día.",
+    "La destilería suspende algunas experiencias por mantenimiento durante unas semanas en otoño. Si viajas en octubre, comprueba las fechas.",
+    "The Oyster Shed, cuesta arriba, es el sitio preferido de la gente de la zona para comer marisco."
+   ],
+   "faq": [
+    {
+     "question": "¿Hay que reservar la visita a Talisker?",
+     "answer": "Es muy recomendable, sobre todo entre mayo y septiembre, cuando las visitas se agotan con días de antelación. Reserva en la web oficial de la destilería antes de organizar el resto del día."
+    },
+    {
+     "question": "¿Se puede visitar Talisker sin hacer la visita guiada?",
+     "answer": "Sí. El edificio de visitantes, con su tienda y su bar, suele estar abierto a todo el mundo, aunque en los momentos de más afluencia pueden limitar el acceso."
+    },
+    {
+     "question": "¿Pueden entrar niños en la destilería Talisker?",
+     "answer": "Los menores de 18 años deben ir acompañados de un adulto y no se les sirve alcohol. Las visitas tienen una edad mínima que cambia según el tipo, así que compruébala al reservar."
+    },
+    {
+     "question": "¿Qué hace el conductor en la cata?",
+     "answer": "En Escocia el límite de alcohol al volante es muy bajo, así que quien conduce no debería beber nada. Dilo al empezar: lo habitual es que las destilerías den al conductor sus muestras en botellitas para llevar."
+    },
+    {
+     "question": "¿La destilería está en la bahía de Talisker?",
+     "answer": "No. La destilería está en Carbost, a orillas de Loch Harport. La bahía de Talisker, con su playa de arena oscura y clara, queda unos 6 km más al oeste por una carretera secundaria, más un tramo a pie desde donde termina."
+    },
+    {
+     "question": "¿A qué distancia está Talisker de Portree?",
+     "answer": "A unos 45 minutos en coche. Desde Inverness, calcula unas tres horas."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Abre casi todos los días; el horario cambia según la temporada. Consulta la web oficial"
+    }
+   ]
+  },
+  "dunvegan-castle": {
+   "title": "Castillo de Dunvegan y sus jardines",
+   "summary": "Sede del clan MacLeod desde hace 800 años, con la Fairy Flag, jardines y paseos en barca para ver focas desde el embarcadero. Calcula 2 horas.",
+   "content": "<p>Dunvegan es el hogar de los jefes del clan MacLeod desde hace unos ochocientos años, y suele describirse como el castillo habitado sin interrupción más antiguo de Escocia. Se levanta sobre una roca junto a Loch Dunvegan, y lo que se ve es obra de muchos siglos, desde una torre medieval hasta las almenas victorianas.</p><p>Dentro se guardan los tesoros del clan. El más famoso es la Fairy Flag, la «bandera de las hadas»: un frágil estandarte de seda que, según la tradición, protege a los MacLeod cuando se despliega en un momento de peligro. Junto a ella están la Copa de Dunvegan y el Cuerno de Rory Mor, un cuerno para beber que cada nuevo jefe debe vaciar de vino de un solo trago.</p><p>Los jardines atraen tanto como la casa. Se trazaron a partir del siglo XVIII e incluyen un jardín amurallado, un jardín acuático con cascadas y paseos por el bosque hasta el lago. Desde el embarcadero, al pie del castillo, salen pequeñas barcas a ver las focas que viven en los islotes del lago.</p>",
+   "directions": "A 1 km al norte del pueblo de Dunvegan por la A850. Aparcamiento gratuito en la entrada.",
+   "best_time": "Por la mañana, antes de que lleguen los grupos en autocar.",
+   "tips": [
+    "Ve por la mañana, antes de que lleguen los autocares.",
+    "Los paseos para ver focas no se pueden reservar: pregunta en el embarcadero nada más llegar.",
+    "Deja tiempo para los jardines. Llevan tanto como el castillo.",
+    "No se permite pernoctar en el aparcamiento."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuándo abre el castillo de Dunvegan?",
+     "answer": "Todos los días del 1 de abril al 15 de octubre, de 10:00 a 17:30, con última entrada a las 17:00. El resto del año está cerrado a las visitas individuales."
+    },
+    {
+     "question": "¿Cómo funcionan los paseos para ver focas en Dunvegan?",
+     "answer": "Salen del 1 de abril al 30 de septiembre desde el embarcadero que hay bajo el castillo, y duran unos 25 minutos. Las plazas se dan el mismo día por orden de llegada, no se reserva, y las salidas dependen del tiempo y del estado del mar. Hace falta entrada al castillo o a los jardines, y la barca se paga aparte: según el último listado que consultamos, 14,50 £ los adultos y 10,50 £ los niños."
+    },
+    {
+     "question": "¿Hay que reservar la entrada al castillo de Dunvegan?",
+     "answer": "No. Puedes comprarla en la taquilla al llegar."
+    },
+    {
+     "question": "¿Qué es la Fairy Flag?",
+     "answer": "Un estandarte de seda muy antiguo, la posesión más preciada del clan MacLeod. Una historia cuenta que fue el regalo de un hada a un jefe MacLeod; otra, que se trajo de Oriente. Según la tradición, salvará al clan tres veces si se despliega en la batalla, y ya se ha usado dos."
+    },
+    {
+     "question": "¿Se puede entrar con perro al castillo de Dunvegan?",
+     "answer": "Los perros pueden entrar en los jardines, con correa, pero no en el interior del castillo."
+    },
+    {
+     "question": "¿Se pueden ver focas sin subir a la barca?",
+     "answer": "A veces, desde la orilla del lago o desde los senderos del jardín, pero la barca es la manera segura: llega hasta las rocas donde descansan."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Del 1 de abril al 15 de octubre",
+     "hours": "Todos los días de 10:00 a 17:30; última entrada a las 17:00"
+    },
+    {
+     "season": "Del 16 de octubre al 31 de marzo",
+     "hours": "Cerrado"
+    }
+   ]
+  },
+  "neist-point": {
+   "title": "Neist Point",
+   "summary": "El punto más occidental de Skye: un faro en un cabo de acantilados al que se baja por un sendero empinado de hormigón. La mejor puesta de sol de la isla.",
+   "content": "<p>Neist Point es el extremo más occidental de Skye: un cabo largo y estrecho de hierba y basalto que se adentra en el Minch, con un faro en la punta y acantilados a ambos lados. En un día claro, las Hébridas Exteriores se dibujan en el horizonte.</p><p>Desde el aparcamiento baja un sendero de hormigón, primero por un largo tramo de escalones y luego por el lomo del cabo hasta el faro: 2,2 km entre ida y vuelta. Lleva unos 45 minutos sin paradas, pero todo el mundo para. Ten en cuenta que lo fácil viene primero: la vuelta es una subida constante, con dos repechos fuertes antes del aparcamiento.</p><p>El faro es de principios del siglo XX. Funciona de forma automática desde 1990 y sus edificios están cerrados, así que el paseo vale por el entorno, no por la visita. La fotografía más conocida, con todo el cabo y el faro en la punta, no se hace desde el sendero, sino desde lo alto del acantilado que queda a la derecha del aparcamiento.</p><p>Es también uno de los mejores sitios de Skye para observar el mar. En verano pasan cerca de la costa rorcuales aliblancos, delfines y marsopas, y los alcatraces y otras aves marinas pescan frente al cabo.</p>",
+   "directions": "Desde Glendale, sigue la carretera de un solo carril hasta el final; el aparcamiento está en lo alto de los acantilados.",
+   "best_time": "La puesta de sol. Quédate a ver los colores después de que se oculte.",
+   "tips": [
+    "Para la vista clásica del cabo, camina por lo alto del acantilado a la derecha del aparcamiento antes de bajar.",
+    "Muy expuesto: sujeta bien los sombreros y a los niños.",
+    "Al atardecer, lleva linterna para la subida de vuelta.",
+    "No hay aseos ni tiendas. Los más cercanos están en Glendale y en Dunvegan."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuánto se camina hasta el faro de Neist Point?",
+     "answer": "2,2 km entre ida y vuelta, por el mismo sendero. Calcula unos 45 minutos de marcha, y al menos hora y media si quieres verlo con calma. La bajada es fácil; la vuelta es toda cuesta arriba."
+    },
+    {
+     "question": "¿Se puede entrar en el faro de Neist Point?",
+     "answer": "No. El faro es automático y los edificios están cerrados al público. Se puede rodear por fuera."
+    },
+    {
+     "question": "¿Se ven ballenas en Neist Point?",
+     "answer": "Con suerte. Desde el cabo se ven rorcuales aliblancos, delfines y marsopas, sobre todo en junio y julio y con el mar en calma. Lleva prismáticos y paciencia: no hay nada garantizado."
+    },
+    {
+     "question": "¿Cuál es el mejor momento para visitar Neist Point?",
+     "answer": "La puesta de sol, cuando la luz baja da en los acantilados. También es cuando hay más gente, y el aparcamiento, que es pequeño, se llena: llega con tiempo. Lleva linterna para la vuelta."
+    },
+    {
+     "question": "¿Es difícil la carretera a Neist Point?",
+     "answer": "Es una carretera larga de un solo carril con pocos apartaderos, desde Glendale hasta donde termina el asfalto. Ve con tiempo de sobra, conduce despacio y cuenta con tener que dar marcha atrás alguna vez. No es recomendable con una autocaravana grande."
+    },
+    {
+     "question": "¿Neist Point es apto para niños?",
+     "answer": "Con cuidado. El sendero es empinado, los acantilados no tienen vallas y el viento pega fuerte. Lleva a los niños cerca y deja el carrito en el coche."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "portree": {
+   "title": "Portree",
+   "summary": "La capital de Skye y la mejor base: el puerto de casas de colores, casi todos los restaurantes y tiendas de la isla y salidas en barco para ver fauna.",
+   "content": "<p>Portree es la capital de Skye y su único pueblo grande. Rodea una bahía resguardada de la costa este, más o menos en el centro de la isla, y por eso casi todos los visitantes lo usan como base: aquí se juntan las carreteras de Trotternish, de Dunvegan y del sur, y también los autobuses de la isla.</p><p>La imagen que todo el mundo conoce es Quay Street, la hilera de casas pintadas a lo largo del puerto, hoy tiendas, alojamientos y restaurantes. Bank Street, un nivel más arriba, es la calle principal. Del muelle siguen saliendo barcos de pesca y, en temporada, excursiones para ver fauna.</p><p>El nombre suele explicarse como «el puerto del rey», por la visita de Jacobo V de Escocia, que navegó hasta Skye en 1540 con una flota para poner fin a las disputas entre los MacLeod y los MacDonald. Dos siglos después el pueblo recibió a otro visitante real: en 1746 Carlos Eduardo Estuardo, huido tras Culloden, se despidió de Flora MacDonald en la posada que ocupaba el lugar del actual Royal Hotel.</p><p>De este puerto zarparon en el siglo XVIII barcos con emigrantes rumbo a Norteamérica, cuando la isla ya no podía alimentar a su gente. En el XIX, los vapores de Glasgow hicieron de Portree el centro comercial de Skye y trajeron a sus primeros turistas.</p><p>Del pueblo salen dos paseos cortos. The Lump es el promontorio arbolado que domina el puerto, con una vieja torre a la que se puede subir para ver la bahía y los Cuillin, y un anfiteatro natural donde en verano se celebran los Juegos de las Highlands de Skye. El circuito de Scorrybreac sigue la orilla desde el lado norte de la bahía, rodea un cabo y vuelve por la colina; a veces se ven focas desde el sendero.</p>",
+   "directions": "En la A87, a 55 km del puente de Skye. Los aparcamientos están señalizados en el centro, que es pequeño y se recorre mejor a pie.",
+   "best_time": "A última hora de la tarde, cuando se han ido los visitantes de día y la luz da en el puerto.",
+   "tips": [
+    "En verano, reserva mesa para cenar: los restaurantes se llenan y no hay tantos.",
+    "De junio a septiembre, reserva alojamiento con meses de antelación. Cuando Portree está lleno, la alternativa habitual es Broadford, cerca del puente.",
+    "El supermercado y la gasolinera de aquí son los últimos antes del norte de la isla.",
+    "En Skye las distancias llevan más tiempo del que sugiere el mapa: añade margen a cada trayecto."
+   ],
+   "faq": [
+    {
+     "question": "¿Qué significa el nombre Portree?",
+     "answer": "Viene del gaélico Port Rìgh, que suele traducirse como «el puerto del rey». La tradición lo relaciona con Jacobo V de Escocia, que fondeó aquí en 1540 durante un viaje para meter en cintura a los clanes de las islas."
+    },
+    {
+     "question": "¿Portree es una buena base para visitar Skye?",
+     "answer": "Sí, y es la que elige la mayoría. Está en el centro de la isla, tiene la mayor oferta para dormir y comer, y de aquí salen las líneas de autobús a Dunvegan, Uig, Staffin y Broadford. El inconveniente es la demanda: en verano hay mucha gente y las habitaciones se agotan pronto."
+    },
+    {
+     "question": "¿Cómo se llega a Portree sin coche?",
+     "answer": "En autocar. Hay servicios de larga distancia a Portree desde Glasgow, Edimburgo e Inverness. Desde Inverness el viaje dura unas tres horas y media, desde Glasgow unas seis y media y desde Edimburgo unas siete y media. También se puede ir en tren de Inverness a Kyle of Lochalsh y seguir en autobús. En Skye no hay ferrocarril."
+    },
+    {
+     "question": "¿Cuánto se tarda en coche hasta Portree?",
+     "answer": "Unas tres horas desde Inverness, cinco desde Glasgow y cinco y media desde Edimburgo, sin paradas. La ruta habitual es la A87, por el puente de Skye."
+    },
+    {
+     "question": "¿Dónde están las casas de colores de Portree?",
+     "answer": "En Quay Street, a lo largo del puerto. La mejor vista de toda la hilera es desde la calle de arriba, subiendo hacia Bank Street, o desde el otro extremo del muelle."
+    },
+    {
+     "question": "¿Qué se puede hacer en Portree?",
+     "answer": "Pasear por el puerto, subir a The Lump para ver la bahía y hacer el circuito de Scorrybreac, un paseo corto por la orilla con vuelta por la colina. En temporada salen del muelle barcos para ver pigargos y focas. En verano se celebran aquí los Juegos de las Highlands de Skye."
+    },
+    {
+     "question": "¿Con cuánta antelación hay que reservar alojamiento en Portree?",
+     "answer": "Para los meses de verano, con varios meses. Entre junio y septiembre la isla recibe muchos más visitantes que camas tiene, y Portree es lo primero que se llena."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Población; el horario de las tiendas varía"
+    }
+   ]
+  },
+  "sligachan": {
+   "title": "Puente viejo de Sligachan",
+   "summary": "El puente de tres arcos de 1810 con los Black Cuillin detrás: la vista más pintada de Skye. Parada de 10 minutos en el cruce de la A87 y la A863.",
+   "content": "<p>Sligachan es un cruce de carreteras, un hotel y un viejo puente de piedra, y una de las grandes vistas de Skye. Desde el puente se mira de frente al valle que separa las dos sierras de los Cuillin: los picos oscuros y afilados de los Black Cuillin a un lado y los Red Cuillin, lisos y redondeados, al otro.</p><p>El puente viejo, con sus tres arcos, es de principios del siglo XIX y hoy solo lo cruzan peatones; la carretera moderna pasa al lado. Cerca del aparcamiento hay un bronce de Norman Collie y John Mackenzie, el científico y el guía local que exploraron y cartografiaron juntos estas montañas.</p><p>El río tiene su propia leyenda. Se dice que, si te arrodillas en la orilla y metes la cara en el agua durante siete segundos, las hadas te concederán belleza duradera, siempre que la dejes secar al aire sin tocarla.</p>",
+   "directions": "En el cruce de Sligachan, en la A87, 14 km al sur de Portree. Aparcamiento gratuito junto al hotel.",
+   "best_time": "Las mañanas despejadas, por la sierra, que suele estar entre nubes.",
+   "tips": [
+    "Las mañanas despejadas son lo mejor. A lo largo del día la sierra suele cubrirse.",
+    "Las cumbres son solo para montañeros con experiencia; el sendero del valle es para todos.",
+    "El bar del hotel sirve comidas, y al lado hay un camping."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuál es la leyenda del río Sligachan?",
+     "answer": "La historia habla de una guerrera a la que las hadas devolvieron la belleza en estas aguas. Desde entonces se dice que quien sumerja la cara en el río durante siete segundos, y la deje secar sola, recibirá belleza eterna."
+    },
+    {
+     "question": "¿Qué montañas se ven desde Sligachan?",
+     "answer": "Los Cuillin. Al suroeste están los Black Cuillin, con el pico afilado de Sgùrr nan Gillean en primer término; al sureste, los Red Cuillin, redondeados, con Glamaig junto a la carretera."
+    },
+    {
+     "question": "¿Merece la pena parar en Sligachan?",
+     "answer": "Sí, y no cuesta nada: el puente está al lado de la carretera principal entre el puente de Skye y Portree, y con diez minutos basta para la vista. En una mañana despejada es de las mejores de la isla."
+    },
+    {
+     "question": "¿Se puede caminar desde Sligachan?",
+     "answer": "Un sendero llano remonta Glen Sligachan entre las dos sierras, y puedes seguirlo todo lo que quieras antes de dar la vuelta. Las rutas que suben a los Cuillin son terreno de alta montaña y exigen experiencia."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "kyleakin": {
+   "title": "Kyleakin",
+   "summary": "El primer pueblo de Skye, junto al puente: un pequeño puerto, las ruinas de Castle Moil y vistas a la costa de enfrente. Parada habitual para dormir.",
+   "content": "<p>A Kyleakin llegaba el ferri desde tierra firme hasta que se abrió el puente de Skye en 1995. El peaje del puente se suprimió en 2004, y hoy el pueblo es un lugar tranquilo, a un paso de la carretera principal, con su puerto, unos pocos sitios donde comer y donde dormir.</p><p>En la punta que hay más allá del puerto se alza lo que queda de Castle Moil. La leyenda local lo atribuye a una princesa nórdica, conocida como Saucy Mary, de la que se cuenta que tendía una cadena de lado a lado del estrecho para cobrar peaje a los barcos.</p>",
+   "directions": "Señalizado desde la A87 en el extremo del puente que da a Skye. Aparcamiento gratuito junto al puerto.",
+   "best_time": "Al atardecer, cuando la luz da en las ruinas del castillo y en el puente.",
+   "tips": [
+    "El sendero hasta las ruinas del castillo es irregular y está encharcado, y el último tramo se complica con marea alta.",
+    "Kyle of Lochalsh, al otro lado del puente, tiene el supermercado, la gasolinera y la estación de tren más cercanos."
+   ],
+   "faq": [
+    {
+     "question": "¿Hay que pagar para cruzar el puente de Skye?",
+     "answer": "No. El puente se inauguró en 1995 con peaje, pero se eliminó en 2004 y desde entonces cruzar es gratis."
+    },
+    {
+     "question": "¿Kyleakin es un buen sitio para alojarse en Skye?",
+     "answer": "Es tranquilo y cómodo para llegar y marcharse, porque está junto al puente, y es donde pasa las noches nuestro tour de tres días. Para recorrer la isla en coche, Portree y Broadford son más céntricos y tienen más sitios donde comer."
+    },
+    {
+     "question": "¿Dónde recogen los tours en Kyleakin?",
+     "answer": "En la parada de autobús que hay junto al aparcamiento de Kyleside. Si te alojas al otro lado del puente, la recogida en Kyle of Lochalsh es en el cruce de Ferry Road con Kyle Prospect Road."
+    },
+    {
+     "question": "¿Se puede visitar Castle Moil?",
+     "answer": "Sí, a cualquier hora y gratis. Un sendero rodea el puerto y llega a las ruinas en un cuarto de hora. El terreno es irregular y está mojado, y el último tramo es más fácil con marea baja."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "lealt-falls": {
+   "title": "Cascadas de Lealt",
+   "summary": "Una cascada que cae a un desfiladero profundo junto a la carretera de Trotternish. Se ve desde un mirador a pocos minutos del aparcamiento.",
+   "content": "<p>El río Lealt cae en dos saltos a un desfiladero estrecho en su camino al mar. Un sendero corto y asfaltado lleva del aparcamiento a una plataforma sobre el salto superior, con vistas a lo largo de la costa y hasta tierra firme.</p><p>Un sendero más tosco continúa hasta el borde del acantilado sobre la orilla, desde donde se ven abajo las ruinas de una antigua fábrica de diatomita.</p>",
+   "directions": "Junto a la A855, entre el Old Man of Storr y Kilt Rock. Aparcamiento señalizado en el lado de la carretera que da al mar.",
+   "best_time": "Después de llover, cuando la cascada baja con fuerza.",
+   "tips": [
+    "Más allá de la plataforma los bordes no tienen valla: no te acerques.",
+    "Se combina fácilmente con Kilt Rock, a un paso en coche hacia el norte."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuánto se camina hasta las cascadas de Lealt?",
+     "answer": "Unos minutos. Un sendero asfaltado lleva del aparcamiento a un mirador sobre el salto superior. El sendero más tosco que sigue hacia el borde del acantilado añade otros diez o quince minutos."
+    },
+    {
+     "question": "¿Qué son las ruinas que hay en la orilla, bajo las cascadas de Lealt?",
+     "answer": "Pertenecen a una antigua fábrica donde se procesaba diatomita, un mineral parecido a la tiza que se extraía de un lago del interior y se bajaba a la costa para secarlo y embarcarlo."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "eilean-donan-castle": {
+   "title": "Castillo de Eilean Donan",
+   "summary": "El castillo más fotografiado de Escocia, en un islote donde se juntan tres lagos de mar, unido a tierra por un puente de piedra. De camino a Skye.",
+   "content": "<p>Eilean Donan se alza sobre un islote de marea en el punto donde se encuentran tres lagos de mar: Loch Duich, Loch Long y Loch Alsh. Un puente de piedra de tres arcos lo une a la orilla, junto a la carretera principal a Skye, y por eso casi todo el que va camino de la isla para aquí.</p><p>La isla toma su nombre de Donan, un misionero irlandés que, según se cuenta, se estableció aquí en el siglo VI. El primer castillo se construyó a principios del siglo XIII, durante el reinado de Alejandro II, para defender esta costa de las incursiones nórdicas. Durante casi todos los siglos siguientes perteneció a los Mackenzie de Kintail, con los MacRae como sus guardianes.</p><p>Su final llegó en 1719. El levantamiento jacobita de ese año contaba con apoyo español, y en el castillo quedó una guarnición de soldados españoles a cargo del polvorín. Barcos de la Marina Real remontaron el lago, bombardearon los muros, hicieron prisionera a la guarnición y volaron lo que quedaba. Pocas semanas después, el levantamiento fue derrotado en la batalla de Glen Shiel, un poco más arriba en el valle.</p><p>Las ruinas estuvieron a la intemperie durante casi doscientos años. El teniente coronel John MacRae-Gilstrap las adquirió y reconstruyó el castillo entre 1912 y 1932, a partir de la planta que se conservaba; el puente es de las mismas obras. Lo que se visita es, por tanto, un castillo del siglo XX sobre cimientos medievales, y hoy pertenece a una fundación benéfica que lo cuida y lo mantiene abierto.</p><p>Por dentro, las salas están amuebladas como una casa de las Highlands de los siglos XVII y XVIII, con un salón de banquetes y una exposición sobre la historia del castillo. Algunas estancias son privadas. El castillo tiene además una larga carrera en el cine: es el hogar del clan en Los inmortales y una base del MI6 en El mundo nunca es suficiente.</p>",
+   "directions": "En Dornie, en la A87, a 13 km al este de Kyle of Lochalsh y del puente de Skye. Aparcamiento en el centro de visitantes, junto a la carretera.",
+   "best_time": "A primera hora o, en verano, después de las 16:00. De noche el exterior está iluminado.",
+   "tips": [
+    "Las entradas solo se venden en el castillo y en el día: no hay reserva por internet.",
+    "La última entrada es una hora antes del cierre.",
+    "No se permite entrar con mochilas ni bolsos grandes. Hay consignas gratuitas junto al centro de visitantes.",
+    "La foto clásica se hace desde la orilla, junto al aparcamiento, y es gratis.",
+    "Con marea alta el castillo queda rodeado de agua, y la foto mejora."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuánto cuesta visitar el castillo de Eilean Donan?",
+     "answer": "En la temporada 2026 la entrada de adulto cuesta 13 £. Los mayores de 60 años pagan 12 £, los niños de 5 a 15 años 6,50 £ y los menores de 5 entran gratis. La entrada familiar, para dos adultos y tres niños, cuesta 38 £. Se compra en el castillo el mismo día; no se vende por internet."
+    },
+    {
+     "question": "¿Cuándo abre el castillo de Eilean Donan?",
+     "answer": "Todos los días desde principios de febrero hasta el 22 de diciembre, salvo algunos días de cierre en noviembre y diciembre. El horario es más largo en verano, de 9:00 a 18:00, y más corto en invierno, de 10:00 a 16:00. En enero está cerrado todo el mes. Las fechas cambian un poco cada año, así que consulta la web oficial antes de viajar."
+    },
+    {
+     "question": "¿Se puede ver el castillo de Eilean Donan sin pagar?",
+     "answer": "Sí. La vista famosa del castillo con su puente es desde la orilla, junto al aparcamiento, que está abierta a todo el mundo. Solo hace falta entrada para cruzar el puente y visitar el interior."
+    },
+    {
+     "question": "¿A qué distancia está el castillo de Eilean Donan de la Isla de Skye?",
+     "answer": "A unos 13 km de Kyle of Lochalsh, donde empieza el puente a Skye: entre diez y quince minutos en coche."
+    },
+    {
+     "question": "¿Eilean Donan es un castillo medieval auténtico?",
+     "answer": "El lugar es medieval, pero el edificio no. El castillo original, empezado en el siglo XIII, fue volado en 1719 y estuvo en ruinas casi doscientos años. Se reconstruyó entre 1912 y 1932 sobre la planta antigua."
+    },
+    {
+     "question": "¿Por qué había soldados españoles en Eilean Donan?",
+     "answer": "España apoyó el levantamiento jacobita de 1719 y envió tropas a Escocia. Parte de ellas se quedó custodiando el castillo, que se usaba como almacén de pólvora. Barcos de la Marina Real lo atacaron, capturaron a la guarnición y destruyeron el castillo con su propia pólvora."
+    },
+    {
+     "question": "¿Qué películas se rodaron en el castillo de Eilean Donan?",
+     "answer": "Las más conocidas son Los inmortales (1986), donde es el hogar del clan MacLeod, y la película de James Bond El mundo nunca es suficiente (1999), donde aparece como cuartel del MI6. También ha salido en muchos anuncios."
+    },
+    {
+     "question": "¿Se puede entrar con bolsos al castillo?",
+     "answer": "Solo con bolsos pequeños. Las mochilas y los bolsos grandes hay que dejarlos en el coche o en las consignas gratuitas que hay junto al centro de visitantes."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Del 1 de febrero a finales de marzo",
+     "hours": "10:00–16:00"
+    },
+    {
+     "season": "De finales de marzo a abril",
+     "hours": "10:00–18:00"
+    },
+    {
+     "season": "Mayo y septiembre",
+     "hours": "9:30–18:00"
+    },
+    {
+     "season": "De junio a agosto",
+     "hours": "9:00–18:00"
+    },
+    {
+     "season": "Del 1 al 24 de octubre",
+     "hours": "10:00–18:00"
+    },
+    {
+     "season": "Del 25 de octubre al 22 de diciembre",
+     "hours": "10:00–16:00, con algunos días de cierre"
+    },
+    {
+     "season": "Enero",
+     "hours": "Cerrado"
+    }
+   ]
+  },
+  "loch-ness-urquhart-castle": {
+   "title": "Lago Ness y castillo de Urquhart",
+   "summary": "Las ruinas de uno de los mayores castillos de Escocia sobre un cabo del lago Ness, con centro de visitantes y paseos en barco por el lago.",
+   "content": "<p>El lago Ness se extiende unos 37 km a lo largo del Great Glen y tiene más de 200 m de profundidad; por eso contiene más agua que ningún otro lago de Escocia, y por eso ha durado tanto la historia de su monstruo. La leyenda moderna es de los años treinta del siglo XX, cuando una carretera nueva abrió la orilla y llegaron a los periódicos los primeros testimonios.</p><p>El castillo de Urquhart, en un cabo rocoso hacia la mitad de la orilla norte, es el mejor sitio para contemplar el lago. Fue uno de los mayores castillos de Escocia y cambió de manos una y otra vez entre escoceses e ingleses en las guerras de independencia. Su final fue deliberado: la última guarnición del gobierno lo voló al marcharse, en la época de los levantamientos jacobitas, para que nadie más pudiera usarlo.</p><p>Lo que queda es una ruina amplia de muros y torres que baja hasta el agua. A la torre Grant, reconstruida en el siglo XVI, todavía se puede subir para ver el lago a lo largo. El centro de visitantes, excavado en la ladera, tiene una película, una exposición con objetos hallados en el lugar y una cafetería con terraza.</p>",
+   "directions": "Junto a la A82, en la orilla noroeste del lago Ness, a unos 3 km de Drumnadrochit. El aparcamiento del centro de visitantes hay que reservarlo por internet.",
+   "best_time": "En verano, a última hora de la tarde, cuando se han ido los grupos en autocar.",
+   "tips": [
+    "Reserva la entrada y el aparcamiento por internet antes de ir.",
+    "El castillo y el crucero por el lago son entradas distintas.",
+    "De abril a agosto el castillo abre hasta la tarde-noche, cuando ya se han ido los autocares."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuándo abre el castillo de Urquhart?",
+     "answer": "Todo el año, todos los días desde las 9:30. Cierra a las 20:15 de abril a agosto, a las 18:00 en septiembre, a las 17:00 en octubre y a las 16:30 de noviembre a marzo. La última entrada es una hora antes del cierre, y está cerrado el 25 y el 26 de diciembre."
+    },
+    {
+     "question": "¿Hay que reservar con antelación el castillo de Urquhart?",
+     "answer": "Es lo más seguro y lo más barato: las entradas se venden para un día y una hora concretos, y cuestan menos por internet que en taquilla. Si vas en coche, también tienes que reservar el aparcamiento por internet."
+    },
+    {
+     "question": "¿Se puede ver al monstruo del lago Ness desde el castillo de Urquhart?",
+     "answer": "La gente lo busca desde los años treinta y nadie ha demostrado nada, pero el castillo es el sitio donde se han contado muchos de los avistamientos, y tiene la vista más amplia del lago. Fíjate en las estelas de los barcos y en los troncos que flotan: explican la mayoría."
+    },
+    {
+     "question": "¿El crucero por el lago está incluido en la entrada al castillo?",
+     "answer": "No. El castillo y los paseos en barco los gestionan empresas distintas y cada uno tiene su entrada. Algunos cruceros desembarcan en el castillo, y entonces la entrada puede ir en el paquete: comprueba qué estás comprando."
+    },
+    {
+     "question": "¿Por qué está en ruinas el castillo de Urquhart?",
+     "answer": "Lo destruyeron a propósito. Los soldados del gobierno destinados allí en la época jacobita volaron la casa de la puerta al marcharse, para que el castillo no cayera en manos enemigas, y nunca se reparó."
+    },
+    {
+     "question": "¿A qué distancia está el castillo de Urquhart de Inverness?",
+     "answer": "A unos 27 km por la A82, media hora en coche. El castillo queda a unos 3 km del pueblo de Drumnadrochit."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "De abril a agosto",
+     "hours": "Todos los días de 9:30 a 20:15"
+    },
+    {
+     "season": "Septiembre",
+     "hours": "Todos los días de 9:30 a 18:00"
+    },
+    {
+     "season": "Octubre",
+     "hours": "Todos los días de 9:30 a 17:00"
+    },
+    {
+     "season": "De noviembre a marzo",
+     "hours": "Todos los días de 9:30 a 16:30"
+    }
+   ]
+  },
+  "inverness": {
+   "title": "Inverness",
+   "summary": "La capital de las Highlands, a orillas del río Ness: un centro pequeño con el paseo del río, el Victorian Market y muchos sitios para comer.",
+   "content": "<p>Inverness es la única ciudad de las Highlands y la parada natural entre Skye y el sur. Creció donde el río Ness llega al mar, a pocos kilómetros del extremo norte del lago Ness, y desde hace muchísimo tiempo es el punto donde se cruzan los caminos de las Highlands.</p><p>El centro es tan pequeño que se ve a pie en una hora. El castillo está en una colina sobre el río; el edificio actual es de 1847, aunque aquí ha habido fortalezas desde la Edad Media. A sus pies, varias pasarelas cruzan el Ness hasta la catedral de San Andrés, construida en piedra roja en el siglo XIX. La Old High Church, en la orilla este, tiene una torre medieval que es la construcción más antigua de la ciudad.</p><p>Si tienes más tiempo, remonta el río hasta las Ness Islands, una serie de islotes arbolados unidos por pasarelas victorianas, que son parque público desde la década de 1840.</p><p>Dos lugares a las afueras explican buena parte de la historia de las Highlands. Culloden, donde fue destruido el último ejército jacobita en 1746, está a un paso en coche hacia el este; y Fort George, el enorme fuerte de artillería que se construyó después para tener sometidas a las Highlands, se alza en la costa un poco más allá y sigue siendo una base del ejército.</p>",
+   "directions": "Donde se juntan la A9, la A82 y la A96. Varios aparcamientos de pago en el centro.",
+   "best_time": "",
+   "tips": [
+    "Aquí están los últimos supermercados grandes y tiendas de montaña antes de la costa oeste.",
+    "El paseo por el río hasta las Ness Islands lleva una hora entre ida y vuelta."
+   ],
+   "faq": [
+    {
+     "question": "¿Qué se puede ver en Inverness en una hora?",
+     "answer": "Baja desde el centro hasta el río, cruza una de las pasarelas para ver el castillo desde la otra orilla y vuelve por ese lado pasando junto a la catedral. Si te sobra tiempo, el Victorian Market, un mercado cubierto del siglo XIX, está a pocos minutos."
+    },
+    {
+     "question": "¿Inverness está en el lago Ness?",
+     "answer": "No exactamente. La ciudad está a orillas del río Ness, que sale del lago. El extremo norte del lago Ness queda a pocos kilómetros al suroeste, y el castillo de Urquhart, el sitio habitual para verlo, a una media hora."
+    },
+    {
+     "question": "¿A qué distancia está Inverness de la Isla de Skye?",
+     "answer": "A unas tres horas en coche de Portree, y tres y media en autocar. La carretera pasa por el lago Ness y el castillo de Eilean Donan."
+    },
+    {
+     "question": "¿Culloden está cerca de Inverness?",
+     "answer": "Sí, el campo de batalla está a un paso en coche al este de la ciudad. Aquí fue derrotado en 1746 el ejército de Carlos Eduardo Estuardo, lo que puso fin a la causa jacobita y trajo leyes muy duras contra la vestimenta y las costumbres de las Highlands."
+    },
+    {
+     "question": "¿Por qué se llama a Inverness la capital de las Highlands?",
+     "answer": "Porque es la única ciudad de la región y su centro de transportes, comercio y administración. Aquí confluyen las carreteras y los trenes del norte, del oeste y del sur."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "pitlochry": {
+   "title": "Pitlochry",
+   "summary": "Un pueblo de veraneo victoriano en las colinas de Perthshire, junto a la A9: una calle principal de tiendas y cafés, y una presa con escalera de salmones.",
+   "content": "<p>Pitlochry queda más o menos a medio camino entre Edimburgo e Inverness, a un paso de la A9, y por eso casi todos los viajes entre las dos ciudades paran aquí. Empezó como una aldea junto al pueblo de Moulin, más antiguo, y creció cuando se abrió por el valle una carretera militar hacia el norte, que trajo viajeros, posadas y tiendas. La estancia de la reina Victoria en el cercano castillo de Blair en 1842 hizo el resto, y el pueblo conserva el aire de un lugar de veraneo victoriano.</p><p>Todo está en Atholl Road, la calle principal, o cerca de ella: edificios de piedra de aquella época, cafés, pubs y tiendas de material de montaña y recuerdos. Bajando un poco a pie se llega al río Tummel y a la escalera de salmones, una sucesión de estanques escalonados que permite a los peces salvar la presa en su viaje río arriba.</p><p>Por encima de la presa el río se ensancha y forma el lago Faskally, con un sendero por su orilla arbolada. Con más tiempo que el de una parada de autocar, las salidas habituales son Queen's View, un mirador famoso a pocos kilómetros, las dos destilerías de la zona, Blair Athol y Edradour, y el monte Ben Vrackie, detrás del pueblo.</p>",
+   "directions": "Señalizado desde la A9, unos 45 km al norte de Perth. Aparcamientos de pago detrás de la calle principal.",
+   "best_time": "",
+   "tips": [
+    "Los salmones remontan la escalera sobre todo de primavera a otoño; no hay garantía de ver ninguno.",
+    "El otoño es la mejor época: los bosques que rodean el lago cambian de color."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuándo se ven salmones en la escalera de Pitlochry?",
+     "answer": "Sobre todo entre la primavera y el otoño, cuando los peces remontan el río para desovar. La escalera es una cadena de estanques que les permite salvar la presa. Verlos depende de la época y del día, y nunca está garantizado."
+    },
+    {
+     "question": "¿Por qué paran los tours en Pitlochry?",
+     "answer": "Está más o menos a mitad del trayecto por la A9 entre Inverness y Edimburgo: un pueblo recogido a un paso de la carretera, con cafés, tiendas y aseos juntos en una sola calle."
+    },
+    {
+     "question": "¿Qué se puede ver en Pitlochry en media hora?",
+     "answer": "Recorre Atholl Road para ver las fachadas victorianas y tomar un café, o baja directamente al río a ver la presa y la escalera de salmones. Da tiempo para una cosa o la otra, no para las dos con calma."
+    },
+    {
+     "question": "¿A qué reina se refiere Queen's View?",
+     "answer": "La respuesta habitual es la reina Victoria, que estuvo aquí en 1866. Una tradición más antigua atribuye el nombre a Isabel, la esposa de Robert the Bruce, de quien se cuenta que descansó en este lugar más de cinco siglos antes."
+    },
+    {
+     "question": "¿Hay destilerías en Pitlochry?",
+     "answer": "Dos: Blair Athol, en el pueblo, y Edradour, una destilería pequeña en las colinas de las afueras. Las dos reciben visitas y ofrecen catas."
+    },
+    {
+     "question": "¿Hay alguna buena caminata desde Pitlochry?",
+     "answer": "La clásica es Ben Vrackie, un monte de algo más de 800 m. La ruta tiene unos 10 km, sale de un aparcamiento cercano a Moulin, al norte del pueblo, y es una subida de montaña en toda regla. Si prefieres algo suave, sigue la orilla del lago Faskally."
+    },
+    {
+     "question": "¿Qué es el Enchanted Forest?",
+     "answer": "Un espectáculo nocturno de luz y música que se celebra cada otoño, durante octubre, en el bosque de Faskally, junto al pueblo. Las entradas se venden con antelación y se agotan."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "glencoe": {
+   "title": "Glencoe",
+   "summary": "El valle más famoso de Escocia: una hondonada profunda entre montañas escarpadas, atravesada por la carretera, con una página negra en su historia.",
+   "content": "<p>La carretera que viene del sur cruza la extensión vacía de Rannoch Moor y luego se hunde en Glencoe entre paredes de roca, obra de antiguas erupciones volcánicas que el hielo talló después. La montaña que guarda la entrada, una pirámide casi perfecta de más de 1.000 m, es Buachaille Etive Mòr, una de las más fotografiadas de Escocia.</p><p>Más abajo, en el lado sur, están las Tres Hermanas: tres grandes contrafuertes, Beinn Fhada (la colina larga), Gearr Aonach (la cresta corta) y Aonach Dubh (la cresta negra), que son el final de las crestas que bajan de Bidean nam Bian. Entre las dos primeras se esconde el Lost Valley, el «valle perdido», una hondonada que no se ve desde la carretera. A sus pies el río salta por un pequeño desfiladero en el Meeting of Three Waters y después se abre en el lago Achtriochtan, que en los días sin viento refleja las laderas.</p><p>Glencoe se recuerda también por lo que ocurrió el 13 de febrero de 1692. Un centenar de soldados del gobierno llevaba cerca de dos semanas alojado como huésped en las casas de los MacDonald, el clan que dominaba el valle. Aquella madrugada, por órdenes superiores, se volvieron contra sus anfitriones y mataron a treinta y ocho; otros murieron en la nieve al huir. El jefe había jurado lealtad al rey Guillermo unos días después del plazo, y se quiso dar un escarmiento con el clan. Fue la traición a la hospitalidad, más que el número de muertos, lo que hizo tristemente célebre la matanza, y por eso a Glencoe se le sigue llamando el valle de las lágrimas.</p><p>El paisaje ha servido de escenario a muchas películas, entre ellas varias de la saga de Harry Potter, Skyfall, de James Bond, Braveheart y El rey proscrito. El centro de visitantes, cerca del pueblo de Glencoe, explica cómo se formó el valle y cuenta su historia, y el pequeño museo del pueblo, en una casa con techo de paja del siglo XVIII, muestra objetos de las casas de los MacDonald.</p>",
+   "directions": "En la A82, entre Tyndrum y Fort William. Apartaderos con aparcamiento a lo largo del valle; el mirador de las Tres Hermanas está señalizado.",
+   "best_time": "A primera o a última hora; a mediodía los apartaderos están llenos.",
+   "tips": [
+    "Los apartaderos son pequeños y están concurridos: no pares en la propia carretera.",
+    "Aquí el tiempo cambia deprisa; las cumbres suelen estar entre nubes.",
+    "En el centro de visitantes te ayudan a elegir una ruta según el tiempo que haga y el que tengas."
+   ],
+   "faq": [
+    {
+     "question": "¿Qué ocurrió en la matanza de Glencoe?",
+     "answer": "El 13 de febrero de 1692, un centenar de soldados del gobierno que llevaba cerca de dos semanas alojado en casa de los MacDonald de Glencoe atacó a las familias que los acogían. Mataron a treinta y ocho personas, y otras murieron de frío tras escapar al monte. El jefe del clan se había retrasado unos días en jurar lealtad al rey Guillermo, y se quiso dar un escarmiento."
+    },
+    {
+     "question": "¿Qué son las Tres Hermanas de Glencoe?",
+     "answer": "Tres crestas escarpadas en el lado sur del valle: Beinn Fhada, Gearr Aonach y Aonach Dubh. Son los espolones norte de Bidean nam Bian. El mirador señalizado junto a la carretera principal las tiene justo enfrente."
+    },
+    {
+     "question": "¿Dónde se puede parar en Glencoe?",
+     "answer": "Hay apartaderos con aparcamiento a lo largo de la carretera principal, el más conocido en el mirador de las Tres Hermanas. Son pequeños y a mediodía se llenan, así que no cuentes con encontrar sitio, y no pares nunca en la calzada."
+    },
+    {
+     "question": "¿Hay alguna caminata corta en Glencoe?",
+     "answer": "La más conocida es el sendero al Lost Valley, una hondonada escondida entre dos de las Tres Hermanas. Lleva de dos a tres horas entre ida y vuelta y es exigente, con un cruce de río y algún paso de trepada fácil: hace falta calzado adecuado y tiempo seco."
+    },
+    {
+     "question": "¿Qué películas se rodaron en Glencoe?",
+     "answer": "Varias de Harry Potter, entre ellas El prisionero de Azkaban, usaron el valle para escenas de exteriores. También se rodaron en la zona Skyfall, de James Bond, Braveheart y El rey proscrito."
+    },
+    {
+     "question": "¿Cuánto se tarda en cruzar Glencoe en coche?",
+     "answer": "Unos veinte minutos sin parar, aunque nadie lo cruza sin parar. Calcula al menos una hora para los miradores, y medio día si quieres añadir el centro de visitantes o una caminata corta."
+    },
+    {
+     "question": "¿Qué hay que ver en el pueblo de Glencoe?",
+     "answer": "Una sola calle de casitas al pie del valle, con un par de cafés y el Glencoe and North Lorn Folk Museum, instalado en una casa del siglo XVIII. Justo encima del pueblo, Glencoe Lochan es un pequeño lago entre árboles con senderos fáciles y señalizados."
+    },
+    {
+     "question": "¿Por qué se llama a Glencoe el valle de las lágrimas?",
+     "answer": "Por la matanza de 1692. El nombre es posterior y romántico, pero ha quedado."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "glenfinnan": {
+   "title": "Viaducto y monumento de Glenfinnan",
+   "summary": "El viaducto ferroviario en curva que se hizo famoso en el cine, y el monumento junto a Loch Shiel donde empezó el levantamiento jacobita de 1745.",
+   "content": "<p>Dos monumentos se levantan a pocos cientos de metros uno de otro en la cabecera de Loch Shiel. El más antiguo es el monumento de Glenfinnan, una torre de piedra de unos 18 m coronada por un highlander, erigida en 1815 en el lugar donde el príncipe Carlos Eduardo Estuardo reunió a los clanes en agosto de 1745 y dio comienzo al último levantamiento jacobita.</p><p>El otro es el viaducto ferroviario, que lleva la línea West Highland de un lado a otro del valle sobre 21 arcos, a unos 30 m sobre el río, describiendo una amplia curva. Lo construyó Robert McAlpine y se terminó en 1901; fue una de las primeras grandes obras del mundo hechas de hormigón. Ya era muy conocido entre los aficionados al ferrocarril antes de que cuatro películas de Harry Potter, rodadas en el puente real y sin decorados, lo hicieran famoso en todo el mundo como la ruta del Expreso de Hogwarts.</p><p>Detrás del centro de visitantes sale un sendero señalizado que sube en pocos minutos a un claro con vistas al viaducto; otro más largo remonta el valle, pasa bajo los arcos y sube a la ladera de enfrente. De abril a octubre cruza el viaducto un tren de vapor, el Jacobite, en su trayecto entre Fort William y Mallaig, y eso es lo que viene a ver la mayoría. Los días y las horas cambian cada temporada, y el aparcamiento se cierra cuando se llena, así que compensa llegar con margen.</p>",
+   "directions": "En la A830, entre Fort William y Mallaig, unos 27 km al oeste de Fort William. Aparcamientos de pago en el centro de visitantes.",
+   "best_time": "Llega con mucha antelación al paso de un tren de vapor: los aparcamientos se llenan.",
+   "tips": [
+    "Llega entre 45 minutos y una hora antes del paso de un tren de vapor: el aparcamiento se llena y lo cierran.",
+    "Los horarios del tren de vapor cambian cada temporada. Compruébalos antes de organizar la parada en torno a un cruce.",
+    "Los únicos aseos públicos están en el centro de visitantes.",
+    "Enseña un billete de autobús o de tren en la cafetería y te invitan a una bebida caliente."
+   ],
+   "faq": [
+    {
+     "question": "¿A qué hora cruza el tren de vapor el viaducto de Glenfinnan?",
+     "answer": "Depende del día y de la temporada. El Jacobite circula de abril a octubre, en fechas que cambian cada año. El tren de la mañana sale de Fort William poco después de las diez y llega al viaducto una media hora más tarde, cerca de las once; cuando hay tren de tarde, cruza a primera o a media tarde. Consulta el horario vigente, que también está expuesto en el centro de visitantes. En invierno no hay vapor, pero los trenes normales siguen cruzando varias veces al día."
+    },
+    {
+     "question": "¿Cuál es el mejor sitio para ver el viaducto?",
+     "answer": "El más cercano es el mirador al que lleva el sendero señalizado de detrás del centro de visitantes, a cinco o diez minutos cuesta arriba, con toda la curva de los arcos enfrente. Para la vista clásica desde lo alto, con el tren abajo, sigue el sendero que pasa bajo el viaducto y sube a la ladera del otro lado, a quince o veinte minutos del aparcamiento. Los dos son irregulares y tienen barro después de llover."
+    },
+    {
+     "question": "¿Cuánto cuesta aparcar en Glenfinnan?",
+     "answer": "El aparcamiento del centro de visitantes cuesta 5 £ al día. Visitar el recinto del monumento es gratis. En verano el aparcamiento se cierra cada vez que se llena, así que ve temprano, o llega en autobús o en tren."
+    },
+    {
+     "question": "¿En qué películas de Harry Potter sale el viaducto de Glenfinnan?",
+     "answer": "Aparece en cuatro películas de la saga como la ruta del Expreso de Hogwarts; la escena más recordada es la de La cámara secreta, cuando Harry y Ron persiguen al tren en el coche volador."
+    },
+    {
+     "question": "¿Qué conmemora el monumento de Glenfinnan?",
+     "answer": "El alzamiento del estandarte jacobita el 19 de agosto de 1745, cuando el príncipe Carlos Eduardo Estuardo reunió aquí a los clanes de las Highlands para intentar recuperar el trono para su familia. El levantamiento terminó en Culloden al año siguiente."
+    },
+    {
+     "question": "¿Se puede viajar en el tren de vapor que cruza el viaducto?",
+     "answer": "Sí. El Jacobite va de Fort William a Mallaig y vuelve, con unas dos horas de parada en Mallaig, y cruza el viaducto en los dos sentidos. Tiene clase estándar y primera, y en verano las plazas se agotan con meses de antelación, así que reserva pronto con la compañía, West Coast Railways."
+    },
+    {
+     "question": "¿Se puede subir al monumento de Glenfinnan?",
+     "answer": "Sí, cuando el centro de visitantes está abierto: una escalera estrecha por dentro lleva hasta arriba, a la altura de la estatua, con vistas a lo largo de Loch Shiel. Se paga una pequeña entrada y el aforo es limitado."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "fort-william": {
+   "title": "Fort William",
+   "summary": "La principal población del oeste de las Highlands, a orillas de Loch Linnhe y al pie del Ben Nevis. La parada habitual para comer camino de Skye.",
+   "content": "<p>Fort William es la principal población del oeste de las Highlands y se alarga por la orilla de Loch Linnhe, un largo brazo de mar. Es un pueblo de trabajo más que un pueblo bonito, pero es pequeño, llano y fácil de recorrer a pie, y tiene lo que pide un viaje largo: una calle principal peatonal con sitios donde comer, supermercados y gasolineras.</p><p>El Ben Nevis se levanta justo detrás. Con sus 1.345 m es la montaña más alta de Gran Bretaña, y su cumbre es lo que queda de la cúpula hundida de un antiguo volcán. La primera ascensión de la que hay constancia la hizo en 1771 un botánico de Edimburgo; hoy suben más de 100.000 personas al año. Desde el propio pueblo no se ve la cima, que queda oculta por las laderas bajas de la montaña.</p><p>Si tienes una hora, el West Highland Museum, en Cameron Square, junto a la calle principal, es gratuito y merece la visita aunque solo sea por su colección jacobita. A unos 3 km al norte del centro están las ruinas del castillo de Inverlochy, construido a finales del siglo XIII por los Comyn, rivales de Robert the Bruce; se pueden recorrer libremente y sin pagar.</p><p>De Fort William sale además el tren de vapor Jacobite hacia Mallaig, que cruza por el camino el viaducto de Glenfinnan.</p>",
+   "directions": "En la A82. Aparcamientos de pago en los dos extremos de la calle principal.",
+   "best_time": "",
+   "tips": [
+    "Aquí están los últimos supermercados grandes antes de Skye.",
+    "El pueblo es muy recogido: la estación de autobuses, la calle principal y el museo están a pocos minutos a pie.",
+    "El Ben Nevis es una jornada entera y exige ir bien equipado. No lo intentes por un impulso."
+   ],
+   "faq": [
+    {
+     "question": "¿Se ve el Ben Nevis desde Fort William?",
+     "answer": "Desde el centro del pueblo, no: la cumbre queda oculta tras las laderas bajas de la propia montaña. Las mejores vistas son desde más lejos, por ejemplo desde el Monumento a los Comandos, cerca de Spean Bridge, o desde el telecabina de la estación de Nevis Range, que sube hasta los 650 m en la montaña vecina, Aonach Mòr."
+    },
+    {
+     "question": "¿Cuánto se tarda en subir al Ben Nevis?",
+     "answer": "Unas ocho horas entre ida y vuelta por el sendero principal, que sale de Glen Nevis. Es gratis, y es una montaña seria: en la cumbre es habitual la nieve, la niebla puede cerrarse sin avisar incluso en verano, y allí muere gente que sube sin preparación. No es algo para encajar en una parada camino de Skye."
+    },
+    {
+     "question": "¿Cuál es la ruta más fácil al Ben Nevis?",
+     "answer": "La Mountain Track, también llamada Pony Track, que sube en zigzag desde Glen Nevis. Se abrió en el siglo XIX para abastecer un observatorio meteorológico en la cumbre, y las cargas las subían ponis: de ahí el nombre. Las ruinas del observatorio siguen allí."
+    },
+    {
+     "question": "¿Qué se puede hacer en Fort William en una hora?",
+     "answer": "Comer y pasear por la calle principal. Si prefieres ver algo, el West Highland Museum, en Cameron Square, es gratuito y lo bastante pequeño para verlo en cuarenta minutos."
+    },
+    {
+     "question": "¿El tren de Harry Potter sale de Fort William?",
+     "answer": "Sí. El tren de vapor Jacobite va de la estación, en el centro de Fort William, al puerto pesquero de Mallaig y vuelve, de abril a octubre, con unas dos horas de parada en Mallaig. Las plazas se agotan con mucha antelación."
+    },
+    {
+     "question": "¿Qué es el castillo de Inverlochy?",
+     "answer": "Un castillo en ruinas de finales del siglo XIII, a unos 3 km al norte del pueblo, donde el río Lochy desemboca en el lago de mar. Lo construyó John Comyn, cuya familia lo perdió todo cuando su rival Robert the Bruce llegó a rey. La entrada y el aparcamiento son gratuitos. No lo confundas con el hotel del mismo nombre."
+    },
+    {
+     "question": "¿A qué distancia está Fort William de Glasgow y de Edimburgo?",
+     "answer": "A unas dos horas y media en coche de Glasgow y a algo más de tres de Edimburgo."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "loch-garry-viewpoint": {
+   "title": "Mirador de Loch Garry",
+   "summary": "Un mirador de carretera muy por encima de Loch Garry, conocido porque desde aquí el lago tiene la forma del mapa de Escocia.",
+   "content": "<p>La carretera a Skye sube con fuerza desde el Great Glen, y casi en lo alto hay un apartadero desde el que se ve Loch Garry en toda su longitud. Desde este ángulo, la forma del lago y de sus orillas arboladas recuerda al contorno de Escocia.</p>",
+   "directions": "Un apartadero señalizado en la A87, pocos kilómetros después de que se separe de la A82 en Invergarry.",
+   "best_time": "",
+   "tips": [
+    "Parada corta: la vista es desde el propio apartadero."
+   ],
+   "faq": [
+    {
+     "question": "¿Por qué se dice que Loch Garry parece Escocia?",
+     "answer": "Visto desde este apartadero, mirando hacia el oeste a lo largo del lago, sus orillas y sus cabos arbolados dibujan un contorno muy parecido al del mapa de Escocia. Es un efecto del ángulo: desde cualquier otro sitio el lago es como cualquier otro."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "commando-memorial": {
+   "title": "Monumento a los Comandos",
+   "summary": "Un bronce de tres comandos que miran hacia el Ben Nevis, en una colina sobre Spean Bridge, en recuerdo de los soldados que se entrenaron en estos montes.",
+   "content": "<p>El monumento se inauguró en 1952 en memoria de los comandos de la Segunda Guerra Mundial, que se entrenaron en el cercano Achnacarry. Está en terreno abierto, con una de las vistas más amplias de Lochaber: en un día despejado, el Ben Nevis y Aonach Mòr hacia el sur.</p><p>Al lado hay un pequeño jardín del recuerdo.</p>",
+   "directions": "Junto a la A82, unos 2 km al noroeste de Spean Bridge, en el cruce con la B8004. Aparcamiento gratuito.",
+   "best_time": "",
+   "tips": [
+    "Es un lugar de recuerdo: las familias siguen dejando homenajes en el jardín."
+   ],
+   "faq": [
+    {
+     "question": "¿A quién recuerda el Monumento a los Comandos?",
+     "answer": "A los hombres de las unidades de comandos británicas de la Segunda Guerra Mundial, que se entrenaron en estas montañas desde su base en el cercano Achnacarry. Las tres figuras de bronce miran hacia el terreno donde se prepararon para el combate."
+    },
+    {
+     "question": "¿Qué montañas se ven desde el Monumento a los Comandos?",
+     "answer": "En un día despejado, el Ben Nevis, la montaña más alta de Gran Bretaña, y su vecina Aonach Mòr, hacia el sur. Es una de las mejores vistas del macizo del Nevis desde la carretera."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "five-sisters-of-kintail": {
+   "title": "Las Cinco Hermanas de Kintail",
+   "summary": "Una cresta de cinco picos afilados que se levanta desde la cabecera de Loch Duich: la gran vista de montaña del trayecto entre Skye y el lago Ness.",
+   "content": "<p>Las Cinco Hermanas se alinean en el lado norte de Glen Shiel, tres de ellas por encima de los 914 m. La carretera principal discurre a sus pies, y como mejor se ven es mirando hacia atrás desde la orilla de Loch Duich.</p><p>La travesía de toda la cresta es una jornada de montaña larga y seria, para montañeros con experiencia.</p>",
+   "directions": "En la A87, a su paso por Glen Shiel, entre Shiel Bridge y Cluanie. Apartaderos a lo largo de la carretera y junto a Loch Duich.",
+   "best_time": "",
+   "tips": [
+    "Las cumbres suelen estar entre nubes; la vista es mejor con tiempo despejado, después de que pase un frente."
+   ],
+   "faq": [
+    {
+     "question": "¿Cuál es la leyenda de las Cinco Hermanas de Kintail?",
+     "answer": "El cuento dice que antes eran siete hermanas. Dos se casaron con dos hermanos llegados de fuera, que prometieron enviar a sus otros cinco hermanos para las demás. Las cinco hermanas esperaron, y al final fueron convertidas en montañas para que su belleza durase hasta que llegaran."
+    },
+    {
+     "question": "¿Se pueden recorrer a pie las Cinco Hermanas de Kintail?",
+     "answer": "La travesía de la cresta es una de las jornadas de montaña clásicas de Escocia, pero es larga y dura: de ocho a diez horas por terreno alto y difícil, con salida y llegada en puntos distintos de la carretera. Es para montañeros con experiencia y con buen tiempo."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "dunkeld": {
+   "title": "Dunkeld",
+   "summary": "Un pueblo pequeño de Perthshire a orillas del río Tay, con una catedral medio en ruinas junto al agua y calles de casas restauradas del siglo XVIII.",
+   "content": "<p>Dunkeld es un pueblo muy pequeño de casas encaladas a orillas del Tay, el río más largo de Escocia, a un paso de la A9. Parece un rincón tranquilo, pero fue en su día el corazón religioso del país: en el siglo IX Kenneth MacAlpin, primer rey de los escoceses, mandó construir aquí una iglesia de piedra para guardar las reliquias de san Columba e hizo de Dunkeld el centro de su reino.</p><p>La catedral está sobre una pradera junto al río. La mitad es una ruina sin techo y la otra mitad sigue siendo la iglesia parroquial. Sufrió daños dos veces: primero en la Reforma y de nuevo en 1689, cuando jacobitas y tropas del gobierno combatieron por las calles en la batalla de Dunkeld y ardió casi todo el pueblo. En sus muros todavía se ven las marcas de las balas de mosquete.</p><p>Las casas que rodean la plaza se reconstruyeron después de aquella batalla y se han restaurado con cuidado, y el puente sobre el Tay es de 1809. En la otra orilla está Birnam, cuyo bosque es el que avanza contra el rey en el Macbeth de Shakespeare.</p>",
+   "directions": "Señalizado desde la A9, unos 24 km al norte de Perth. Aparcamiento de pago junto al río.",
+   "best_time": "",
+   "tips": [
+    "Busca las marcas de las balas de mosquete en los muros de la catedral.",
+    "El Hermitage, un paseo por el bosque hasta una cascada, está a un par de kilómetros, al otro lado de la A9. Calcula una hora.",
+    "En la pradera de la catedral, junto al río, hay bancos: un buen sitio para un pícnic."
+   ],
+   "faq": [
+    {
+     "question": "¿Qué hay que ver en Dunkeld?",
+     "answer": "La catedral a orillas del Tay, mitad ruina y mitad iglesia parroquial, la plaza de casas restauradas que hay al lado y el puente sobre el río. Las tres cosas están a pocos minutos a pie."
+    },
+    {
+     "question": "¿Por qué está en ruinas parte de la catedral de Dunkeld?",
+     "answer": "La destrozaron en la Reforma y luego se vio envuelta en la batalla de Dunkeld, en 1689. El coro se reparó y sigue en uso para el culto; la nave se quedó sin techo."
+    },
+    {
+     "question": "¿Qué fue la batalla de Dunkeld?",
+     "answer": "Un combate calle a calle librado en 1689, en el primer levantamiento jacobita, entre partidarios del depuesto rey Jacobo VII y tropas leales a Guillermo de Orange. El pueblo quedó casi destruido por el fuego, y por eso sus casas más antiguas son de justo después."
+    },
+    {
+     "question": "¿Qué es el Hermitage de Dunkeld?",
+     "answer": "Un bosque a un par de kilómetros del pueblo, diseñado en el siglo XVIII por los duques de Atholl como lugar de recreo a lo largo del río Braan, y hoy al cuidado del National Trust for Scotland. Un sendero bajo abetos de Douglas, de los árboles más altos de Gran Bretaña, lleva a Ossian's Hall, un pequeño pabellón de 1757 que se asoma justo encima de la cascada de Black Linn."
+    },
+    {
+     "question": "¿El bosque de Birnam de Macbeth existe de verdad?",
+     "answer": "Sí. Birnam es el pueblo que queda frente a Dunkeld, al otro lado del Tay, y el bosque que nombra la profecía de la obra crecía en las colinas que lo rodean."
+    },
+    {
+     "question": "¿A qué distancia está Dunkeld de Edimburgo?",
+     "answer": "A una hora y cuarto en coche, por la autopista hasta Perth y luego por la A9."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "stirling": {
+   "title": "Stirling",
+   "summary": "La antigua puerta entre las Lowlands y las Highlands, con su castillo sobre una roca que domina la llanura y el Monumento a Wallace en la colina de enfrente.",
+   "content": "<p>Durante siglos, Stirling fue la llave de Escocia. Estaba en el paso más bajo del río Forth, el único punto por donde un ejército podía cruzar sin barcas, y quien tenía su castillo controlaba el camino al norte: de ahí su viejo sobrenombre, la puerta de las Highlands. Por eso se libraron a la vista de sus murallas dos de las batallas decisivas de la historia de Escocia: la del puente de Stirling, en 1297, que ganó William Wallace, y la de Bannockburn, en 1314, que ganó Robert the Bruce.</p><p>El castillo se asienta sobre el tapón de un volcán extinguido, con acantilados por tres lados y un único acceso que sube por el casco antiguo. Sus restos más viejos son del siglo XII, pero buena parte de lo que hoy se ve lo construyeron los reyes Estuardo, cuando era tanto palacio real como fortaleza: el gran salón, con su revoco de cal amarillo pálido, y el palacio renacentista de Jacobo V. María Estuardo pasó aquí su infancia. En la explanada de fuera hay estatuas de Bruce y de Wallace.</p><p>Justo debajo del castillo está la iglesia de Holy Rude, un templo gótico del siglo XV donde fue coronado en 1567 Jacobo VI, siendo un niño de meses, con John Knox predicando el sermón. Al otro lado del río, en su propia colina, se alza el Monumento a Wallace, una torre victoriana de 70 m, terminada en 1869 y pagada por suscripción popular. Se puede subir por sus 246 escalones para ver el campo de batalla.</p><p>Tanto el castillo como el monumento se ven de sobra desde la autopista, y así es como los descubre la mayoría de la gente que va camino de las Highlands.</p>",
+   "directions": "Junto a la M9, unos 60 km al noroeste de Edimburgo. El castillo está en lo alto del casco antiguo; su aparcamiento está cerrado a casi todos los coches, así que usa el aparcamiento disuasorio de Castleview.",
+   "best_time": "",
+   "tips": [
+    "Reserva por internet: sale más barato que en taquilla.",
+    "Ver bien el castillo lleva al menos dos horas.",
+    "El aparcamiento del castillo está cerrado a casi todos los coches. Usa el aparcamiento disuasorio."
+   ],
+   "faq": [
+    {
+     "question": "¿Se puede aparcar en el castillo de Stirling?",
+     "answer": "Ahora mismo no, salvo que necesites una plaza adaptada: el aparcamiento del castillo está cerrado al resto de coches. Usa el aparcamiento disuasorio de Castleview o sube a pie desde el centro; el castillo está a unos 800 m cuesta arriba de las estaciones de tren y de autobuses."
+    },
+    {
+     "question": "¿Cuánto tiempo hace falta para ver el castillo de Stirling?",
+     "answer": "Al menos dos horas para ver bien el palacio, el gran salón y las murallas. Desde la carretera es solo una vista de pasada."
+    },
+    {
+     "question": "¿Se puede entrar con perro al castillo de Stirling?",
+     "answer": "No. Solo se admiten perros de asistencia."
+    },
+    {
+     "question": "¿Cuánto cuesta visitar el castillo de Stirling?",
+     "answer": "La entrada de adulto cuesta 18,50 £ por internet y 20,50 £ en el castillo. Los mayores de 65 años pagan 15 £ por internet, y los niños de 7 a 15 años, 9 £. El precio incluye una visita guiada."
+    },
+    {
+     "question": "¿Cuándo abre el castillo de Stirling?",
+     "answer": "Todos los días desde las 9:30. Cierra a las 18:00 de abril a septiembre y a las 17:00 de octubre a marzo, con última entrada 45 minutos antes del cierre, y está cerrado el 25 y el 26 de diciembre."
+    },
+    {
+     "question": "¿Se puede subir al Monumento a Wallace?",
+     "answer": "Sí. Una escalera de caracol de 246 escalones lleva a la corona abierta de lo alto, pasando por salas que cuentan la historia de Wallace y exponen una espada que se dice que fue suya. El monumento está a una media hora a pie del castillo, o a diez minutos en autobús urbano, y tiene su propia entrada."
+    },
+    {
+     "question": "¿Por qué era tan importante Stirling?",
+     "answer": "Por el río. Durante siglos el puente de Stirling fue el punto más bajo por donde se podía cruzar el Forth a pie, así que cualquier ejército que se moviera entre las Lowlands y las Highlands tenía que pasar por debajo del castillo."
+    },
+    {
+     "question": "¿Qué más hay que ver en Stirling, además del castillo?",
+     "answer": "El casco antiguo, de camino hacia arriba: la iglesia de Holy Rude y su cementerio, la antigua cárcel, la fachada en ruinas de Mar's Wark y la cruz del mercado en Broad Street. El Stirling Old Bridge, un puente peatonal de piedra del siglo XV, está a unos veinte minutos a pie del castillo."
+    },
+    {
+     "question": "¿A qué distancia está Stirling de Edimburgo y de Glasgow?",
+     "answer": "A una hora en coche de Edimburgo, o cincuenta minutos en tren, y a poco más de media hora en coche de Glasgow."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "De abril a septiembre",
+     "hours": "Todos los días de 9:30 a 18:00"
+    },
+    {
+     "season": "De octubre a marzo",
+     "hours": "Todos los días de 9:30 a 17:00"
+    }
+   ]
+  },
+  "callander": {
+   "title": "Callander",
+   "summary": "Un pueblo pequeño al borde de las Highlands, en la carretera que sube desde Stirling, y puerta del Parque Nacional de Loch Lomond y los Trossachs.",
+   "content": "<p>Callander está donde se acaba el llano y empiezan las montañas. Su larga calle principal tiene cafés, panaderías y tiendas, y eso lo convierte en la primera parada cómoda del camino al norte desde Edimburgo o Glasgow.</p><p>Es una de las poblaciones principales del Parque Nacional de Loch Lomond y los Trossachs, creado en 2002, que abarca 1.865 km² de montañas, bosques y más de veinte lagos grandes. Los Trossachs, la parte del parque que rodea Callander, son la tierra de Rob Roy MacGregor, el proscrito al que la novela de Walter Scott convirtió en un Robin Hood escocés.</p><p>Para muchos visitantes, Callander es también la primera ocasión de ver vacas de las Highlands, la raza peluda y de cuernos largos, que suelen estar en prados a la salida del pueblo.</p>",
+   "directions": "En la A84, unos 25 km al noroeste de Stirling. Aparcamientos de pago junto a la calle principal.",
+   "best_time": "",
+   "tips": [
+    "Las panaderías de la calle principal son lo preferido por la gente de la zona para una parada rápida.",
+    "Ten la cámara a mano al salir del pueblo, por las vacas de las Highlands."
+   ],
+   "faq": [
+    {
+     "question": "¿Por qué paran los tours en Callander?",
+     "answer": "Es el primer pueblo al borde de las Highlands en la carretera que sube desde Edimburgo y Glasgow, con cafés, panaderías y aseos a lo largo de una sola calle: un sitio cómodo para el primer descanso del día."
+    },
+    {
+     "question": "¿Se ven vacas de las Highlands en Callander?",
+     "answer": "Muchas veces, sí. El pueblo tiene fama de ser un buen sitio para verlas, en prados pegados a la carretera. Que ese día estén cerca de la valla ya depende de ellas."
+    },
+    {
+     "question": "¿Callander está en un parque nacional?",
+     "answer": "Sí, en el Parque Nacional de Loch Lomond y los Trossachs, el primero de Escocia, declarado en 2002. Tiene cuatro zonas: Loch Lomond, el bosque de Argyll, los Trossachs y Breadalbane."
+    },
+    {
+     "question": "¿Quién fue Rob Roy?",
+     "answer": "Rob Roy MacGregor, un tratante de ganado convertido en proscrito que vivió en estas montañas a principios del siglo XVIII. Walter Scott lo hizo protagonista de una novela ambientada en torno al cercano lago Katrine, y desde entonces se le recuerda como una especie de Robin Hood escocés."
+    },
+    {
+     "question": "¿El castillo de Doune está cerca de Callander?",
+     "answer": "Sí, a un paso en coche volviendo hacia Stirling. Es un castillo del siglo XIV que ha hecho de otros en la pantalla: en Los caballeros de la mesa cuadrada, de los Monty Python, en el episodio piloto de Juego de tronos y en Outlander."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  },
+  "loch-lubnaig": {
+   "title": "Loch Lubnaig",
+   "summary": "Un lago estrecho entre laderas boscosas, pegado a la carretera al norte de Callander: el primer paisaje de las Highlands de verdad del viaje.",
+   "content": "<p>La carretera sigue la orilla este de Loch Lubnaig durante varios kilómetros, con el Ben Ledi levantándose en la otra orilla. Los aparcamientos a pie de lago permiten pasar unos minutos junto al agua.</p>",
+   "directions": "Junto a la A84, pocos kilómetros al norte de Callander. Aparcamientos señalizados en la orilla.",
+   "best_time": "",
+   "tips": [],
+   "faq": [
+    {
+     "question": "¿Se puede parar en Loch Lubnaig?",
+     "answer": "Sí. Hay aparcamientos señalizados en la misma orilla, junto a la carretera principal, pocos kilómetros al norte de Callander, con espacio para bajar andando hasta el agua."
+    }
+   ],
+   "opening_hours": [
+    {
+     "season": "Todo el año",
+     "hours": "Acceso libre"
+    }
+   ]
+  }
+ }
+}

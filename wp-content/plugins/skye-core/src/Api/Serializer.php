@@ -36,7 +36,7 @@ final class Serializer {
 			'type'         => $p->post_type,
 			'title'        => \Skye\Text::title( $p ),
 			'url'          => PostTypes::BRAND === $p->post_type ? null : get_permalink( $p ),
-			'image'        => PlaceSerializer::image_by_id( (int) get_post_thumbnail_id( $p->ID ) ),
+			'image'        => PlaceSerializer::image_by_id( \Skye\Lang::thumbnail_id( $p->ID ) ),
 			'verification' => Verification::get( $p->ID ),
 		];
 	}

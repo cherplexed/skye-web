@@ -76,7 +76,7 @@ final class Frontend {
 			$item['gallery'][ $i ] = $img( $g, '(min-width: 1264px) 400px, 50vw' );
 		}
 		foreach ( $item['nearby_places'] ?? [] as $i => $n ) {
-			$item['nearby_places'][ $i ]['image'] = $img( Api\PlaceSerializer::image_by_id( (int) get_post_thumbnail_id( (int) $n['id'] ) ), '(min-width: 800px) 260px, 60vw' );
+			$item['nearby_places'][ $i ]['image'] = $img( Api\PlaceSerializer::image_by_id( Lang::thumbnail_id( (int) $n['id'] ) ), '(min-width: 800px) 260px, 60vw' );
 		}
 		return $item;
 	}
@@ -124,7 +124,7 @@ final class Frontend {
 	public static function tours_shortcode(): string {
 		[ 'market' => $market ] = self::context();
 		$tours = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 20, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 20, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
 			$tours[] = self::tour_item( $post, $market, false );
 		}
 		return Render\TourBlocks::listing( $tours, $market );
@@ -145,7 +145,7 @@ final class Frontend {
 				}
 				$id = (int) $stop['place']['id'];
 				$item['days'][ $d ]['stops'][ $i ]['place']['url']   = get_permalink( $id );
-				$item['days'][ $d ]['stops'][ $i ]['place']['image'] = self::picture( Api\PlaceSerializer::image_by_id( (int) get_post_thumbnail_id( $id ) ), '(min-width: 768px) 160px, 96px' );
+				$item['days'][ $d ]['stops'][ $i ]['place']['image'] = self::picture( Api\PlaceSerializer::image_by_id( Lang::thumbnail_id( $id ) ), '(min-width: 768px) 160px, 96px' );
 			}
 			if ( ! empty( $day['night_lodging']['id'] ) ) {
 				$item['days'][ $d ]['night_lodging']['url'] = get_permalink( (int) $day['night_lodging']['id'] );
@@ -180,7 +180,7 @@ final class Frontend {
 	public static function routes_shortcode(): string {
 		[ 'market' => $market ] = self::context();
 		$routes = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::ROUTE, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+		foreach ( get_posts( [ 'post_type' => PostTypes::ROUTE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
 			$routes[] = self::route_item( $post, $market, false );
 		}
 		return Render\RouteBlocks::listing( $routes, $market );
@@ -188,7 +188,8 @@ final class Frontend {
 
 	/** URL of a zone page, or null when the zone does not exist. */
 	private static function zone_url( string $slug ): ?string {
-		$url = get_term_link( $slug, Taxonomies::ZONE );
+		$id  = Lang::term_id( Taxonomies::ZONE, $slug );
+		$url = $id ? get_term_link( $id, Taxonomies::ZONE ) : null;
 		return is_string( $url ) ? $url : null;
 	}
 
@@ -220,11 +221,11 @@ final class Frontend {
 		[ 'lang' => $lang, 'market' => $market ] = self::context();
 
 		$term   = is_tax( Taxonomies::ZONE ) ? get_queried_object() : null;
-		$zone   = $term instanceof \WP_Term ? $term->slug : '';
+		$zone   = $term instanceof \WP_Term ? Lang::term_slug( $term ) : '';
 		$active = [ 'zone' => $zone ] + self::requested_filters();
 
 		$places = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::PLACE, 'post_status' => 'publish', 'posts_per_page' => 500, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+		foreach ( get_posts( [ 'post_type' => PostTypes::PLACE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 500, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
 			$p          = Api\PlaceSerializer::summary( $post, $lang, $market );
 			$p['image'] = self::picture( $p['image'] ?? null, '(min-width: 1100px) 380px, (min-width: 700px) 50vw, 100vw' );
 			$places[]   = $p;
