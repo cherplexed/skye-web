@@ -263,6 +263,76 @@
             ]
         },
         {
+            "key": "field_skye_tour_accommodation_intro",
+            "label": "Accommodation intro",
+            "name": "accommodation_intro",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
+            "key": "field_skye_tour_accommodation_options",
+            "label": "Accommodation options",
+            "name": "accommodation_options",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_tour_accommodation_options_name",
+                    "label": "Name",
+                    "name": "name",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_tour_accommodation_options_description",
+                    "label": "Description",
+                    "name": "description",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_skye_tour_accommodation_notes",
+            "label": "Accommodation notes",
+            "name": "accommodation_notes",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "textarea",
+            "rows": 3,
+            "new_lines": ""
+        },
+        {
             "key": "field_skye_tour_products",
             "label": "Products",
             "name": "products",
@@ -375,5 +445,5 @@
     "style": "default",
     "active": true,
     "show_in_rest": 1,
-    "modified": 1795814381
+    "modified": 1795816018
 }

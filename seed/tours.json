@@ -56,7 +56,7 @@
       {
        "place": "kyleakin",
        "stop_type": "overnight",
-       "note": "Arrival around 18:00."
+       "note": "Arrival around 18:30."
       }
      ]
     },
@@ -160,7 +160,27 @@
    "departure_time": "07:30",
    "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
    "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Accommodation only if you book one of the packages that include it.",
-   "excludes": "Accommodation in the tour-only option. Entry to Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle. Meals. Travel insurance."
+   "excludes": "Accommodation in the tour-only option. Entry to Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle. Meals. Travel insurance.",
+   "accommodation_intro": "Two nights on Skye or beside it. When you book you choose how to sleep: arrange it yourself, or take one of the packages that include it.",
+   "accommodation_options": [
+    {
+     "name": "Tour only",
+     "description": "Accommodation is not included. Book your own in Kyleakin or Kyle of Lochalsh, where the tour drops you off and picks you up: at the bus stop by the Kyleside car park in Kyleakin, or at the junction of Ferry Road and Kyle Prospect Road in Kyle of Lochalsh."
+    },
+    {
+     "name": "Basic: hostel",
+     "description": "A bed in a shared room, with a shared bathroom. Beds are usually bunks and the dormitories are usually mixed. Breakfast is not included."
+    },
+    {
+     "name": "Standard: single, double or triple room",
+     "description": "Bed and breakfast in Broadford, Breakish, Kyleakin or Portree. Breakfast is included."
+    },
+    {
+     "name": "Superior: single, double or triple room",
+     "description": "Well-located bed and breakfasts and hotels."
+    }
+   ],
+   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nIn high season it may be necessary to spend both nights in or near Inverness, in which case day two is given over to Portree and Trotternish.\nThe price of each option appears when you choose your date."
   },
   {
    "slug": "isle-of-skye-2-day-tour",
@@ -271,7 +291,23 @@
    "departure_time": "07:30",
    "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
    "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Entry to Urquhart Castle. Accommodation only if you book one of the packages that include it.",
-   "excludes": "Accommodation in the tour-only option. Entry to other attractions. Loch Ness cruise. Meals. Travel insurance."
+   "excludes": "Accommodation in the tour-only option. Entry to other attractions. Loch Ness cruise. Meals. Travel insurance.",
+   "accommodation_intro": "One night on Skye or beside it. When you book you choose how to sleep: arrange it yourself, or take one of the packages that include it.",
+   "accommodation_options": [
+    {
+     "name": "Tour only",
+     "description": "Accommodation is not included. Book your own in Kyleakin or Kyle of Lochalsh, where the tour drops you off and picks you up: at the bus stop by the Kyleside car park in Kyleakin, or at the junction of Ferry Road and Kyle Prospect Road in Kyle of Lochalsh."
+    },
+    {
+     "name": "Basic: hostel",
+     "description": "A bed in a shared room, with a shared bathroom. Beds are usually bunks and the dormitories are usually mixed. Breakfast is not included."
+    },
+    {
+     "name": "Bed and breakfast: single or double room",
+     "description": "A private room with a private bathroom, which may be en suite or outside the room but for your use alone. Breakfast is included."
+    }
+   ],
+   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nThe price of each option appears when you choose your date."
   }
  ]
 }

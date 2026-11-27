@@ -142,6 +142,17 @@ final class Fields {
 					],
 				],
 			],
+			// How you can sleep on the tour. No prices here: each option is a rate in Bókun.
+			'accommodation_intro'   => [ 'type' => 'textarea', 'i18n' => true ],
+			'accommodation_options' => [
+				'type' => 'repeater',
+				'i18n' => true,
+				'sub'  => [
+					'name'        => [ 'type' => 'text', 'i18n' => true ],
+					'description' => [ 'type' => 'textarea', 'i18n' => true ],
+				],
+			],
+			'accommodation_notes'   => [ 'type' => 'textarea', 'i18n' => true ],
 			'products'           => [
 				'type' => 'repeater',
 				'i18n' => false,

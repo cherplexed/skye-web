@@ -288,6 +288,12 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( '<h3>Not included</h3><ul class="skye-includes__no"><li>Meals.</li><li>Travel insurance.</li>', $inc );
 		self::assertSame( '', TourBlocks::includes( self::tour( [ 'includes' => '', 'excludes' => '' ] ) ) );
 
+		$acc = TourBlocks::accommodation( [ 'accommodation_intro' => 'Two nights.', 'accommodation_options' => [ [ 'name' => 'Tour only', 'description' => 'Book <your> own.' ], [ 'name' => '', 'description' => 'nameless' ] ], 'accommodation_notes' => "Few beds.\nBook early." ] );
+		self::assertStringContainsString( '<h2 class="skye-block__title">Accommodation</h2><p>Two nights.</p>', $acc );
+		self::assertStringContainsString( '<div class="skye-lodgingopt"><dt>Tour only</dt><dd>Book &lt;your&gt; own.</dd></div></dl>', $acc, 'an option without a name is left out' );
+		self::assertStringContainsString( '<ul class="skye-lodgingnotes"><li>Few beds.</li><li>Book early.</li></ul>', $acc );
+		self::assertSame( '', TourBlocks::accommodation( $t ), 'nothing to say, no block' );
+
 		$dep = TourBlocks::departure( $t );
 		self::assertStringContainsString( '<dt>Departure</dt><dd>Edinburgh at 07:30</dd>', $dep );
 		self::assertStringContainsString( '<dt>Length</dt><dd>3 days · 2 nights</dd>', $dep );

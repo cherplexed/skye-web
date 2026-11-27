@@ -13,7 +13,7 @@ use Skye\Units;
  */
 final class TourBlocks {
 
-	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'includes', 'verification' ];
+	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'accommodation', 'includes', 'verification' ];
 
 	private const LANGUAGES = [ 'en' => 'English', 'es' => 'Spanish', 'it' => 'Italian' ];
 	private const CITIES    = [ 'edinburgh' => 'Edinburgh', 'glasgow' => 'Glasgow' ];
@@ -27,6 +27,7 @@ final class TourBlocks {
 			'offer'        => self::offer( $t, $market ),
 			'departure'    => self::departure( $t ),
 			'itinerary'    => self::itinerary( $t ),
+			'accommodation' => self::accommodation( $t ),
 			'includes'     => self::includes( $t ),
 			'verification' => PlaceBlocks::verification( $t ),
 			default        => '',
@@ -209,6 +210,24 @@ final class TourBlocks {
 	private static function lines( string $text ): array {
 		$parts = preg_split( '/\R+|(?<=[.!?])\s+(?=\p{Lu})/u', trim( $text ) ) ?: [];
 		return array_values( array_filter( array_map( static fn( $s ) => trim( $s ), $parts ) ) );
+	}
+
+	/** Where you sleep: the options offered when booking, and what to know before choosing. */
+	public static function accommodation( array $t ): string {
+		$options = '';
+		foreach ( $t['accommodation_options'] ?? [] as $o ) {
+			$name = trim( (string) ( $o['name'] ?? '' ) );
+			if ( '' === $name ) {
+				continue;
+			}
+			$options .= '<div class="skye-lodgingopt"><dt>' . Html::e( $name ) . '</dt><dd>' . Html::e( trim( (string) ( $o['description'] ?? '' ) ) ) . '</dd></div>';
+		}
+		$intro = trim( (string) ( $t['accommodation_intro'] ?? '' ) );
+		$notes = self::lines( (string) ( $t['accommodation_notes'] ?? '' ) );
+		$html  = '' !== $intro ? '<p>' . Html::e( $intro ) . '</p>' : '';
+		$html .= '' !== $options ? '<dl class="skye-lodgingopts">' . $options . '</dl>' : '';
+		$html .= $notes ? '<ul class="skye-lodgingnotes">' . implode( '', array_map( static fn( $n ) => '<li>' . Html::e( $n ) . '</li>', $notes ) ) . '</ul>' : '';
+		return Html::block( 'accommodation', Html::t( 'Accommodation' ), $html );
 	}
 
 	public static function includes( array $t ): string {

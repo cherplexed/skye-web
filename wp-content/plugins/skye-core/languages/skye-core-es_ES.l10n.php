@@ -231,5 +231,6 @@ return [
 		'Free time' => 'Tiempo libre',
 		'Overnight' => 'Noche',
 		'The length of each stop is an estimate: it will depend on the weather, the traffic and other factors.' => 'La duración de las paradas del tour es estimada: dependerá del tiempo, del tráfico y de otros factores.',
+		'Accommodation' => 'Alojamiento',
 	],
 ];
