@@ -41,7 +41,7 @@ final class Commands {
 	 *
 	 * ## OPTIONS
 	 * <type>
-	 * : places, brands, tours, routes or all (in that order: later types reference earlier ones by slug)
+	 * : places, brands, tours, routes, spots or all (in that order: later types reference earlier ones by slug)
 	 *
 	 * [--file=<path>]
 	 * : JSON file. Default: /seed/<type>.json (docker) or ../../../../seed/<type>.json
@@ -67,7 +67,7 @@ final class Commands {
 		// Everything below looks posts and terms up per language explicitly; start from the default one.
 		Lang::switch( Lang::default() );
 		// Order matters for `all`: tours point to places and brands, routes to places and tours.
-		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE ];
+		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE, 'spots' => PostTypes::MOTORHOME ];
 		if ( 'all' === $type ) {
 			foreach ( [ 'places', ...array_keys( $generic ) ] as $t ) {
 				if ( 'brands' === $t && $this->translating() ) {
@@ -82,7 +82,7 @@ final class Commands {
 			return;
 		}
 		if ( 'places' !== $type ) {
-			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, all" );
+			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, spots, all" );
 		}
 		Taxonomies::seed_terms();
 		$this->seed_term_translations();
@@ -133,6 +133,9 @@ final class Commands {
 				if ( array_key_exists( $field, $row ) && null !== $row[ $field ] ) {
 					Meta::set( $id, $field, $this->seed_value( $def, $row[ $field ], "{$row['slug']}.$field" ) );
 				}
+			}
+			if ( isset( $row['zone'] ) ) {
+				wp_set_object_terms( $id, $this->term_ids( Taxonomies::ZONE, [ $row['zone'] ] ), Taxonomies::ZONE );
 			}
 			if ( isset( $row['profiles'] ) ) {
 				wp_set_object_terms( $id, $this->term_ids( Taxonomies::PROFILE, $row['profiles'] ), Taxonomies::PROFILE );

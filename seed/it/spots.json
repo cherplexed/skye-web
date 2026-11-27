@@ -1,0 +1,64 @@
+{
+ "_note": "Traduzione italiana di seed/spots.json: solo i testi.",
+ "spots": {
+  "camping-skye": {
+   "title": "Camping Skye",
+   "season": "Dal 22 marzo al 1° novembre 2027",
+   "notes": "Alla periferia di Broadford. 26 piazzole per camper e roulotte, tutte con allaccio elettrico da 16 ampere. Il campeggio stesso avverte che in stagione è spesso al completo e consiglia di prenotare in anticipo."
+  },
+  "sligachan-campsite": {
+   "title": "Sligachan Campsite",
+   "season": "Dal 22 marzo al 24 ottobre 2027. Chiuso nel 2026.",
+   "notes": "Sotto i Cuillin, al bivio di Sligachan. Si possono prenotare 43 piazzole su fondo compatto, 32 delle quali con allaccio elettrico; quelle sull'erba si occupano in ordine di arrivo. Il prezzo è quello di una piazzola su fondo compatto senza elettricità per due adulti; con allaccio, da 35 £. Check-in dalle 15:00 alle 20:00."
+  },
+  "glenbrittle-campsite": {
+   "title": "Glenbrittle Campsite",
+   "season": "Dal 26 marzo al 15 ottobre",
+   "notes": "Sulla riva di Loch Brittle, dove finisce la strada delle Fairy Pools. Le 50 piazzole con allaccio elettrico si prenotano online; quelle senza elettricità si occupano in ordine di arrivo. Le poche piazzole su fondo compatto accettano solo van fino a 6 m; i veicoli più lunghi vanno sull'erba. Tariffe sulla pagina del campeggio: 14,50 £ per adulto più 11 £ a notte per l'allaccio. Cani ammessi se tenuti sotto controllo."
+  },
+  "kinloch-campsite": {
+   "title": "Kinloch Campsite",
+   "season": "Apre il 19 marzo 2027",
+   "notes": "In fondo a Loch Dunvegan, accanto al paese e vicino al castello. Accetta camper, van, roulotte e tende, con prenotazione online. La pagina del campeggio non elenca i servizi; il consiglio di comunità locale lo cita tra i campeggi con punto di scarico del WC."
+  },
+  "portree-campsite": {
+   "title": "Portree Campsite",
+   "season": "Nel 2026 è stato aperto dal 1° aprile al 31 ottobre. Controlla le date del 2027.",
+   "notes": "A Torvaig, sulla strada per Staffin, appena fuori Portree. Piazzole su fondo compatto con allaccio elettrico per camper, van e roulotte. Il punto di servizio ha acqua potabile e scarico per WC chimico e acque grigie. Wi-Fi incluso."
+  },
+  "skye-camping-and-caravanning-club-site": {
+   "title": "Skye Camping and Caravanning Club Site",
+   "season": "Dal 22 marzo al 7 ottobre 2027",
+   "notes": "In una fattoria sulla riva di Loch Greshornish, a Edinbane, tra Portree e Dunvegan. Piazzole su erba e su fondo compatto con allaccio elettrico, punto di servizio per camper e area per i cani. I prezzi indicati sulla pagina del Club sono per i soci."
+  },
+  "staffin-campsite": {
+   "title": "Staffin Caravan and Camping Site",
+   "season": "Nel 2026: dal 2 aprile al 26 settembre. Il campeggio risponde alle richieste per il 2027 da novembre 2026.",
+   "notes": "A Staffin, nel nord di Trotternish. Allacci elettrici e docce calde gratuite. Le tende sono accettate solo da fine aprile. La prenotazione avviene su richiesta, non è immediata."
+  },
+  "uig-bay-campsite": {
+   "title": "Uig Bay Campsite",
+   "notes": "Sulla strada lungo la riva, subito dopo il terminal dei traghetti di Uig: comodo per la prima o l'ultima notte se prendi il traghetto per le Ebridi Esterne. Piazzole per van e camper, alcune con elettricità. Docce, acqua e scarico sono per chi soggiorna. La pagina del campeggio non indica le date di apertura: chiedi prima di andare."
+  },
+  "carbost-pier": {
+   "title": "Molo di Carbost",
+   "notes": "Sosta notturna a pagamento sul molo di Carbost, accanto alla distilleria Talisker, dalle 16:00 alle 10:00. Si paga all'ufficio del porto. Dal 2026 i camper non possono più parcheggiare qui di giorno, per i lavori al porto. L'acqua potabile costa 1 £ ogni 50 litri. Dati tratti da una guida per camperisti pubblicata nel 2026, non ancora verificati sul posto."
+  },
+  "portree-lisigarry-court": {
+   "title": "Parcheggio di Lisigarry Court, Portree",
+   "notes": "Quattro stalli stretti per van nel parcheggio dei pullman in centro a Portree; i camper grandi faranno fatica. È solo una sosta notturna: non si può sistemare nulla fuori dal veicolo. Il biglietto si compra alla macchinetta per la sosta lunga e costa tra 3 e 5 £ a seconda delle ore. Bagni pubblici nelle vicinanze. Dati tratti da due guide per camperisti pubblicate nel 2026, non ancora verificati sul posto."
+  },
+  "portree-waterfront-disposal-point": {
+   "title": "Punto di scarico sul lungomare di Portree",
+   "notes": "Punto di scarico per WC chimico, chiuso da un cancello, sul lungomare, accanto al parcheggio di Bayfield, a Portree. Si paga con carta. Non ci sono acqua potabile né scarico delle acque grigie. Dati tratti da due guide pubblicate nel 2026, non ancora verificati sul posto."
+  },
+  "old-man-of-storr-disposal-point": {
+   "title": "Punto di scarico del parcheggio dell'Old Man of Storr",
+   "notes": "Due punti di scarico per WC chimico, gratuiti, e grandi cassonetti accanto ai bagni del parcheggio dello Storr. Non ci sono acqua potabile né scarico delle acque grigie. Dati tratti da una guida per camperisti pubblicata nel 2026, non ancora verificati sul posto."
+  },
+  "elgol-service-point": {
+   "title": "Punto di servizio per camper di Elgol",
+   "notes": "Punto di servizio gestito dalla comunità a Elgol, in fondo a 23 km di strada a una corsia da Broadford. Il prezzo comprende acqua potabile e scarico del WC chimico, e si paga con carta. La griglia per le acque grigie è gratuita; è gradita un'offerta. Dati tratti da una guida per camperisti pubblicata nel 2026, non ancora verificati sul posto."
+  }
+ }
+}

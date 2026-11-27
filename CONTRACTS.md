@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.7 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.8 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -75,7 +75,9 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 
 ## 6. Área de autocaravana — post type `motorhome_spot`
 
-`title`. `spot_type`: campsite · aire · parking · dump_station · ev_charger. `location`. `services`: electricity · water · dump · showers · wifi; `ev_kw`. `overnight_allowed`. `max_length_m`. `price_gbp`. `booking_url` o `no_booking` (bool). `season` (sí). `notes` (sí). Verificación.
+`title`. `spot_type`: campsite · aire · parking · dump_station · ev_charger. `location`. `services`: electricity · water · dump · showers · wifi; `ev_kw`. `overnight_allowed`. `max_length_m`. `price_gbp`. `booking_url` o `no_booking` (bool). `season` (sí). `notes` (sí). `sources` repetidor → `title`, `url`. Verificación.
+
+`price_gbp` es el precio desde por noche (por uso en `dump_station`). Sin `location`, la página enlaza a una búsqueda del nombre en el mapa. Las áreas no tienen página propia: se muestran todas en el archivo del tipo (`/motorhome/`, shortcode `[skye_motorhome]`), agrupadas en campings, paradas nocturnas de pago y puntos de servicio, junto con los consejos de conducción y pernocta y las rutas con `motorhome_ok`. Datos piloto en `seed/spots.json` (`wp skye seed spots`).
 
 ## 7. Experiencia — post type `experience`
 

@@ -6,6 +6,7 @@ namespace Skye\Tests;
 use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
+use Skye\Render\Motorhome;
 use Skye\Render\Home;
 use Skye\Directory;
 use Skye\Render\PlaceBlocks;
@@ -168,7 +169,7 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 9, $files );
+		self::assertCount( 10, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
@@ -187,14 +188,56 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|home|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|home|motorhome|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
 					if ( isset( $m[3] ) ) {
 						self::assertContains( $m[3], [ 'place' => PlaceBlocks::PARTS, 'tour' => TourBlocks::PARTS, 'route' => RouteBlocks::PARTS ][ $m[2] ] );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-home', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
+		self::assertSame( [ 'skye-archive-motorhome', 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-home', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
+	}
+
+	public function test_car_and_motorhome_page_groups_spots_and_always_links_to_a_map(): void {
+		$camp = [
+			'slug' => 'sligachan-campsite', 'title' => 'Sligachan Campsite', 'spot_type' => 'campsite', 'zone_name' => 'Minginish & Cuillin',
+			'services' => [ 'electricity', 'dump', 'made-up' ], 'price_gbp' => 25, 'season' => '22 March to 24 October 2027', 'max_length_m' => 7.5,
+			'booking_url' => 'https://booking.example/sligachan', 'notes' => 'Under the Cuillin <b>',
+			'sources' => [ [ 'title' => 'Official page', 'url' => 'https://example.org/s' ] ], 'verification' => [ 'status' => 'unverified' ],
+		];
+		$dump = [ 'slug' => 'portree-point', 'title' => 'Portree point', 'spot_type' => 'dump_station', 'services' => [ 'dump' ], 'price_gbp' => 3, 'no_booking' => true, 'location' => [ 'lat' => 57.41, 'lng' => -6.19 ], 'verification' => [ 'status' => 'verified' ] ];
+		$stop = [ 'slug' => 'carbost-pier', 'title' => 'Carbost Pier', 'spot_type' => 'aire', 'price_gbp' => 10 ];
+		$v    = [
+			'links'  => [ 'home' => 'https://skye.test/', 'routes' => 'https://skye.test/routes/' ],
+			'spots'  => [ $stop, $dump, $camp ],
+			'routes' => [ [ 'title' => 'Trotternish loop', 'url' => 'https://skye.test/routes/trotternish-loop/', 'motorhome_notes' => 'Possible, with care.' ] ],
+		];
+		$html = Motorhome::page( $v, 'en-gb' );
+
+		self::assertStringContainsString( '<h1 class="skye-listing__title">Skye by car or motorhome</h1>', $html );
+		self::assertTrue( strpos( $html, 'id="campsite"' ) < strpos( $html, 'id="aire"' ) && strpos( $html, 'id="aire"' ) < strpos( $html, 'id="dump-station"' ), 'campsites, then overnight stops, then service points' );
+		self::assertStringNotContainsString( 'EV chargers', $html, 'an empty group is not shown' );
+		self::assertStringContainsString( '<a class="skye-card skye-mhroute" href="https://skye.test/routes/trotternish-loop/"><h3>Trotternish loop</h3><p>Possible, with care.</p></a>', $html );
+		self::assertStringContainsString( '<li>Electric hook-up</li><li>Waste disposal</li></ul>', $html );
+		self::assertStringContainsString( '<dt>Price</dt><dd>From £25 a night</dd>', $html );
+		self::assertStringContainsString( '<dt>Maximum length</dt><dd>7.5 m</dd>', $html );
+		self::assertStringContainsString( 'Under the Cuillin &lt;b&gt;', $html );
+		self::assertStringContainsString( 'Not yet checked on site by our team. Sources: <a href="https://example.org/s" rel="noopener nofollow">Official page</a>', $html );
+		self::assertStringContainsString( '<dd>£3 per use</dd>', $html );
+		self::assertStringContainsString( 'No booking: first come, first served', $html );
+		self::assertSame( 2, substr_count( $html, 'Not yet checked on site' ), 'every spot says so until someone has verified it' );
+
+		// With coordinates the link gives directions; without them it searches the name on the island.
+		self::assertSame( 'https://www.google.com/maps/dir/?api=1&destination=57.41%2C-6.19', Motorhome::map_url( $dump ) );
+		self::assertSame( 'https://www.google.com/maps/search/?api=1&query=Carbost%20Pier%2C%20Isle%20of%20Skye', Motorhome::map_url( $stop ) );
+		self::assertSame( '25 £', explode( ' a ', str_replace( 'From ', '', Motorhome::price( $camp, 'es' ) ) )[0] );
+		self::assertSame( '', Motorhome::price( [ 'price_gbp' => 0 ], 'en-gb' ) );
+
+		$ld = JsonLd::spot_list( 'Skye by car or motorhome', $v['spots'] );
+		self::assertSame( 3, $ld['numberOfItems'] );
+		self::assertSame( [ 'ParkingFacility', 'Place', 'Campground' ], array_map( static fn( $i ) => $i['item']['@type'], $ld['itemListElement'] ) );
+		self::assertSame( 'https://booking.example/sligachan', $ld['itemListElement'][2]['item']['url'] );
+		self::assertNull( JsonLd::spot_list( 'x', [] ) );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {

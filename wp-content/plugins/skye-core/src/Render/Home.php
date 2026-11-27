@@ -72,7 +72,8 @@ final class Home {
 				. '<h3>' . Html::e( Html::t( 'Plan it yourself, with what you need to know' ) ) . '</h3>'
 				. '<p>' . Html::e( Html::t( 'Day-by-day routes with every stop in order, how long to allow, where to park and what the roads are like.' ) ) . '</p>'
 				. ( '' !== $chips ? '<div class="skye-path__chips">' . $chips . '</div>' : '' )
-				. self::button( $links['routes'] ?? null, Html::t( 'See the routes' ), 'outline' )
+				. '<div class="skye-path__actions">' . self::button( $links['routes'] ?? null, Html::t( 'See the routes' ), 'outline' )
+				. ( ! empty( $links['motorhome'] ) ? sprintf( '<a class="skye-path__more" href="%s">%s</a>', Html::e( $links['motorhome'] ), Html::e( Html::t( 'Roads, campsites and service points' ) ) ) : '' ) . '</div>'
 				. '</div></article>';
 		}
 		return '' === $tours . $own ? '' : '<section class="skye-home__section"><h2 class="skye-home__title">' . Html::e( Html::t( 'Two ways to see Skye' ) ) . '</h2><div class="skye-paths">' . $tours . $own . '</div></section>';
