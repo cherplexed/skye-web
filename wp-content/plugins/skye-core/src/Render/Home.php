@@ -51,7 +51,8 @@ final class Home {
 		}
 		$tours = '';
 		if ( $v['tours'] ) {
-			$tours = '<article class="skye-card skye-path"><div class="skye-path__photo">' . self::photo( $v['tours'][0]['image'] ?? null ) . '</div><div class="skye-path__body">'
+			$photo = self::photo( $v['tours'][0]['image'] ?? null );
+			$tours = '<article class="skye-card skye-path">' . ( '' !== $photo ? '<div class="skye-path__photo">' . $photo . '</div>' : '' ) . '<div class="skye-path__body">'
 				. '<span class="skye-eyebrow">' . Html::e( Html::t( 'No car' ) ) . '</span>'
 				. '<h3>' . Html::e( Html::t( 'We take you from Edinburgh' ) ) . '</h3>'
 				. '<p>' . Html::e( Html::t( 'Tours of two and three days with a driver-guide. No single-track roads to drive and no hunting for a bed.' ) ) . '</p>'
@@ -65,7 +66,8 @@ final class Home {
 			foreach ( array_slice( $v['routes'], 0, 3 ) as $r ) {
 				$chips .= ! empty( $r['url'] ) ? sprintf( '<a class="skye-chip" href="%s">%s</a>', Html::e( $r['url'] ), Html::e( $r['title'] ?? '' ) ) : '';
 			}
-			$own = '<article class="skye-card skye-path"><div class="skye-path__photo">' . self::photo( $v['routes'][0]['image'] ?? null ) . '</div><div class="skye-path__body">'
+			$photo = self::photo( $v['own_image'] ?? null );
+			$own   = '<article class="skye-card skye-path">' . ( '' !== $photo ? '<div class="skye-path__photo">' . $photo . '</div>' : '' ) . '<div class="skye-path__body">'
 				. '<span class="skye-eyebrow">' . Html::e( Html::t( 'Car or motorhome' ) ) . '</span>'
 				. '<h3>' . Html::e( Html::t( 'Plan it yourself, with what you need to know' ) ) . '</h3>'
 				. '<p>' . Html::e( Html::t( 'Day-by-day routes with every stop in order, how long to allow, where to park and what the roads are like.' ) ) . '</p>'

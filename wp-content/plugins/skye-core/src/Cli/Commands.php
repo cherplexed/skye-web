@@ -172,7 +172,13 @@ final class Commands {
 		if ( ! $this->translating() ) {
 			return $rows;
 		}
-		$translations = $this->read( $this->seed_dir() . "/{$this->lang}/$type.json" )[ $type ];
+		$file = $this->seed_dir() . "/{$this->lang}/$type.json";
+		if ( ! is_file( $file ) ) {
+			// A language can be loaded in stages: what has no translation yet keeps showing the original.
+			WP_CLI::log( ucfirst( $type ) . " ({$this->lang}): no translation file, nothing to load." );
+			return [];
+		}
+		$translations = $this->read( $file )[ $type ];
 		$out          = [];
 		foreach ( $rows as $row ) {
 			if ( isset( $translations[ $row['slug'] ] ) ) {

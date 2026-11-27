@@ -174,7 +174,7 @@ Todos con `dateModified` y `reviewedBy` (§10).
 ## Idiomas (WPML)
 
 - La configuración vive en `skye-core/wpml-config.xml` (tipos y taxonomías traducibles, meta propia) y en `wpml_cf_preferences` de cada campo ACF, generado desde `Fields.php`. No se configura nada a mano en el panel.
-- Idioma por directorio: `/` inglés (por defecto), `/es/` español.
+- Idioma por directorio: `/` inglés (por defecto), `/es/` español, `/it/` italiano. Un idioma se puede cargar por etapas: lo que aún no tiene archivo en `seed/{idioma}/` sigue mostrando el original.
 - Los tipos públicos están en modo "traducible, con el original como respaldo": mientras una ficha no tenga traducción, en `/es/` se ve la inglesa. Las marcas no se traducen.
 - `skye_uuid` y la verificación se copian a las traducciones: una ficha tiene una sola identidad y una sola comprobación.
 - **Slugs canónicos.** Los slugs de términos (zona, categoría, perfil) en la API, en los parámetros de URL y en los datos de carga son siempre los del idioma por defecto, se sirva el idioma que se sirva. Una traducción de una ficha conserva el slug de su original (`/es/places/old-man-of-storr/`). Toda la relación con WPML pasa por `Skye\Lang`.

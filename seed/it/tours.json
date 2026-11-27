@@ -1,0 +1,169 @@
+{
+ "_note": "Traduzione in italiano di seed/tours.json: solo i testi, per slug.",
+ "tours": {
+  "isle-of-skye-3-day-tour": {
+   "title": "Isola di Skye e Highlands, 3 giorni da Edimburgo",
+   "summary": "Tre giorni da Edimburgo con autista-guida: Glencoe ed Eilean Donan all'andata, un giorno intero a Skye, Loch Ness e Inverness al ritorno.",
+   "days": [
+    {
+     "title": "Da Edimburgo a Skye passando per Glencoe",
+     "summary": "Verso nord, costeggiando Stirling, fino a una prima pausa a Kilmahog, accanto a Callander; poi Loch Tulla, Glencoe e le Tre Sorelle, pranzo a Fort William, il viadotto di Glenfinnan e un primo sguardo a Eilean Donan prima di passare a Skye. Notte a Kyleakin o dintorni.",
+     "stops": [
+      {
+       "title": "Kilmahog, accanto a Callander",
+       "note": "Caffè e bagni alle porte delle Highlands."
+      },
+      {
+       "title": "Belvedere di Loch Tulla",
+       "note": "Lungo la salita verso Rannoch Moor."
+      },
+      {
+       "title": "Glencoe: belvedere delle Tre Sorelle"
+      },
+      {
+       "note": "Pranzo libero."
+      },
+      {
+       "note": "Il belvedere sul viadotto e il monumento."
+      },
+      {
+       "title": "Castello di Eilean Donan, da Dornie",
+       "note": "Un primo sguardo dall'altra sponda; la visita è il terzo giorno. Non si effettua quando il gruppo viaggia in pullman grande."
+      },
+      {
+       "note": "Arrivo verso le 18:30."
+      }
+     ]
+    },
+    {
+     "title": "Un giorno intero a Skye",
+     "summary": "Gesto Bay, il castello di Dunvegan, tempo libero e pranzo a Portree, poi la penisola di Trotternish: l'Old Man of Storr, le cascate di Lealt, Kilt Rock e il Quiraing. Notte a Kyleakin o dintorni.",
+     "stops": [
+      {
+       "title": "Belvedere di Gesto Bay",
+       "note": "Su Loch Harport, verso i Cuillin."
+      },
+      {
+       "note": "Castello e giardini. Ingresso non incluso."
+      },
+      {
+       "note": "Pranzo libero."
+      },
+      {
+       "note": "Il belvedere e il primo tratto del sentiero."
+      },
+      {},
+      {},
+      {
+       "note": "Oppure il cimitero di Kilmuir o il Fairy Glen, a seconda del veicolo e delle condizioni."
+      },
+      {
+       "note": "Arrivo verso le 18:45."
+      }
+     ]
+    },
+    {
+     "title": "Eilean Donan, Loch Ness e ritorno a Edimburgo",
+     "summary": "Il castello di Eilean Donan, la strada di Glen Shiel ai piedi delle Cinque Sorelle di Kintail, Loch Ness con crociera facoltativa e il castello di Urquhart, tempo libero a Inverness e una pausa a Pitlochry. Arrivo a Edimburgo verso le 20:00.",
+     "stops": [
+      {
+       "note": "Ingresso non incluso."
+      },
+      {
+       "note": "Il castello di Urquhart e la crociera sono facoltativi e non inclusi. In alternativa, tempo libero e pranzo in riva al lago."
+      },
+      {},
+      {}
+     ]
+    }
+   ],
+   "meeting_point": "190 High Street (Royal Mile), Edimburgo. Presentati 15 minuti prima della partenza.",
+   "includes": "Trasporto in un veicolo da 8 a 55 posti. Autista-guida professionista. Alloggio solo se prenoti uno dei pacchetti che lo comprendono.",
+   "excludes": "Alloggio nell'opzione solo tour. Ingressi al castello di Dunvegan, al castello di Eilean Donan e alla crociera su Loch Ness con il castello di Urquhart. Pasti. Assicurazione di viaggio.",
+   "accommodation_intro": "Due notti a Skye o subito accanto. Al momento della prenotazione scegli come dormire: ti organizzi da solo oppure prendi uno dei pacchetti che comprendono l'alloggio.",
+   "accommodation_options": [
+    {
+     "name": "Solo tour",
+     "description": "L'alloggio non è incluso. Prenotalo per conto tuo a Kyleakin o a Kyle of Lochalsh, dove il tour ti lascia e ti riprende: alla fermata dell'autobus accanto al parcheggio di Kyleside, a Kyleakin, oppure all'incrocio tra Ferry Road e Kyle Prospect Road, a Kyle of Lochalsh."
+    },
+    {
+     "name": "Base: ostello",
+     "description": "Un letto in camera condivisa, con bagno in comune. I letti sono di solito a castello e i dormitori, misti. La colazione non è inclusa."
+    },
+    {
+     "name": "Standard: camera singola, doppia o tripla",
+     "description": "Bed and breakfast a Broadford, Breakish, Kyleakin o Portree. Colazione inclusa."
+    },
+    {
+     "name": "Superior: camera singola, doppia o tripla",
+     "description": "Bed and breakfast e hotel in buona posizione."
+    }
+   ],
+   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIn alta stagione può essere necessario passare entrambe le notti a Inverness o dintorni; in tal caso il secondo giorno è dedicato a Portree e Trotternish.\nIl prezzo di ogni opzione compare quando scegli la data."
+  },
+  "isle-of-skye-2-day-tour": {
+   "title": "Isola di Skye e Highlands, 2 giorni da Edimburgo",
+   "summary": "Due giorni da Edimburgo con autista-guida: Eilean Donan, Sligachan, lo Storr, Kilt Rock e Portree il primo giorno; Loch Ness e Inverness il secondo.",
+   "days": [
+    {
+     "title": "Da Edimburgo a Skye: Eilean Donan, Trotternish e Portree",
+     "summary": "Una pausa a Dunkeld e un'altra a Spean Bridge, pranzo al castello di Eilean Donan, poi sul ponte di Skye fino a Sligachan, l'Old Man of Storr, le cascate di Lealt e Kilt Rock, e la serata a Portree. Notte a Kyleakin o dintorni.",
+     "stops": [
+      {},
+      {
+       "title": "Spean Bridge",
+       "note": "Sosta per i bagni."
+      },
+      {
+       "note": "Pranzo libero e tempo per il castello. Ingresso non incluso."
+      },
+      {},
+      {
+       "note": "Dal parcheggio, dove ci sono i bagni."
+      },
+      {},
+      {},
+      {
+       "note": "Cena libera."
+      },
+      {
+       "note": "Arrivo verso le 20:15."
+      }
+     ]
+    },
+    {
+     "title": "Loch Ness, Inverness e ritorno a Edimburgo",
+     "summary": "Il castello di Urquhart e Loch Ness con crociera facoltativa, pranzo a Inverness e una pausa a Pitlochry. Arrivo a Edimburgo verso le 18:15.",
+     "stops": [
+      {
+       "note": "Castello di Urquhart, con ingresso incluso. La crociera fino a Clansman Harbour è facoltativa."
+      },
+      {
+       "note": "Pranzo libero."
+      },
+      {}
+     ]
+    }
+   ],
+   "meeting_point": "190 High Street (Royal Mile), Edimburgo. Presentati 15 minuti prima della partenza.",
+   "includes": "Trasporto in un veicolo da 8 a 55 posti. Autista-guida professionista. Ingresso al castello di Urquhart. Alloggio solo se prenoti uno dei pacchetti che lo comprendono.",
+   "excludes": "Alloggio nell'opzione solo tour. Ingressi ad altre attrazioni. Crociera su Loch Ness. Pasti. Assicurazione di viaggio.",
+   "accommodation_intro": "Una notte a Skye o subito accanto. Al momento della prenotazione scegli come dormire: ti organizzi da solo oppure prendi uno dei pacchetti che comprendono l'alloggio.",
+   "accommodation_options": [
+    {
+     "name": "Solo tour",
+     "description": "L'alloggio non è incluso. Prenotalo per conto tuo a Kyleakin o a Kyle of Lochalsh, dove il tour ti lascia e ti riprende: alla fermata dell'autobus accanto al parcheggio di Kyleside, a Kyleakin, oppure all'incrocio tra Ferry Road e Kyle Prospect Road, a Kyle of Lochalsh."
+    },
+    {
+     "name": "Base: ostello",
+     "description": "Un letto in camera condivisa, con bagno in comune. I letti sono di solito a castello e i dormitori, misti. La colazione non è inclusa."
+    },
+    {
+     "name": "Bed and breakfast: camera singola o doppia",
+     "description": "Camera privata con bagno privato, che può essere in camera oppure esterno, ma sempre a tuo uso esclusivo. Colazione inclusa."
+    }
+   ],
+   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIl prezzo di ogni opzione compare quando scegli la data."
+  }
+ }
+}
