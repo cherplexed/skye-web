@@ -14,6 +14,11 @@ final class JsonLd {
 	}
 
 	public static function print(): void {
+		if ( Frontend::is_directory() ) {
+			$view = Frontend::places_view();
+			self::emit( self::item_list( (string) $view['title'], $view['places'] ) );
+			return;
+		}
 		if ( ! is_singular( PostTypes::PLACE ) ) {
 			return;
 		}
@@ -26,9 +31,31 @@ final class JsonLd {
 		$data = self::place( $item );
 		$faq  = self::faq( Render\PlaceBlocks::faq_items( $item, $market ) );
 		foreach ( array_filter( [ $data, $faq ] ) as $block ) {
+			self::emit( $block );
+		}
+	}
+
+	private static function emit( ?array $block ): void {
+		if ( $block ) {
 			// JSON_HEX_TAG keeps a "</script>" inside any text from closing the tag.
 			echo '<script type="application/ld+json">' . wp_json_encode( $block, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG ) . "</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
+	}
+
+	/**
+	 * ItemList for a listing page: the places shown, in order, each pointing at its own page.
+	 *
+	 * @param list<array<string, mixed>> $places
+	 * @return array<string, mixed>|null
+	 */
+	public static function item_list( string $name, array $places ): ?array {
+		$items = [];
+		foreach ( $places as $p ) {
+			if ( ! empty( $p['url'] ) ) {
+				$items[] = [ '@type' => 'ListItem', 'position' => count( $items ) + 1, 'name' => (string) $p['title'], 'url' => (string) $p['url'] ];
+			}
+		}
+		return $items ? [ '@context' => 'https://schema.org', '@type' => 'ItemList', 'name' => $name, 'numberOfItems' => count( $items ), 'itemListElement' => $items ] : null;
 	}
 
 	/**

@@ -6,7 +6,9 @@ namespace Skye\Tests;
 use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
+use Skye\Directory;
 use Skye\Render\PlaceBlocks;
+use Skye\Render\PlaceList;
 use Skye\Render\RouteBlocks;
 use Skye\Render\TourBlocks;
 
@@ -165,7 +167,7 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 7, $files );
+		self::assertCount( 8, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
@@ -184,14 +186,14 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
 					if ( isset( $m[3] ) ) {
 						self::assertContains( $m[3], [ 'place' => PlaceBlocks::PARTS, 'tour' => TourBlocks::PARTS, 'route' => RouteBlocks::PARTS ][ $m[2] ] );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
+		self::assertSame( [ 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {
@@ -445,5 +447,103 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( '<strong>Explore</strong><a href="http://x/places/">What to see</a>', $f );
 		self::assertStringNotContainsString( 'Empty', $f );
 		self::assertStringContainsString( '<strong>Languages</strong>', $f );
+	}
+
+	/** @return list<array<string, mixed>> */
+	private static function directory_places(): array {
+		$mk = static fn( string $title, string $zone, array $cats, array $profiles ): array => [
+			'title'            => $title,
+			'url'              => 'http://x/places/' . strtolower( str_replace( ' ', '-', $title ) ) . '/',
+			'summary'          => 'Summary of ' . $title,
+			'zone'             => [ 'slug' => $zone, 'name' => ucfirst( $zone ) ],
+			'categories'       => array_map( static fn( $c ) => [ 'slug' => $c, 'name' => ucfirst( $c ) ], $cats ),
+			'profiles'         => array_map( static fn( $c ) => [ 'slug' => $c, 'name' => ucfirst( $c ) ], $profiles ),
+			'duration_typical' => 90,
+			'difficulty'       => 'easy',
+			'price_type'       => 'free',
+		];
+		return [
+			$mk( 'Stirling', 'en-route', [ 'castle' ], [ 'history' ] ),
+			$mk( 'Quiraing', 'trotternish', [ 'hike', 'viewpoint' ], [ 'hiking' ] ),
+			$mk( 'Kilt Rock', 'trotternish', [ 'viewpoint' ], [ 'families' ] ),
+			$mk( 'Dunvegan', 'duirinish', [ 'castle' ], [ 'history', 'families' ] ),
+		];
+	}
+
+	public function test_directory_matches_every_active_filter(): void {
+		$places = self::directory_places();
+		$this->assertCount( 4, Directory::match( $places, [ 'zone' => '', 'category' => '', 'profile' => '' ] ) );
+		$this->assertSame( [ 'Quiraing', 'Kilt Rock' ], array_column( Directory::match( $places, [ 'zone' => 'trotternish' ] ), 'title' ) );
+		$this->assertSame( [ 'Dunvegan' ], array_column( Directory::match( $places, [ 'category' => 'castle', 'profile' => 'families' ] ), 'title' ) );
+		$this->assertSame( [], Directory::match( $places, [ 'zone' => 'trotternish', 'category' => 'castle' ] ) );
+	}
+
+	public function test_directory_options_never_lead_to_an_empty_page(): void {
+		$places = self::directory_places();
+		$order  = [ 'viewpoint' => 'Viewpoint', 'hike' => 'Hike', 'castle' => 'Castle', 'beach' => 'Beach' ];
+		$all    = Directory::options( $places, [ 'zone' => '', 'category' => '', 'profile' => '' ], 'category', $order );
+		$this->assertSame( [ 'viewpoint', 'hike', 'castle' ], array_column( $all, 'slug' ), 'canonical order, empty terms left out' );
+		$this->assertSame( [ 2, 1, 2 ], array_column( $all, 'count' ) );
+
+		$in_zone = Directory::options( $places, [ 'zone' => 'trotternish', 'category' => 'hike', 'profile' => '' ], 'category', $order );
+		$this->assertSame( [ 'viewpoint', 'hike' ], array_column( $in_zone, 'slug' ), 'castle has no place in Trotternish' );
+		$this->assertSame( [ false, true ], array_column( $in_zone, 'active' ) );
+
+		$zones = Directory::options( $places, [ 'zone' => '', 'category' => 'castle', 'profile' => '' ], 'zone', [ 'trotternish' => 'T', 'duirinish' => 'D', 'en-route' => 'E' ] );
+		$this->assertSame( [ 'duirinish', 'en-route' ], array_column( $zones, 'slug' ) );
+	}
+
+	public function test_directory_groups_by_zone_in_canonical_order(): void {
+		$groups = Directory::by_zone( self::directory_places(), [ 'trotternish' => 'T', 'duirinish' => 'D', 'en-route' => 'E' ] );
+		$this->assertSame( [ 'trotternish', 'duirinish', 'en-route' ], array_column( $groups, 'slug' ) );
+		$this->assertSame( [ 'Kilt Rock', 'Quiraing' ], array_column( $groups[0]['places'], 'title' ), 'alphabetical inside a zone' );
+	}
+
+	public function test_place_card_and_directory_page(): void {
+		$places = self::directory_places();
+		$card   = PlaceList::card( [ 'title' => 'A <b>', 'summary' => 'S & s', 'url' => 'http://x/a/', 'categories' => [ [ 'slug' => 'hike', 'name' => 'Hike' ] ], 'duration_typical' => 120, 'difficulty' => 'moderate', 'price_type' => 'paid_parking' ] );
+		$this->assertStringContainsString( '<a class="skye-card skye-placecard" href="http://x/a/">', $card );
+		$this->assertStringContainsString( 'A &lt;b&gt;', $card );
+		$this->assertStringContainsString( '2h · Moderate · Paid parking', $card );
+		$this->assertStringContainsString( 'skye-placecard__kind">Hike<', $card );
+
+		$view = [
+			'eyebrow'   => 'The whole island',
+			'title'     => 'What to see',
+			'lead'      => 'Lead',
+			'filters'   => [ [ 'label' => 'Type', 'all' => [ 'label' => 'All types', 'url' => 'http://x/places/', 'active' => false ], 'options' => [ [ 'name' => 'Castle', 'url' => 'http://x/places/?category=castle', 'count' => 2, 'active' => true ] ] ], [ 'label' => 'Empty', 'all' => [ 'label' => 'All', 'url' => '#', 'active' => true ], 'options' => [] ] ],
+			'groups'    => [ [ 'name' => 'Trotternish', 'url' => 'http://x/zone/trotternish/', 'places' => array_slice( $places, 1, 2 ) ] ],
+			'total'     => 2,
+			'filtered'  => true,
+			'reset_url' => 'http://x/places/',
+			'grouped'   => true,
+		];
+		$html = PlaceList::directory( $view );
+		$this->assertStringContainsString( '<h1 class="skye-listing__title">What to see</h1>', $html );
+		$this->assertStringContainsString( 'href="http://x/places/?category=castle" aria-current="true">Castle <span class="skye-filter__count">2</span>', $html );
+		$this->assertStringNotContainsString( 'Empty', $html, 'a filter without options is not shown' );
+		$this->assertStringContainsString( '2 places · <a href="http://x/places/">Clear filters</a>', $html );
+		$this->assertStringContainsString( '<h2 class="skye-zone__title"><a href="http://x/zone/trotternish/">Trotternish</a>', $html );
+		$this->assertSame( 2, substr_count( $html, '<h3 class="skye-placecard__title">' ) );
+
+		$flat = PlaceList::directory( [ 'grouped' => false, 'filtered' => false, 'breadcrumb' => [ [ 'label' => 'Home', 'url' => 'http://x/' ], [ 'label' => 'Trotternish' ] ] ] + $view );
+		$this->assertStringContainsString( '<a href="http://x/">Home</a>', $flat );
+		$this->assertStringContainsString( '<span aria-current="page">Trotternish</span>', $flat );
+		$this->assertStringNotContainsString( 'skye-zone__title', $flat );
+		$this->assertSame( 2, substr_count( $flat, '<h2 class="skye-placecard__title">' ) );
+
+		$none = PlaceList::directory( [ 'groups' => [], 'total' => 0 ] + $view );
+		$this->assertStringContainsString( 'No places match these filters.', $none );
+
+		$ld = JsonLd::item_list( 'What to see', $places );
+		$this->assertSame( 'ItemList', $ld['@type'] );
+		$this->assertSame( 4, $ld['numberOfItems'] );
+		$this->assertSame( [ 1, 2, 3, 4 ], array_column( $ld['itemListElement'], 'position' ) );
+		$this->assertNull( JsonLd::item_list( 'x', [] ) );
+	}
+
+	public function test_place_breadcrumb_links_to_its_zone_page(): void {
+		$html = PlaceBlocks::breadcrumb( self::place( [ '_links' => [ 'home' => 'http://x/', 'places' => 'http://x/places/', 'zone' => 'http://x/zone/trotternish/' ] ] ) );
+		$this->assertStringContainsString( '<a href="http://x/zone/trotternish/">Trotternish</a>', $html );
 	}
 }

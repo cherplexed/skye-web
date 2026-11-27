@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.6.0
+Version: 0.7.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -252,3 +252,39 @@ a.skye-routecard h2 { color: var(--skye-ink); }
 .skye-sources ul { display: flex; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin: 0; padding: 0; }
 .skye-sources a { color: var(--skye-muted); text-decoration: underline; text-underline-offset: .15em; }
 .skye-sources a:hover { color: var(--skye-accent); }
+
+/* ---- Places directory and zone pages ---- */
+.skye-directory .skye-breadcrumb { margin-bottom: 20px; }
+.skye-filters { border-bottom: 1px solid var(--skye-line); border-top: 1px solid var(--skye-line); display: flex; flex-direction: column; gap: 12px; padding: 16px 0; }
+.skye-filter { align-items: center; display: grid; gap: 12px; grid-template-columns: 88px minmax(0, 1fr); }
+.skye-filter__label { color: var(--skye-muted); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.skye-filter__chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.skye-filter__chip { font-size: 14px; gap: 6px; min-height: 36px; padding: 0 14px; white-space: nowrap; }
+.skye-filter__chip:hover { border-color: var(--skye-accent); color: var(--skye-accent); }
+.skye-filter__chip[aria-current], .skye-filter__chip[aria-current]:hover { background: var(--skye-ink); border-color: var(--skye-ink); color: #fff; }
+.skye-filter__count { color: var(--skye-muted); font-size: 12px; font-weight: 400; }
+.skye-filter__chip[aria-current] .skye-filter__count { color: #C9D6D2; }
+.skye-listing__count { color: var(--skye-muted); font-size: 14px; margin: 16px 0 0; }
+.skye-zone { margin-top: 40px; }
+.skye-zone__title { align-items: baseline; display: flex; font-size: 28px; gap: 10px; letter-spacing: -.01em; margin: 0 0 16px; }
+.skye-zone__title a { color: var(--skye-ink); text-decoration: none; }
+.skye-zone__title a:hover { color: var(--skye-accent); text-decoration: underline; }
+.skye-zone__count { color: var(--skye-muted); font-family: Inter, system-ui, sans-serif; font-size: 14px; font-weight: 400; letter-spacing: 0; }
+.skye-placecards { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); }
+.skye-directory > .skye-placecards { margin-top: 24px; }
+.skye-placecard { color: inherit; display: flex; flex-direction: column; text-decoration: none; }
+a.skye-placecard:hover { border-color: var(--skye-accent); color: inherit; }
+.skye-placecard__photo { aspect-ratio: 3 / 2; background: #C9D6D2; }
+.skye-placecard__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-placecard__body { display: flex; flex: 1; flex-direction: column; gap: 6px; padding: 18px; }
+.skye-placecard__kind { color: var(--skye-accent); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.skye-placecard__title { color: var(--skye-ink); font-size: 19px; line-height: 1.25; margin: 0; }
+.skye-placecard__meta { color: var(--skye-muted); font-size: 13px; }
+.skye-placecard__summary { color: var(--skye-muted); font-size: 14px; line-height: 1.5; margin: 4px 0 0; }
+@media (max-width: 767px) {
+  .skye-filter { gap: 6px; grid-template-columns: 1fr; }
+  .skye-filter__chips { flex-wrap: nowrap; margin: 0 -20px; overflow-x: auto; padding: 0 20px 2px; scrollbar-width: none; }
+  .skye-filter__chips::-webkit-scrollbar { display: none; }
+  .skye-zone { margin-top: 32px; }
+  .skye-zone__title { font-size: 22px; }
+}

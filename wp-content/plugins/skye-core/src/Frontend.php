@@ -15,8 +15,11 @@ final class Frontend {
 		add_shortcode( 'skye_tours', [ self::class, 'tours_shortcode' ] );
 		add_shortcode( 'skye_route', [ self::class, 'route_shortcode' ] );
 		add_shortcode( 'skye_routes', [ self::class, 'routes_shortcode' ] );
+		add_shortcode( 'skye_places', [ self::class, 'places_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
+		add_filter( 'wp_robots', [ self::class, 'robots' ] );
+		add_filter( 'document_title_parts', [ self::class, 'title_parts' ] );
 		add_action( 'after_setup_theme', static fn() => register_nav_menus( [ 'skye_primary' => __( 'Skye primary navigation', 'skye-core' ) ] ) );
 	}
 
@@ -59,7 +62,7 @@ final class Frontend {
 
 	/** Adds what only the page needs: site links, and responsive <img> markup for every photo shown. */
 	private static function with_markup( array $item ): array {
-		$item['_links'] = [ 'home' => home_url( '/' ), 'places' => self::archive( PostTypes::PLACE ), 'tours' => self::archive( PostTypes::TOUR ) ];
+		$item['_links'] = [ 'home' => home_url( '/' ), 'places' => self::archive( PostTypes::PLACE ), 'tours' => self::archive( PostTypes::TOUR ), 'zone' => ! empty( $item['zone']['slug'] ) ? self::zone_url( (string) $item['zone']['slug'] ) : null ];
 
 		$img = static function ( ?array $image, string $sizes, bool $eager = false ): ?array {
 			if ( $image && ! empty( $image['id'] ) ) {
@@ -183,6 +186,135 @@ final class Frontend {
 		return Render\RouteBlocks::listing( $routes, $market );
 	}
 
+	/** URL of a zone page, or null when the zone does not exist. */
+	private static function zone_url( string $slug ): ?string {
+		$url = get_term_link( $slug, Taxonomies::ZONE );
+		return is_string( $url ) ? $url : null;
+	}
+
+	/** Is this the places directory or one of the zone pages? */
+	public static function is_directory(): bool {
+		return is_post_type_archive( PostTypes::PLACE ) || is_tax( Taxonomies::ZONE );
+	}
+
+	/** The category/profile filters of the current request, as slugs ('' when not set). */
+	private static function requested_filters(): array {
+		$out = [];
+		foreach ( [ 'category', 'profile' ] as $k ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only filter of a public listing.
+			$out[ $k ] = isset( $_GET[ $k ] ) && is_string( $_GET[ $k ] ) ? sanitize_title( wp_unslash( $_GET[ $k ] ) ) : '';
+		}
+		return $out;
+	}
+
+	/**
+	 * Everything the directory (or a zone page) shows: places, groups, filters with their URLs.
+	 * The zone is part of the path (/zone/trotternish/); category and profile are query parameters.
+	 * Built once per request: the page and its JSON-LD read the same data.
+	 */
+	public static function places_view(): array {
+		static $view = null;
+		if ( null !== $view ) {
+			return $view;
+		}
+		[ 'lang' => $lang, 'market' => $market ] = self::context();
+
+		$term   = is_tax( Taxonomies::ZONE ) ? get_queried_object() : null;
+		$zone   = $term instanceof \WP_Term ? $term->slug : '';
+		$active = [ 'zone' => $zone ] + self::requested_filters();
+
+		$places = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::PLACE, 'post_status' => 'publish', 'posts_per_page' => 500, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$p          = Api\PlaceSerializer::summary( $post, $lang, $market );
+			$p['image'] = self::picture( $p['image'] ?? null, '(min-width: 1100px) 380px, (min-width: 700px) 50vw, 100vw' );
+			$places[]   = $p;
+		}
+
+		$order = Taxonomies::terms();
+		$base  = (string) self::archive( PostTypes::PLACE );
+		$url   = static function ( array $f ) use ( $base ): string {
+			$root = '' !== ( $f['zone'] ?? '' ) ? ( self::zone_url( $f['zone'] ) ?? $base ) : $base;
+			return (string) add_query_arg( array_filter( [ 'category' => $f['category'] ?? '', 'profile' => $f['profile'] ?? '' ] ), $root );
+		};
+
+		$labels  = [
+			'zone'     => [ __( 'Area', 'skye-core' ), __( 'All areas', 'skye-core' ), Taxonomies::ZONE ],
+			'category' => [ __( 'Type', 'skye-core' ), __( 'All types', 'skye-core' ), Taxonomies::CATEGORY ],
+			'profile'  => [ __( 'Good for', 'skye-core' ), __( 'Everything', 'skye-core' ), Taxonomies::PROFILE ],
+		];
+		$filters = [];
+		foreach ( $labels as $filter => [ $label, $all, $taxonomy ] ) {
+			$options = [];
+			foreach ( Directory::options( $places, $active, $filter, $order[ $taxonomy ] ) as $o ) {
+				// A second click on the active option clears it.
+				$o['url']  = $url( [ $filter => $o['active'] ? '' : $o['slug'] ] + $active );
+				$options[] = $o;
+			}
+			$filters[] = [ 'label' => $label, 'all' => [ 'label' => $all, 'url' => $url( [ $filter => '' ] + $active ), 'active' => '' === $active[ $filter ] ], 'options' => $options ];
+		}
+
+		$matches = Directory::match( $places, $active );
+		$groups  = [];
+		foreach ( Directory::by_zone( $matches, $order[ Taxonomies::ZONE ] ) as $g ) {
+			$groups[] = [ 'name' => $g['name'], 'url' => '' !== $g['slug'] ? $url( [ 'zone' => $g['slug'] ] + $active ) : null, 'places' => $g['places'] ];
+		}
+
+		$view = [
+			'filters'   => $filters,
+			'groups'    => $groups,
+			'places'    => $matches,
+			'total'     => count( $matches ),
+			'filtered'  => '' !== $active['category'] || '' !== $active['profile'],
+			'reset_url' => $url( [ 'zone' => $zone ] ),
+			'grouped'   => '' === $zone,
+			'active'    => $active,
+		];
+		if ( $term instanceof \WP_Term ) {
+			$view += [
+				'eyebrow'    => __( 'What to see', 'skye-core' ),
+				'title'      => Text::plain( $term->name ),
+				'lead'       => trim( wp_strip_all_tags( $term->description ) ),
+				'breadcrumb' => [ [ 'label' => __( 'Home', 'skye-core' ), 'url' => home_url( '/' ) ], [ 'label' => __( 'What to see', 'skye-core' ), 'url' => $base ], [ 'label' => Text::plain( $term->name ) ] ],
+			];
+		} else {
+			$view += [
+				'eyebrow' => __( 'The whole island', 'skye-core' ),
+				'title'   => __( 'What to see on the Isle of Skye', 'skye-core' ),
+				'lead'    => __( 'Every place worth a stop on Skye and on the way there, by area. Each one says how long it takes, what it costs and what to expect.', 'skye-core' ),
+			];
+		}
+		return $view;
+	}
+
+	/** [skye_places]: the places directory, or the places of the zone being viewed. */
+	public static function places_shortcode(): string {
+		return Render\PlaceList::directory( self::places_view() );
+	}
+
+	/** Filtered views are for people, not for the index: only the directory and the zone pages are canonical. */
+	public static function robots( array $robots ): array {
+		if ( self::is_directory() && array_filter( self::requested_filters() ) ) {
+			$robots['noindex'] = true;
+			$robots['follow']  = true;
+			unset( $robots['index'] );
+		}
+		return $robots;
+	}
+
+	/** Browser title of the directory and the zone pages: what a visitor would call them. */
+	public static function title_parts( array $parts ): array {
+		if ( is_post_type_archive( PostTypes::PLACE ) ) {
+			$parts['title'] = __( 'What to see on the Isle of Skye', 'skye-core' );
+		} elseif ( is_tax( Taxonomies::ZONE ) ) {
+			$term = get_queried_object();
+			if ( $term instanceof \WP_Term ) {
+				/* translators: %s: name of an area of the island. */
+				$parts['title'] = sprintf( __( 'What to see: %s', 'skye-core' ), Text::plain( $term->name ) );
+			}
+		}
+		return $parts;
+	}
+
 	/** Main navigation: the "Skye primary" menu when one is assigned, else the archives that exist. */
 	private static function nav_links(): array {
 		$links     = [];
@@ -204,7 +336,7 @@ final class Frontend {
 			PostTypes::LODGING   => __( 'Where to stay', 'skye-core' ),
 			PostTypes::MOTORHOME => __( 'Car and motorhome', 'skye-core' ),
 		];
-		$current  = is_singular() ? (string) get_post_type() : ( is_post_type_archive() ? (string) get_query_var( 'post_type' ) : '' );
+		$current  = is_singular() ? (string) get_post_type() : ( is_tax( Taxonomies::ZONE ) ? PostTypes::PLACE : ( is_post_type_archive() ? (string) get_query_var( 'post_type' ) : '' ) );
 		foreach ( $defaults as $type => $label ) {
 			$url = self::archive( $type );
 			if ( $url ) {

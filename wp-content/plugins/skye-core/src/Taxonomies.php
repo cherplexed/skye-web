@@ -62,6 +62,25 @@ final class Taxonomies {
 		];
 	}
 
+	/**
+	 * One sentence per zone, shown at the top of its page. Seeded as the term description when that is
+	 * empty, so an editor's text is never overwritten.
+	 *
+	 * @return array<string, string> slug => intro
+	 */
+	public static function zone_intros(): array {
+		return [
+			'trotternish'         => 'The northern peninsula: the Storr, the Quiraing and the cliffs of the east coast, all on one loop road from Portree.',
+			'portree'             => 'The capital of the island and its main base, with the harbour, the shops and most of the places to eat.',
+			'duirinish-waternish' => 'The north-west: Dunvegan Castle, the lighthouse at Neist Point and long single-track roads out to the Atlantic.',
+			'minginish-cuillin'   => 'The Cuillin mountains and the coast below them: the Fairy Pools, Sligachan and the Talisker distillery.',
+			'sleat'               => 'The green southern peninsula, where the ferry from Mallaig comes in at Armadale.',
+			'broadford'           => 'The south-east of the island: the first stretch of road after the bridge, and its second village.',
+			'raasay'              => 'The island facing Portree, a short ferry crossing from Sconser.',
+			'en-route'            => 'Stops on the road between Edinburgh, Glasgow or Inverness and the Isle of Skye.',
+		];
+	}
+
 	public static function register(): void {
 		$defs = [
 			self::ZONE        => [ 'Zone', 'Zones', 'zone', false ],
@@ -106,6 +125,12 @@ final class Taxonomies {
 						++$created;
 					}
 				}
+			}
+		}
+		foreach ( self::zone_intros() as $slug => $intro ) {
+			$term = get_term_by( 'slug', $slug, self::ZONE );
+			if ( $term instanceof \WP_Term && '' === trim( (string) $term->description ) ) {
+				wp_update_term( $term->term_id, self::ZONE, [ 'description' => $intro ] );
 			}
 		}
 		return $created;
