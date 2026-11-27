@@ -1,5 +1,5 @@
 {
-  "_note": "Taken from the public tour pages of viajarporescocia.com on 26 Nov 2026 (same itinerary for the three brands) plus the Bókun product IDs provided by Sergio. Still unverified. Known gaps: (1) `days` only lists stops that already exist as Places, so the mainland stops are only named in each day's summary: (Glencoe, Glenfinnan, Eilean Donan, Loch Ness, Inverness, Pitlochry…) and Lealt Falls are missing, and days 1 and 3 of the 3-day tour are empty; (2) the 3-day tour is seeded with its peak-season day on Skye; from mid-October to late March that day is Sligachan, Fairy Pools, Portree, Fairy Glen, Quiraing, Kilt Rock and the Storr, and the model has no seasonal itineraries yet; (3) there is also a Glasgow departure sold as a separate product; (4) Loch Ness Bus has no booking pages yet, so its offer links to the brand's home page.",
+  "_note": "Taken from the public tour pages of viajarporescocia.com on 26 Nov 2026 (same itinerary for the three brands) plus the Bókun product IDs provided by Sergio. Still unverified. Known gaps: (1) every stop named on the tour pages now has a Place, except Spean Bridge and Dornie on the 2-day tour, which are only named in the day's summary; (2) the 3-day tour is seeded with its peak-season day on Skye; from mid-October to late March that day is Sligachan, Fairy Pools, Portree, Fairy Glen, Quiraing, Kilt Rock and the Storr, and the model has no seasonal itineraries yet; (3) there is also a Glasgow departure sold as a separate product; (4) Loch Ness Bus has no booking pages yet, so its offer links to the brand's home page.",
   "tours": [
     {
       "slug": "isle-of-skye-3-day-tour",
@@ -13,8 +13,18 @@
       "days": [
         {
           "title": "Edinburgh to Skye through Glencoe",
-          "summary": "North through the Highlands by Glencoe and Fort William to the Isle of Skye. Night in or near Kyleakin.",
-          "stops": []
+          "summary": "Stirling, Callander and Loch Lubnaig on the way north, then Glencoe, the Glenfinnan viaduct, lunch in Fort William, the Loch Garry viewpoint and Eilean Donan Castle before crossing to Skye. Night in or near Kyleakin.",
+          "stops": [
+            "stirling",
+            "callander",
+            "loch-lubnaig",
+            "glencoe",
+            "glenfinnan",
+            "fort-william",
+            "loch-garry-viewpoint",
+            "eilean-donan-castle",
+            "kyleakin"
+          ]
         },
         {
           "title": "A full day on Skye",
@@ -30,7 +40,13 @@
         {
           "title": "Eilean Donan, Loch Ness and back to Edinburgh",
           "summary": "Eilean Donan Castle and the Five Sisters of Kintail, Loch Ness with an optional cruise and Urquhart Castle, lunch in Inverness, and south to Edinburgh.",
-          "stops": []
+          "stops": [
+            "eilean-donan-castle",
+            "five-sisters-of-kintail",
+            "loch-ness-urquhart-castle",
+            "inverness",
+            "pitlochry"
+          ]
         }
       ],
       "products": [
@@ -69,6 +85,8 @@
           "title": "Edinburgh to Portree",
           "summary": "Dunkeld and Spean Bridge on the way north, a lunch stop at Eilean Donan Castle, then over the Skye Bridge to Sligachan and the Cuillin, and on to Portree.",
           "stops": [
+            "dunkeld",
+            "eilean-donan-castle",
             "sligachan",
             "portree"
           ]
@@ -77,8 +95,12 @@
           "title": "Trotternish, Loch Ness and back to Edinburgh",
           "summary": "Lealt Falls, Kilt Rock and the Old Man of Storr in the morning, then Dornie, Urquhart Castle on Loch Ness, Inverness and Pitlochry. Back in Edinburgh around 20:00–21:00.",
           "stops": [
+            "lealt-falls",
             "kilt-rock-and-mealt-falls",
-            "old-man-of-storr"
+            "old-man-of-storr",
+            "loch-ness-urquhart-castle",
+            "inverness",
+            "pitlochry"
           ]
         }
       ],
