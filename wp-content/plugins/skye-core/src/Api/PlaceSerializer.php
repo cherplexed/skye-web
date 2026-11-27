@@ -62,6 +62,8 @@ final class PlaceSerializer {
 			'overnight_allowed' => Meta::bool( $id, 'overnight_allowed' ),
 			'services_nearby'   => self::list( Meta::get( $id, 'services_nearby', [] ) ),
 			'gallery'           => array_values( array_filter( array_map( [ self::class, 'image_by_id' ], self::list( Meta::get( $id, 'gallery', [] ) ) ) ) ),
+			'faq'               => array_values( array_filter( self::rows( Meta::get( $id, 'faq', [] ), [ 'question', 'answer' ] ), static fn( $r ) => '' !== trim( (string) $r['question'] ) && '' !== trim( (string) $r['answer'] ) ) ),
+			'sources'           => array_values( array_filter( self::rows( Meta::get( $id, 'sources', [] ), [ 'title', 'url' ] ), static fn( $r ) => '' !== trim( (string) $r['title'] ) ) ),
 			'tips'              => array_values( array_filter( array_map( static fn( $r ) => is_array( $r ) ? (string) ( $r['tip'] ?? '' ) : (string) $r, (array) Meta::get( $id, 'tips', [] ) ) ) ),
 			'audioguide_stop'   => Meta::bool( $id, 'audioguide_enabled' ) ? [
 				'number'   => Meta::int( $id, 'audioguide_stop_number' ),

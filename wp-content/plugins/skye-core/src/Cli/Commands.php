@@ -219,6 +219,8 @@ final class Commands {
 		Meta::set( $id, 'services_nearby', $r['services_nearby'] ?? [] );
 		Meta::set( $id, 'opening_hours', $r['opening_hours'] ?? [] );
 		Meta::set( $id, 'tips', array_map( static fn( $t ) => [ 'tip' => $t ], $r['tips'] ?? [] ) );
+		Meta::set( $id, 'faq', $r['faq'] ?? [] );
+		Meta::set( $id, 'sources', $r['sources'] ?? [] );
 
 		$ag = $r['audioguide'] ?? [];
 		Meta::set( $id, 'audioguide_enabled', ! empty( $ag['enabled'] ) ? 1 : 0 );

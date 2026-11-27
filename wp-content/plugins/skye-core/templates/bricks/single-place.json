@@ -183,6 +183,8 @@
         "skpl44",
         "skpl45",
         "skpl46",
+        "skpl48",
+        "skpl49",
         "skpl47"
       ],
       "settings": {
@@ -250,6 +252,26 @@
         "shortcode": "[skye_place part=\"nearby\"]"
       },
       "label": "Nearby"
+    },
+    {
+      "id": "skpl48",
+      "name": "shortcode",
+      "parent": "skpl40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_place part=\"faq\"]"
+      },
+      "label": "Frequently asked questions"
+    },
+    {
+      "id": "skpl49",
+      "name": "shortcode",
+      "parent": "skpl40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_place part=\"sources\"]"
+      },
+      "label": "Sources"
     },
     {
       "id": "skpl47",

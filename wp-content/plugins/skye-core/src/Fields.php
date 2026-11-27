@@ -46,6 +46,8 @@ final class Fields {
 			'services_nearby'       => [ 'type' => 'checkboxes', 'i18n' => false, 'choices' => [ 'toilets' => 'Toilets', 'cafe' => 'Café', 'restaurant' => 'Restaurant', 'shop' => 'Shop', 'fuel' => 'Fuel' ] ],
 			'gallery'               => [ 'type' => 'gallery', 'i18n' => false ],
 			'tips'                  => [ 'type' => 'repeater', 'i18n' => true, 'sub' => [ 'tip' => [ 'type' => 'text', 'i18n' => true ] ] ],
+			'faq'                   => [ 'type' => 'repeater', 'i18n' => true, 'sub' => [ 'question' => [ 'type' => 'text', 'i18n' => true ], 'answer' => [ 'type' => 'textarea', 'i18n' => true ] ] ],
+			'sources'               => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'title' => [ 'type' => 'text', 'i18n' => false ], 'url' => [ 'type' => 'url', 'i18n' => false ] ] ],
 			'audioguide_enabled'    => [ 'type' => 'bool', 'i18n' => false ],
 			'audioguide_stop_number' => [ 'type' => 'number', 'i18n' => false ],
 			'audioguide_tracks'     => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'lang' => [ 'type' => 'text', 'i18n' => false ], 'audio_url' => [ 'type' => 'url', 'i18n' => false ], 'transcript' => [ 'type' => 'textarea', 'i18n' => false ] ] ],

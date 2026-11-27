@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.5.1
+Version: 0.6.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -235,3 +235,20 @@ a.skye-routecard h2 { color: var(--skye-ink); }
   .skye-stop__photo { height: 56px; }
   .skye-routeday__foot .skye-btn { flex: 1 1 100%; }
 }
+
+/* ---- Frequently asked questions and sources on a Place ---- */
+.skye-faq__list { border-bottom: 1px solid var(--skye-line); }
+.skye-faq__item { border-top: 1px solid var(--skye-line); }
+.skye-faq__item summary { align-items: center; color: var(--skye-ink); cursor: pointer; display: flex; font-weight: 600; gap: 16px; justify-content: space-between; line-height: 1.4; list-style: none; padding: 14px 0; }
+.skye-faq__item summary::-webkit-details-marker { display: none; }
+.skye-faq__item summary::after { color: var(--skye-accent); content: "+"; flex: none; font-family: Sora, Inter, sans-serif; font-size: 22px; font-weight: 500; line-height: 1; }
+.skye-faq__item[open] summary::after { content: "–"; }
+.skye-faq__item summary:hover { color: var(--skye-accent); }
+.skye-faq__answer { padding: 0 32px 16px 0; }
+.skye-faq__answer p { color: var(--skye-muted); line-height: 1.6; margin: 0 0 10px; }
+.skye-faq__answer p:last-child { margin-bottom: 0; }
+.skye-sources { color: var(--skye-muted); display: flex; flex-wrap: wrap; font-size: 13px; gap: 4px 10px; width: 100%; }
+.skye-sources__label { font-weight: 600; }
+.skye-sources ul { display: flex; flex-wrap: wrap; gap: 4px 14px; list-style: none; margin: 0; padding: 0; }
+.skye-sources a { color: var(--skye-muted); text-decoration: underline; text-underline-offset: .15em; }
+.skye-sources a:hover { color: var(--skye-accent); }

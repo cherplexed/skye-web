@@ -13,7 +13,7 @@ use Skye\Units;
  */
 final class PlaceBlocks {
 
-	public const PARTS = [ 'breadcrumb', 'gallery', 'tags', 'summary', 'facts', 'hours', 'tips', 'directions', 'motorhome', 'nearby', 'tours', 'lodging', 'verification' ];
+	public const PARTS = [ 'breadcrumb', 'gallery', 'tags', 'summary', 'facts', 'hours', 'tips', 'directions', 'motorhome', 'nearby', 'tours', 'lodging', 'faq', 'sources', 'verification' ];
 
 	public static function render( string $part, array $p, string $market ): string {
 		return match ( $part ) {
@@ -29,6 +29,8 @@ final class PlaceBlocks {
 			'nearby'       => self::nearby( $p, $market ),
 			'tours'        => self::tours( $p ),
 			'lodging'      => self::lodging( $p, $market ),
+			'faq'          => self::faq( $p, $market ),
+			'sources'      => self::sources( $p ),
 			'verification' => self::verification( $p ),
 			default        => '',
 		};
@@ -295,6 +297,90 @@ final class PlaceBlocks {
 			return '';
 		}
 		return sprintf( '<section class="skye-card skye-lodging"><h2 class="skye-card__title">%s</h2><ul class="skye-lodging__list">%s</ul></section>', Html::e( Html::t( 'Where to sleep nearby' ) ), $html );
+	}
+
+	/**
+	 * Questions and answers of the place: first the ones the structured facts answer by themselves (so they
+	 * always agree with the "Practical information" card and follow the visitor's units), then the editorial ones.
+	 * Used for the visible block and for the FAQPage JSON-LD, which must match what is on the page.
+	 *
+	 * @return list<array{question:string, answer:string}>
+	 */
+	public static function faq_items( array $p, string $market ): array {
+		$title = (string) ( $p['title'] ?? '' );
+		$items = [];
+
+		$typical = (int) ( $p['duration_typical'] ?? 0 );
+		$min     = (int) ( $p['duration_min'] ?? 0 );
+		if ( $typical > 0 ) {
+			$answer  = sprintf( Html::t( 'Allow about %s.' ), Units::format_duration( $typical ) );
+			$answer .= $min > 0 && $min < $typical ? ' ' . sprintf( Html::t( 'With less time, %s is the minimum to make the stop worthwhile.' ), Units::format_duration( $min ) ) : '';
+			$items[] = [ 'question' => sprintf( Html::t( 'How long do you need at %s?' ), $title ), 'answer' => $answer ];
+		}
+
+		$price   = isset( $p['price_gbp'] ) && (float) $p['price_gbp'] > 0 ? Units::format_money( (float) $p['price_gbp'], 'GBP', 'en-gb' ) : '';
+		$items[] = [
+			'question' => sprintf( Html::t( 'Do you have to pay to visit %s?' ), $title ),
+			'answer'   => match ( (string) ( $p['price_type'] ?? 'free' ) ) {
+				'ticket'       => '' !== $price ? sprintf( Html::t( 'Yes. An adult ticket costs %s.' ), $price ) : Html::t( 'Yes, you need a ticket. Check the current price on the official site.' ),
+				'paid_parking' => '' !== $price ? sprintf( Html::t( 'The visit itself is free. Parking costs %s.' ), $price ) : Html::t( 'The visit itself is free, but you pay to park.' ),
+				default        => Html::t( 'No, it is free to visit.' ),
+			},
+		];
+
+		if ( isset( $p['distance_km'] ) && (float) $p['distance_km'] > 0 ) {
+			$schema = Fields::place()['difficulty']['choices'];
+			$level  = (string) ( $p['difficulty'] ?? 'none' );
+			$answer = sprintf( Html::t( 'The walk is %s there and back.' ), Units::format_distance( (float) $p['distance_km'], $market ) );
+			if ( isset( $p['elevation_gain_m'] ) && (float) $p['elevation_gain_m'] > 0 ) {
+				$answer .= ' ' . sprintf( Html::t( 'It climbs %s.' ), Units::format_altitude( (float) $p['elevation_gain_m'], $market ) );
+			}
+			if ( 'none' !== $level && isset( $schema[ $level ] ) ) {
+				$answer .= ' ' . sprintf( Html::t( 'We rate it as: %s.' ), mb_strtolower( Html::t( $schema[ $level ] ) ) );
+			}
+			$items[] = [ 'question' => sprintf( Html::t( 'How hard is the walk at %s?' ), $title ), 'answer' => $answer ];
+		}
+
+		$tours = array_values( array_filter( array_map( static fn( $t ) => (string) ( $t['title'] ?? '' ), $p['in_tours'] ?? [] ) ) );
+		if ( $tours ) {
+			$items[] = [
+				'question' => sprintf( Html::t( 'Can you visit %s without a car?' ), $title ),
+				'answer'   => sprintf( Html::t( 'Yes. It is a stop on our guided tours from Edinburgh: %s.' ), implode( '; ', $tours ) ),
+			];
+		}
+
+		foreach ( $p['faq'] ?? [] as $row ) {
+			$q = trim( (string) ( $row['question'] ?? '' ) );
+			$a = trim( (string) ( $row['answer'] ?? '' ) );
+			if ( '' !== $q && '' !== $a ) {
+				$items[] = [ 'question' => $q, 'answer' => $a ];
+			}
+		}
+		return $items;
+	}
+
+	/** "Frequently asked questions": native <details>, closed by default, no JavaScript. The text is in the HTML. */
+	public static function faq( array $p, string $market ): string {
+		$html = '';
+		foreach ( self::faq_items( $p, $market ) as $item ) {
+			$paragraphs = implode( '', array_map( static fn( $t ) => '<p>' . Html::e( $t ) . '</p>', preg_split( '/\R{2,}/', $item['answer'] ) ?: [] ) );
+			$html      .= sprintf( '<details class="skye-faq__item"><summary>%s</summary><div class="skye-faq__answer">%s</div></details>', Html::e( $item['question'] ), $paragraphs );
+		}
+		return '' === $html ? '' : Html::block( 'faq', Html::t( 'Frequently asked questions' ), '<div class="skye-faq__list">' . $html . '</div>' );
+	}
+
+	/** Where the facts on the page come from. */
+	public static function sources( array $p ): string {
+		$html = '';
+		foreach ( $p['sources'] ?? [] as $s ) {
+			$title = trim( (string) ( $s['title'] ?? '' ) );
+			$url   = trim( (string) ( $s['url'] ?? '' ) );
+			if ( '' === $title ) {
+				continue;
+			}
+			$html .= '<li>' . ( preg_match( '#^https?://#i', $url ) ? sprintf( '<a href="%s" rel="noopener">%s</a>', Html::e( $url ), Html::e( $title ) ) : Html::e( $title ) ) . '</li>';
+		}
+		return '' === $html ? '' : '<div class="skye-sources"><span class="skye-sources__label">' . Html::e( Html::t( 'Sources' ) ) . '</span><ul>' . $html . '</ul></div>';
 	}
 
 	/** Always rendered: an unverified page must say so (CLAUDE.md, principle 4). */

@@ -1,12 +1,12 @@
 {
- "_note": "The first 10 are the pilot places. The next 16 (from kyleakin on) are the stops of the tours, written on 27 Nov 2026 from general knowledge: coordinates are approximate, and prices, hours, parking and every practical detail MUST be verified before publishing. The seed marks every place as unverified.",
+ "_note": "The first 10 are the pilot places. The next 16 (from kyleakin on) are the stops of the tours, written on 27 Nov 2026 from general knowledge: coordinates are approximate, and prices, hours, parking and every practical detail MUST be verified before publishing. The seed marks every place as unverified. Old Man of Storr, Portree and Eilean Donan Castle were rewritten on 27 Nov 2026 from the sources listed in each (official sites, VisitScotland and the Viajar por Escocia guide): they are the model for the rest, and still need a guide's check.",
  "places": [
   {
    "slug": "old-man-of-storr",
    "title": "Old Man of Storr",
    "gaelic_name": "Bodach an Stòir",
-   "summary": "Skye's most photographed rock pinnacle: a steep 1.5–2 hour walk from the A855 car park with views over the Sound of Raasay.",
-   "content": "<p>The Old Man is a 50 m rock pinnacle left behind by an ancient landslip on the Trotternish ridge. A signposted path climbs from the car park through felled plantation and then on a gravel track to the base of the pinnacle; the last 20 minutes are the steepest and slippery in rain. Continue to the upper viewpoint for the classic shot with the Old Man in the foreground.</p>",
+   "summary": "Skye's best-known landmark: a 50 m pinnacle of rock below the Trotternish ridge, reached by a steep walk of about two hours there and back.",
+   "content": "<p>The Old Man of Storr is the tallest of a group of rock pinnacles standing below the cliffs of the Storr, on the east side of the Trotternish peninsula. On a clear day it can be seen from far along the coast road, and from the sea beyond.</p><p>It is the work of an ancient landslip. The Trotternish ridge is an escarpment some 30 km (19 miles) long, where a heavy cap of volcanic rock sits on weaker sediments from the Jurassic period. Long ago the edge gave way and slid towards the sea, leaving the pinnacles behind. The ground is still not entirely at rest: in the summer of 2004 large rocks fell from the cliff and came to a stop at the foot of the Old Man.</p><p>In Gaelic it is Bodach an Stòir. One local story says the pinnacle is the thumb of a giant who lies buried in the hillside; another, that the cliff shows the face of an old man.</p><p>The walk starts at the car park beside the A855. The path is well made but steep and exposed to the weather, and it climbs steadily all the way. Most people go as far as the foot of the pinnacle and the viewpoint just above it, which looks back over the Old Man to the Sound of Raasay and the mainland. Beyond that point the ground is rougher and calls for a map, a compass and hill experience.</p>",
    "zone": "trotternish",
    "categories": [
     "hike",
@@ -25,21 +25,21 @@
     "lat": 57.504,
     "lng": -6.169
    },
-   "directions": "10 km north of Portree on the A855. Large pay-and-display car park on the right.",
+   "directions": "11 km (7 miles) north of Portree on the A855 towards Staffin, about 15 minutes by car. The car park is on the left; in summer it fills by mid-morning.",
    "duration_min": 90,
    "duration_typical": 120,
    "difficulty": "moderate",
    "distance_km": 3.8,
    "elevation_gain_m": 300,
    "price_type": "paid_parking",
-   "price_gbp": null,
+   "price_gbp": 6,
    "opening_hours": [
     {
      "season": "All year",
      "hours": "Open access"
     }
    ],
-   "best_time": "Sunrise and early morning; in summer the car park fills before 9:00.",
+   "best_time": "Before 9:00, ahead of the tour coaches, or late in the afternoon. Summer has the long light and the crowds.",
    "suitable_for": [
     "children",
     "dogs"
@@ -47,18 +47,77 @@
    "motorhome_parking": "yes_length_limit",
    "overnight_allowed": false,
    "services_nearby": [
-    "toilets"
+    "toilets",
+    "cafe"
    ],
    "tips": [
-    "Walking boots and a waterproof layer even on sunny days.",
-    "No shade, water or services on the route; nearest are in Portree.",
-    "Not suitable for strollers."
+    "Wear boots or shoes with a good grip and carry a waterproof, even on a fine morning.",
+    "The main car park has a height barrier: motorhomes and tall vans use the marked bays on the road.",
+    "If the car park is full, come back later. Parking on the verges is not allowed.",
+    "The toilets by the car park are free. A kiosk across the road sells drinks and snacks in summer.",
+    "Phone signal comes and goes on the hill, so do not rely on it to find your way."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 10,
     "radius_m": 200
-   }
+   },
+   "faq": [
+    {
+     "question": "Why is it called the Old Man of Storr?",
+     "answer": "The name is a translation of the Gaelic Bodach an Stòir. Local tradition explains it in two ways: the pinnacle is the thumb of a giant buried in the hillside, or the cliff behind it shows the face of an old man."
+    },
+    {
+     "question": "How was the Old Man of Storr formed?",
+     "answer": "By a huge landslip. The Trotternish ridge is made of heavy volcanic rock lying on softer Jurassic sediments. The edge of the ridge collapsed and slid seawards, and the pinnacles are what was left standing. Rockfalls still happen: a large one came down in 2004."
+    },
+    {
+     "question": "How much is parking at the Old Man of Storr?",
+     "answer": "£6 for up to six hours and £8 for up to twelve, the same for every vehicle. You can pay at the machines with cash or card, or with the RingGo app. Spaces cannot be booked in advance, and the main car park holds about 140 cars."
+    },
+    {
+     "question": "Can you get to the Old Man of Storr by bus?",
+     "answer": "Yes. Stagecoach bus 57A leaves Somerled Square in Portree for Flodigarry and stops at the Old Man of Storr after about 15 minutes; the 57C brings you back. There is no 57A on Sundays, and timetables change, so check them before you set out."
+    },
+    {
+     "question": "Are there toilets at the Old Man of Storr?",
+     "answer": "Yes, by the car park. They are free and include baby changing; the accessible toilet opens with a radar key. Beside them there is a free waste point for motorhomes."
+    },
+    {
+     "question": "Can you park a motorhome or stay overnight at the Storr?",
+     "answer": "Motorhomes cannot enter the main car park because of the height barrier, but there are bays for them and other large vehicles on the road. Nobody may stay overnight: use one of the campsites nearby."
+    },
+    {
+     "question": "What should you wear for the walk?",
+     "answer": "Footwear that supports the ankle and grips on wet rock, and layers with a waterproof on top. The path is steep and open to the wind, and the weather can turn within minutes. Take water, and sunscreen in summer."
+    },
+    {
+     "question": "Is there an electric car charger?",
+     "answer": "Yes, the car park has both fast and standard chargers. In summer they are often in use, so have a second option in mind."
+    }
+   ],
+   "sources": [
+    {
+     "title": "The Storr, official site: Plan your visit",
+     "url": "https://thestorr.com/plan-your-visit/"
+    },
+    {
+     "title": "The Storr, official site: Parking",
+     "url": "https://thestorr.com/parking/"
+    },
+    {
+     "title": "The Storr, official site: Frequently asked questions",
+     "url": "https://thestorr.com/frequently-asked-questions/"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    },
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    }
+   ]
   },
   {
    "slug": "quiraing",
@@ -466,7 +525,7 @@
    "title": "Portree",
    "gaelic_name": "Port Rìgh",
    "summary": "Skye's capital and the practical base: the painted harbour, most of the island's restaurants and shops, and the departure point for wildlife boat trips.",
-   "content": "<p>Portree (about 2,500 people) sits around a sheltered harbour with its famous row of coloured houses. It has the island's main supermarket, fuel, a tourist information point, banks and the widest choice of places to eat and sleep. Boat trips to see sea eagles and seals leave from the pier.</p>",
+   "content": "<p>Portree is the capital of Skye and its only real town. It sits around a sheltered bay on the east coast, roughly in the middle of the island, which is why most visitors use it as their base: the roads to Trotternish, Dunvegan and the south all meet here, and so do the island's buses.</p><p>The picture everyone knows is Quay Street, the row of painted houses along the harbour, now shops, guesthouses and restaurants. Bank Street, one level up, is the main street. Fishing boats still work from the pier, and wildlife trips leave from it in season.</p><p>The name is usually explained as the King's Port, after a visit by James V of Scotland, who sailed to Skye in 1540 with a fleet to settle the quarrels of the MacLeods and the MacDonalds. Two centuries later the town saw another royal visitor: in 1746 Charles Edward Stuart, on the run after Culloden, said goodbye to Flora MacDonald at the inn that stood where the Royal Hotel is today.</p><p>Ships carrying emigrants to North America left from this harbour in the 18th century, when the island could no longer feed its people. In the 19th, steamers from Glasgow made Portree the commercial centre of Skye and brought its first tourists.</p><p>Two short walks start in the town. The Lump is the wooded headland above the harbour, with an old tower you can climb for the view of the bay and the Cuillin, and a natural arena where the Skye Highland Games are held in summer. The Scorrybreac circuit follows the shore from the north side of the bay round a headland and back over the hill; seals are sometimes seen from the path.</p>",
    "zone": "portree",
    "categories": [
     "village",
@@ -486,7 +545,7 @@
     "lat": 57.414,
     "lng": -6.196
    },
-   "directions": "On the A87/A855. Pay-and-display car parks in the centre and by the harbour.",
+   "directions": "On the A87, 55 km (34 miles) from the Skye Bridge. Car parks are signed in the centre, which is small and best seen on foot.",
    "duration_min": 60,
    "duration_typical": 120,
    "difficulty": "none",
@@ -500,7 +559,7 @@
      "hours": "Town; shop hours vary"
     }
    ],
-   "best_time": "Evening for the harbour lights; book restaurants in summer.",
+   "best_time": "Early evening, when the day visitors have left and the light is on the harbour.",
    "suitable_for": [
     "children",
     "stroller",
@@ -517,14 +576,60 @@
     "fuel"
    ],
    "tips": [
-    "Fill up with fuel here: stations are scarce in the north and west.",
-    "The harbour viewpoint is from the Lump, the headland south of the pier."
+    "In summer, book a table for dinner: the restaurants fill and there are not many of them.",
+    "Reserve accommodation months ahead for June to September. Broadford, near the bridge, is the usual alternative when Portree is full.",
+    "The supermarket and fuel here are the last before the north of the island.",
+    "Distances on Skye take longer than the map suggests: allow extra time for every drive."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 5,
     "radius_m": 400
-   }
+   },
+   "faq": [
+    {
+     "question": "What does the name Portree mean?",
+     "answer": "It comes from the Gaelic Port Rìgh, usually translated as the King's Port. Tradition links it to James V of Scotland, who anchored here in 1540 on a voyage to bring the island clans to order."
+    },
+    {
+     "question": "Is Portree a good base for visiting Skye?",
+     "answer": "Yes, and it is the one most people choose. It is in the middle of the island, it has the widest choice of places to sleep and eat, and the bus routes to Dunvegan, Uig, Staffin and Broadford all start here. The drawback is demand: in summer it is busy and rooms sell out early."
+    },
+    {
+     "question": "How do you get to Portree without a car?",
+     "answer": "By coach. Long-distance services run to Portree from Glasgow, Edinburgh and Inverness. From Inverness the journey takes about three and a half hours, from Glasgow about six and a half, and from Edinburgh about seven and a half. You can also take the train from Inverness to Kyle of Lochalsh and continue by bus. There is no railway on Skye."
+    },
+    {
+     "question": "How long is the drive to Portree?",
+     "answer": "About three hours from Inverness, five from Glasgow and five and a half from Edinburgh, without stops. The usual route is the A87 over the Skye Bridge."
+    },
+    {
+     "question": "Where are the coloured houses of Portree?",
+     "answer": "On Quay Street, along the harbour. The best view of the whole row is from the road above, on the way up to Bank Street, or from the far side of the pier."
+    },
+    {
+     "question": "What is there to do in Portree?",
+     "answer": "Walk the harbour, climb the Lump for the view over the bay, and do the Scorrybreac circuit, a short walk along the shore and back over the hill. In season, boat trips leave from the pier to look for sea eagles and seals. The Skye Highland Games are held here in summer."
+    },
+    {
+     "question": "How far ahead should you book a room in Portree?",
+     "answer": "For the summer months, several months ahead. The island has far more visitors than beds between June and September, and Portree is the first place to fill."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Portree",
+     "url": "https://viajarporescocia.com/guia-de-escocia/portree/"
+    },
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    }
+   ]
   },
   {
    "slug": "sligachan",
@@ -701,7 +806,7 @@
    "title": "Eilean Donan Castle",
    "gaelic_name": "Eilean Donnain",
    "summary": "Scotland's most photographed castle, on a small island where three sea lochs meet, reached by a stone footbridge. On the main road to Skye.",
-   "content": "<p>The castle stands at the meeting point of Loch Duich, Loch Long and Loch Alsh, on the road to Skye. A stronghold has stood here since the 13th century. It was blown up in 1719 during a Jacobite rising and lay in ruins for two hundred years.</p><p>What you see today is a rebuilding carried out between 1912 and 1932. The rooms inside are furnished and open to visitors; the classic photograph is taken from the shore by the car park and costs nothing.</p>",
+   "content": "<p>Eilean Donan stands on a small tidal island at the point where three sea lochs meet: Loch Duich, Loch Long and Loch Alsh. A stone bridge of three arches joins it to the shore beside the main road to Skye, which is why almost everyone on the way to the island stops here.</p><p>The island takes its name from Donan, an Irish missionary who is said to have settled here in the 6th century. The first castle was built in the early 13th century, in the reign of Alexander II, to hold this coast against Norse raiders. For most of the centuries that followed it belonged to the Mackenzies of Kintail, with the MacRaes as its keepers.</p><p>Its end came in 1719. A Jacobite rising that year had Spanish backing, and a garrison of Spanish soldiers was left in the castle with the powder store. Royal Navy ships sailed up the loch, bombarded the walls, took the garrison prisoner and blew up what remained. A few weeks later the rising was defeated at the Battle of Glen Shiel, a short way up the glen.</p><p>The ruin lay open to the weather for nearly two hundred years. Lieutenant-Colonel John MacRae-Gilstrap acquired it and rebuilt it between 1912 and 1932, working from the surviving ground plan; the bridge dates from the same works. What you visit is therefore a 20th-century castle on medieval foundations, and it now belongs to a charitable trust that looks after it and keeps it open.</p><p>Inside, the rooms are furnished as a Highland home of the 17th and 18th centuries, with a banqueting hall and an exhibition on the castle's history. Some rooms are private. The castle has also had a long career on screen, as the clan home in Highlander and as an MI6 base in The World Is Not Enough.</p>",
    "zone": "en-route",
    "categories": [
     "castle",
@@ -719,25 +824,45 @@
     "lng": -5.5161
    },
    "parking_location": null,
-   "directions": "At Dornie on the A87, about 13 km east of Kyle of Lochalsh and the Skye Bridge. Large car park at the visitor centre.",
+   "directions": "At Dornie on the A87, 13 km (8 miles) east of Kyle of Lochalsh and the Skye Bridge. Car park at the visitor centre, beside the road.",
    "duration_min": 20,
    "duration_typical": 75,
    "difficulty": "none",
    "distance_km": null,
    "elevation_gain_m": null,
    "price_type": "ticket",
-   "price_gbp": null,
+   "price_gbp": 13,
    "opening_hours": [
     {
-     "season": "Main season",
-     "hours": "Daily; check the official site"
+     "season": "1 February to late March",
+     "hours": "10:00–16:00"
     },
     {
-     "season": "Winter",
-     "hours": "Reduced opening and closed periods; check the official site"
+     "season": "Late March to April",
+     "hours": "10:00–18:00"
+    },
+    {
+     "season": "May and September",
+     "hours": "9:30–18:00"
+    },
+    {
+     "season": "June to August",
+     "hours": "9:00–18:00"
+    },
+    {
+     "season": "1 to 24 October",
+     "hours": "10:00–18:00"
+    },
+    {
+     "season": "25 October to 22 December",
+     "hours": "10:00–16:00, with some closed days"
+    },
+    {
+     "season": "January",
+     "hours": "Closed"
     }
    ],
-   "best_time": "Early or late in the day; the castle is floodlit after dark.",
+   "best_time": "First thing or after 16:00 in summer. The outside is floodlit after dark.",
    "suitable_for": [
     "children"
    ],
@@ -749,14 +874,69 @@
     "toilets"
    ],
    "tips": [
-    "You only need a ticket to cross the bridge and go inside: the view from the shore is free.",
-    "At high tide the castle is surrounded by water, which makes the better picture."
+    "Tickets are sold only at the castle on the day: there is no online booking.",
+    "Last admission is one hour before closing.",
+    "Rucksacks and large bags are not allowed inside. There are free lockers by the visitor centre.",
+    "The classic photograph is taken from the shore by the car park, and it is free.",
+    "At high tide the castle is ringed by water, which makes the better picture."
    ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "How much does it cost to visit Eilean Donan Castle?",
+     "answer": "In the 2026 season an adult ticket is £13. Visitors aged 60 or over pay £12, children from 5 to 15 pay £6.50 and under-fives go free. A family ticket for two adults and three children is £38. Tickets are bought at the castle on the day; they are not sold online."
+    },
+    {
+     "question": "When is Eilean Donan Castle open?",
+     "answer": "Every day from the start of February to 22 December, apart from a few closed days in November and December. Hours are longest in summer, 9:00 to 18:00, and shortest in winter, 10:00 to 16:00. The castle is closed for the whole of January. The dates shift a little each year, so check the official site before you travel."
+    },
+    {
+     "question": "Can you see Eilean Donan Castle without paying?",
+     "answer": "Yes. The famous view of the castle and its bridge is from the shore next to the car park, which is open to everyone. You only need a ticket to cross the bridge and go inside."
+    },
+    {
+     "question": "How far is Eilean Donan Castle from the Isle of Skye?",
+     "answer": "About 13 km (8 miles) from Kyle of Lochalsh, where the bridge to Skye begins: ten to fifteen minutes by car."
+    },
+    {
+     "question": "Is Eilean Donan a real medieval castle?",
+     "answer": "The site is medieval, but the building is not. The original castle, begun in the 13th century, was blown up in 1719 and stood in ruins for almost two hundred years. It was rebuilt between 1912 and 1932 on the old ground plan."
+    },
+    {
+     "question": "Why were there Spanish soldiers at Eilean Donan?",
+     "answer": "Spain supported the Jacobite rising of 1719 and sent troops to Scotland. Some of them were left to guard the castle, which was being used as a store for gunpowder. Royal Navy ships attacked it, captured the garrison and destroyed the castle with its own powder."
+    },
+    {
+     "question": "Which films were shot at Eilean Donan Castle?",
+     "answer": "The best known are Highlander (1986), where it is the home of the MacLeod clan, and the James Bond film The World Is Not Enough (1999), where it appears as an MI6 headquarters. It has also been used in many advertisements."
+    },
+    {
+     "question": "Can you take bags into the castle?",
+     "answer": "Small bags only. Rucksacks and large bags have to be left in your car or in the free lockers beside the visitor centre."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Eilean Donan Castle, official site: Opening hours and admission",
+     "url": "https://www.eileandonancastle.com/visit/opening-hours/"
+    },
+    {
+     "title": "Eilean Donan Castle, official site: How to find us",
+     "url": "https://www.eileandonancastle.com/visit/how-to-find-us/"
+    },
+    {
+     "title": "Eilean Donan Castle, official site: Conchra Charitable Trust",
+     "url": "https://www.eileandonancastle.com/about/conchra-charitable-trust/"
+    },
+    {
+     "title": "Viajar por Escocia: Castillo de Eilean Donan",
+     "url": "https://viajarporescocia.com/guia-de-escocia/castillo-eilean-donan/"
+    }
+   ]
   },
   {
    "slug": "loch-ness-urquhart-castle",
