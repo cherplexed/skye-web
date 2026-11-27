@@ -31,7 +31,7 @@
        "note": "Un primer vistazo desde la otra orilla; la visita es el tercer día. No se hace cuando el grupo viaja en autocar grande."
       },
       {
-       "note": "Llegada sobre las 18:00."
+       "note": "Llegada sobre las 18:30."
       }
      ]
     },
@@ -79,7 +79,27 @@
    ],
    "meeting_point": "190 High Street (Royal Mile), Edimburgo. Preséntate 15 minutos antes de la salida.",
    "includes": "Transporte en un vehículo de 8 a 55 plazas. Conductor-guía profesional. Alojamiento solo si reservas uno de los paquetes que lo incluyen.",
-   "excludes": "Alojamiento en la opción de solo tour. Entradas al castillo de Dunvegan, al castillo de Eilean Donan y al crucero por el lago Ness con el castillo de Urquhart. Comidas. Seguro de viaje."
+   "excludes": "Alojamiento en la opción de solo tour. Entradas al castillo de Dunvegan, al castillo de Eilean Donan y al crucero por el lago Ness con el castillo de Urquhart. Comidas. Seguro de viaje.",
+   "accommodation_intro": "Dos noches en Skye o al lado. Al reservar eliges cómo dormir: lo organizas por tu cuenta o coges uno de los paquetes que lo incluyen.",
+   "accommodation_options": [
+    {
+     "name": "Solo tour",
+     "description": "El alojamiento no está incluido. Resérvalo por tu cuenta en Kyleakin o en Kyle of Lochalsh, donde el tour te deja y te recoge: en la parada de autobús junto al aparcamiento de Kyleside, en Kyleakin, o en el cruce de Ferry Road con Kyle Prospect Road, en Kyle of Lochalsh."
+    },
+    {
+     "name": "Básico: albergue",
+     "description": "Una cama en habitación compartida, con baño compartido. Las camas suelen ser literas y los dormitorios, mixtos. El desayuno no está incluido."
+    },
+    {
+     "name": "Estándar: habitación individual, doble o triple",
+     "description": "Bed and breakfast en Broadford, Breakish, Kyleakin o Portree. Desayuno incluido."
+    },
+    {
+     "name": "Superior: habitación individual, doble o triple",
+     "description": "Bed and breakfasts y hoteles bien situados."
+    }
+   ],
+   "accommodation_notes": "En Skye hay pocas camas: reserva con toda la antelación que puedas, sobre todo en temporada alta.\nLas habitaciones triples dependen de lo que haya libre en el momento de reservar.\nEn temporada alta puede ser necesario pasar las dos noches en Inverness o alrededores; en ese caso, el segundo día se dedica a Portree y Trotternish.\nEl precio de cada opción aparece al elegir la fecha."
   },
   "isle-of-skye-2-day-tour": {
    "title": "Isla de Skye y las Highlands, 2 días desde Edimburgo",
@@ -127,7 +147,23 @@
    ],
    "meeting_point": "190 High Street (Royal Mile), Edimburgo. Preséntate 15 minutos antes de la salida.",
    "includes": "Transporte en un vehículo de 8 a 55 plazas. Conductor-guía profesional. Entrada al castillo de Urquhart. Alojamiento solo si reservas uno de los paquetes que lo incluyen.",
-   "excludes": "Alojamiento en la opción de solo tour. Entradas a otras atracciones. Crucero por el lago Ness. Comidas. Seguro de viaje."
+   "excludes": "Alojamiento en la opción de solo tour. Entradas a otras atracciones. Crucero por el lago Ness. Comidas. Seguro de viaje.",
+   "accommodation_intro": "Una noche en Skye o al lado. Al reservar eliges cómo dormir: lo organizas por tu cuenta o coges uno de los paquetes que lo incluyen.",
+   "accommodation_options": [
+    {
+     "name": "Solo tour",
+     "description": "El alojamiento no está incluido. Resérvalo por tu cuenta en Kyleakin o en Kyle of Lochalsh, donde el tour te deja y te recoge: en la parada de autobús junto al aparcamiento de Kyleside, en Kyleakin, o en el cruce de Ferry Road con Kyle Prospect Road, en Kyle of Lochalsh."
+    },
+    {
+     "name": "Básico: albergue",
+     "description": "Una cama en habitación compartida, con baño compartido. Las camas suelen ser literas y los dormitorios, mixtos. El desayuno no está incluido."
+    },
+    {
+     "name": "Bed and breakfast: habitación individual o doble",
+     "description": "Habitación privada con baño privado, que puede estar dentro de la habitación o fuera, pero siempre para tu uso exclusivo. Desayuno incluido."
+    }
+   ],
+   "accommodation_notes": "En Skye hay pocas camas: reserva con toda la antelación que puedas, sobre todo en temporada alta.\nLas habitaciones triples dependen de lo que haya libre en el momento de reservar.\nEl precio de cada opción aparece al elegir la fecha."
   }
  }
 }

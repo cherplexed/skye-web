@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.5 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.6 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -67,7 +67,7 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 
 ## 4. Tour — post type `tour`
 
-`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor (sí) → `title` (sí), `summary` (sí), `stops` repetidor (sí): cada parada del día, en orden, con `place` (relación, opcional: solo si el lugar tiene ficha), `title` (sí; nombra la parada sin ficha o matiza la que la tiene), `stop_type` (visit · photo · break · free_time · overnight), `duration_min` (minutos en la parada) y `note` (sí). Las duraciones salen de la ficha técnica del operador; cuando esta da variantes según el vehículo, se guarda la de más recorrido o más tiempo. La página las muestra con el aviso de que son estimadas. `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
+`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor (sí) → `title` (sí), `summary` (sí), `stops` repetidor (sí): cada parada del día, en orden, con `place` (relación, opcional: solo si el lugar tiene ficha), `title` (sí; nombra la parada sin ficha o matiza la que la tiene), `stop_type` (visit · photo · break · free_time · overnight), `duration_min` (minutos en la parada) y `note` (sí). Las duraciones salen de la ficha técnica del operador; cuando esta da variantes según el vehículo, se guarda la de más recorrido o más tiempo. La página las muestra con el aviso de que son estimadas. `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `accommodation_intro` (sí), `accommodation_options` repetidor (sí) → `name` (sí), `description` (sí): las formas de alojarse que se pueden elegir al reservar, sin precio (el precio de cada opción lo da Bókun). `accommodation_notes` (sí). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
 
 ## 5. Alojamiento — post type `lodging`
 
