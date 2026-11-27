@@ -53,10 +53,39 @@ final class Lang {
 
 	// ---- posts -------------------------------------------------------------------------------
 
-	/** Language of a post; the default language when WPML has no record of it. */
+	/** WPML's translation-group id of a post, or 0 when WPML has no record of the post. */
+	private static function post_trid( int $id, string $post_type ): int {
+		return self::active() ? (int) apply_filters( 'wpml_element_trid', null, $id, 'post_' . $post_type ) : 0;
+	}
+
+	/**
+	 * Language of a post. A post WPML has no record of (created before the type was translatable) is an
+	 * original in the default language; asking WPML about one gives an answer that follows the language
+	 * being viewed, so the record is checked first.
+	 */
 	public static function of_post( int $id, string $post_type ): string {
-		$l = self::active() ? apply_filters( 'wpml_element_language_code', null, [ 'element_id' => $id, 'element_type' => $post_type ] ) : null;
+		if ( ! self::post_trid( $id, $post_type ) ) {
+			return self::default();
+		}
+		$l = apply_filters( 'wpml_element_language_code', null, [ 'element_id' => $id, 'element_type' => $post_type ] );
 		return is_string( $l ) && '' !== $l ? $l : self::default();
+	}
+
+	/** Gives a post without a language record its place as an original in the default language. */
+	public static function claim_post( int $id, string $post_type ): void {
+		if ( ! self::active() || self::post_trid( $id, $post_type ) ) {
+			return;
+		}
+		do_action(
+			'wpml_set_element_language_details',
+			[
+				'element_id'           => $id,
+				'element_type'         => 'post_' . $post_type,
+				'trid'                 => false,
+				'language_code'        => self::default(),
+				'source_language_code' => null,
+			]
+		);
 	}
 
 	/**
