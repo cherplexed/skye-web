@@ -74,12 +74,10 @@ final class PlaceBlocks {
 		);
 	}
 
-	/** Small tags above the title: categories, up to two profiles, "Free" and "Audioguide" when they apply. */
+	/** Small tags above the title: categories, plus "Free" and "Audioguide" when they apply. */
 	public static function tags( array $p ): string {
+		// Categories only: profiles ("Hiking", "Nature"…) mostly repeat them and are for filtering, not labelling.
 		$tags = array_map( static fn( $c ) => (string) $c['name'], $p['categories'] ?? [] );
-		foreach ( array_slice( $p['profiles'] ?? [], 0, 2 ) as $profile ) {
-			$tags[] = (string) $profile['name'];
-		}
 		if ( 'ticket' !== ( $p['price_type'] ?? 'free' ) ) {
 			$tags[] = Html::t( 'Free' );
 		}
@@ -196,7 +194,7 @@ final class PlaceBlocks {
 				$html .= '<li>' . Html::e( $tip ) . '</li>';
 			}
 		}
-		return '' === $html ? '' : Html::block( 'tips', Html::t( 'Tips from our guides' ), '<ul class="skye-tips__list">' . $html . '</ul>' );
+		return '' === $html ? '' : Html::block( 'tips', Html::t( 'Tips' ), '<ul class="skye-tips__list">' . $html . '</ul>' );
 	}
 
 	/** Written directions plus a plain link to a route planner: works without JavaScript or a map key. */

@@ -77,7 +77,7 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( 'lang="gd">Bodach an Stòir<', PlaceBlocks::summary( $p ) );
 		self::assertSame( 1, substr_count( PlaceBlocks::tips( $p ), '<li>' ) );
 
-		$empty = self::place( [ 'tips' => [], 'opening_hours' => [], 'in_tours' => [], 'nearby_places' => [], 'nearby_lodging' => [], 'directions' => '', 'location' => null, 'parking_location' => null, 'image' => null, 'gallery' => [], 'motorhome_parking' => '', 'categories' => [], 'profiles' => [], 'price_type' => 'ticket', 'gaelic_name' => '', 'summary' => '' ] );
+		$empty = self::place( [ 'tips' => [], 'opening_hours' => [], 'in_tours' => [], 'nearby_places' => [], 'nearby_lodging' => [], 'directions' => '', 'location' => null, 'parking_location' => null, 'image' => null, 'gallery' => [], 'motorhome_parking' => '', 'categories' => [], 'price_type' => 'ticket', 'gaelic_name' => '', 'summary' => '' ] );
 		foreach ( [ 'tips', 'hours', 'tours', 'nearby', 'lodging', 'directions', 'gallery', 'motorhome', 'tags', 'summary' ] as $part ) {
 			self::assertSame( '', PlaceBlocks::render( $part, $empty, 'es' ), $part );
 		}
@@ -89,7 +89,7 @@ final class RenderTest extends TestCase {
 
 	public function test_tags_breadcrumb_and_gallery(): void {
 		$p = self::place( [ 'audioguide' => true ] );
-		self::assertSame( '<ul class="skye-tags"><li class="skye-tag">Hike</li><li class="skye-tag">Hiking</li><li class="skye-tag">Free</li><li class="skye-tag">Audioguide</li></ul>', PlaceBlocks::tags( $p ) );
+		self::assertSame( '<ul class="skye-tags"><li class="skye-tag">Hike</li><li class="skye-tag">Free</li><li class="skye-tag">Audioguide</li></ul>', PlaceBlocks::tags( $p ) );
 		self::assertStringNotContainsString( 'Free', PlaceBlocks::tags( self::place( [ 'price_type' => 'ticket' ] ) ) );
 
 		self::assertStringContainsString( 'Home <span aria-hidden="true">›</span> What to see', PlaceBlocks::breadcrumb( $p ) );
