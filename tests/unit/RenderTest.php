@@ -373,6 +373,44 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( 'Steep and narrow', RouteBlocks::motorhome( self::route() ) );
 	}
 
+	public function test_faq_answers_from_the_facts_first_then_editorial(): void {
+		$p     = self::place( [ 'faq' => [ [ 'question' => 'Why "Old Man"?', 'answer' => "A giant's thumb.\n\nOr a face in the cliff." ], [ 'question' => ' ', 'answer' => 'dropped' ] ] ] );
+		$items = PlaceBlocks::faq_items( $p, 'en-us' );
+		self::assertSame(
+			[ 'How long do you need at Old Man of Storr?', 'Do you have to pay to visit Old Man of Storr?', 'How hard is the walk at Old Man of Storr?', 'Can you visit Old Man of Storr without a car?', 'Why "Old Man"?' ],
+			array_column( $items, 'question' )
+		);
+		self::assertSame( 'Allow about 2h. With less time, 1h is the minimum to make the stop worthwhile.', $items[0]['answer'] );
+		self::assertSame( 'The visit itself is free. Parking costs £6.', $items[1]['answer'] );
+		self::assertSame( 'The walk is 2.4 mi there and back. It climbs 984 ft. We rate it as: moderate.', $items[2]['answer'] );
+		self::assertStringContainsString( '3.8 km', PlaceBlocks::faq_items( $p, 'es' )[2]['answer'], 'same facts, the visitor\'s units' );
+		self::assertSame( 'Yes. It is a stop on our guided tours from Edinburgh: 3-day tour.', $items[3]['answer'] );
+
+		$html = PlaceBlocks::faq( $p, 'en-us' );
+		self::assertSame( 5, substr_count( $html, '<details class="skye-faq__item">' ) );
+		self::assertStringNotContainsString( '<details open', $html, 'closed by default' );
+		self::assertStringContainsString( '<summary>Why &quot;Old Man&quot;?</summary><div class="skye-faq__answer"><p>A giant&#039;s thumb.</p><p>Or a face in the cliff.</p></div>', $html );
+
+		// The structured data carries exactly the questions that are on the page.
+		$ld = JsonLd::faq( $items );
+		self::assertSame( 'FAQPage', $ld['@type'] );
+		self::assertSame( array_column( $items, 'question' ), array_column( $ld['mainEntity'], 'name' ) );
+		self::assertSame( "A giant's thumb.\n\nOr a face in the cliff.", $ld['mainEntity'][4]['acceptedAnswer']['text'] );
+		self::assertNull( JsonLd::faq( [] ) );
+
+		$bare = self::place( [ 'duration_typical' => null, 'distance_km' => null, 'in_tours' => [], 'price_type' => 'ticket', 'price_gbp' => null ] );
+		self::assertSame( [ 'Do you have to pay to visit Old Man of Storr?' ], array_column( PlaceBlocks::faq_items( $bare, 'es' ), 'question' ) );
+		self::assertStringContainsString( 'Check the current price on the official site', PlaceBlocks::faq_items( $bare, 'es' )[0]['answer'] );
+	}
+
+	public function test_sources_link_only_real_urls(): void {
+		$html = PlaceBlocks::sources( self::place( [ 'sources' => [ [ 'title' => 'The Storr, official site', 'url' => 'https://thestorr.com/parking/' ], [ 'title' => 'A guide on the ground', 'url' => '' ], [ 'title' => 'Bad', 'url' => 'javascript:alert(1)' ], [ 'title' => '', 'url' => 'https://x' ] ] ] ) );
+		self::assertStringContainsString( '<a href="https://thestorr.com/parking/" rel="noopener">The Storr, official site</a>', $html );
+		self::assertStringContainsString( '<li>A guide on the ground</li><li>Bad</li>', $html );
+		self::assertStringNotContainsString( 'javascript:', $html );
+		self::assertSame( '', PlaceBlocks::sources( self::place() ) );
+	}
+
 	public function test_header_and_footer(): void {
 		$langs = [ [ 'code' => 'en', 'label' => 'English', 'url' => 'http://x/', 'active' => true ], [ 'code' => 'es', 'label' => 'Español', 'url' => 'http://x/es/', 'active' => false ] ];
 		$h     = Chrome::header(

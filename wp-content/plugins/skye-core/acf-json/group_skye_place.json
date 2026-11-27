@@ -376,6 +376,88 @@
             ]
         },
         {
+            "key": "field_skye_place_faq",
+            "label": "Faq",
+            "name": "faq",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 2,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_faq_question",
+                    "label": "Question",
+                    "name": "question",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_place_faq_answer",
+                    "label": "Answer",
+                    "name": "answer",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 2,
+                    "type": "textarea",
+                    "rows": 3,
+                    "new_lines": ""
+                }
+            ]
+        },
+        {
+            "key": "field_skye_place_sources",
+            "label": "Sources",
+            "name": "sources",
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "wpml_cf_preferences": 1,
+            "type": "repeater",
+            "layout": "table",
+            "button_label": "Add row",
+            "sub_fields": [
+                {
+                    "key": "field_skye_place_sources_title",
+                    "label": "Title",
+                    "name": "title",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "text"
+                },
+                {
+                    "key": "field_skye_place_sources_url",
+                    "label": "Url",
+                    "name": "url",
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "wpml_cf_preferences": 1,
+                    "type": "url"
+                }
+            ]
+        },
+        {
             "key": "field_skye_place_audioguide_enabled",
             "label": "Audioguide enabled",
             "name": "audioguide_enabled",
@@ -558,5 +640,5 @@
     "style": "default",
     "active": true,
     "show_in_rest": 1,
-    "modified": 1795720166
+    "modified": 1795807389
 }

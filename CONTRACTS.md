@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.3 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.4 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -37,6 +37,8 @@ Versión 1.3 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es l
 | `services_nearby` | checkboxes | no | toilets · cafe · restaurant · shop · fuel |
 | `gallery` | imágenes | alt sí | |
 | `tips` | repetidor: text | sí | |
+| `faq` | repetidor: `question`, `answer` | sí | Preguntas propias de ese lugar. La ficha añade delante las que se responden solas con los datos (tiempo, precio, caminata, sin coche). Se muestran plegadas y van al JSON-LD como `FAQPage` |
+| `sources` | repetidor: `title`, `url` | no | De dónde salen los datos de la ficha; se muestran al pie |
 | `audioguide_enabled` | bool | no | |
 | `audioguide_stop_number` | entero | no | |
 | `audioguide_tracks` | repetidor: lang, audio_url, transcript | audio y transcript sí | lo que lee la app |

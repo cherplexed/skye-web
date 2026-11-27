@@ -22,9 +22,33 @@ final class JsonLd {
 			return;
 		}
 		[ 'lang' => $lang, 'market' => $market ] = Frontend::context();
-		$data = self::place( Api\Places::item( $post, $lang, $market ) );
-		// JSON_HEX_TAG keeps a "</script>" inside any text from closing the tag.
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG ) . "</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		$item = Api\Places::item( $post, $lang, $market );
+		$data = self::place( $item );
+		$faq  = self::faq( Render\PlaceBlocks::faq_items( $item, $market ) );
+		foreach ( array_filter( [ $data, $faq ] ) as $block ) {
+			// JSON_HEX_TAG keeps a "</script>" inside any text from closing the tag.
+			echo '<script type="application/ld+json">' . wp_json_encode( $block, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG ) . "</script>\n"; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		}
+	}
+
+	/**
+	 * FAQPage for the questions shown on the page; null when there are none.
+	 *
+	 * @param list<array{question:string, answer:string}> $items
+	 * @return array<string, mixed>|null
+	 */
+	public static function faq( array $items ): ?array {
+		if ( ! $items ) {
+			return null;
+		}
+		return [
+			'@context'   => 'https://schema.org',
+			'@type'      => 'FAQPage',
+			'mainEntity' => array_map(
+				static fn( array $i ): array => [ '@type' => 'Question', 'name' => $i['question'], 'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $i['answer'] ] ],
+				$items
+			),
+		];
 	}
 
 	/** @return array<string, mixed> TouristAttraction */
