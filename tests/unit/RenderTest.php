@@ -282,6 +282,10 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( 'BokunWidgetsLoader.js?bookingChannelUUID=bf60449b-9be3-4c80-b568-7d869491a1f4" async></script>', $html );
 		self::assertStringContainsString( '<noscript><p class="skye-booking__fallback">The booking calendar needs JavaScript. <a href="https://lochnessbus.com/" rel="noopener">', $html );
 
+		$local = TourBlocks::booking( [ '_loopback' => true ] + $t );
+		self::assertStringNotContainsString( '<script', $local, 'Bókun answers 403 to a calendar framed from localhost' );
+		self::assertStringContainsString( 'experience-calendar/318823" target="_blank"', $local );
+
 		$card = TourBlocks::offer( $t, 'de' );
 		self::assertStringContainsString( '<a class="skye-btn skye-btn--primary" href="#booking">See dates and book</a>', $card );
 		self::assertStringContainsString( 'Operated by Loch Ness Bus. You book and pay on this site.', $card );

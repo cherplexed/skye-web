@@ -210,6 +210,8 @@ return [
 		'Book on the operator\'s website' => 'Prenota sul sito dell\'operatore',
 		'Choose a date to see availability, room options and prices. Payment is taken securely on this page.' => 'Scegli una data per vedere la disponibilità, le opzioni di alloggio e i prezzi. Il pagamento avviene in modo sicuro su questa pagina.',
 		'Dates and booking' => 'Date e prenotazione',
+		'Bókun does not load the booking calendar on a local address (localhost). It will appear here on the test and live sites.' => 'Bókun non carica il calendario delle prenotazioni su un indirizzo locale (localhost). Apparirà qui sul sito di test e su quello reale.',
+		'Open the calendar in a new tab' => 'Apri il calendario in un\'altra scheda',
 		'Departure' => 'Partenza',
 		'%1$s at %2$s' => '%1$s alle %2$s',
 		'Meeting point' => 'Punto d\'incontro',

@@ -94,6 +94,8 @@ final class Frontend {
 	private static function tour_item( \WP_Post $post, string $market, bool $full ): array {
 		$item           = Api\Collection::item( $post, $market, $full );
 		$item['_links'] = [ 'home' => home_url( '/' ), 'tours' => self::archive( PostTypes::TOUR ) ];
+		// Bókun's firewall answers 403 to a calendar embedded from a loopback address.
+		$item['_loopback'] = in_array( (string) wp_parse_url( home_url(), PHP_URL_HOST ), [ 'localhost', '127.0.0.1', '[::1]' ], true );
 		$several        = $full && ! empty( $item['gallery'] );
 		$item['image']  = self::picture( $item['image'] ?? null, $full ? ( $several ? '(min-width: 1264px) 800px, 100vw' : '(min-width: 1264px) 1200px, 100vw' ) : '(min-width: 800px) 600px, 100vw', $full );
 		foreach ( $item['gallery'] ?? [] as $i => $g ) {
