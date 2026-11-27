@@ -89,28 +89,36 @@ final class Lang {
 	}
 
 	/**
-	 * The post with this slug in exactly this language. Translations share the slug of their original,
-	 * so a lookup by slug alone (get_page_by_path) would return any of them.
+	 * The post with this slug in exactly this language. Translations share the slug of their original.
+	 *
+	 * Read straight from the table on purpose: a WordPress query by name is rewritten by WPML to the
+	 * post of the language being viewed, whatever language was asked for here, so while Spanish is
+	 * being loaded such a query can never find the English original.
 	 *
 	 * @param list<string> $statuses
 	 */
 	public static function find_post( string $slug, string $post_type, ?string $lang = null, array $statuses = [ 'publish', 'draft', 'pending', 'private', 'future' ] ): ?\WP_Post {
+		global $wpdb;
 		$lang ??= self::current();
-		$ids    = get_posts(
-			[
-				'name'             => $slug,
-				'post_type'        => $post_type,
-				'post_status'      => $statuses,
-				'posts_per_page'   => 20,
-				'orderby'          => 'ID',
-				'order'            => 'ASC',
-				'fields'           => 'ids',
-				'suppress_filters' => true,
-			]
-		);
+		$in     = implode( ',', array_fill( 0, count( $statuses ), '%s' ) );
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, WordPress.DB.PreparedSQLPlaceholders.UnfinishedPrepare -- $in is only placeholders.
+		$ids = array_map( 'intval', $wpdb->get_col( $wpdb->prepare( "SELECT ID FROM {$wpdb->posts} WHERE post_name = %s AND post_type = %s AND post_status IN ($in) ORDER BY ID ASC", $slug, $post_type, ...$statuses ) ) );
+		if ( ! $ids ) {
+			return null;
+		}
+		if ( ! self::active() ) {
+			return get_post( $ids[0] );
+		}
+		// WPML's own answer first: the version, in that language, of any post of the group.
 		foreach ( $ids as $id ) {
-			if ( ! self::active() || self::of_post( (int) $id, $post_type ) === $lang ) {
-				return get_post( (int) $id );
+			$t = (int) apply_filters( 'wpml_object_id', $id, $post_type, false, $lang );
+			if ( $t && in_array( $t, $ids, true ) ) {
+				return get_post( $t );
+			}
+		}
+		foreach ( $ids as $id ) {
+			if ( self::of_post( $id, $post_type ) === $lang ) {
+				return get_post( $id );
 			}
 		}
 		return null;
