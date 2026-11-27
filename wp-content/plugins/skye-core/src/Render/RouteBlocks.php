@@ -179,7 +179,7 @@ final class RouteBlocks {
 			return '';
 		}
 		$out   = '<span class="skye-eyebrow">' . Html::e( Html::t( 'No car?' ) ) . '</span>';
-		$out  .= '<strong class="skye-tours__lead">' . Html::e( sprintf( Html::t( 'These stops are part of our guided tour: %s' ), $tour['title'] ?? '' ) ) . '</strong>';
+		$out  .= '<strong class="skye-tours__lead">' . Html::e( sprintf( Html::t( 'Rather not drive? See Skye on our guided tour: %s' ), $tour['title'] ?? '' ) ) . '</strong>';
 		$price = TourBlocks::price( $tour, $market );
 		if ( null !== $price ) {
 			$out .= '<span class="skye-offer__next">' . Html::e( sprintf( Html::t( 'From %s per person' ), $price ) ) . '</span>';

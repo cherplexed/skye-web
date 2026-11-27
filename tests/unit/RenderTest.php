@@ -362,7 +362,7 @@ final class RenderTest extends TestCase {
 	public function test_route_tour_card_and_listing(): void {
 		self::assertSame( '', RouteBlocks::tour( self::route(), 'es' ) );
 		$card = RouteBlocks::tour( self::route( [ '_tour' => self::tour() ] ), 'de' );
-		self::assertStringContainsString( 'These stops are part of our guided tour: Skye &amp; the Highlands, 3 days', $card );
+		self::assertStringContainsString( 'Rather not drive? See Skye on our guided tour: Skye &amp; the Highlands, 3 days', $card );
 		self::assertStringContainsString( 'From 283 € per person', $card );
 		self::assertStringContainsString( '<a class="skye-btn skye-btn--primary" href="http://x/tours/3/">See the tour</a>', $card );
 
