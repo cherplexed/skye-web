@@ -153,6 +153,12 @@ final class TourBlocks {
 		if ( ! empty( $offer['booking_url'] ) ) {
 			$fallback .= sprintf( ' <a href="%s" rel="noopener">%s</a>', Html::e( $offer['booking_url'] ), Html::e( Html::t( 'Book on the operator\'s website' ) ) );
 		}
+		if ( ! empty( $t['_loopback'] ) ) {
+			// A development machine: Bókun refuses the embedded calendar there, so link to it instead of framing an error page.
+			$body = '<p class="skye-booking__fallback">' . Html::e( Html::t( 'Bókun does not load the booking calendar on a local address (localhost). It will appear here on the test and live sites.' ) )
+				. sprintf( ' <a href="%s" target="_blank" rel="noopener">%s</a>', Html::e( $src ), Html::e( Html::t( 'Open the calendar in a new tab' ) ) ) . '</p>';
+			return sprintf( '<section class="skye-block skye-booking" id="%s"><h2 class="skye-block__title">%s</h2>%s</section>', self::BOOKING_ID, Html::e( Html::t( 'Dates and booking' ) ), $body );
+		}
 		$body = '<p class="skye-booking__lead">' . Html::e( Html::t( 'Choose a date to see availability, room options and prices. Payment is taken securely on this page.' ) ) . '</p>'
 			. sprintf( '<div class="skye-booking__widget"><div class="bokunWidget" data-src="%s"></div></div>', Html::e( $src ) )
 			. '<noscript><p class="skye-booking__fallback">' . $fallback . '</p></noscript>'
