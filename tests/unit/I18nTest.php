@@ -74,25 +74,27 @@ final class I18nTest extends TestCase {
 		return array_diff_key( $found, array_flip( Taxonomies::terms()[ Taxonomies::ZONE ] ) );
 	}
 
-	public function test_spanish_has_every_interface_string_with_the_same_placeholders(): void {
-		$file = require self::PLUGIN . '/languages/skye-core-es_ES.l10n.php';
-		$this->assertSame( 'skye-core', $file['domain'] );
-		$this->assertSame( 'es_ES', $file['language'] );
-		$es = $file['messages'];
-
-		$source  = self::source_strings();
-		$missing = array_keys( array_diff_key( $source, $es ) );
-		$this->assertSame( [], $missing, 'strings without a Spanish translation' );
-		$this->assertSame( [], array_keys( array_diff_key( $es, $source ) ), 'translations of strings that no longer exist' );
-
+	public function test_every_language_has_every_interface_string_with_the_same_placeholders(): void {
+		$source       = self::source_strings();
 		$placeholders = static function ( string $s ): array {
 			preg_match_all( '/%(?:\d+\$)?[sd]/', $s, $m );
 			sort( $m[0] );
 			return $m[0];
 		};
-		foreach ( $es as $en => $translation ) {
-			$this->assertTrue( '' !== trim( $translation ), $en );
-			$this->assertSame( $placeholders( $en ), $placeholders( $translation ), $en );
+		$files = glob( self::PLUGIN . '/languages/skye-core-*.l10n.php' ) ?: [];
+		$this->assertTrue( count( $files ) >= 2, 'Spanish and Italian at least' );
+		foreach ( $files as $path ) {
+			$file   = require $path;
+			$locale = (string) $file['language'];
+			$this->assertSame( 'skye-core', $file['domain'] );
+			$this->assertSame( "skye-core-$locale.l10n.php", basename( $path ) );
+			$messages = $file['messages'];
+			$this->assertSame( [], array_keys( array_diff_key( $source, $messages ) ), "$locale: strings without a translation" );
+			$this->assertSame( [], array_keys( array_diff_key( $messages, $source ) ), "$locale: translations of strings that no longer exist" );
+			foreach ( $messages as $en => $translation ) {
+				$this->assertTrue( '' !== trim( $translation ), "$locale: $en" );
+				$this->assertSame( $placeholders( $en ), $placeholders( $translation ), "$locale: $en" );
+			}
 		}
 	}
 
@@ -130,44 +132,64 @@ final class I18nTest extends TestCase {
 		return json_decode( (string) file_get_contents( __DIR__ . '/../../seed/' . $path ), true, 512, JSON_THROW_ON_ERROR );
 	}
 
-	public function test_spanish_seed_translates_every_item_and_only_translatable_fields(): void {
+	/** @return list<string> Language codes that have translations in seed/. */
+	private static function seed_languages(): array {
+		return array_map( 'basename', glob( __DIR__ . '/../../seed/*', GLOB_ONLYDIR ) ?: [] );
+	}
+
+	public function test_translated_seeds_follow_their_originals_and_only_translate_translatable_fields(): void {
+		$this->assertSame( [ 'es', 'it' ], self::seed_languages() );
+		foreach ( self::seed_languages() as $lang ) {
+			$this->check_translated_seed( $lang );
+		}
+		foreach ( [ 'places', 'tours', 'routes' ] as $name ) {
+			$this->assertSame( array_column( self::json( "$name.json" )[ $name ], 'slug' ), array_keys( self::json( "es/$name.json" )[ $name ] ), "Spanish translates every item of $name, in order" );
+		}
+	}
+
+	private function check_translated_seed( string $lang ): void {
 		$types = [ 'places' => PostTypes::PLACE, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE ];
 		foreach ( $types as $name => $post_type ) {
+			if ( ! is_file( __DIR__ . "/../../seed/$lang/$name.json" ) ) {
+				continue; // A language can be translated in stages.
+			}
 			$originals    = array_column( self::json( "$name.json" )[ $name ], null, 'slug' );
-			$translations = self::json( "es/$name.json" )[ $name ];
-			$this->assertSame( array_keys( $originals ), array_keys( $translations ), "$name: same items, same order" );
+			$translations = self::json( "$lang/$name.json" )[ $name ];
+			$this->assertSame( [], array_values( array_diff( array_keys( $translations ), array_keys( $originals ) ) ), "$lang/$name: every translation has an original" );
 
 			$schema = Fields::for( $post_type );
 			foreach ( $translations as $slug => $row ) {
-				$this->assertTrue( '' !== trim( (string) ( $row['title'] ?? '' ) ), "$name/$slug has a title" );
+				$this->assertTrue( '' !== trim( (string) ( $row['title'] ?? '' ) ), "$lang/$name/$slug has a title" );
 				foreach ( $row as $field => $value ) {
 					if ( in_array( $field, [ 'title', 'content' ], true ) ) {
 						continue;
 					}
-					$this->assertTrue( isset( $schema[ $field ] ), "$name/$slug.$field is a field of the type" );
-					$this->assertTrue( $schema[ $field ]['i18n'], "$name/$slug.$field is translatable in Fields.php" );
+					$this->assertTrue( isset( $schema[ $field ] ), "$lang/$name/$slug.$field is a field of the type" );
+					$this->assertTrue( $schema[ $field ]['i18n'], "$lang/$name/$slug.$field is translatable in Fields.php" );
 				}
 				$merged = Lang::overlay( $originals[ $slug ], $row );
 				foreach ( [ 'faq', 'tips', 'opening_hours', 'days' ] as $list ) {
 					if ( isset( $originals[ $slug ][ $list ] ) ) {
-						$this->assertCount( count( $originals[ $slug ][ $list ] ), $merged[ $list ], "$name/$slug.$list has as many rows as the original" );
+						$this->assertCount( count( $originals[ $slug ][ $list ] ), $merged[ $list ], "$lang/$name/$slug.$list has as many rows as the original" );
 					}
 				}
 				foreach ( $merged['days'] ?? [] as $d => $day ) {
-					$this->assertCount( count( $originals[ $slug ]['days'][ $d ]['stops'] ), $day['stops'], "$name/$slug day $d keeps its stops" );
+					$this->assertCount( count( $originals[ $slug ]['days'][ $d ]['stops'] ), $day['stops'], "$lang/$name/$slug day $d keeps its stops" );
 				}
 				if ( isset( $row['summary'] ) ) {
-					$this->assertTrue( mb_strlen( $row['summary'] ) <= 160, "$name/$slug summary fits in 160 characters" );
+					$this->assertTrue( mb_strlen( $row['summary'] ) <= 160, "$lang/$name/$slug summary fits in 160 characters" );
 				}
 			}
 		}
 	}
 
-	public function test_spanish_terms_name_every_canonical_term(): void {
-		$es = self::json( 'es/terms.json' );
-		foreach ( Taxonomies::terms() as $taxonomy => $terms ) {
-			$this->assertSame( array_keys( $terms ), array_keys( $es[ $taxonomy ] ), $taxonomy );
+	public function test_translated_terms_name_every_canonical_term(): void {
+		foreach ( self::seed_languages() as $lang ) {
+			$terms = self::json( "$lang/terms.json" );
+			foreach ( Taxonomies::terms() as $taxonomy => $canonical ) {
+				$this->assertSame( array_keys( $canonical ), array_keys( $terms[ $taxonomy ] ), "$lang/$taxonomy" );
+			}
+			$this->assertSame( array_keys( Taxonomies::zone_intros() ), array_keys( $terms['zone_intros'] ), $lang );
 		}
-		$this->assertSame( array_keys( Taxonomies::zone_intros() ), array_keys( $es['zone_intros'] ) );
 	}
 }

@@ -286,9 +286,18 @@ final class Frontend {
 				break;
 			}
 		}
+		// The routes card shows a route's own photo, or else a second featured place: never an empty frame.
+		$own = null;
+		foreach ( array_merge( $routes, array_slice( $featured, 1 ) ) as $item ) {
+			if ( ! empty( $item['image']['id'] ) && ( ! $hero || (int) $item['image']['id'] !== (int) $hero['id'] ) ) {
+				$own = self::picture( Api\PlaceSerializer::image_by_id( (int) $item['image']['id'] ), '(min-width: 768px) 600px, 100vw' );
+				break;
+			}
+		}
 		return [
 			'links'      => [ 'tours' => self::archive( PostTypes::TOUR ), 'places' => self::archive( PostTypes::PLACE ), 'routes' => self::archive( PostTypes::ROUTE ) ],
 			'hero_image' => $hero,
+			'own_image'  => $own,
 			'tours'      => $tours,
 			'routes'     => $routes,
 			'zones'      => $zones,

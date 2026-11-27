@@ -1,0 +1,54 @@
+{
+ "_note": "Nomi in italiano dei termini (tassonomia → slug canonico → nome) e introduzione di ogni zona.",
+ "skye_zone": {
+  "trotternish": "Trotternish",
+  "portree": "Portree",
+  "duirinish-waternish": "Duirinish e Waternish",
+  "minginish-cuillin": "Minginish e i Cuillin",
+  "sleat": "Sleat",
+  "broadford": "Broadford",
+  "raasay": "Raasay",
+  "en-route": "Lungo il percorso (fuori dall'isola)"
+ },
+ "skye_category": {
+  "viewpoint": "Belvedere",
+  "hike": "Camminata",
+  "castle": "Castello",
+  "distillery": "Distilleria",
+  "beach": "Spiaggia",
+  "waterfall": "Cascata",
+  "village": "Paese",
+  "wildlife": "Fauna",
+  "museum": "Museo",
+  "restaurant": "Ristorante",
+  "cafe": "Caffetteria",
+  "shop": "Negozio",
+  "fuel": "Distributore"
+ },
+ "skye_profile": {
+  "instagram": "Instagram / TikTok",
+  "nature": "Natura",
+  "hiking": "Escursionismo",
+  "history": "Storia",
+  "whisky": "Whisky",
+  "wildlife": "Fauna",
+  "families": "Famiglie",
+  "rainy-day": "Giornata di pioggia"
+ },
+ "skye_suitability": {
+  "children": "Bambini",
+  "stroller": "Passeggino",
+  "dogs": "Cani",
+  "reduced-mobility": "Mobilità ridotta"
+ },
+ "zone_intros": {
+  "trotternish": "La penisola del nord: lo Storr, il Quiraing e le scogliere della costa est, tutto su un'unica strada ad anello da Portree.",
+  "portree": "Il capoluogo dell'isola e la base principale, con il porto, i negozi e quasi tutti i posti dove mangiare.",
+  "duirinish-waternish": "Il nord-ovest: il castello di Dunvegan, il faro di Neist Point e lunghe strade a una corsia fino all'Atlantico.",
+  "minginish-cuillin": "I monti Cuillin e la costa ai loro piedi: le Fairy Pools, Sligachan e la distilleria Talisker.",
+  "sleat": "La verde penisola del sud, dove arriva il traghetto da Mallaig, ad Armadale.",
+  "broadford": "Il sud-est dell'isola: il primo tratto di strada dopo il ponte e il suo secondo paese.",
+  "raasay": "L'isola di fronte a Portree, a una breve traversata in traghetto da Sconser.",
+  "en-route": "Tappe lungo la strada tra Edimburgo, Glasgow o Inverness e l'Isola di Skye."
+ }
+}
