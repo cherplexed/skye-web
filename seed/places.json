@@ -1,5 +1,5 @@
 {
- "_note": "26 places. All were written or rewritten on 27 Nov 2026 from the sources listed in each one: official sites for prices, hours and parking, VisitScotland, and the Viajar por Escocia guide. Where a place lists no source, its text comes from general knowledge and has not been checked against anything. Coordinates are approximate. Every place is seeded as unverified and needs a guide's check before publishing.",
+ "_note": "26 places. All were written or rewritten on 27 Nov 2026 from the sources listed in each one: official sites for prices, hours and parking, VisitScotland, and the Viajar por Escocia guide. Where a place lists no source (Sligachan, Lealt Falls, Five Sisters of Kintail, Loch Lubnaig), its text comes from general knowledge and has not been checked against anything. Coordinates are approximate. Every place is seeded as unverified and needs a guide's check before publishing.",
  "places": [
   {
    "slug": "old-man-of-storr",
@@ -1480,7 +1480,7 @@
    "title": "Pitlochry",
    "gaelic_name": "Baile Chloichridh",
    "summary": "A Victorian resort town in the Perthshire hills, just off the A9: one main street of shops and cafés, and a dam with a fish ladder by the river.",
-   "content": "<p>Pitlochry grew up as a holiday town after the railway arrived in the 19th century and still looks the part, with stone villas and a long main street. It is the usual place to break the drive between Inverness and Edinburgh.</p><p>Ten minutes' walk from the centre, the dam on the River Tummel has a fish ladder where salmon can sometimes be seen making their way upstream.</p>",
+   "content": "<p>Pitlochry lies about halfway between Edinburgh and Inverness, just off the A9, which is why almost every journey between the two stops here. It began as a hamlet beside the older village of Moulin and grew once a military road was driven north through the glen, bringing travellers, inns and shops. Queen Victoria's stay at nearby Blair Castle in 1842 did the rest, and the town still has the look of a Victorian resort.</p><p>Everything is on or near Atholl Road, the main street: stone buildings from that period, cafés, pubs and shops selling outdoor gear and souvenirs. A short walk downhill brings you to the River Tummel and the salmon ladder, a staircase of pools that lets the fish climb past the dam on their way upstream.</p><p>Above the dam the river widens into Loch Faskally, with a path along its wooded shore. With more than a coach stop to spare, the usual outings are Queen's View, a famous viewpoint a few kilometres away, the two local distilleries, Blair Athol and Edradour, and the hill of Ben Vrackie behind the town.</p>",
    "zone": "en-route",
    "categories": [
     "village",
@@ -1526,7 +1526,8 @@
     "toilets"
    ],
    "tips": [
-    "Salmon run the fish ladder mainly from spring to autumn; there is no guarantee of seeing one."
+    "Salmon run the fish ladder mainly from spring to autumn; there is no guarantee of seeing one.",
+    "Autumn is the best season here: the woods around the loch turn colour."
    ],
    "audioguide": {
     "enabled": false,
@@ -1540,10 +1541,35 @@
     },
     {
      "question": "Why do tours stop in Pitlochry?",
-     "answer": "It is the natural place to break the long drive on the A9 between Inverness and Edinburgh: a compact town just off the road, with cafés, shops and toilets close together."
+     "answer": "It is roughly the midpoint of the drive on the A9 between Inverness and Edinburgh: a compact town just off the road, with cafés, shops and toilets close together on one street."
+    },
+    {
+     "question": "What can you see in Pitlochry in half an hour?",
+     "answer": "Walk along Atholl Road for the Victorian shopfronts and a coffee, or go straight down to the river for the dam and the salmon ladder. There is time for one or the other, not both at leisure."
+    },
+    {
+     "question": "Who is Queen's View named after?",
+     "answer": "The usual answer is Queen Victoria, who came here in 1866. An older tradition gives the name to Isabella, the wife of Robert the Bruce, who is said to have rested at the spot more than five centuries earlier."
+    },
+    {
+     "question": "Are there distilleries in Pitlochry?",
+     "answer": "Two: Blair Athol, in the town, and Edradour, a small distillery in the hills just outside. Both receive visitors and offer tastings."
+    },
+    {
+     "question": "Is there a good walk from Pitlochry?",
+     "answer": "The classic is Ben Vrackie, a hill of just over 800 m. The route is about 10 km, starts from a car park near Moulin, north of the town, and is a proper hill walk. For something gentle, follow the shore of Loch Faskally."
+    },
+    {
+     "question": "What is the Enchanted Forest?",
+     "answer": "A night-time show of light and music held in Faskally Wood, beside the town, every autumn, through October. Tickets are sold in advance and sell out."
     }
    ],
-   "sources": []
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de Pitlochry",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-pitlochry/"
+    }
+   ]
   },
   {
    "slug": "glencoe",
@@ -1735,7 +1761,7 @@
    "title": "Fort William",
    "gaelic_name": "An Gearasdan",
    "summary": "The main town of the west Highlands, on Loch Linnhe at the foot of Ben Nevis, the highest mountain in Britain. The usual lunch stop on the way to Skye.",
-   "content": "<p>Fort William is a working town rather than a pretty one, but it has what a long drive needs: a pedestrian high street with places to eat, supermarkets and fuel. Ben Nevis, at 1,345 m, rises directly behind it, though the summit is hidden from the town itself.</p>",
+   "content": "<p>Fort William is the main town of the west Highlands, strung along the shore of Loch Linnhe, a long arm of the sea. It is a working town rather than a pretty one, but it is small, flat and easy to walk, and it has what a long drive needs: a pedestrian high street with places to eat, supermarkets and fuel.</p><p>Ben Nevis rises directly behind it. At 1,345 m it is the highest mountain in Britain, and its summit is what remains of the collapsed dome of an ancient volcano. The first recorded ascent was made in 1771 by a botanist from Edinburgh; today more than 100,000 people go up every year. From the town itself you cannot see the top, which is hidden by the mountain's own lower slopes.</p><p>If you have an hour, the West Highland Museum, in Cameron Square just off the high street, is free and worth it for its Jacobite collection alone. About 3 km north of the centre are the ruins of Inverlochy Castle, built in the late 13th century by the Comyns, rivals of Robert the Bruce, and open to walk around at no charge.</p><p>Fort William is also where the Jacobite steam train sets out for Mallaig, crossing the Glenfinnan Viaduct on the way.</p>",
    "zone": "en-route",
    "categories": [
     "village",
@@ -1783,7 +1809,9 @@
     "toilets"
    ],
    "tips": [
-    "The last big supermarkets before Skye are here."
+    "The last big supermarkets before Skye are here.",
+    "The town is compact: bus station, high street and museum are a few minutes apart on foot.",
+    "Ben Nevis is a full day and needs proper equipment. Do not attempt it on impulse."
    ],
    "audioguide": {
     "enabled": false,
@@ -1793,14 +1821,43 @@
    "faq": [
     {
      "question": "Can you see Ben Nevis from Fort William?",
-     "answer": "Not from the town centre: the mountain is hidden behind its own lower slopes. The best views are from further off, for example from the Commando Memorial near Spean Bridge, or from across the water at Corpach."
+     "answer": "Not from the town centre: the summit is hidden behind the mountain's own lower slopes. The best views are from further off, for example from the Commando Memorial near Spean Bridge, or from the gondola at the Nevis Range resort, which climbs to 650 m on the neighbouring mountain, Aonach Mòr."
     },
     {
      "question": "How long does it take to climb Ben Nevis?",
-     "answer": "Seven to nine hours there and back by the main path, for a fit walker. It is a serious mountain: the summit is 1,345 m, often in cloud, and holds snow for much of the year. It is not something to fit into a stop on the way to Skye."
+     "answer": "About eight hours there and back by the main path, which starts in Glen Nevis. It is free, and it is a serious mountain: snow is common on the summit, cloud can come down without warning even in summer, and people who go up unprepared die there. It is not something to fit into a stop on the way to Skye."
+    },
+    {
+     "question": "What is the easiest route up Ben Nevis?",
+     "answer": "The Mountain Track, also called the Pony Track, which zigzags up from Glen Nevis. It was built in the 19th century to supply a weather observatory on the summit, and ponies carried the loads, hence the name. The ruins of the observatory are still there."
+    },
+    {
+     "question": "What can you do in Fort William in an hour?",
+     "answer": "Eat, and walk the high street. If you would rather see something, the West Highland Museum in Cameron Square is free and small enough to visit in forty minutes."
+    },
+    {
+     "question": "Does the Harry Potter train leave from Fort William?",
+     "answer": "Yes. The Jacobite steam train runs from the station in the centre of Fort William to the fishing port of Mallaig and back, from April to October, with a stop of about two hours in Mallaig. Seats sell out well ahead."
+    },
+    {
+     "question": "What is Inverlochy Castle?",
+     "answer": "A ruined castle of the late 13th century, about 3 km north of the town where the River Lochy meets the sea loch. It was built by John Comyn, whose family lost everything when their rival Robert the Bruce became king. Entry and parking are free. Do not confuse it with the hotel of the same name."
+    },
+    {
+     "question": "How far is Fort William from Glasgow and Edinburgh?",
+     "answer": "About two and a half hours by car from Glasgow and a little over three from Edinburgh."
     }
    ],
-   "sources": []
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Fort William",
+     "url": "https://viajarporescocia.com/guia-de-escocia/fort-william/"
+    },
+    {
+     "title": "Viajar por Escocia: Ben Nevis",
+     "url": "https://viajarporescocia.com/guia-de-escocia/ben-nevis/"
+    }
+   ]
   },
   {
    "slug": "loch-garry-viewpoint",
@@ -2002,7 +2059,7 @@
    "title": "Dunkeld",
    "gaelic_name": "Dùn Chailleann",
    "summary": "A small Perthshire town on the River Tay, with a part-ruined cathedral on the riverbank and streets of restored 18th-century houses.",
-   "content": "<p>Dunkeld is a short step off the A9 and a calm place to stretch your legs. The cathedral, half ruin and half parish church, stands in lawns beside the Tay, and the old houses around the square have been carefully restored. The bridge over the river dates from 1809.</p>",
+   "content": "<p>Dunkeld is a very small town of whitewashed houses on the bank of the Tay, the longest river in Scotland, a short step off the A9. It looks like a quiet backwater, but it was once the religious heart of the country: in the 9th century Kenneth MacAlpin, the first king of Scots, had a stone church built here to hold the relics of St Columba and made Dunkeld the centre of his kingdom.</p><p>The cathedral stands on lawns beside the river. Half of it is a roofless ruin and the other half is still the parish church. It was damaged twice: first at the Reformation, and again in 1689, when Jacobite forces and government troops fought through the streets in the Battle of Dunkeld and most of the town burned. Marks left by musket balls can still be seen on its walls.</p><p>The houses around the square were rebuilt after that battle and have been carefully restored, and the bridge over the Tay dates from 1809. On the far side of the river is Birnam, whose wood is the one that marches against the king in Shakespeare's Macbeth.</p>",
    "zone": "en-route",
    "categories": [
     "village",
@@ -2045,7 +2102,9 @@
     "toilets"
    ],
    "tips": [
-    "The Hermitage, a woodland walk to a waterfall, is a couple of kilometres away on the other side of the A9."
+    "Look for the musket-ball marks on the cathedral walls.",
+    "The Hermitage, a woodland walk to a waterfall, is a couple of kilometres away on the other side of the A9. Allow an hour.",
+    "There are benches on the cathedral lawn, by the river: a good place for a picnic."
    ],
    "audioguide": {
     "enabled": false,
@@ -2055,14 +2114,39 @@
    "faq": [
     {
      "question": "What is there to see in Dunkeld?",
-     "answer": "The cathedral on the bank of the Tay, part ruin and part parish church, the square of restored 18th-century houses beside it, and the bridge over the river. All three are within a few minutes' walk of each other."
+     "answer": "The cathedral on the bank of the Tay, part ruin and part parish church, the square of restored houses beside it, and the bridge over the river. All three are within a few minutes' walk of each other."
+    },
+    {
+     "question": "Why is Dunkeld Cathedral partly in ruins?",
+     "answer": "It was wrecked at the Reformation and then caught up in the Battle of Dunkeld in 1689. The choir was repaired and is still used for worship; the nave was left without a roof."
+    },
+    {
+     "question": "What was the Battle of Dunkeld?",
+     "answer": "A street battle fought in 1689, in the first Jacobite rising, between supporters of the deposed King James VII and troops loyal to William of Orange. The town was largely destroyed by fire, which is why its oldest houses date from just afterwards."
+    },
+    {
+     "question": "What is the Hermitage at Dunkeld?",
+     "answer": "A woodland a couple of kilometres from the town, laid out in the 18th century by the Dukes of Atholl as a pleasure ground along the River Braan, and now cared for by the National Trust for Scotland. A path under Douglas firs, some of the tallest trees in Britain, leads to Ossian's Hall, a small pavilion built in 1757 that looks straight down on the Black Linn waterfall."
+    },
+    {
+     "question": "Is Birnam Wood from Macbeth a real place?",
+     "answer": "Yes. Birnam is the village facing Dunkeld across the Tay, and the wood named in the play's prophecy grew on the hills around it."
     },
     {
      "question": "How far is Dunkeld from Edinburgh?",
      "answer": "About an hour and a quarter by car, up the motorway to Perth and then the A9."
     }
    ],
-   "sources": []
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de Dunkeld",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-dunkeld/"
+    },
+    {
+     "title": "Viajar por Escocia: Bosque Hermitage",
+     "url": "https://viajarporescocia.com/guia-de-escocia/bosque-hermitage/"
+    }
+   ]
   },
   {
    "slug": "stirling",
@@ -2164,7 +2248,7 @@
    "title": "Callander",
    "gaelic_name": "Calasraid",
    "summary": "A small town at the edge of the Highlands, on the road north from Stirling, and a gateway to Loch Lomond and the Trossachs National Park.",
-   "content": "<p>Callander sits where the flat country ends and the hills begin. Its long main street has cafés, bakeries and shops, which makes it the first comfortable stop on the way north from Edinburgh or Glasgow.</p>",
+   "content": "<p>Callander sits where the flat country ends and the hills begin. Its long main street has cafés, bakeries and shops, which makes it the first comfortable stop on the way north from Edinburgh or Glasgow.</p><p>It is one of the main towns of Loch Lomond and the Trossachs National Park, created in 2002 and covering 1,865 km² of mountains, forest and more than twenty large lochs. The Trossachs, the part of the park around Callander, are the country of Rob Roy MacGregor, the outlaw whom Walter Scott's novel turned into a Scottish Robin Hood.</p><p>For many visitors Callander is also the first chance to see Highland cattle, the shaggy, long-horned breed, which are often kept in fields at the edge of the town.</p>",
    "zone": "en-route",
    "categories": [
     "village",
@@ -2209,7 +2293,10 @@
     "fuel",
     "toilets"
    ],
-   "tips": [],
+   "tips": [
+    "The bakeries on the main street are the local favourite for a quick stop.",
+    "Have a camera ready on the way out of town for the Highland cattle."
+   ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
@@ -2219,9 +2306,30 @@
     {
      "question": "Why do tours stop in Callander?",
      "answer": "It is the first town at the edge of the Highlands on the road north from Edinburgh and Glasgow, with cafés, bakeries and toilets along one main street: a comfortable place for the first break of the day."
+    },
+    {
+     "question": "Can you see Highland cows in Callander?",
+     "answer": "Often, yes. The town is known as a good place to see them, in fields close to the road. Whether they are near the fence on the day is up to them."
+    },
+    {
+     "question": "Is Callander in a national park?",
+     "answer": "Yes, in Loch Lomond and the Trossachs National Park, the first national park in Scotland, declared in 2002. It has four areas: Loch Lomond, the Argyll Forest, the Trossachs and Breadalbane."
+    },
+    {
+     "question": "Who was Rob Roy?",
+     "answer": "Rob Roy MacGregor, a cattle dealer turned outlaw who lived in these hills in the early 18th century. Walter Scott made him the hero of a novel set around nearby Loch Katrine, and he has been remembered ever since as a kind of Scottish Robin Hood."
+    },
+    {
+     "question": "Is Doune Castle near Callander?",
+     "answer": "Yes, a short drive back towards Stirling. It is a 14th-century castle that has stood in for others on screen, in Monty Python and the Holy Grail, the pilot of Game of Thrones and Outlander."
     }
    ],
-   "sources": []
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía del Parque Nacional de los Trossachs",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-del-parque-nacional-de-las-trossachs/"
+    }
+   ]
   },
   {
    "slug": "loch-lubnaig",
