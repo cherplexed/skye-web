@@ -1,285 +1,1492 @@
 {
-  "_note": "10 pilot places. Facts (prices, hours, parking) MUST be verified by a Skye guide before publishing; the seed marks them as unverified. Coordinates from OpenStreetMap; distances/elevation are typical values from Walkhighlands-style route descriptions and need a check on the ground.",
-  "places": [
+ "_note": "The first 10 are the pilot places. The next 16 (from kyleakin on) are the stops of the tours, written on 27 Nov 2026 from general knowledge: coordinates are approximate, and prices, hours, parking and every practical detail MUST be verified before publishing. The seed marks every place as unverified.",
+ "places": [
+  {
+   "slug": "old-man-of-storr",
+   "title": "Old Man of Storr",
+   "gaelic_name": "Bodach an Stòir",
+   "summary": "Skye's most photographed rock pinnacle: a steep 1.5–2 hour walk from the A855 car park with views over the Sound of Raasay.",
+   "content": "<p>The Old Man is a 50 m rock pinnacle left behind by an ancient landslip on the Trotternish ridge. A signposted path climbs from the car park through felled plantation and then on a gravel track to the base of the pinnacle; the last 20 minutes are the steepest and slippery in rain. Continue to the upper viewpoint for the classic shot with the Old Man in the foreground.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "hike",
+    "viewpoint"
+   ],
+   "profiles": [
+    "instagram",
+    "hiking",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.5072,
+    "lng": -6.1801
+   },
+   "parking_location": {
+    "lat": 57.504,
+    "lng": -6.169
+   },
+   "directions": "10 km north of Portree on the A855. Large pay-and-display car park on the right.",
+   "duration_min": 90,
+   "duration_typical": 120,
+   "difficulty": "moderate",
+   "distance_km": 3.8,
+   "elevation_gain_m": 300,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
     {
-      "slug": "old-man-of-storr",
-      "title": "Old Man of Storr",
-      "gaelic_name": "Bodach an Stòir",
-      "summary": "Skye's most photographed rock pinnacle: a steep 1.5–2 hour walk from the A855 car park with views over the Sound of Raasay.",
-      "content": "<p>The Old Man is a 50 m rock pinnacle left behind by an ancient landslip on the Trotternish ridge. A signposted path climbs from the car park through felled plantation and then on a gravel track to the base of the pinnacle; the last 20 minutes are the steepest and slippery in rain. Continue to the upper viewpoint for the classic shot with the Old Man in the foreground.</p>",
-      "zone": "trotternish",
-      "categories": ["hike", "viewpoint"],
-      "profiles": ["instagram", "hiking", "nature"],
-      "location": {"lat": 57.5072, "lng": -6.1801},
-      "parking_location": {"lat": 57.5040, "lng": -6.1690},
-      "directions": "10 km north of Portree on the A855. Large pay-and-display car park on the right.",
-      "duration_min": 90,
-      "duration_typical": 120,
-      "difficulty": "moderate",
-      "distance_km": 3.8,
-      "elevation_gain_m": 300,
-      "price_type": "paid_parking",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Sunrise and early morning; in summer the car park fills before 9:00.",
-      "suitable_for": ["children", "dogs"],
-      "motorhome_parking": "yes_length_limit",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets"],
-      "tips": ["Walking boots and a waterproof layer even on sunny days.", "No shade, water or services on the route; nearest are in Portree.", "Not suitable for strollers."],
-      "audioguide": {"enabled": true, "stop_number": 10, "radius_m": 200}
-    },
-    {
-      "slug": "quiraing",
-      "title": "Quiraing",
-      "gaelic_name": "A' Chuith-Raing",
-      "summary": "The largest landslip in Britain, still moving: a viewpoint by the road and a 2-hour loop walk among pinnacles, with the Needle, the Table and the Prison.",
-      "content": "<p>The Quiraing is the northern end of the Trotternish landslip. The road from Staffin to Uig climbs to a car park at the top of the pass; from there the view alone is worth the stop, and a path contours below the cliffs to the Prison, the Needle and the Table.</p>",
-      "zone": "trotternish",
-      "categories": ["viewpoint", "hike"],
-      "profiles": ["instagram", "hiking", "nature"],
-      "location": {"lat": 57.6435, "lng": -6.2659},
-      "parking_location": {"lat": 57.6357, "lng": -6.2893},
-      "directions": "Single-track road between Staffin and Uig. Car park at the top of the pass, pay-and-display.",
-      "duration_min": 15,
-      "duration_typical": 120,
-      "difficulty": "moderate",
-      "distance_km": 6.8,
-      "elevation_gain_m": 350,
-      "price_type": "paid_parking",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Morning light; often windy at the top.",
-      "suitable_for": ["children", "dogs"],
-      "motorhome_parking": "yes_length_limit",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets"],
-      "tips": ["The full loop has exposed sections; the first 20 minutes give most of the views.", "Car park is small; arrive early in July–August."],
-      "audioguide": {"enabled": true, "stop_number": 14, "radius_m": 250}
-    },
-    {
-      "slug": "kilt-rock-and-mealt-falls",
-      "title": "Kilt Rock and Mealt Falls",
-      "gaelic_name": null,
-      "summary": "A 55 m sea cliff of basalt columns that looks like a pleated kilt, with a waterfall dropping straight into the sea. A 10-minute roadside stop.",
-      "content": "<p>A viewing platform right by the A855 looks across to Kilt Rock and the Mealt waterfall. On windy days the wind through the railings makes an eerie hum. Dinosaur footprints can be found on the shore at nearby An Corran, Staffin, at low tide.</p>",
-      "zone": "trotternish",
-      "categories": ["viewpoint", "waterfall"],
-      "profiles": ["instagram", "families", "rainy-day"],
-      "location": {"lat": 57.6098, "lng": -6.1727},
-      "parking_location": null,
-      "directions": "On the A855 between Portree and Staffin; signposted lay-by with car park.",
-      "duration_min": 10,
-      "duration_typical": 15,
-      "difficulty": "none",
-      "distance_km": null,
-      "elevation_gain_m": null,
-      "price_type": "free",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Any time; dramatic in wind and rain.",
-      "suitable_for": ["children", "stroller", "dogs", "reduced_mobility"],
-      "motorhome_parking": "yes",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets"],
-      "tips": ["Combine with the dinosaur footprints at An Corran beach at low tide."],
-      "audioguide": {"enabled": true, "stop_number": 12, "radius_m": 150}
-    },
-    {
-      "slug": "fairy-glen",
-      "title": "Fairy Glen",
-      "gaelic_name": null,
-      "summary": "A miniature landscape of grassy cone hills, a tiny loch and a rock tower called Castle Ewen, near Uig. An easy 45-minute wander.",
-      "content": "<p>The Fairy Glen is a small landslip area that produced dozens of rounded hillocks. Paths wind between them; Castle Ewen, the rocky outcrop, can be scrambled for the view. Please don't build stone spirals: the community removes them to protect the turf.</p>",
-      "zone": "trotternish",
-      "categories": ["viewpoint", "hike"],
-      "profiles": ["instagram", "families", "nature"],
-      "location": {"lat": 57.5842, "lng": -6.3250},
-      "parking_location": null,
-      "directions": "Single-track road from Uig signposted Balnaknock/Sheader. Small car park; do not park on the verge.",
-      "duration_min": 30,
-      "duration_typical": 45,
-      "difficulty": "easy",
-      "distance_km": 1.5,
-      "elevation_gain_m": 60,
-      "price_type": "paid_parking",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Late afternoon light; avoid midday in summer.",
-      "suitable_for": ["children", "dogs"],
-      "motorhome_parking": "no",
-      "overnight_allowed": false,
-      "services_nearby": [],
-      "tips": ["Very narrow access road: not for motorhomes.", "Boggy after rain."],
-      "audioguide": {"enabled": true, "stop_number": 15, "radius_m": 200}
-    },
-    {
-      "slug": "fairy-pools",
-      "title": "Fairy Pools",
-      "gaelic_name": null,
-      "summary": "Crystal-clear pools and small waterfalls on the River Brittle below the Black Cuillin. An easy 40-minute walk each way from the car park.",
-      "content": "<p>A well-made path follows the river up towards the Cuillin, passing a series of pools and falls. The water is cold even in August; wild swimming is popular but the rocks are slippery. The classic view is the first big pool with the mountains behind.</p>",
-      "zone": "minginish-cuillin",
-      "categories": ["waterfall", "hike"],
-      "profiles": ["instagram", "nature", "families"],
-      "location": {"lat": 57.2502, "lng": -6.2578},
-      "parking_location": {"lat": 57.2540, "lng": -6.2450},
-      "directions": "From Carbost take the Glenbrittle road; large pay car park on the left after about 6 km.",
-      "duration_min": 60,
-      "duration_typical": 90,
-      "difficulty": "easy",
-      "distance_km": 2.4,
-      "elevation_gain_m": 90,
-      "price_type": "paid_parking",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "After rain for the falls; early morning to avoid crowds.",
-      "suitable_for": ["children", "dogs"],
-      "motorhome_parking": "yes",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets"],
-      "tips": ["Stepping stones to cross the river can be impassable after heavy rain.", "Midges in calm weather May–September."],
-      "audioguide": {"enabled": true, "stop_number": 20, "radius_m": 200}
-    },
-    {
-      "slug": "talisker-distillery",
-      "title": "Talisker Distillery",
-      "gaelic_name": null,
-      "summary": "Skye's oldest working distillery, on the shore of Loch Harport at Carbost. Tours and tastings most days; book ahead in summer.",
-      "content": "<p>Founded in 1830, Talisker makes a peaty, peppery single malt with a maritime edge. The visitor centre offers tours of about an hour ending in a tasting, plus a shop and bar. Drivers can take their drams away in a sample bottle.</p>",
-      "zone": "minginish-cuillin",
-      "categories": ["distillery"],
-      "profiles": ["whisky", "rainy-day", "history"],
-      "location": {"lat": 57.3025, "lng": -6.3561},
-      "parking_location": null,
-      "directions": "In Carbost village on the B8009. Car park at the distillery.",
-      "duration_min": 45,
-      "duration_typical": 75,
-      "difficulty": "none",
-      "distance_km": null,
-      "elevation_gain_m": null,
-      "price_type": "ticket",
-      "price_gbp": null,
-      "opening_hours": [{"season": "Check official site", "hours": "Typically daily, seasonal hours"}],
-      "best_time": "Book the tour in advance from May to September.",
-      "suitable_for": ["reduced_mobility"],
-      "motorhome_parking": "yes",
-      "overnight_allowed": false,
-      "services_nearby": ["cafe", "restaurant", "shop", "toilets"],
-      "tips": ["The Oyster Shed up the hill is a local favourite for seafood.", "Under-18s can join tours but not taste."],
-      "audioguide": {"enabled": true, "stop_number": 21, "radius_m": 150}
-    },
-    {
-      "slug": "dunvegan-castle",
-      "title": "Dunvegan Castle and Gardens",
-      "gaelic_name": "Caisteal Dhùn Bheagain",
-      "summary": "Seat of Clan MacLeod for 800 years, with the Fairy Flag, formal gardens and seal-watching boat trips from the castle jetty. Allow 2 hours.",
-      "content": "<p>Dunvegan is said to be the oldest continuously inhabited castle in Scotland. Inside are clan relics including the Fairy Flag and Rory Mor's drinking horn; outside, walled and water gardens drop to the loch. Short boat trips go out to the seal colony.</p>",
-      "zone": "duirinish-waternish",
-      "categories": ["castle", "museum", "wildlife"],
-      "profiles": ["history", "families", "rainy-day", "wildlife"],
-      "location": {"lat": 57.4480, "lng": -6.5898},
-      "parking_location": null,
-      "directions": "1 km north of Dunvegan village on the A850. Free car park at the entrance.",
-      "duration_min": 90,
-      "duration_typical": 120,
-      "difficulty": "none",
-      "distance_km": null,
-      "elevation_gain_m": null,
-      "price_type": "ticket",
-      "price_gbp": null,
-      "opening_hours": [{"season": "April–October", "hours": "Daily, check official site"}, {"season": "November–March", "hours": "Closed (gardens may open)"}],
-      "best_time": "Mornings before the coach groups.",
-      "suitable_for": ["children", "stroller"],
-      "motorhome_parking": "yes",
-      "overnight_allowed": false,
-      "services_nearby": ["cafe", "shop", "toilets"],
-      "tips": ["Seal trips are weather dependent; buy tickets at the castle.", "Dogs allowed in the gardens on a lead, not in the castle."],
-      "audioguide": {"enabled": true, "stop_number": 30, "radius_m": 200}
-    },
-    {
-      "slug": "neist-point",
-      "title": "Neist Point",
-      "gaelic_name": "An Eist",
-      "summary": "Skye's westernmost point: a lighthouse on a headland of sea cliffs, reached by a steep concrete path. The island's best sunset.",
-      "content": "<p>A 20-minute walk (steep steps down, then flat) leads to the 1909 lighthouse. The famous photo is taken from the cliff top to the right of the car park, looking back at the headland. Minke whales, dolphins and basking sharks are seen offshore in summer.</p>",
-      "zone": "duirinish-waternish",
-      "categories": ["viewpoint", "hike", "wildlife"],
-      "profiles": ["instagram", "nature", "wildlife"],
-      "location": {"lat": 57.4232, "lng": -6.7880},
-      "parking_location": {"lat": 57.4276, "lng": -6.7778},
-      "directions": "From Glendale follow the single-track road to its end; car park at the top of the cliffs.",
-      "duration_min": 30,
-      "duration_typical": 75,
-      "difficulty": "easy",
-      "distance_km": 2.2,
-      "elevation_gain_m": 100,
-      "price_type": "free",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Sunset; stay for the colours after the sun goes down.",
-      "suitable_for": ["children", "dogs"],
-      "motorhome_parking": "yes_length_limit",
-      "overnight_allowed": false,
-      "services_nearby": [],
-      "tips": ["The access road is very narrow with few passing places; allow time.", "Very exposed: hold on to hats and children."],
-      "audioguide": {"enabled": true, "stop_number": 32, "radius_m": 250}
-    },
-    {
-      "slug": "portree",
-      "title": "Portree",
-      "gaelic_name": "Port Rìgh",
-      "summary": "Skye's capital and the practical base: the painted harbour, most of the island's restaurants and shops, and the departure point for wildlife boat trips.",
-      "content": "<p>Portree (about 2,500 people) sits around a sheltered harbour with its famous row of coloured houses. It has the island's main supermarket, fuel, a tourist information point, banks and the widest choice of places to eat and sleep. Boat trips to see sea eagles and seals leave from the pier.</p>",
-      "zone": "portree",
-      "categories": ["village", "restaurant", "shop", "fuel"],
-      "profiles": ["families", "rainy-day"],
-      "location": {"lat": 57.4126, "lng": -6.1945},
-      "parking_location": {"lat": 57.4140, "lng": -6.1960},
-      "directions": "On the A87/A855. Pay-and-display car parks in the centre and by the harbour.",
-      "duration_min": 60,
-      "duration_typical": 120,
-      "difficulty": "none",
-      "distance_km": null,
-      "elevation_gain_m": null,
-      "price_type": "free",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Town; shop hours vary"}],
-      "best_time": "Evening for the harbour lights; book restaurants in summer.",
-      "suitable_for": ["children", "stroller", "dogs", "reduced_mobility"],
-      "motorhome_parking": "yes_length_limit",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets", "cafe", "restaurant", "shop", "fuel"],
-      "tips": ["Fill up with fuel here: stations are scarce in the north and west.", "The harbour viewpoint is from the Lump, the headland south of the pier."],
-      "audioguide": {"enabled": true, "stop_number": 5, "radius_m": 400}
-    },
-    {
-      "slug": "sligachan",
-      "title": "Sligachan Old Bridge",
-      "gaelic_name": "Sligeachan",
-      "summary": "The three-arched 1810 bridge with the Black Cuillin behind: the most painted view on Skye, a 10-minute stop at the junction of the A87 and A863.",
-      "content": "<p>Sligachan is where the roads to Portree and to Dunvegan part. The old stone bridge over the River Sligachan frames Sgùrr nan Gillean and the Cuillin ridge. Legend says dipping your face in the river for seven seconds grants eternal beauty. The hotel has a climbing museum and a bar with hundreds of whiskies.</p>",
-      "zone": "minginish-cuillin",
-      "categories": ["viewpoint", "hike"],
-      "profiles": ["instagram", "history", "hiking"],
-      "location": {"lat": 57.2897, "lng": -6.1724},
-      "parking_location": null,
-      "directions": "At the Sligachan junction on the A87, 14 km south of Portree. Free car park by the hotel.",
-      "duration_min": 10,
-      "duration_typical": 20,
-      "difficulty": "none",
-      "distance_km": null,
-      "elevation_gain_m": null,
-      "price_type": "free",
-      "price_gbp": null,
-      "opening_hours": [{"season": "All year", "hours": "Open access"}],
-      "best_time": "Clear mornings for the ridge; it is often in cloud.",
-      "suitable_for": ["children", "stroller", "dogs", "reduced_mobility"],
-      "motorhome_parking": "yes",
-      "overnight_allowed": false,
-      "services_nearby": ["toilets", "cafe", "restaurant"],
-      "tips": ["Start of the long walk into Coire Lagan and up Sgùrr nan Gillean: experienced hikers only.", "Good campsite next to the hotel."],
-      "audioguide": {"enabled": true, "stop_number": 8, "radius_m": 200}
+     "season": "All year",
+     "hours": "Open access"
     }
-  ]
+   ],
+   "best_time": "Sunrise and early morning; in summer the car park fills before 9:00.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [
+    "Walking boots and a waterproof layer even on sunny days.",
+    "No shade, water or services on the route; nearest are in Portree.",
+    "Not suitable for strollers."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 10,
+    "radius_m": 200
+   }
+  },
+  {
+   "slug": "quiraing",
+   "title": "Quiraing",
+   "gaelic_name": "A' Chuith-Raing",
+   "summary": "The largest landslip in Britain, still moving: a viewpoint by the road and a 2-hour loop walk among pinnacles, with the Needle, the Table and the Prison.",
+   "content": "<p>The Quiraing is the northern end of the Trotternish landslip. The road from Staffin to Uig climbs to a car park at the top of the pass; from there the view alone is worth the stop, and a path contours below the cliffs to the Prison, the Needle and the Table.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "viewpoint",
+    "hike"
+   ],
+   "profiles": [
+    "instagram",
+    "hiking",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.6435,
+    "lng": -6.2659
+   },
+   "parking_location": {
+    "lat": 57.6357,
+    "lng": -6.2893
+   },
+   "directions": "Single-track road between Staffin and Uig. Car park at the top of the pass, pay-and-display.",
+   "duration_min": 15,
+   "duration_typical": 120,
+   "difficulty": "moderate",
+   "distance_km": 6.8,
+   "elevation_gain_m": 350,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Morning light; often windy at the top.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [
+    "The full loop has exposed sections; the first 20 minutes give most of the views.",
+    "Car park is small; arrive early in July–August."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 14,
+    "radius_m": 250
+   }
+  },
+  {
+   "slug": "kilt-rock-and-mealt-falls",
+   "title": "Kilt Rock and Mealt Falls",
+   "gaelic_name": null,
+   "summary": "A 55 m sea cliff of basalt columns that looks like a pleated kilt, with a waterfall dropping straight into the sea. A 10-minute roadside stop.",
+   "content": "<p>A viewing platform right by the A855 looks across to Kilt Rock and the Mealt waterfall. On windy days the wind through the railings makes an eerie hum. Dinosaur footprints can be found on the shore at nearby An Corran, Staffin, at low tide.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "viewpoint",
+    "waterfall"
+   ],
+   "profiles": [
+    "instagram",
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.6098,
+    "lng": -6.1727
+   },
+   "parking_location": null,
+   "directions": "On the A855 between Portree and Staffin; signposted lay-by with car park.",
+   "duration_min": 10,
+   "duration_typical": 15,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Any time; dramatic in wind and rain.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [
+    "Combine with the dinosaur footprints at An Corran beach at low tide."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 12,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "fairy-glen",
+   "title": "Fairy Glen",
+   "gaelic_name": null,
+   "summary": "A miniature landscape of grassy cone hills, a tiny loch and a rock tower called Castle Ewen, near Uig. An easy 45-minute wander.",
+   "content": "<p>The Fairy Glen is a small landslip area that produced dozens of rounded hillocks. Paths wind between them; Castle Ewen, the rocky outcrop, can be scrambled for the view. Please don't build stone spirals: the community removes them to protect the turf.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "viewpoint",
+    "hike"
+   ],
+   "profiles": [
+    "instagram",
+    "families",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.5842,
+    "lng": -6.325
+   },
+   "parking_location": null,
+   "directions": "Single-track road from Uig signposted Balnaknock/Sheader. Small car park; do not park on the verge.",
+   "duration_min": 30,
+   "duration_typical": 45,
+   "difficulty": "easy",
+   "distance_km": 1.5,
+   "elevation_gain_m": 60,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Late afternoon light; avoid midday in summer.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Very narrow access road: not for motorhomes.",
+    "Boggy after rain."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 15,
+    "radius_m": 200
+   }
+  },
+  {
+   "slug": "fairy-pools",
+   "title": "Fairy Pools",
+   "gaelic_name": null,
+   "summary": "Crystal-clear pools and small waterfalls on the River Brittle below the Black Cuillin. An easy 40-minute walk each way from the car park.",
+   "content": "<p>A well-made path follows the river up towards the Cuillin, passing a series of pools and falls. The water is cold even in August; wild swimming is popular but the rocks are slippery. The classic view is the first big pool with the mountains behind.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "waterfall",
+    "hike"
+   ],
+   "profiles": [
+    "instagram",
+    "nature",
+    "families"
+   ],
+   "location": {
+    "lat": 57.2502,
+    "lng": -6.2578
+   },
+   "parking_location": {
+    "lat": 57.254,
+    "lng": -6.245
+   },
+   "directions": "From Carbost take the Glenbrittle road; large pay car park on the left after about 6 km.",
+   "duration_min": 60,
+   "duration_typical": 90,
+   "difficulty": "easy",
+   "distance_km": 2.4,
+   "elevation_gain_m": 90,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "After rain for the falls; early morning to avoid crowds.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [
+    "Stepping stones to cross the river can be impassable after heavy rain.",
+    "Midges in calm weather May–September."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 20,
+    "radius_m": 200
+   }
+  },
+  {
+   "slug": "talisker-distillery",
+   "title": "Talisker Distillery",
+   "gaelic_name": null,
+   "summary": "Skye's oldest working distillery, on the shore of Loch Harport at Carbost. Tours and tastings most days; book ahead in summer.",
+   "content": "<p>Founded in 1830, Talisker makes a peaty, peppery single malt with a maritime edge. The visitor centre offers tours of about an hour ending in a tasting, plus a shop and bar. Drivers can take their drams away in a sample bottle.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "distillery"
+   ],
+   "profiles": [
+    "whisky",
+    "rainy-day",
+    "history"
+   ],
+   "location": {
+    "lat": 57.3025,
+    "lng": -6.3561
+   },
+   "parking_location": null,
+   "directions": "In Carbost village on the B8009. Car park at the distillery.",
+   "duration_min": 45,
+   "duration_typical": 75,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "Check official site",
+     "hours": "Typically daily, seasonal hours"
+    }
+   ],
+   "best_time": "Book the tour in advance from May to September.",
+   "suitable_for": [
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "The Oyster Shed up the hill is a local favourite for seafood.",
+    "Under-18s can join tours but not taste."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 21,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "dunvegan-castle",
+   "title": "Dunvegan Castle and Gardens",
+   "gaelic_name": "Caisteal Dhùn Bheagain",
+   "summary": "Seat of Clan MacLeod for 800 years, with the Fairy Flag, formal gardens and seal-watching boat trips from the castle jetty. Allow 2 hours.",
+   "content": "<p>Dunvegan is said to be the oldest continuously inhabited castle in Scotland. Inside are clan relics including the Fairy Flag and Rory Mor's drinking horn; outside, walled and water gardens drop to the loch. Short boat trips go out to the seal colony.</p>",
+   "zone": "duirinish-waternish",
+   "categories": [
+    "castle",
+    "museum",
+    "wildlife"
+   ],
+   "profiles": [
+    "history",
+    "families",
+    "rainy-day",
+    "wildlife"
+   ],
+   "location": {
+    "lat": 57.448,
+    "lng": -6.5898
+   },
+   "parking_location": null,
+   "directions": "1 km north of Dunvegan village on the A850. Free car park at the entrance.",
+   "duration_min": 90,
+   "duration_typical": 120,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "April–October",
+     "hours": "Daily, check official site"
+    },
+    {
+     "season": "November–March",
+     "hours": "Closed (gardens may open)"
+    }
+   ],
+   "best_time": "Mornings before the coach groups.",
+   "suitable_for": [
+    "children",
+    "stroller"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "Seal trips are weather dependent; buy tickets at the castle.",
+    "Dogs allowed in the gardens on a lead, not in the castle."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 30,
+    "radius_m": 200
+   }
+  },
+  {
+   "slug": "neist-point",
+   "title": "Neist Point",
+   "gaelic_name": "An Eist",
+   "summary": "Skye's westernmost point: a lighthouse on a headland of sea cliffs, reached by a steep concrete path. The island's best sunset.",
+   "content": "<p>A 20-minute walk (steep steps down, then flat) leads to the 1909 lighthouse. The famous photo is taken from the cliff top to the right of the car park, looking back at the headland. Minke whales, dolphins and basking sharks are seen offshore in summer.</p>",
+   "zone": "duirinish-waternish",
+   "categories": [
+    "viewpoint",
+    "hike",
+    "wildlife"
+   ],
+   "profiles": [
+    "instagram",
+    "nature",
+    "wildlife"
+   ],
+   "location": {
+    "lat": 57.4232,
+    "lng": -6.788
+   },
+   "parking_location": {
+    "lat": 57.4276,
+    "lng": -6.7778
+   },
+   "directions": "From Glendale follow the single-track road to its end; car park at the top of the cliffs.",
+   "duration_min": 30,
+   "duration_typical": 75,
+   "difficulty": "easy",
+   "distance_km": 2.2,
+   "elevation_gain_m": 100,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Sunset; stay for the colours after the sun goes down.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The access road is very narrow with few passing places; allow time.",
+    "Very exposed: hold on to hats and children."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 32,
+    "radius_m": 250
+   }
+  },
+  {
+   "slug": "portree",
+   "title": "Portree",
+   "gaelic_name": "Port Rìgh",
+   "summary": "Skye's capital and the practical base: the painted harbour, most of the island's restaurants and shops, and the departure point for wildlife boat trips.",
+   "content": "<p>Portree (about 2,500 people) sits around a sheltered harbour with its famous row of coloured houses. It has the island's main supermarket, fuel, a tourist information point, banks and the widest choice of places to eat and sleep. Boat trips to see sea eagles and seals leave from the pier.</p>",
+   "zone": "portree",
+   "categories": [
+    "village",
+    "restaurant",
+    "shop",
+    "fuel"
+   ],
+   "profiles": [
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.4126,
+    "lng": -6.1945
+   },
+   "parking_location": {
+    "lat": 57.414,
+    "lng": -6.196
+   },
+   "directions": "On the A87/A855. Pay-and-display car parks in the centre and by the harbour.",
+   "duration_min": 60,
+   "duration_typical": 120,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Town; shop hours vary"
+    }
+   ],
+   "best_time": "Evening for the harbour lights; book restaurants in summer.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets",
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel"
+   ],
+   "tips": [
+    "Fill up with fuel here: stations are scarce in the north and west.",
+    "The harbour viewpoint is from the Lump, the headland south of the pier."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 5,
+    "radius_m": 400
+   }
+  },
+  {
+   "slug": "sligachan",
+   "title": "Sligachan Old Bridge",
+   "gaelic_name": "Sligeachan",
+   "summary": "The three-arched 1810 bridge with the Black Cuillin behind: the most painted view on Skye, a 10-minute stop at the junction of the A87 and A863.",
+   "content": "<p>Sligachan is where the roads to Portree and to Dunvegan part. The old stone bridge over the River Sligachan frames Sgùrr nan Gillean and the Cuillin ridge. Legend says dipping your face in the river for seven seconds grants eternal beauty. The hotel has a climbing museum and a bar with hundreds of whiskies.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "viewpoint",
+    "hike"
+   ],
+   "profiles": [
+    "instagram",
+    "history",
+    "hiking"
+   ],
+   "location": {
+    "lat": 57.2897,
+    "lng": -6.1724
+   },
+   "parking_location": null,
+   "directions": "At the Sligachan junction on the A87, 14 km south of Portree. Free car park by the hotel.",
+   "duration_min": 10,
+   "duration_typical": 20,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Clear mornings for the ridge; it is often in cloud.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets",
+    "cafe",
+    "restaurant"
+   ],
+   "tips": [
+    "Start of the long walk into Coire Lagan and up Sgùrr nan Gillean: experienced hikers only.",
+    "Good campsite next to the hotel."
+   ],
+   "audioguide": {
+    "enabled": true,
+    "stop_number": 8,
+    "radius_m": 200
+   }
+  },
+  {
+   "slug": "kyleakin",
+   "title": "Kyleakin",
+   "gaelic_name": "Caol Àcain",
+   "summary": "The first village on Skye, beside the bridge: a small harbour, the ruin of Castle Moil and views back to the mainland. A common overnight stop.",
+   "content": "<p>Kyleakin was where the ferry from the mainland landed until the Skye Bridge opened in 1995. The bridge tolls were scrapped in 2004 and the village is now a quiet place just off the main road, with a harbour, a few places to eat and somewhere to sleep.</p><p>On the point beyond the harbour stands what is left of Castle Moil. Local legend gives it to a Norse princess, known as Saucy Mary, who is said to have stretched a chain across the narrows to charge passing ships a toll.</p>",
+   "zone": "broadford",
+   "categories": [
+    "village",
+    "castle",
+    "viewpoint"
+   ],
+   "profiles": [
+    "history",
+    "families"
+   ],
+   "location": {
+    "lat": 57.273,
+    "lng": -5.733
+   },
+   "parking_location": null,
+   "directions": "Signposted off the A87 at the Skye end of the bridge. Free parking by the harbour.",
+   "duration_min": 20,
+   "duration_typical": 45,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Evening, when the light is on the castle ruin and the bridge.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "The path out to the castle ruin is rough and boggy, and the last part can be awkward at high tide.",
+    "Kyle of Lochalsh, across the bridge, has the nearest supermarket, fuel and railway station."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "lealt-falls",
+   "title": "Lealt Falls",
+   "gaelic_name": null,
+   "summary": "A waterfall dropping into a deep gorge beside the Trotternish road, seen from a viewing platform a few minutes from the car park.",
+   "content": "<p>The Lealt river falls in two stages into a narrow gorge on its way to the sea. A short surfaced path leads from the car park to a platform over the upper fall, with a view along the coast and across to the mainland.</p><p>A rougher path continues to the cliff edge above the shore, where the ruins of an old diatomite works can be seen below.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "waterfall",
+    "viewpoint"
+   ],
+   "profiles": [
+    "nature",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.5655,
+    "lng": -6.153
+   },
+   "parking_location": null,
+   "directions": "Beside the A855 between the Old Man of Storr and Kilt Rock. Signed car park on the seaward side of the road.",
+   "duration_min": 10,
+   "duration_typical": 25,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "After rain, when the falls are full.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Keep back from the unfenced edges beyond the platform.",
+    "Easy to combine with Kilt Rock, a short drive further north."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "eilean-donan-castle",
+   "title": "Eilean Donan Castle",
+   "gaelic_name": "Eilean Donnain",
+   "summary": "Scotland's most photographed castle, on a small island where three sea lochs meet, reached by a stone footbridge. On the main road to Skye.",
+   "content": "<p>The castle stands at the meeting point of Loch Duich, Loch Long and Loch Alsh, on the road to Skye. A stronghold has stood here since the 13th century. It was blown up in 1719 during a Jacobite rising and lay in ruins for two hundred years.</p><p>What you see today is a rebuilding carried out between 1912 and 1932. The rooms inside are furnished and open to visitors; the classic photograph is taken from the shore by the car park and costs nothing.</p>",
+   "zone": "en-route",
+   "categories": [
+    "castle",
+    "viewpoint",
+    "museum"
+   ],
+   "profiles": [
+    "history",
+    "instagram",
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.274,
+    "lng": -5.5161
+   },
+   "parking_location": null,
+   "directions": "At Dornie on the A87, about 13 km east of Kyle of Lochalsh and the Skye Bridge. Large car park at the visitor centre.",
+   "duration_min": 20,
+   "duration_typical": 75,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "Main season",
+     "hours": "Daily; check the official site"
+    },
+    {
+     "season": "Winter",
+     "hours": "Reduced opening and closed periods; check the official site"
+    }
+   ],
+   "best_time": "Early or late in the day; the castle is floodlit after dark.",
+   "suitable_for": [
+    "children"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "You only need a ticket to cross the bridge and go inside: the view from the shore is free.",
+    "At high tide the castle is surrounded by water, which makes the better picture."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "loch-ness-urquhart-castle",
+   "title": "Loch Ness and Urquhart Castle",
+   "gaelic_name": "Caisteal na Sròine",
+   "summary": "The ruin of one of Scotland's largest castles on a headland above Loch Ness, with a visitor centre and boat trips on the loch from nearby.",
+   "content": "<p>Loch Ness runs for about 37 km along the Great Glen and is more than 200 m deep, which is why it holds more water than any other loch in Scotland, and why the monster story has lasted. Urquhart Castle, on a headland on the north shore, is the best place to see it from.</p><p>The castle changed hands many times in the wars with England and was blown up in 1692 so that it could not be used again. The tower that remains can be climbed. Loch cruises leave from a pier close by.</p>",
+   "zone": "en-route",
+   "categories": [
+    "castle",
+    "viewpoint",
+    "museum"
+   ],
+   "profiles": [
+    "history",
+    "families",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.324,
+    "lng": -4.442
+   },
+   "parking_location": null,
+   "directions": "On the A82 about 3 km east of Drumnadrochit, on the north shore of the loch. Car park at the visitor centre.",
+   "duration_min": 45,
+   "duration_typical": 90,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Daily, shorter hours in winter; check the official site"
+    }
+   ],
+   "best_time": "Outside the middle of the day in summer, when the car park fills.",
+   "suitable_for": [
+    "children"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "In summer it is worth booking a time slot in advance.",
+    "The castle and the loch cruise are separate tickets."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "inverness",
+   "title": "Inverness",
+   "gaelic_name": "Inbhir Nis",
+   "summary": "The capital of the Highlands, on the River Ness: a compact centre with the riverside, the Victorian Market and plenty of places for lunch.",
+   "content": "<p>Inverness is the only city in the Highlands and the natural stop between Skye and the south. The centre is small enough to see on foot in an hour: the river with its footbridges, the castle on its hill above, and the covered Victorian Market.</p><p>If you have longer, the path along the river to the Ness Islands is a quiet walk from the centre.</p>",
+   "zone": "en-route",
+   "categories": [
+    "village",
+    "restaurant",
+    "cafe",
+    "shop",
+    "fuel"
+   ],
+   "profiles": [
+    "rainy-day",
+    "families",
+    "history"
+   ],
+   "location": {
+    "lat": 57.4778,
+    "lng": -4.2247
+   },
+   "parking_location": null,
+   "directions": "Where the A9, A82 and A96 meet. Several pay car parks in the centre.",
+   "duration_min": 45,
+   "duration_typical": 75,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "The last large supermarkets and outdoor shops before the west coast are here."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "pitlochry",
+   "title": "Pitlochry",
+   "gaelic_name": "Baile Chloichridh",
+   "summary": "A Victorian resort town in the Perthshire hills, just off the A9: one main street of shops and cafés, and a dam with a fish ladder by the river.",
+   "content": "<p>Pitlochry grew up as a holiday town after the railway arrived in the 19th century and still looks the part, with stone villas and a long main street. It is the usual place to break the drive between Inverness and Edinburgh.</p><p>Ten minutes' walk from the centre, the dam on the River Tummel has a fish ladder where salmon can sometimes be seen making their way upstream.</p>",
+   "zone": "en-route",
+   "categories": [
+    "village",
+    "cafe",
+    "shop"
+   ],
+   "profiles": [
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 56.7044,
+    "lng": -3.7297
+   },
+   "parking_location": null,
+   "directions": "Signposted from the A9, about 45 km north of Perth. Pay car parks behind the main street.",
+   "duration_min": 25,
+   "duration_typical": 45,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "Salmon run the fish ladder mainly from spring to autumn; there is no guarantee of seeing one."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "glencoe",
+   "title": "Glencoe",
+   "gaelic_name": "Gleann Comhann",
+   "summary": "Scotland's most famous glen: a deep valley between steep mountains, crossed by the main road, with a dark place in Highland history.",
+   "content": "<p>The road from the south climbs over Rannoch Moor and then drops into Glencoe between walls of rock. The best-known view is of the Three Sisters, three great ridges on the south side, from the lay-bys beside the road.</p><p>The glen is also remembered for the massacre of February 1692, when government soldiers who had been lodging with the MacDonalds of Glencoe turned on their hosts. A visitor centre near Glencoe village tells the story.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint",
+    "hike"
+   ],
+   "profiles": [
+    "nature",
+    "instagram",
+    "history",
+    "hiking"
+   ],
+   "location": {
+    "lat": 56.668,
+    "lng": -4.986
+   },
+   "parking_location": null,
+   "directions": "On the A82 between Tyndrum and Fort William. Lay-by car parks along the glen; the Three Sisters viewpoint is signed.",
+   "duration_min": 15,
+   "duration_typical": 40,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Early or late; the lay-bys are crowded in the middle of the day.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "toilets"
+   ],
+   "tips": [
+    "The lay-bys are small and busy: do not stop on the road itself.",
+    "Weather changes fast here; the tops are often in cloud."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "glenfinnan",
+   "title": "Glenfinnan Viaduct and Monument",
+   "gaelic_name": "Gleann Fhionnainn",
+   "summary": "The curving railway viaduct known from the films, and the monument at the head of Loch Shiel where the 1745 Jacobite rising began.",
+   "content": "<p>The viaduct carries the West Highland Line across the glen on 21 arches. It was finished in 1901 and was one of the first large structures built in concrete. A path from the car park leads in about fifteen minutes to a viewpoint above it; in season a steam train crosses twice a day.</p><p>On the loch side of the road, the Glenfinnan Monument marks the spot where Prince Charles Edward Stuart raised his standard in August 1745.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint",
+    "museum",
+    "hike"
+   ],
+   "profiles": [
+    "instagram",
+    "history",
+    "families"
+   ],
+   "location": {
+    "lat": 56.87,
+    "lng": -5.436
+   },
+   "parking_location": null,
+   "directions": "On the A830 between Fort William and Mallaig, about 27 km west of Fort William. Pay car parks at the visitor centre.",
+   "duration_min": 30,
+   "duration_typical": 60,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Arrive well before a steam train is due: the car parks fill.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "Steam train times change each season; check them before planning the stop around a crossing.",
+    "The viewpoint path is uneven and muddy after rain."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "fort-william",
+   "title": "Fort William",
+   "gaelic_name": "An Gearasdan",
+   "summary": "The main town of the west Highlands, on Loch Linnhe at the foot of Ben Nevis, the highest mountain in Britain. The usual lunch stop on the way to Skye.",
+   "content": "<p>Fort William is a working town rather than a pretty one, but it has what a long drive needs: a pedestrian high street with places to eat, supermarkets and fuel. Ben Nevis, at 1,345 m, rises directly behind it, though the summit is hidden from the town itself.</p>",
+   "zone": "en-route",
+   "categories": [
+    "village",
+    "restaurant",
+    "cafe",
+    "shop",
+    "fuel"
+   ],
+   "profiles": [
+    "rainy-day",
+    "families"
+   ],
+   "location": {
+    "lat": 56.8198,
+    "lng": -5.1052
+   },
+   "parking_location": null,
+   "directions": "On the A82. Pay car parks at both ends of the high street.",
+   "duration_min": 40,
+   "duration_typical": 60,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "The last big supermarkets before Skye are here."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "loch-garry-viewpoint",
+   "title": "Loch Garry viewpoint",
+   "gaelic_name": null,
+   "summary": "A roadside viewpoint high above Loch Garry, known because from here the loch looks like a map of Scotland.",
+   "content": "<p>The road to Skye climbs steeply from the Great Glen, and near the top a lay-by looks down the length of Loch Garry. Seen from this angle, the shape of the loch and its wooded shores resembles the outline of Scotland.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "instagram",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.088,
+    "lng": -4.956
+   },
+   "parking_location": null,
+   "directions": "A signed lay-by on the A87, a few kilometres after it leaves the A82 at Invergarry.",
+   "duration_min": 5,
+   "duration_typical": 15,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "A short stop: the view is from the lay-by itself."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "commando-memorial",
+   "title": "Commando Memorial",
+   "gaelic_name": null,
+   "summary": "A bronze of three commandos looking towards Ben Nevis, on a hill above Spean Bridge, in memory of the soldiers who trained in these mountains.",
+   "content": "<p>The memorial was unveiled in 1952 to the commandos of the Second World War, who trained at nearby Achnacarry. It stands on open ground with one of the widest views in Lochaber: Ben Nevis and Aonach Mòr to the south on a clear day.</p><p>Beside it is a small garden of remembrance.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "history",
+    "instagram"
+   ],
+   "location": {
+    "lat": 56.8979,
+    "lng": -4.944
+   },
+   "parking_location": null,
+   "directions": "Beside the A82 about 2 km north-west of Spean Bridge, at the junction with the B8004. Free car park.",
+   "duration_min": 10,
+   "duration_typical": 20,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "It is a place of remembrance: families still leave tributes in the garden."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "five-sisters-of-kintail",
+   "title": "Five Sisters of Kintail",
+   "gaelic_name": null,
+   "summary": "A ridge of five pointed peaks rising straight from the head of Loch Duich: the mountain view of the drive between Skye and Loch Ness.",
+   "content": "<p>The Five Sisters stand in a row along the north side of Glen Shiel, three of them above 914 m. The main road runs along their foot, and they are seen at their best looking back from the shore of Loch Duich.</p><p>The traverse of the whole ridge is a long and serious mountain day for experienced hillwalkers.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint",
+    "hike"
+   ],
+   "profiles": [
+    "nature",
+    "hiking",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.214,
+    "lng": -5.423
+   },
+   "parking_location": null,
+   "directions": "On the A87 through Glen Shiel, between Shiel Bridge and Cluanie. Lay-bys along the road and beside Loch Duich.",
+   "duration_min": 5,
+   "duration_typical": 15,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The tops are often in cloud; the view is best in clear weather after a front has passed."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "dunkeld",
+   "title": "Dunkeld",
+   "gaelic_name": "Dùn Chailleann",
+   "summary": "A small Perthshire town on the River Tay, with a part-ruined cathedral on the riverbank and streets of restored 18th-century houses.",
+   "content": "<p>Dunkeld is a short step off the A9 and a calm place to stretch your legs. The cathedral, half ruin and half parish church, stands in lawns beside the Tay, and the old houses around the square have been carefully restored. The bridge over the river dates from 1809.</p>",
+   "zone": "en-route",
+   "categories": [
+    "village",
+    "cafe"
+   ],
+   "profiles": [
+    "history",
+    "families"
+   ],
+   "location": {
+    "lat": 56.565,
+    "lng": -3.589
+   },
+   "parking_location": null,
+   "directions": "Signposted from the A9, about 24 km north of Perth. Pay car park by the river.",
+   "duration_min": 15,
+   "duration_typical": 40,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "The Hermitage, a woodland walk to a waterfall, is a couple of kilometres away on the other side of the A9."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "stirling",
+   "title": "Stirling",
+   "gaelic_name": "Sruighlea",
+   "summary": "The old gateway between Lowlands and Highlands, with its castle on a rock above the plain and the Wallace Monument on the hill opposite.",
+   "content": "<p>For centuries whoever held Stirling controlled the way north, which is why two of the decisive battles of Scottish history, Stirling Bridge in 1297 and Bannockburn in 1314, were fought within sight of the castle. The castle and the tower of the Wallace Monument are both visible from the motorway as you pass.</p>",
+   "zone": "en-route",
+   "categories": [
+    "castle",
+    "viewpoint",
+    "village"
+   ],
+   "profiles": [
+    "history",
+    "families"
+   ],
+   "location": {
+    "lat": 56.1238,
+    "lng": -3.9477
+   },
+   "parking_location": null,
+   "directions": "Beside the M9, about 60 km north-west of Edinburgh. Pay car park on the castle esplanade.",
+   "duration_min": 10,
+   "duration_typical": 120,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Castle open daily; check the official site"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "Seeing the castle properly takes at least two hours; from the road it is a passing view."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "callander",
+   "title": "Callander",
+   "gaelic_name": "Calasraid",
+   "summary": "A small town at the edge of the Highlands, on the road north from Stirling, and a gateway to Loch Lomond and the Trossachs National Park.",
+   "content": "<p>Callander sits where the flat country ends and the hills begin. Its long main street has cafés, bakeries and shops, which makes it the first comfortable stop on the way north from Edinburgh or Glasgow.</p>",
+   "zone": "en-route",
+   "categories": [
+    "village",
+    "cafe",
+    "shop"
+   ],
+   "profiles": [
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 56.244,
+    "lng": -4.214
+   },
+   "parking_location": null,
+   "directions": "On the A84, about 25 km north-west of Stirling. Pay car parks off the main street.",
+   "duration_min": 15,
+   "duration_typical": 30,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  },
+  {
+   "slug": "loch-lubnaig",
+   "title": "Loch Lubnaig",
+   "gaelic_name": "Loch Lùbnaig",
+   "summary": "A narrow loch between steep wooded hills, right beside the road north of Callander: the first real Highland scenery of the journey.",
+   "content": "<p>The road follows the east shore of Loch Lubnaig for several kilometres, with Ben Ledi rising on the far side. Lochside car parks give a few minutes by the water.</p>",
+   "zone": "en-route",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "nature",
+    "instagram"
+   ],
+   "location": {
+    "lat": 56.277,
+    "lng": -4.283
+   },
+   "parking_location": null,
+   "directions": "Beside the A84, a few kilometres north of Callander. Signed car parks on the shore.",
+   "duration_min": 5,
+   "duration_typical": 15,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   }
+  }
+ ]
 }
