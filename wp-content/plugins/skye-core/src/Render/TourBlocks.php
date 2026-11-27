@@ -188,7 +188,7 @@ final class TourBlocks {
 		};
 		$html  = $list( Html::t( 'Included' ), 'skye-includes__yes', self::lines( (string) ( $t['includes'] ?? '' ) ) );
 		$html .= $list( Html::t( 'Not included' ), 'skye-includes__no', self::lines( (string) ( $t['excludes'] ?? '' ) ) );
-		return '' === $html ? '' : Html::block( 'includes', Html::t( 'What is included' ), '<div class="skye-includes">' . $html . '</div>' );
+		return '' === $html ? '' : Html::block( 'includes', Html::t( 'What is included' ), '<div class="skye-includes__cols">' . $html . '</div>' );
 	}
 
 	/** Comparison card for the tours listing. */

@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.4.0
+Version: 0.4.1
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -173,14 +173,14 @@ a.skye-mini:hover { border-color: var(--skye-accent); color: inherit; }
 .skye-day__stops a { color: var(--skye-accent); text-decoration: none; }
 .skye-day__stops a:hover { text-decoration: underline; }
 
-.skye-includes { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.skye-includes h3 { font-size: 16px; margin: 0 0 8px; }
-.skye-includes ul { display: grid; gap: 6px; list-style: none; margin: 0; padding: 0; }
-.skye-includes li { padding-left: 24px; position: relative; }
-.skye-includes li::before { font-weight: 700; left: 0; position: absolute; }
+.skye-includes__cols { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.skye-includes__col h3 { font-size: 16px; margin: 0 0 8px; }
+.skye-includes__col ul { display: grid; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.skye-includes__col li { padding-left: 24px; position: relative; }
+.skye-includes__col li::before { font-weight: 700; left: 0; position: absolute; }
 .skye-includes__yes li::before { color: var(--skye-accent); content: "✓"; }
 .skye-includes__no li::before { color: var(--skye-muted); content: "–"; }
-@media (max-width: 767px) { .skye-includes { grid-template-columns: 1fr; } }
+@media (max-width: 767px) { .skye-includes__cols { grid-template-columns: 1fr; } }
 
 .skye-listing { padding: 56px 0 72px; }
 .skye-listing__intro { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
@@ -195,7 +195,7 @@ a.skye-mini:hover { border-color: var(--skye-accent); color: inherit; }
 .skye-tourcard__head { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
 .skye-tourcard__head h2 { font-size: 24px; line-height: 1.2; }
 .skye-tourcard__meta { color: var(--skye-muted); font-size: 14px; }
-.skye-tourcard__price { display: flex; flex-direction: column; text-align: right; }
+.skye-tourcard__price { align-items: baseline; display: flex; flex-wrap: wrap; gap: 6px; }
 .skye-tourcard__price strong { font-family: Sora, Inter, sans-serif; font-size: 26px; font-weight: 700; line-height: 1.1; }
 .skye-tourcard__price span { color: var(--skye-muted); font-size: 13px; }
 .skye-tourcard__summary, .skye-tourcard__note { color: var(--skye-muted); line-height: 1.5; margin: 0; }
