@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.4.1
+Version: 0.5.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -210,4 +210,27 @@ a.skye-mini:hover { border-color: var(--skye-accent); color: inherit; }
   .skye-tourcard__photo { height: 200px; }
   .skye-tourcard__body { padding: 20px; }
   .skye-tourcard__actions .skye-btn { flex: 1 1 100%; }
+}
+
+/* ---- Route page and routes listing (templates "Skye: Route" / "Skye: Routes listing") ---- */
+.skye-routeday + .skye-routeday { margin-top: 28px; }
+.skye-stops { display: flex; flex-direction: column; list-style: none; margin: 0; padding: 0; }
+.skye-stop { align-items: start; border-top: 1px solid var(--skye-line); display: grid; gap: 16px; grid-template-columns: 52px 120px minmax(0, 1fr); padding: 16px 0; }
+.skye-stop__time { color: var(--skye-accent); font-family: Sora, Inter, sans-serif; font-size: 15px; font-weight: 600; padding-top: 2px; }
+.skye-stop__photo { background: #C9D6D2; border-radius: 10px; height: 80px; overflow: hidden; }
+.skye-stop__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-stop__title { align-items: center; display: flex; flex-wrap: wrap; font-family: Sora, Inter, sans-serif; font-size: 17px; gap: 8px; line-height: 1.3; margin: 0 0 4px; }
+.skye-stop__title a { color: var(--skye-ink); text-decoration: none; }
+.skye-stop__title a:hover { color: var(--skye-accent); text-decoration: underline; }
+.skye-stop p { margin: 0; }
+.skye-routeday__foot { align-items: center; border-top: 1px solid var(--skye-line); display: flex; flex-wrap: wrap; gap: 12px 16px; justify-content: space-between; padding-top: 16px; }
+.skye-routeday__night { color: var(--skye-ink); font-weight: 500; }
+a.skye-routecard, a.skye-routecard:hover { color: inherit; text-decoration: none; }
+a.skye-routecard:hover { border-color: var(--skye-accent); }
+a.skye-routecard h2 { color: var(--skye-ink); }
+@media (max-width: 767px) {
+  .skye-stop { gap: 4px 12px; grid-template-columns: 72px minmax(0, 1fr); }
+  .skye-stop__time { grid-column: 1 / -1; }
+  .skye-stop__photo { height: 56px; }
+  .skye-routeday__foot .skye-btn { flex: 1 1 100%; }
 }

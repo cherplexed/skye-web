@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Skye Core
  * Description: Content model, verification, units and REST API for the Isle of Skye guide. All custom code of skye-web lives here.
- * Version: 0.6.0
+ * Version: 0.7.0
  * Requires PHP: 8.2
  * Author: ShyPig
  * Text Domain: skye-core
@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYE_CORE_VERSION', '0.6.0' );
+define( 'SKYE_CORE_VERSION', '0.7.0' );
 define( 'SKYE_CORE_DIR', __DIR__ );
 define( 'SKYE_CORE_URL', plugin_dir_url( __FILE__ ) );
 
