@@ -1,5 +1,5 @@
 {
- "_note": "The first 10 are the pilot places. The next 16 (from kyleakin on) are the stops of the tours, written on 27 Nov 2026 from general knowledge: coordinates are approximate, and prices, hours, parking and every practical detail MUST be verified before publishing. The seed marks every place as unverified. Old Man of Storr, Portree and Eilean Donan Castle were rewritten on 27 Nov 2026 from the sources listed in each (official sites, VisitScotland and the Viajar por Escocia guide): they are the model for the rest, and still need a guide's check.",
+ "_note": "26 places. All were written or rewritten on 27 Nov 2026 from the sources listed in each one: official sites for prices, hours and parking, VisitScotland, and the Viajar por Escocia guide. Where a place lists no source, its text comes from general knowledge and has not been checked against anything. Coordinates are approximate. Every place is seeded as unverified and needs a guide's check before publishing.",
  "places": [
   {
    "slug": "old-man-of-storr",
@@ -124,7 +124,7 @@
    "title": "Quiraing",
    "gaelic_name": "A' Chuith-Raing",
    "summary": "The largest landslip in Britain, still moving: a viewpoint by the road and a 2-hour loop walk among pinnacles, with the Needle, the Table and the Prison.",
-   "content": "<p>The Quiraing is the northern end of the Trotternish landslip. The road from Staffin to Uig climbs to a car park at the top of the pass; from there the view alone is worth the stop, and a path contours below the cliffs to the Prison, the Needle and the Table.</p>",
+   "content": "<p>The Quiraing is the northern end of the great landslip that runs the length of the Trotternish ridge, and the most dramatic part of it. Below the cliffs of Meall na Suiramach the ground has broken into towers, ledges and hidden hollows, and it has not finished moving: the road at its foot has to be repaired again and again.</p><p>Three features have names. The Needle is a jagged pinnacle; the Prison is a block of rock that looks like a ruined keep; and the Table is a flat meadow raised among the cliffs, out of sight from below, where local tradition says cattle were hidden from raiders.</p><p>You do not have to walk far. The view from the car park, at the top of the pass between Staffin and Uig, already takes in the whole sweep of cliffs and the sea beyond, and the first kilometre of the path is close to level. The full circuit goes on below the crags and comes back over the top: about 6.8 km and two hours without stops, with narrow, exposed stretches that are slippery when wet.</p>",
    "zone": "trotternish",
    "categories": [
     "viewpoint",
@@ -168,21 +168,59 @@
     "toilets"
    ],
    "tips": [
-    "The full loop has exposed sections; the first 20 minutes give most of the views.",
-    "Car park is small; arrive early in July–August."
+    "The first stretch of the path gives most of the views; the full loop has exposed sections.",
+    "Arrive early in July and August: the car park fills.",
+    "It is often windy at the top even when Staffin is calm. Take a layer.",
+    "Autumn is quieter and the colours are at their best."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 14,
     "radius_m": 250
-   }
+   },
+   "faq": [
+    {
+     "question": "How long is the Quiraing walk?",
+     "answer": "The full loop is about 6.8 km and takes around two hours of walking, more with stops for photographs. It starts and ends at the car park. If you only have half an hour, go along the first, almost level stretch of the path and turn back: that part already has the classic views."
+    },
+    {
+     "question": "Where do you park for the Quiraing?",
+     "answer": "At the car park on top of the pass, on the single-track road between Staffin and Uig. It is about 4 km from Staffin and 9 km from Uig, and around half an hour's drive from Portree. There is a charge, and in summer it fills early in the day."
+    },
+    {
+     "question": "What are the Needle, the Table and the Prison?",
+     "answer": "They are the three best-known rock formations of the Quiraing. The Needle is a tall, sharp pinnacle. The Prison is a mass of rock that resembles a fortress. The Table is a flat grassy platform tucked in among the cliffs, which you only see once you have climbed up to it."
+    },
+    {
+     "question": "Is the Quiraing still moving?",
+     "answer": "Yes. It is part of the Trotternish landslip, and this section still creeps downhill a little each year, which is why the road below needs regular repairs."
+    },
+    {
+     "question": "Can you visit the Quiraing in bad weather?",
+     "answer": "You can see it from the car park in almost any weather, but the path is exposed, narrow in places and slippery after rain. In strong wind or thick cloud, stay near the start."
+    },
+    {
+     "question": "Is the road to the Quiraing difficult to drive?",
+     "answer": "It is single-track with passing places. The climb from Staffin is steep with tight bends; the side that comes up from Uig is gentler. Large motorhomes do better approaching from Uig."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Isle of Skye guide: The Quiraing walk",
+     "url": "https://www.isleofskye.com/skye-guide/top-ten-skye-walks/the-quiraing"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    }
+   ]
   },
   {
    "slug": "kilt-rock-and-mealt-falls",
    "title": "Kilt Rock and Mealt Falls",
    "gaelic_name": null,
    "summary": "A 55 m sea cliff of basalt columns that looks like a pleated kilt, with a waterfall dropping straight into the sea. A 10-minute roadside stop.",
-   "content": "<p>A viewing platform right by the A855 looks across to Kilt Rock and the Mealt waterfall. On windy days the wind through the railings makes an eerie hum. Dinosaur footprints can be found on the shore at nearby An Corran, Staffin, at low tide.</p>",
+   "content": "<p>Kilt Rock is a sea cliff about 55 m high on the east coast of Trotternish. Its upper part is made of vertical columns of dark basalt resting on bands of paler rock, and the pattern looks like the pleats of a kilt, which is where the name comes from.</p><p>Right beside the viewpoint, the water of Loch Mealt runs out over the edge of the cliff and drops straight into the sea. On a windy day the fall is blown back up in spray before it reaches the water.</p><p>This is a stop of a few minutes, not a walk: the railings are a few steps from the car park. Look down as well as along the cliff. Seabirds nest on the ledges, and dolphins and whales are sometimes seen offshore.</p>",
    "zone": "trotternish",
    "categories": [
     "viewpoint",
@@ -225,20 +263,50 @@
     "toilets"
    ],
    "tips": [
-    "Combine with the dinosaur footprints at An Corran beach at low tide."
+    "Combine it with the dinosaur footprints at An Corran beach, at low tide.",
+    "After heavy rain the fall is at its best; in a strong wind, expect spray at the railings.",
+    "Lealt Falls is a short drive south and takes another fifteen minutes."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 12,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Why is it called Kilt Rock?",
+     "answer": "Because of how the cliff looks. Columns of basalt run down it like pleats, over horizontal bands of lighter rock, and together they resemble the folds and pattern of a kilt."
+    },
+    {
+     "question": "How high is the waterfall at Kilt Rock?",
+     "answer": "Mealt Falls drops about 55 m from the cliff top directly into the sea. It is fed by Loch Mealt, the small loch on the other side of the road."
+    },
+    {
+     "question": "Is there a walk at Kilt Rock?",
+     "answer": "No. The viewpoint is a railed platform beside the car park, so it is a short stop suitable for everyone, including pushchairs and wheelchairs."
+    },
+    {
+     "question": "Can you see dinosaur footprints near Kilt Rock?",
+     "answer": "Yes, a few minutes' drive north at An Corran beach in Staffin, where footprints are preserved in the rock on the shore. They are only visible at low tide and are easy to miss, so check the tide times."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    }
+   ]
   },
   {
    "slug": "fairy-glen",
    "title": "Fairy Glen",
    "gaelic_name": null,
    "summary": "A miniature landscape of grassy cone hills, a tiny loch and a rock tower called Castle Ewen, near Uig. An easy 45-minute wander.",
-   "content": "<p>The Fairy Glen is a small landslip area that produced dozens of rounded hillocks. Paths wind between them; Castle Ewen, the rocky outcrop, can be scrambled for the view. Please don't build stone spirals: the community removes them to protect the turf.</p>",
+   "content": "<p>The Fairy Glen is a small hollow in the hills above Uig that looks like the rest of Trotternish seen in miniature: grassy cones with ridged sides, a tiny loch, twisted rowan trees and, above them all, a tower of rock known as Castle Ewen. Like the Quiraing, it was shaped by a landslip, only on a much smaller scale.</p><p>Despite the name, there is no old legend attached to it. People began to call it the Fairy Glen simply because it looks like the kind of place where fairies would live.</p><p>It is a place to wander rather than to follow a route. Paths lead between the knolls and up to the foot of Castle Ewen, and a short scramble through a gap in the rock brings you out on top. The ground is grassy and uneven, and after rain it is muddy.</p>",
    "zone": "trotternish",
    "categories": [
     "viewpoint",
@@ -277,21 +345,59 @@
    "overnight_allowed": false,
    "services_nearby": [],
    "tips": [
-    "Very narrow access road: not for motorhomes.",
-    "Boggy after rain."
+    "The access road is very narrow: not for motorhomes.",
+    "Wear waterproof footwear. The grass is boggy after rain.",
+    "Late afternoon has the best light and fewer people than midday.",
+    "In spring the slopes are covered in wildflowers."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 15,
     "radius_m": 200
-   }
+   },
+   "faq": [
+    {
+     "question": "How do you get to the Fairy Glen?",
+     "answer": "From Uig. Just south of the village, a minor road signed for Sheader and Balnaknock leaves the main road and climbs inland; the glen is a couple of kilometres along it. The road is very narrow, so use the signed car park and walk the last part, and never park on the verges."
+    },
+    {
+     "question": "Is the Fairy Glen the same as the Fairy Pools?",
+     "answer": "No. They are two different places on opposite sides of the island. The Fairy Glen is near Uig, in the north. The Fairy Pools are in Glen Brittle, in the south-west, about an hour and a half away by car."
+    },
+    {
+     "question": "Why is it called the Fairy Glen?",
+     "answer": "Only because of its appearance. No traditional story links the place to fairies; the name is recent and comes from its odd, small-scale landscape."
+    },
+    {
+     "question": "Can you climb Castle Ewen?",
+     "answer": "Yes. It is a short, steep scramble through a narrow cleft to a small flat top with a view over the glen. It is slippery when wet and there is a drop, so it is not for small children or anyone unsure on rock."
+    },
+    {
+     "question": "Can you make stone circles in the Fairy Glen?",
+     "answer": "Please do not. Visitors used to arrange stones into spirals, and local people remove them: moving stones damages the ground and is not part of any tradition here. Leave the glen as you find it."
+    },
+    {
+     "question": "When are the midges worst?",
+     "answer": "From June to August, in calm, damp weather, above all early and late in the day. Bring repellent in those months."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    }
+   ]
   },
   {
    "slug": "fairy-pools",
    "title": "Fairy Pools",
    "gaelic_name": null,
    "summary": "Crystal-clear pools and small waterfalls on the River Brittle below the Black Cuillin. An easy 40-minute walk each way from the car park.",
-   "content": "<p>A well-made path follows the river up towards the Cuillin, passing a series of pools and falls. The water is cold even in August; wild swimming is popular but the rocks are slippery. The classic view is the first big pool with the mountains behind.</p>",
+   "content": "<p>The Fairy Pools are a chain of clear pools and small waterfalls on a mountain burn that comes down from the Black Cuillin into Glen Brittle. The water is cold, very clear and blue-green over pale rock, with the dark wall of the Cuillin behind.</p><p>A path leaves from opposite the car park and follows the burn uphill, crossing it on footbridges. The first large waterfall and pool are about 1.2 km from the start, so the walk there and back is 2.4 km; allow anything from forty minutes to an hour and a half, depending on how far up you go and how long you stay. The path is well made for most of the way, but one short stretch is steep and rocky, which rules out wheelchairs and pushchairs.</p><p>People do swim here. The water comes off the mountain and is very cold even in August, so it is a quick dip, not a swim.</p>",
    "zone": "minginish-cuillin",
    "categories": [
     "waterfall",
@@ -310,7 +416,7 @@
     "lat": 57.254,
     "lng": -6.245
    },
-   "directions": "From Carbost take the Glenbrittle road; large pay car park on the left after about 6 km.",
+   "directions": "From the Carbost road, take the single-track road signed for Glenbrittle. The pay car park is on the right after about 8 km; the path starts across the road.",
    "duration_min": 60,
    "duration_typical": 90,
    "difficulty": "easy",
@@ -335,21 +441,63 @@
     "toilets"
    ],
    "tips": [
-    "Stepping stones to cross the river can be impassable after heavy rain.",
-    "Midges in calm weather May–September."
+    "Go early or late: by mid-morning in summer the car park is full.",
+    "One stretch of the path is steep and rocky. Wear proper shoes.",
+    "Midges are out in calm weather from May to September.",
+    "There is no café at the car park. Bring water and something to eat."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 20,
     "radius_m": 200
-   }
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to the Fairy Pools?",
+     "answer": "About 2.4 km there and back to the first main waterfall and pool. Most people take between forty minutes and an hour and a half in total. You can carry on further up the burn to smaller pools if you have time."
+    },
+    {
+     "question": "Can you swim in the Fairy Pools?",
+     "answer": "Yes, and there is no charge, but the water is very cold all year. Go in slowly, do not jump from the rocks into water you have not checked, and bring something warm for afterwards."
+    },
+    {
+     "question": "How much is parking at the Fairy Pools?",
+     "answer": "There is a charge for the car park, which pays for the path, the bridges and the toilets. The price has gone up in recent years and differs for cars and larger vehicles, so check the sign on arrival. You can pay by contactless card or cash."
+    },
+    {
+     "question": "Are there toilets at the Fairy Pools?",
+     "answer": "Yes, in the car park. They are free to use and include an accessible toilet."
+    },
+    {
+     "question": "Is the road to the Fairy Pools difficult?",
+     "answer": "It is single-track with passing places for the last several kilometres, and in July and August it is busy. Drive slowly and use the passing places to let others by. In winter it can be icy. Vehicles longer than 8 m are not allowed in the car park."
+    },
+    {
+     "question": "When is the best time to go?",
+     "answer": "Early in the morning or in the evening, when the car park is quiet. The falls are fullest after rain; the pools are at their clearest after a dry spell."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Isle of Skye guide: The Fairy Pools walk",
+     "url": "https://www.isleofskye.com/skye-guide/top-ten-skye-walks/fairy-pools"
+    },
+    {
+     "title": "Dunvegan Castle and Gardens: Fairy Pools",
+     "url": "https://www.dunvegancastle.com/fairy-pools/"
+    },
+    {
+     "title": "Outdoor Access Trust for Scotland: car parks",
+     "url": "https://www.outdooraccesstrustforscotland.org.uk/?p=4161"
+    }
+   ]
   },
   {
    "slug": "talisker-distillery",
    "title": "Talisker Distillery",
    "gaelic_name": null,
    "summary": "Skye's oldest working distillery, on the shore of Loch Harport at Carbost. Tours and tastings most days; book ahead in summer.",
-   "content": "<p>Founded in 1830, Talisker makes a peaty, peppery single malt with a maritime edge. The visitor centre offers tours of about an hour ending in a tasting, plus a shop and bar. Drivers can take their drams away in a sample bottle.</p>",
+   "content": "<p>Talisker has been making whisky at Carbost, on the shore of Loch Harport, since 1830, which makes it the oldest working distillery on Skye. Its single malt is known for a smoky, peppery, slightly salty character that people connect with the sea air of this coast.</p><p>You can visit in two ways. Guided tours take you through the distillery itself, from the copper stills to the casks, and end with a tasting; there are shorter tastings without the tour, and longer, more expensive experiences for enthusiasts. Or you can simply come to the visitor building, which has a shop and a bar and does not need a ticket.</p><p>The distillery is not at Talisker Bay, in spite of the name. It stands in the village of Carbost; the bay is several kilometres further on, at the end of a minor road.</p>",
    "zone": "minginish-cuillin",
    "categories": [
     "distillery"
@@ -374,8 +522,8 @@
    "price_gbp": null,
    "opening_hours": [
     {
-     "season": "Check official site",
-     "hours": "Typically daily, seasonal hours"
+     "season": "All year",
+     "hours": "Open most days; hours change with the season. Check the official site"
     }
    ],
    "best_time": "Book the tour in advance from May to September.",
@@ -391,21 +539,54 @@
     "toilets"
    ],
    "tips": [
-    "The Oyster Shed up the hill is a local favourite for seafood.",
-    "Under-18s can join tours but not taste."
+    "Book the tour before anything else: it fixes the timetable of the day.",
+    "The distillery closes some experiences for maintenance for a few weeks in autumn. Check dates if you travel in October.",
+    "The Oyster Shed, up the hill, is a local favourite for seafood."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 21,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Do you need to book a tour at Talisker?",
+     "answer": "It is strongly recommended, above all between May and September, when tours sell out days ahead. Book on the distillery's official site before you plan the rest of the day around it."
+    },
+    {
+     "question": "Can you visit Talisker without taking a tour?",
+     "answer": "Yes. The visitor building, with its shop and bar, is usually open to anyone, though at busy times access may be limited."
+    },
+    {
+     "question": "Can children visit Talisker Distillery?",
+     "answer": "Under-18s must be with an adult and are not served alcohol. Tours have a minimum age, which changes with the type of visit, so check it when you book."
+    },
+    {
+     "question": "What can the driver do at the tasting?",
+     "answer": "Scotland's drink-drive limit is very low, so the driver should not drink at all. Ask at the start: distilleries normally give drivers their samples in small bottles to take away."
+    },
+    {
+     "question": "Is the distillery at Talisker Bay?",
+     "answer": "No. The distillery is in Carbost, on Loch Harport. Talisker Bay, with its beach of dark and pale sand, is about 6 km further west along a minor road, plus a walk from where the road ends."
+    },
+    {
+     "question": "How far is Talisker from Portree?",
+     "answer": "About 45 minutes by car. From Inverness, allow around three hours."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Talisker Distillery, official site (malts.com)",
+     "url": "https://www.malts.com/en/talisker/visit"
+    }
+   ]
   },
   {
    "slug": "dunvegan-castle",
    "title": "Dunvegan Castle and Gardens",
    "gaelic_name": "Caisteal Dhùn Bheagain",
    "summary": "Seat of Clan MacLeod for 800 years, with the Fairy Flag, formal gardens and seal-watching boat trips from the castle jetty. Allow 2 hours.",
-   "content": "<p>Dunvegan is said to be the oldest continuously inhabited castle in Scotland. Inside are clan relics including the Fairy Flag and Rory Mor's drinking horn; outside, walled and water gardens drop to the loch. Short boat trips go out to the seal colony.</p>",
+   "content": "<p>Dunvegan has been the home of the chiefs of Clan MacLeod for some eight hundred years, and it is usually described as the oldest continuously inhabited castle in Scotland. It stands on a rock above Loch Dunvegan, and what you see is the work of many centuries, from a medieval keep to Victorian battlements.</p><p>Inside are the clan's treasures. The most famous is the Fairy Flag, a fragile silk banner that, according to tradition, protects the MacLeods when it is unfurled in a moment of danger. Beside it are the Dunvegan Cup and Rory Mor's Horn, a drinking horn that each new chief is expected to drain of wine in a single draught.</p><p>The gardens are as much of a draw as the house. Laid out from the 18th century, they include a walled garden, a water garden with waterfalls and woodland walks down to the loch. From the jetty below the castle, small boats go out to the seals that live on the skerries of the loch.</p>",
    "zone": "duirinish-waternish",
    "categories": [
     "castle",
@@ -430,15 +611,15 @@
    "distance_km": null,
    "elevation_gain_m": null,
    "price_type": "ticket",
-   "price_gbp": null,
+   "price_gbp": 16.5,
    "opening_hours": [
     {
-     "season": "April–October",
-     "hours": "Daily, check official site"
+     "season": "1 April to 15 October",
+     "hours": "Daily 10:00–17:30, last entry 17:00"
     },
     {
-     "season": "November–March",
-     "hours": "Closed (gardens may open)"
+     "season": "16 October to 31 March",
+     "hours": "Closed"
     }
    ],
    "best_time": "Mornings before the coach groups.",
@@ -454,21 +635,67 @@
     "toilets"
    ],
    "tips": [
-    "Seal trips are weather dependent; buy tickets at the castle.",
-    "Dogs allowed in the gardens on a lead, not in the castle."
+    "Go in the morning, before the coach groups arrive.",
+    "Seal trips cannot be booked ahead: ask at the jetty as soon as you arrive.",
+    "Allow time for the gardens. They take as long as the castle.",
+    "Overnight parking is not allowed in the car park."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 30,
     "radius_m": 200
-   }
+   },
+   "faq": [
+    {
+     "question": "When is Dunvegan Castle open?",
+     "answer": "Every day from 1 April to 15 October, from 10:00 to 17:30, with last entry at 17:00. It is closed to individual visitors for the rest of the year."
+    },
+    {
+     "question": "How do the seal trips at Dunvegan work?",
+     "answer": "They run from 1 April to 30 September, from the jetty below the castle, and last about 25 minutes. Places are given on the day in order of arrival, there is no advance booking, and trips depend on the weather and the sea. You need a castle or garden ticket, and the boat is paid separately: in the last listing we checked, £14.50 for adults and £10.50 for children."
+    },
+    {
+     "question": "Do you need to book tickets for Dunvegan Castle?",
+     "answer": "No. You can buy your ticket at the ticket office when you arrive."
+    },
+    {
+     "question": "What is the Fairy Flag?",
+     "answer": "A very old silk banner, the most precious possession of Clan MacLeod. One story says it was a gift from a fairy to a MacLeod chief; another, that it was brought back from the East. Tradition holds that it will save the clan three times when raised in battle, and that it has already been used twice."
+    },
+    {
+     "question": "Can you take a dog to Dunvegan Castle?",
+     "answer": "Dogs are welcome in the gardens on a lead, but not inside the castle."
+    },
+    {
+     "question": "Can you see seals without taking the boat?",
+     "answer": "Sometimes, from the shore of the loch or the garden paths, but the boat is the reliable way: it goes right up to the rocks where they haul out."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Dunvegan Castle and Gardens: Visitor information",
+     "url": "https://www.dunvegancastle.com/visitor-information/"
+    },
+    {
+     "title": "Dunvegan Castle and Gardens: Seal trips",
+     "url": "https://www.dunvegancastle.com/seal-trip/"
+    },
+    {
+     "title": "Discover Scottish Gardens: Dunvegan Castle and Gardens",
+     "url": "https://discoverscottishgardens.org/garden/dunvegan-castle-and-gardens/"
+    },
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    }
+   ]
   },
   {
    "slug": "neist-point",
    "title": "Neist Point",
    "gaelic_name": "An Eist",
    "summary": "Skye's westernmost point: a lighthouse on a headland of sea cliffs, reached by a steep concrete path. The island's best sunset.",
-   "content": "<p>A 20-minute walk (steep steps down, then flat) leads to the 1909 lighthouse. The famous photo is taken from the cliff top to the right of the car park, looking back at the headland. Minke whales, dolphins and basking sharks are seen offshore in summer.</p>",
+   "content": "<p>Neist Point is the most westerly tip of Skye: a long, narrow headland of grass and basalt that runs out into the Minch, with a lighthouse at its end and sea cliffs on either side. On a clear day the Outer Hebrides lie along the horizon.</p><p>A concrete path leads down from the car park by a long flight of steps and then along the spine of the headland to the lighthouse, 2.2 km there and back. It takes about 45 minutes without stops, but everyone stops. Keep in mind that the easy part comes first: the return is a steady climb, with two steep pulls before the car park.</p><p>The lighthouse dates from the early 1900s. It has worked automatically since 1990 and its buildings are closed, so the walk is for the setting, not for a visit. The best-known photograph, with the whole headland and the light at its tip, is not taken from the path at all but from the cliff top to the right of the car park.</p><p>This is also one of the better places on Skye to watch the sea. Minke whales, dolphins and porpoises pass close inshore in summer, and gannets and other seabirds fish off the point.</p>",
    "zone": "duirinish-waternish",
    "categories": [
     "viewpoint",
@@ -511,14 +738,56 @@
    "overnight_allowed": false,
    "services_nearby": [],
    "tips": [
-    "The access road is very narrow with few passing places; allow time.",
-    "Very exposed: hold on to hats and children."
+    "For the classic view of the headland, walk along the cliff top to the right of the car park before going down.",
+    "Very exposed: hold on to hats and children.",
+    "At sunset, bring a torch for the climb back.",
+    "There are no toilets or shops. The nearest are in Glendale and Dunvegan."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 32,
     "radius_m": 250
-   }
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to Neist Point lighthouse?",
+     "answer": "2.2 km there and back, by the same path. Allow about 45 minutes of walking, and at least an hour and a half with time to look around. The way down is easy; the way back is all uphill."
+    },
+    {
+     "question": "Can you go inside Neist Point lighthouse?",
+     "answer": "No. The light is automatic and the buildings are closed to the public. You can walk around the outside."
+    },
+    {
+     "question": "Can you see whales at Neist Point?",
+     "answer": "With luck. Minke whales, dolphins and porpoises are seen from the headland, mostly in June and July and on calm days. Bring binoculars and be patient: nothing is guaranteed."
+    },
+    {
+     "question": "When is the best time to visit Neist Point?",
+     "answer": "Sunset, when the low light falls on the cliffs. It is also the busiest time, and the small car park fills, so arrive early. Take a torch for the walk back up."
+    },
+    {
+     "question": "Is the road to Neist Point difficult?",
+     "answer": "It is a long single-track road with few passing places, from Glendale to the end of the tarmac. Allow extra time, drive slowly and expect to reverse now and then. It is not advisable in a large motorhome."
+    },
+    {
+     "question": "Is Neist Point suitable for children?",
+     "answer": "With care. The path is steep and the cliffs have no fences, and it is very exposed to the wind. Keep children close, and leave the pushchair in the car."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Isle of Skye guide: Neist Point lighthouse walk",
+     "url": "https://www.isleofskye.com/skye-guide/top-ten-skye-walks/neist-point-lighthouse"
+    },
+    {
+     "title": "Glendale tourist guide: the walk to Neist Point",
+     "url": "https://www.glendaleskye.com/neistwalk.php"
+    },
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    }
+   ]
   },
   {
    "slug": "portree",
@@ -636,7 +905,7 @@
    "title": "Sligachan Old Bridge",
    "gaelic_name": "Sligeachan",
    "summary": "The three-arched 1810 bridge with the Black Cuillin behind: the most painted view on Skye, a 10-minute stop at the junction of the A87 and A863.",
-   "content": "<p>Sligachan is where the roads to Portree and to Dunvegan part. The old stone bridge over the River Sligachan frames Sgùrr nan Gillean and the Cuillin ridge. Legend says dipping your face in the river for seven seconds grants eternal beauty. The hotel has a climbing museum and a bar with hundreds of whiskies.</p>",
+   "content": "<p>Sligachan is a road junction, a hotel and an old stone bridge, and one of the great views of Skye. From the bridge you look straight up the glen between the two ranges of the Cuillin: the dark, jagged peaks of the Black Cuillin on one side and the smooth, rounded Red Cuillin on the other.</p><p>The old bridge, with its three arches, dates from the early 19th century and is now open only to walkers; the modern road crosses beside it. Near the car park stands a bronze of Norman Collie and John Mackenzie, the scientist and the local guide who together explored and mapped these mountains.</p><p>The river has its own legend. It is said that if you kneel on the bank and hold your face in the water for seven seconds, the fairies will grant you lasting beauty, provided you let it dry in the air without wiping it.</p>",
    "zone": "minginish-cuillin",
    "categories": [
     "viewpoint",
@@ -681,14 +950,34 @@
     "restaurant"
    ],
    "tips": [
-    "Start of the long walk into Coire Lagan and up Sgùrr nan Gillean: experienced hikers only.",
-    "Good campsite next to the hotel."
+    "Clear mornings are best. The ridge is often in cloud later in the day.",
+    "The peaks above are for experienced hillwalkers only; the glen path is for everyone.",
+    "The hotel has a bar that serves food, and there is a campsite next to it."
    ],
    "audioguide": {
     "enabled": true,
     "stop_number": 8,
     "radius_m": 200
-   }
+   },
+   "faq": [
+    {
+     "question": "What is the legend of the Sligachan river?",
+     "answer": "The story tells of a warrior woman whose beauty was restored by the fairies in these waters. Ever since, it is said, anyone who dips their face in the river for seven seconds, and lets it dry on its own, will be granted eternal beauty."
+    },
+    {
+     "question": "What mountains can you see from Sligachan?",
+     "answer": "The Cuillin. To the south-west are the Black Cuillin, with the sharp peak of Sgùrr nan Gillean nearest; to the south-east, the rounded Red Cuillin, with Glamaig closest to the road."
+    },
+    {
+     "question": "Is Sligachan worth a stop?",
+     "answer": "Yes, and it costs nothing: the bridge is beside the main road between the Skye Bridge and Portree, and ten minutes is enough for the view. On a clear morning it is one of the finest on the island."
+    },
+    {
+     "question": "Can you walk from Sligachan?",
+     "answer": "A level path runs up Glen Sligachan between the two ranges, and you can follow it for as long as you like before turning back. The routes onto the Cuillin themselves are serious mountain ground and need experience."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "kyleakin",
@@ -747,7 +1036,35 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Do you have to pay to cross the Skye Bridge?",
+     "answer": "No. The bridge opened in 1995 with a toll, but the charge was removed in 2004 and crossing has been free ever since."
+    },
+    {
+     "question": "Is Kyleakin a good place to stay on Skye?",
+     "answer": "It is quiet and convenient for arriving and leaving, since it is right by the bridge, and it is where our three-day tour spends its nights. For exploring the island by car, Portree and Broadford are more central and have more places to eat."
+    },
+    {
+     "question": "Where do the tours pick up in Kyleakin?",
+     "answer": "At the bus stop beside the Kyleside car park. If you are staying across the bridge, the pick-up in Kyle of Lochalsh is at the junction of Ferry Road and Kyle Prospect Road."
+    },
+    {
+     "question": "Can you visit Castle Moil?",
+     "answer": "Yes, at any time and free of charge. A path leads round the harbour to the ruin in about fifteen minutes. It is rough and wet underfoot, and the last part is easier when the tide is out."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de la Isla de Skye",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-la-isla-de-skye/"
+    },
+    {
+     "title": "Viajar por Escocia: tour de 3 días a la Isla de Skye",
+     "url": "https://viajarporescocia.com/tour/isla-skye/"
+    }
+   ]
   },
   {
    "slug": "lealt-falls",
@@ -799,7 +1116,18 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to Lealt Falls?",
+     "answer": "A few minutes. A surfaced path leads from the car park to a viewing platform over the upper fall. The rougher path that carries on towards the cliff edge adds another ten or fifteen minutes."
+    },
+    {
+     "question": "What are the ruins on the shore below Lealt Falls?",
+     "answer": "They belong to an old works that processed diatomite, a chalky mineral once dug from a loch inland and brought down to the coast to be dried and shipped out."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "eilean-donan-castle",
@@ -943,7 +1271,7 @@
    "title": "Loch Ness and Urquhart Castle",
    "gaelic_name": "Caisteal na Sròine",
    "summary": "The ruin of one of Scotland's largest castles on a headland above Loch Ness, with a visitor centre and boat trips on the loch from nearby.",
-   "content": "<p>Loch Ness runs for about 37 km along the Great Glen and is more than 200 m deep, which is why it holds more water than any other loch in Scotland, and why the monster story has lasted. Urquhart Castle, on a headland on the north shore, is the best place to see it from.</p><p>The castle changed hands many times in the wars with England and was blown up in 1692 so that it could not be used again. The tower that remains can be climbed. Loch cruises leave from a pier close by.</p>",
+   "content": "<p>Loch Ness runs for about 37 km along the Great Glen and is more than 200 m deep, which is why it holds more water than any other loch in Scotland, and why the story of its monster has lasted. The modern legend dates from the 1930s, when a new road opened up the shore and the first reports reached the newspapers.</p><p>Urquhart Castle, on a rocky headland about halfway along the north shore, is the best place to take in the loch. It was once one of the largest castles in Scotland, and it changed hands again and again between Scots and English in the Wars of Independence. Its end was deliberate: the last government garrison blew it up on leaving, during the Jacobite risings, so that nobody else could use it.</p><p>What remains is a wide ruin of walls and towers running down to the water. The Grant Tower, rebuilt in the 16th century, can still be climbed for the view along the loch. The visitor centre, set into the hillside above, has a film, a display of objects found on the site and a café with a terrace.</p>",
    "zone": "en-route",
    "categories": [
     "castle",
@@ -960,7 +1288,7 @@
     "lng": -4.442
    },
    "parking_location": null,
-   "directions": "On the A82 about 3 km east of Drumnadrochit, on the north shore of the loch. Car park at the visitor centre.",
+   "directions": "Off the A82 on the north-west shore of Loch Ness, about 3 km from Drumnadrochit. Parking at the visitor centre must be booked online.",
    "duration_min": 45,
    "duration_typical": 90,
    "difficulty": "none",
@@ -970,11 +1298,23 @@
    "price_gbp": null,
    "opening_hours": [
     {
-     "season": "All year",
-     "hours": "Daily, shorter hours in winter; check the official site"
+     "season": "April to August",
+     "hours": "Daily 9:30–20:15"
+    },
+    {
+     "season": "September",
+     "hours": "Daily 9:30–18:00"
+    },
+    {
+     "season": "October",
+     "hours": "Daily 9:30–17:00"
+    },
+    {
+     "season": "November to March",
+     "hours": "Daily 9:30–16:30"
     }
    ],
-   "best_time": "Outside the middle of the day in summer, when the car park fills.",
+   "best_time": "Late afternoon and evening in summer, after the coach groups have gone.",
    "suitable_for": [
     "children"
    ],
@@ -986,21 +1326,62 @@
     "toilets"
    ],
    "tips": [
-    "In summer it is worth booking a time slot in advance.",
-    "The castle and the loch cruise are separate tickets."
+    "Book both the ticket and the parking online before you go.",
+    "The castle and the loch cruise are separate tickets.",
+    "From April to August the castle stays open into the evening, when the coach groups have gone."
    ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "When is Urquhart Castle open?",
+     "answer": "All year, every day from 9:30. It closes at 20:15 from April to August, 18:00 in September, 17:00 in October and 16:30 from November to March. Last entry is one hour before closing, and it is closed on 25 and 26 December."
+    },
+    {
+     "question": "Do you need to book Urquhart Castle in advance?",
+     "answer": "It is the safest and cheapest way: tickets are sold for a set date and time, and they cost less online than at the gate. If you come by car you must also book your parking online."
+    },
+    {
+     "question": "Can you see the Loch Ness Monster from Urquhart Castle?",
+     "answer": "People have been looking since the 1930s and nobody has proved anything, but the castle is where many of the reported sightings were made, and it has the widest view of the loch. Look out for boat wakes and floating logs, which explain most of them."
+    },
+    {
+     "question": "Is the loch cruise included in the castle ticket?",
+     "answer": "No. The castle and the boat trips on the loch are run separately and each has its own ticket. Some cruises land at the castle, in which case entry may be part of the package: check what you are buying."
+    },
+    {
+     "question": "Why is Urquhart Castle in ruins?",
+     "answer": "It was destroyed on purpose. The government soldiers stationed there in the Jacobite period blew up the gatehouse when they left, to stop the castle falling into enemy hands, and it was never repaired."
+    },
+    {
+     "question": "How far is Urquhart Castle from Inverness?",
+     "answer": "About 27 km along the A82, half an hour by car. The castle is roughly 3 km from the village of Drumnadrochit."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Historic Environment Scotland: Urquhart Castle, tickets and opening times",
+     "url": "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/tickets/"
+    },
+    {
+     "title": "Historic Environment Scotland: Urquhart Castle, getting here",
+     "url": "https://www.historicenvironment.scot/visit-a-place/places/urquhart-castle/getting-here"
+    },
+    {
+     "title": "Viajar por Escocia: Highlands",
+     "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
+    }
+   ]
   },
   {
    "slug": "inverness",
    "title": "Inverness",
    "gaelic_name": "Inbhir Nis",
    "summary": "The capital of the Highlands, on the River Ness: a compact centre with the riverside, the Victorian Market and plenty of places for lunch.",
-   "content": "<p>Inverness is the only city in the Highlands and the natural stop between Skye and the south. The centre is small enough to see on foot in an hour: the river with its footbridges, the castle on its hill above, and the covered Victorian Market.</p><p>If you have longer, the path along the river to the Ness Islands is a quiet walk from the centre.</p>",
+   "content": "<p>Inverness is the only city in the Highlands and the natural stop between Skye and the south. It grew up where the River Ness reaches the sea, a few kilometres from the northern end of Loch Ness, and it has been the meeting point of the roads through the Highlands for a very long time.</p><p>The centre is small enough to see on foot in an hour. The castle stands on a hill above the river; the present building dates from 1847, though there have been fortresses here since the Middle Ages. Below it, footbridges cross the Ness to the cathedral of St Andrew, built of red stone in the 19th century. The Old High Church, on the east bank, has a medieval tower that is the oldest building in the city.</p><p>If you have longer, follow the river upstream to the Ness Islands, a string of wooded islets linked by Victorian footbridges that have been a public park since the 1840s.</p><p>Two places just outside the city explain a great deal of Highland history. Culloden, where the last Jacobite army was destroyed in 1746, is a short drive east; and Fort George, the huge artillery fort built afterwards to keep the Highlands down, stands on the coast beyond it and is still an army base.</p>",
    "zone": "en-route",
    "categories": [
     "village",
@@ -1049,13 +1430,50 @@
     "toilets"
    ],
    "tips": [
-    "The last large supermarkets and outdoor shops before the west coast are here."
+    "The last large supermarkets and outdoor shops before the west coast are here.",
+    "The riverside walk to the Ness Islands takes about an hour there and back."
    ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "What can you see in Inverness in an hour?",
+     "answer": "Walk from the centre down to the river, cross one of the footbridges for the view back to the castle, and return along the other bank past the cathedral. If you have time left, the covered Victorian Market is a few minutes away."
+    },
+    {
+     "question": "Is Inverness on Loch Ness?",
+     "answer": "Not quite. The city stands on the River Ness, which flows out of the loch. The northern end of Loch Ness is a few kilometres south-west of the city, and Urquhart Castle, the usual place to see it, is about half an hour away."
+    },
+    {
+     "question": "How far is Inverness from the Isle of Skye?",
+     "answer": "About three hours by car to Portree, and three and a half by coach. The road passes Loch Ness and Eilean Donan Castle on the way."
+    },
+    {
+     "question": "Is Culloden near Inverness?",
+     "answer": "Yes, the battlefield is a short drive east of the city. It was here, in 1746, that the army of Charles Edward Stuart was defeated, which ended the Jacobite cause and brought harsh laws against Highland dress and customs."
+    },
+    {
+     "question": "Why is Inverness called the capital of the Highlands?",
+     "answer": "Because it is the region's only city and its centre for transport, shopping and administration. Roads and railways from the north, the west and the south all meet here."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Guía de Inverness",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-inverness/"
+    },
+    {
+     "title": "Viajar por Escocia: Highlands",
+     "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
+    },
+    {
+     "title": "VisitScotland: Isle of Skye",
+     "url": "https://www.visitscotland.com/places-to-go/islands/isle-skye"
+    }
+   ]
   },
   {
    "slug": "pitlochry",
@@ -1114,14 +1532,25 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "When can you see salmon at the Pitlochry fish ladder?",
+     "answer": "Mostly between spring and autumn, when the fish are moving upriver to spawn. The ladder is a chain of pools that lets them get past the dam. Sightings depend on the season and the day, and are never guaranteed."
+    },
+    {
+     "question": "Why do tours stop in Pitlochry?",
+     "answer": "It is the natural place to break the long drive on the A9 between Inverness and Edinburgh: a compact town just off the road, with cafés, shops and toilets close together."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "glencoe",
    "title": "Glencoe",
    "gaelic_name": "Gleann Comhann",
    "summary": "Scotland's most famous glen: a deep valley between steep mountains, crossed by the main road, with a dark place in Highland history.",
-   "content": "<p>The road from the south climbs over Rannoch Moor and then drops into Glencoe between walls of rock. The best-known view is of the Three Sisters, three great ridges on the south side, from the lay-bys beside the road.</p><p>The glen is also remembered for the massacre of February 1692, when government soldiers who had been lodging with the MacDonalds of Glencoe turned on their hosts. A visitor centre near Glencoe village tells the story.</p>",
+   "content": "<p>The road from the south crosses the empty expanse of Rannoch Moor and then drops into Glencoe between walls of rock. The mountain that guards the entrance, a steep pyramid standing alone at the head of the glen, is Buachaille Etive Mòr, one of the most photographed in Scotland.</p><p>Further down, on the south side, are the Three Sisters: three great buttresses, Beinn Fhada, Gearr Aonach and Aonach Dubh, that are in fact the ends of ridges running down from Bidean nam Bian, the highest mountain in this part of the country. The classic view of them is from the lay-bys beside the road.</p><p>Glencoe is also remembered for what happened in February 1692. Soldiers of the government had been living for nearly two weeks as guests in the houses of the MacDonalds of Glencoe. Early on the morning of the 13th, on orders from above, they turned on their hosts and killed some thirty-eight of them; others died in the snow as they fled. It was the breach of hospitality, more than the number of dead, that made the massacre notorious.</p><p>The scenery has been used in many films. Several scenes of the Harry Potter series were shot here, and so was part of the James Bond film Skyfall. A visitor centre near Glencoe village tells the story of the glen and its people.</p>",
    "zone": "en-route",
    "categories": [
     "viewpoint",
@@ -1171,14 +1600,42 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "What happened in the Glencoe massacre?",
+     "answer": "On 13 February 1692, government soldiers who had been lodged for twelve days with the MacDonalds of Glencoe attacked the families who were sheltering them. About thirty-eight people were killed and more died of cold after escaping into the hills. The chief had been late in swearing loyalty to the king, and the killing was meant as an example."
+    },
+    {
+     "question": "What are the Three Sisters of Glencoe?",
+     "answer": "Three steep ridges on the south side of the glen: Beinn Fhada, Gearr Aonach and Aonach Dubh. They are the northern spurs of Bidean nam Bian. The signed viewpoint beside the main road looks straight at them."
+    },
+    {
+     "question": "Where can you stop in Glencoe?",
+     "answer": "There are lay-by car parks along the main road through the glen, the best known at the Three Sisters viewpoint. They are small and fill up in the middle of the day, so do not count on a space, and never stop on the road itself."
+    },
+    {
+     "question": "Which films were shot in Glencoe?",
+     "answer": "Several of the Harry Potter films used the glen for outdoor scenes, including the setting of Hagrid's hut, and the Bond film Skyfall was filmed on the road down nearby Glen Etive."
+    },
+    {
+     "question": "Is there a short walk in Glencoe?",
+     "answer": "The best known is the path into the Lost Valley, a hidden hollow between two of the Three Sisters. It takes two to three hours there and back and is rough, with a river crossing and some easy scrambling: it needs proper footwear and dry weather."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: Highlands",
+     "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
+    }
+   ]
   },
   {
    "slug": "glenfinnan",
    "title": "Glenfinnan Viaduct and Monument",
    "gaelic_name": "Gleann Fhionnainn",
    "summary": "The curving railway viaduct known from the films, and the monument at the head of Loch Shiel where the 1745 Jacobite rising began.",
-   "content": "<p>The viaduct carries the West Highland Line across the glen on 21 arches. It was finished in 1901 and was one of the first large structures built in concrete. A path from the car park leads in about fifteen minutes to a viewpoint above it; in season a steam train crosses twice a day.</p><p>On the loch side of the road, the Glenfinnan Monument marks the spot where Prince Charles Edward Stuart raised his standard in August 1745.</p>",
+   "content": "<p>Two monuments stand a few hundred metres apart at the head of Loch Shiel. The older is the Glenfinnan Monument, a stone tower with a Highlander on top, raised in 1815 on the spot where Prince Charles Edward Stuart rallied the clans in August 1745 and began the last Jacobite rising.</p><p>The other is the railway viaduct, which carries the West Highland Line across the glen on 21 arches in a wide curve. When it was finished in 1901 it was one of the first large structures anywhere to be built of concrete. It was already well known to railway enthusiasts before the Harry Potter films made it famous around the world as the bridge crossed by the Hogwarts Express.</p><p>A path from the car park leads up the glen and under the arches to a viewpoint on the hillside, about fifteen to twenty minutes away. From April to October a steam train, the Jacobite, crosses the viaduct on its way between Fort William and Mallaig, and that is what most visitors come to see. The days and times change every season, and the car park closes when it is full, so it pays to arrive well ahead.</p>",
    "zone": "en-route",
    "categories": [
     "viewpoint",
@@ -1202,7 +1659,7 @@
    "distance_km": null,
    "elevation_gain_m": null,
    "price_type": "paid_parking",
-   "price_gbp": null,
+   "price_gbp": 5,
    "opening_hours": [
     {
      "season": "All year",
@@ -1222,14 +1679,56 @@
     "toilets"
    ],
    "tips": [
-    "Steam train times change each season; check them before planning the stop around a crossing.",
-    "The viewpoint path is uneven and muddy after rain."
+    "Arrive at least an hour before a steam train is due: the car park fills and then closes.",
+    "Steam train times change each season. Check them before planning the stop around a crossing.",
+    "The only public toilets are at the visitor centre.",
+    "Show a bus or train ticket at the café for a free hot drink."
    ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "What time does the steam train cross the Glenfinnan Viaduct?",
+     "answer": "It depends on the day and the season. The Jacobite steam train runs from April to October, on dates that change each year, and usually crosses in the late morning and again in the afternoon. The exact times are posted at the visitor centre. In winter there is no steam, but ordinary trains still cross the viaduct several times a day."
+    },
+    {
+     "question": "Where is the best place to see the viaduct?",
+     "answer": "From the hillside viewpoint reached by the signed path from the car park, about fifteen to twenty minutes on foot. It looks down on the whole curve of the arches with the loch behind. The path is uneven and muddy after rain."
+    },
+    {
+     "question": "How much is parking at Glenfinnan?",
+     "answer": "The car park at the visitor centre costs £5 a day. Visiting the monument grounds is free. In summer the car park is closed whenever it is full, so come early, or arrive by bus or train."
+    },
+    {
+     "question": "Which Harry Potter films show the Glenfinnan Viaduct?",
+     "answer": "It appears in several films of the series as the route of the Hogwarts Express, most memorably in the scene with the flying car in the second film."
+    },
+    {
+     "question": "What does the Glenfinnan Monument commemorate?",
+     "answer": "The raising of the Jacobite standard on 19 August 1745, when Prince Charles Edward Stuart gathered the Highland clans here to begin his attempt to win back the throne for his family. The rising ended at Culloden the following year."
+    },
+    {
+     "question": "Can you ride the steam train over the viaduct?",
+     "answer": "Yes: the Jacobite runs between Fort William and Mallaig and crosses the viaduct in both directions. Seats sell out months ahead in summer, so book early."
+    }
+   ],
+   "sources": [
+    {
+     "title": "National Trust for Scotland: Glenfinnan Monument, planning your visit",
+     "url": "https://www.nts.org.uk/visit/places/glenfinnan-monument/planning-your-visit"
+    },
+    {
+     "title": "National Trust for Scotland: Glenfinnan Viaduct",
+     "url": "https://www.nts.org.uk/visit/places/glenfinnan-monument/highlights/viaduct"
+    },
+    {
+     "title": "Viajar por Escocia: Highlands",
+     "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
+    }
+   ]
   },
   {
    "slug": "fort-william",
@@ -1290,7 +1789,18 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Can you see Ben Nevis from Fort William?",
+     "answer": "Not from the town centre: the mountain is hidden behind its own lower slopes. The best views are from further off, for example from the Commando Memorial near Spean Bridge, or from across the water at Corpach."
+    },
+    {
+     "question": "How long does it take to climb Ben Nevis?",
+     "answer": "Seven to nine hours there and back by the main path, for a fit walker. It is a serious mountain: the summit is 1,345 m, often in cloud, and holds snow for much of the year. It is not something to fit into a stop on the way to Skye."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "loch-garry-viewpoint",
@@ -1342,7 +1852,19 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Why do people say Loch Garry looks like Scotland?",
+     "answer": "Seen from this lay-by, looking west down the loch, its shores and wooded headlands form an outline very like a map of Scotland. It is a trick of the angle: from anywhere else the loch looks like any other."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: tour de 3 días a la Isla de Skye",
+     "url": "https://viajarporescocia.com/tour/isla-skye/"
+    }
+   ]
   },
   {
    "slug": "commando-memorial",
@@ -1394,7 +1916,23 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Who does the Commando Memorial commemorate?",
+     "answer": "The men of the British commando units of the Second World War, who trained in these mountains from their base at nearby Achnacarry. The three bronze figures look out over the ground where they prepared for action."
+    },
+    {
+     "question": "Which mountains can you see from the Commando Memorial?",
+     "answer": "On a clear day, Ben Nevis, the highest mountain in Britain, and its neighbour Aonach Mòr, to the south. It is one of the best roadside views of the Nevis range."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: tour de 3 días a la Isla de Skye",
+     "url": "https://viajarporescocia.com/tour/isla-skye/"
+    }
+   ]
   },
   {
    "slug": "five-sisters-of-kintail",
@@ -1446,7 +1984,18 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "What is the legend of the Five Sisters of Kintail?",
+     "answer": "The tale says there were once seven sisters. Two were married to visiting brothers, who promised to send their own five brothers back for the others. The five sisters waited, and in the end were turned into mountains so that their beauty would last until the brothers came."
+    },
+    {
+     "question": "Can you walk the Five Sisters of Kintail?",
+     "answer": "The traverse of the ridge is one of the classic mountain days in Scotland, but it is long and hard: eight to ten hours over rough, high ground, starting and finishing at different points on the road. It is for experienced hillwalkers in good weather."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "dunkeld",
@@ -1502,14 +2051,25 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "What is there to see in Dunkeld?",
+     "answer": "The cathedral on the bank of the Tay, part ruin and part parish church, the square of restored 18th-century houses beside it, and the bridge over the river. All three are within a few minutes' walk of each other."
+    },
+    {
+     "question": "How far is Dunkeld from Edinburgh?",
+     "answer": "About an hour and a quarter by car, up the motorway to Perth and then the A9."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "stirling",
    "title": "Stirling",
    "gaelic_name": "Sruighlea",
    "summary": "The old gateway between Lowlands and Highlands, with its castle on a rock above the plain and the Wallace Monument on the hill opposite.",
-   "content": "<p>For centuries whoever held Stirling controlled the way north, which is why two of the decisive battles of Scottish history, Stirling Bridge in 1297 and Bannockburn in 1314, were fought within sight of the castle. The castle and the tower of the Wallace Monument are both visible from the motorway as you pass.</p>",
+   "content": "<p>For centuries Stirling was the key to Scotland. It stood at the lowest crossing of the River Forth, on the only easy way between the Lowlands and the Highlands, and whoever held its castle controlled the road north. That is why two of the decisive battles of Scottish history were fought within sight of the walls: Stirling Bridge in 1297, won by William Wallace, and Bannockburn in 1314, won by Robert the Bruce.</p><p>The castle sits on a volcanic crag above the old town. Much of what stands today was built by the Stewart kings in the 15th and 16th centuries, when this was a royal palace as much as a fortress, and the great hall and the royal apartments have been restored to how they looked then.</p><p>On the hill across the river is the Wallace Monument, a Victorian tower raised in memory of William Wallace. Both are plain to see from the motorway, which is how most people on the way to the Highlands first meet them.</p>",
    "zone": "en-route",
    "categories": [
     "castle",
@@ -1525,18 +2085,22 @@
     "lng": -3.9477
    },
    "parking_location": null,
-   "directions": "Beside the M9, about 60 km north-west of Edinburgh. Pay car park on the castle esplanade.",
+   "directions": "Beside the M9, about 60 km north-west of Edinburgh. The castle is at the top of the old town; its own car park is closed to most cars, so use the Castleview park and ride.",
    "duration_min": 10,
    "duration_typical": 120,
    "difficulty": "none",
    "distance_km": null,
    "elevation_gain_m": null,
    "price_type": "ticket",
-   "price_gbp": null,
+   "price_gbp": 18.5,
    "opening_hours": [
     {
-     "season": "All year",
-     "hours": "Castle open daily; check the official site"
+     "season": "April to September",
+     "hours": "Daily 9:30–18:00"
+    },
+    {
+     "season": "October to March",
+     "hours": "Daily 9:30–17:00"
     }
    ],
    "best_time": "",
@@ -1553,13 +2117,47 @@
     "toilets"
    ],
    "tips": [
-    "Seeing the castle properly takes at least two hours; from the road it is a passing view."
+    "Book online: it is cheaper than buying at the gate.",
+    "Seeing the castle properly takes at least two hours.",
+    "The castle car park is closed to most cars. Use the park and ride."
    ],
    "audioguide": {
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "How much does it cost to visit Stirling Castle?",
+     "answer": "An adult ticket is £18.50 booked online and £20.50 bought at the castle. Visitors aged 65 or over pay £15 online, and children from 7 to 15 pay £9. A guided tour is included in the price."
+    },
+    {
+     "question": "When is Stirling Castle open?",
+     "answer": "Every day from 9:30. It closes at 18:00 from April to September and at 17:00 from October to March, and it is closed on 25 and 26 December."
+    },
+    {
+     "question": "Can you park at Stirling Castle?",
+     "answer": "Not at present, unless you need accessible parking: the castle car park is closed to other cars. Use the Castleview park and ride, or walk up from the town; the castle is about 800 m uphill from the railway and bus stations."
+    },
+    {
+     "question": "How long do you need at Stirling Castle?",
+     "answer": "At least two hours to see the palace, the great hall and the walls properly. From the road it is only a passing view."
+    },
+    {
+     "question": "Can you take a dog into Stirling Castle?",
+     "answer": "No. Only assistance dogs are allowed."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Historic Environment Scotland: Stirling Castle, tickets and prices",
+     "url": "https://www.historicenvironment.scot/stirlingcastle/visit/tickets/"
+    },
+    {
+     "title": "Historic Environment Scotland: Stirling Castle, opening times",
+     "url": "https://www.historicenvironment.scot/visit-a-place/places/stirling-castle/tickets/"
+    }
+   ]
   },
   {
    "slug": "callander",
@@ -1616,7 +2214,14 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Why do tours stop in Callander?",
+     "answer": "It is the first town at the edge of the Highlands on the road north from Edinburgh and Glasgow, with cafés, bakeries and toilets along one main street: a comfortable place for the first break of the day."
+    }
+   ],
+   "sources": []
   },
   {
    "slug": "loch-lubnaig",
@@ -1666,7 +2271,14 @@
     "enabled": false,
     "stop_number": null,
     "radius_m": 150
-   }
+   },
+   "faq": [
+    {
+     "question": "Can you stop at Loch Lubnaig?",
+     "answer": "Yes. There are signed car parks right on the shore beside the main road, a few kilometres north of Callander, with room to walk down to the water."
+    }
+   ],
+   "sources": []
   }
  ]
 }
