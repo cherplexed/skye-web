@@ -97,17 +97,48 @@ final class Places {
 		if ( ! $p ) {
 			return Router::not_found( 'place' );
 		}
+		$item = self::item( $p, $lang, $market );
+
+		return Router::ok( Router::pick( $item, (string) $r->get_param( 'fields' ) ), [ 'lang' => $lang, 'market' => $market ] );
+	}
+
+	/**
+	 * The full Place object with everything computed: nearest places and lodging when the editor left
+	 * the relations empty, links on every reference, and the tours that stop here when `in_tours` is empty.
+	 * Shared by the API and the front-end blocks so both always say the same.
+	 */
+	public static function item( \WP_Post $p, string $lang, string $market ): array {
 		$item = PlaceSerializer::full( $p, $lang, $market );
 
-		// Computed "nearby" when the editor left the relation empty.
 		if ( ! $item['nearby_places'] && $item['location'] ) {
 			$item['nearby_places'] = Geo::nearest( PostTypes::PLACE, $item['location'], 3, [ $p->ID ] );
 		}
 		if ( ! $item['nearby_lodging'] && $item['location'] ) {
 			$item['nearby_lodging'] = Geo::nearest( PostTypes::LODGING, $item['location'], 3 );
 		}
+		if ( ! $item['in_tours'] ) {
+			$item['in_tours'] = self::tours_stopping_at( $p->ID );
+		}
+		foreach ( [ 'nearby_places', 'nearby_lodging', 'experiences_here', 'in_tours' ] as $rel ) {
+			foreach ( $item[ $rel ] as $i => $ref ) {
+				$item[ $rel ][ $i ]['url'] = get_permalink( (int) $ref['id'] );
+			}
+		}
+		return $item;
+	}
 
-		return Router::ok( Router::pick( $item, (string) $r->get_param( 'fields' ) ), [ 'lang' => $lang, 'market' => $market ] );
+	/** Tours whose itinerary (days → stops) includes the place. @return list<array{id:int,uuid:string,slug:string,title:string,type:string}> */
+	public static function tours_stopping_at( int $place_id ): array {
+		$out = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $tour ) {
+			foreach ( (array) Meta::get( $tour->ID, 'days', [] ) as $day ) {
+				if ( is_array( $day ) && in_array( $place_id, Serializer::ids( $day['stops'] ?? [] ), true ) ) {
+					$out[] = [ 'id' => $tour->ID, 'uuid' => Uuid::get( $tour->ID ), 'slug' => $tour->post_name, 'title' => get_the_title( $tour ), 'type' => $tour->post_type ];
+					break;
+				}
+			}
+		}
+		return $out;
 	}
 
 	/** Accepts numeric ID, UUID or slug. */

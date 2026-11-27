@@ -73,4 +73,9 @@ done
 wp plugin is-active skye-core || wp plugin activate skye-core
 wp plugin delete hello akismet 2>/dev/null || true
 
+# Plantillas de Bricks versionadas en el repo (idempotente).
+if wp theme is-installed bricks; then
+  wp skye templates import
+fi
+
 echo "→ Done. Admin: ${WP_HOME}/wp-admin  (${WP_ADMIN_USER} / ${WP_ADMIN_PASSWORD})"
