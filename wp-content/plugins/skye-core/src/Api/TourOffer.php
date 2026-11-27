@@ -38,6 +38,13 @@ final class TourOffer {
 			$url .= ( str_contains( $url, '?' ) ? '&' : '?' ) . $attr;
 		}
 
+		// The Bókun widget needs both halves: our booking channel for this brand and the product it sells.
+		$channel = strtolower( trim( (string) ( $brand['bokun_channel_uuid'] ?? '' ) ) );
+		$widget  = null;
+		if ( 1 === preg_match( '/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/', $channel ) && 1 === preg_match( '/^\d+$/', $product_id ) ) {
+			$widget = [ 'channel_uuid' => $channel, 'product_id' => $product_id ];
+		}
+
 		return [
 			'market'           => $market,
 			'brand'            => [
@@ -53,6 +60,7 @@ final class TourOffer {
 			'next_available'   => $live['next_available'] ?? null,
 			'price_stale'      => (bool) ( $live['stale'] ?? false ),
 			'booking_url'      => '' !== $url ? $url : null,
+			'booking_widget'   => $widget,
 		];
 	}
 }

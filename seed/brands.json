@@ -1,7 +1,7 @@
 {
-  "_note": "The three operating brands of TA Scotland (CONTRACTS.md §3). bokun_vendor_id, attribution_param, ga4_property, rating and review_count are left empty until TA Scotland provides them.",
+  "_note": "The three operating brands of TA Scotland (CONTRACTS.md §3). bokun_channel_uuid is the Bókun booking channel whose widget sells that brand's products on this site (one channel per language; only the Spanish one exists so far). bokun_vendor_id, attribution_param, ga4_property, rating and review_count are left empty until TA Scotland provides them.",
   "brands": [
-    { "slug": "viajar-por-escocia", "title": "Viajar por Escocia", "domain": "viajarporescocia.com", "markets": "es", "tour_language": "es", "operator_legal_name": "TA Scotland Limited" },
+    { "slug": "viajar-por-escocia", "title": "Viajar por Escocia", "domain": "viajarporescocia.com", "markets": "es", "tour_language": "es", "bokun_channel_uuid": "bf60449b-9be3-4c80-b568-7d869491a1f4", "operator_legal_name": "TA Scotland Limited" },
     { "slug": "scozia-tour", "title": "Scozia Tour", "domain": "scoziatour.com", "markets": "it", "tour_language": "it", "operator_legal_name": "TA Scotland Limited" },
     { "slug": "loch-ness-bus", "title": "Loch Ness Bus", "domain": "lochnessbus.com", "markets": "*", "tour_language": "en", "operator_legal_name": "TA Scotland Limited" }
   ]

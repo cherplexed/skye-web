@@ -13,7 +13,7 @@ use Skye\Units;
  */
 final class TourBlocks {
 
-	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'accommodation', 'includes', 'verification' ];
+	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'accommodation', 'booking', 'includes', 'verification' ];
 
 	private const LANGUAGES = [ 'en' => 'English', 'es' => 'Spanish', 'it' => 'Italian' ];
 	private const CITIES    = [ 'edinburgh' => 'Edinburgh', 'glasgow' => 'Glasgow' ];
@@ -25,6 +25,7 @@ final class TourBlocks {
 			'eyebrow'      => self::eyebrow( $t ),
 			'summary'      => self::summary( $t ),
 			'offer'        => self::offer( $t, $market ),
+			'booking'      => self::booking( $t ),
 			'departure'    => self::departure( $t ),
 			'itinerary'    => self::itinerary( $t ),
 			'accommodation' => self::accommodation( $t ),
@@ -114,13 +115,51 @@ final class TourBlocks {
 		if ( '' !== $note ) {
 			$out .= '<p class="skye-offer__note">' . Html::e( $note ) . '</p>';
 		}
-		if ( ! empty( $offer['booking_url'] ) ) {
+		$here = ! empty( $offer['booking_widget'] );
+		if ( $here ) {
+			$out .= sprintf( '<a class="skye-btn skye-btn--primary" href="#%s">%s</a>', self::BOOKING_ID, Html::e( Html::t( 'See dates and book' ) ) );
+		} elseif ( ! empty( $offer['booking_url'] ) ) {
 			$out .= sprintf( '<a class="skye-btn skye-btn--primary" href="%s" rel="noopener">%s</a>', Html::e( $offer['booking_url'] ), Html::e( Html::t( 'See dates and book' ) ) );
 		}
 		if ( ! empty( $offer['brand']['title'] ) ) {
-			$out .= '<p class="skye-offer__brand">' . Html::e( sprintf( Html::t( 'Operated by %s. You book directly with the operator.' ), $offer['brand']['title'] ) ) . '</p>';
+			$line = $here ? Html::t( 'Operated by %s. You book and pay on this site.' ) : Html::t( 'Operated by %s. You book directly with the operator.' );
+			$out .= '<p class="skye-offer__brand">' . Html::e( sprintf( $line, $offer['brand']['title'] ) ) . '</p>';
 		}
 		return '' === $out ? '' : '<section class="skye-card skye-offer">' . $out . '</section>';
+	}
+
+	/** Anchor of the booking block; the offer card and the listing cards link to it. */
+	public const BOOKING_ID = 'booking';
+
+	private const BOKUN_WIDGETS = 'https://widgets.bokun.io';
+
+	/**
+	 * Dates and booking: the Bókun calendar of the product this market's brand sells, on our own
+	 * booking channel. The calendar is the one thing on the page that needs JavaScript, so without
+	 * it the block falls back to a plain link. Empty when the brand has no channel or no product.
+	 */
+	public static function booking( array $t ): string {
+		$offer  = $t['offer'] ?? null;
+		$widget = is_array( $offer ) ? ( $offer['booking_widget'] ?? null ) : null;
+		if ( ! is_array( $widget ) || empty( $widget['channel_uuid'] ) || empty( $widget['product_id'] ) ) {
+			return '';
+		}
+		$channel = rawurlencode( (string) $widget['channel_uuid'] );
+		$product = rawurlencode( (string) $widget['product_id'] );
+		$src     = sprintf( '%s/online-sales/%s/experience-calendar/%s', self::BOKUN_WIDGETS, $channel, $product );
+		$loader  = sprintf( '%s/assets/javascripts/apps/build/BokunWidgetsLoader.js?bookingChannelUUID=%s', self::BOKUN_WIDGETS, $channel );
+
+		$fallback = Html::e( Html::t( 'The booking calendar needs JavaScript.' ) );
+		if ( ! empty( $offer['booking_url'] ) ) {
+			$fallback .= sprintf( ' <a href="%s" rel="noopener">%s</a>', Html::e( $offer['booking_url'] ), Html::e( Html::t( 'Book on the operator\'s website' ) ) );
+		}
+		$body = '<p class="skye-booking__lead">' . Html::e( Html::t( 'Choose a date to see availability, room options and prices. Payment is taken securely on this page.' ) ) . '</p>'
+			. sprintf( '<div class="skye-booking__widget"><div class="bokunWidget" data-src="%s"></div></div>', Html::e( $src ) )
+			. '<noscript><p class="skye-booking__fallback">' . $fallback . '</p></noscript>'
+			// phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedScript -- the loader must sit next to its widget and is only needed on this block.
+			. sprintf( '<script src="%s" async></script>', Html::e( $loader ) );
+
+		return sprintf( '<section class="skye-block skye-booking" id="%s"><h2 class="skye-block__title">%s</h2>%s</section>', self::BOOKING_ID, Html::e( Html::t( 'Dates and booking' ) ), $body );
 	}
 
 	/** Departure card: city, time and meeting point. */
@@ -257,7 +296,9 @@ final class TourBlocks {
 			}
 		}
 		$buttons = '';
-		if ( ! empty( $t['offer']['booking_url'] ) ) {
+		if ( ! empty( $t['offer']['booking_widget'] ) && ! empty( $t['url'] ) ) {
+			$buttons .= sprintf( '<a class="skye-btn skye-btn--primary" href="%s#%s">%s</a>', Html::e( $t['url'] ), self::BOOKING_ID, Html::e( Html::t( 'See dates and book' ) ) );
+		} elseif ( ! empty( $t['offer']['booking_url'] ) ) {
 			$buttons .= sprintf( '<a class="skye-btn skye-btn--primary" href="%s" rel="noopener">%s</a>', Html::e( $t['offer']['booking_url'] ), Html::e( Html::t( 'See dates and book' ) ) );
 		}
 		if ( ! empty( $t['url'] ) ) {

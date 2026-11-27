@@ -100,6 +100,7 @@ final class Fields {
 			'markets'             => [ 'type' => 'text', 'i18n' => false ],
 			'tour_language'       => [ 'type' => 'enum', 'i18n' => false, 'choices' => [ 'en' => 'English', 'es' => 'Spanish', 'it' => 'Italian' ], 'default' => 'en' ],
 			'bokun_vendor_id'     => [ 'type' => 'text', 'i18n' => false ],
+			'bokun_channel_uuid'  => [ 'type' => 'text', 'i18n' => false ],
 			'attribution_param'   => [ 'type' => 'text', 'i18n' => false ],
 			'ga4_property'        => [ 'type' => 'text', 'i18n' => false ],
 			'logo'                => [ 'type' => 'image', 'i18n' => false ],

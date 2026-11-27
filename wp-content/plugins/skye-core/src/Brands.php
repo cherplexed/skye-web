@@ -46,14 +46,15 @@ final class Brands {
 		$cache = [];
 		foreach ( get_posts( [ 'post_type' => PostTypes::BRAND, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'menu_order title', 'order' => 'ASC' ] ) as $p ) {
 			$cache[] = [
-				'id'                => $p->ID,
-				'uuid'              => Uuid::get( $p->ID ),
-				'slug'              => $p->post_name,
-				'title'             => Text::title( $p ),
-				'domain'            => (string) Meta::get( $p->ID, 'domain', '' ),
-				'markets'           => (string) Meta::get( $p->ID, 'markets', '' ),
-				'tour_language'     => (string) Meta::get( $p->ID, 'tour_language', 'en' ),
-				'attribution_param' => (string) Meta::get( $p->ID, 'attribution_param', '' ),
+				'id'                 => $p->ID,
+				'uuid'               => Uuid::get( $p->ID ),
+				'slug'               => $p->post_name,
+				'title'              => Text::title( $p ),
+				'domain'             => (string) Meta::get( $p->ID, 'domain', '' ),
+				'markets'            => (string) Meta::get( $p->ID, 'markets', '' ),
+				'tour_language'      => (string) Meta::get( $p->ID, 'tour_language', 'en' ),
+				'attribution_param'  => (string) Meta::get( $p->ID, 'attribution_param', '' ),
+				'bokun_channel_uuid' => (string) Meta::get( $p->ID, 'bokun_channel_uuid', '' ),
 			];
 		}
 		return $cache;
