@@ -46,7 +46,7 @@ final class Audioguide {
 				'radius_m'  => Meta::int( $id, 'audioguide_radius_m', 150 ),
 				'track'     => $track,
 				'languages' => array_values( array_unique( array_filter( array_map( static fn( $t ) => is_array( $t ) ? (string) ( $t['lang'] ?? '' ) : '', $tracks ) ) ) ),
-				'image'     => PlaceSerializer::image_by_id( get_post_thumbnail_id( $id ) ),
+				'image'     => PlaceSerializer::image_by_id( \Skye\Lang::thumbnail_id( (int) $id ) ),
 			];
 		}
 		usort( $stops, static fn( $a, $b ) => $a['number'] <=> $b['number'] );

@@ -57,7 +57,9 @@ final class Collection {
 		foreach ( $cfg['tax'] as $param => $taxonomy ) {
 			$v = (string) $r->get_param( $param );
 			if ( '' !== $v ) {
-				$tax[] = [ 'taxonomy' => $taxonomy, 'field' => 'slug', 'terms' => array_map( 'trim', explode( ',', $v ) ) ];
+				// Slugs are canonical (default language); the query needs the terms of the language being served.
+				$ids   = array_filter( array_map( static fn( string $s ) => \Skye\Lang::term_id( $taxonomy, trim( $s ) ), explode( ',', $v ) ) );
+				$tax[] = [ 'taxonomy' => $taxonomy, 'field' => 'term_id', 'terms' => $ids ?: [ 0 ] ];
 			}
 		}
 		$meta = [];
@@ -178,7 +180,7 @@ final class Collection {
 			$id = Uuid::find( $key );
 			$p  = $id ? get_post( $id ) : null;
 		} else {
-			$p = get_page_by_path( $key, OBJECT, $post_type );
+			$p = \Skye\Lang::resolve_post( $key, $post_type );
 		}
 		return ( $p && $post_type === $p->post_type && 'publish' === $p->post_status ) ? $p : null;
 	}

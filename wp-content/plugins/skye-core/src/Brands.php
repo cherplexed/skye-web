@@ -44,7 +44,7 @@ final class Brands {
 			return $cache;
 		}
 		$cache = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::BRAND, 'post_status' => 'publish', 'posts_per_page' => 50, 'orderby' => 'menu_order title', 'order' => 'ASC' ] ) as $p ) {
+		foreach ( get_posts( [ 'post_type' => PostTypes::BRAND, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'menu_order title', 'order' => 'ASC' ] ) as $p ) {
 			$cache[] = [
 				'id'                => $p->ID,
 				'uuid'              => Uuid::get( $p->ID ),

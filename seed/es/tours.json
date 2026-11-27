@@ -1,0 +1,43 @@
+{
+ "_note": "Traducción al español de seed/tours.json: solo los textos, por slug.",
+ "tours": {
+  "isle-of-skye-3-day-tour": {
+   "title": "Isla de Skye y las Highlands, 3 días desde Edimburgo",
+   "summary": "Tres días desde Edimburgo con conductor-guía: Glencoe y Eilean Donan a la ida, un día entero en Skye, y el lago Ness e Inverness a la vuelta.",
+   "days": [
+    {
+     "title": "De Edimburgo a Skye por Glencoe",
+     "summary": "Stirling, Callander y Loch Lubnaig camino del norte; después Glencoe, el viaducto de Glenfinnan, comida en Fort William, el mirador de Loch Garry y el castillo de Eilean Donan antes de cruzar a Skye. Noche en Kyleakin o alrededores."
+    },
+    {
+     "title": "Un día entero en Skye",
+     "summary": "El castillo de Dunvegan, tiempo libre y comida en Portree, y luego la península de Trotternish: el Quiraing, Kilt Rock y el Old Man of Storr. Noche en Kyleakin o alrededores."
+    },
+    {
+     "title": "Eilean Donan, el lago Ness y vuelta a Edimburgo",
+     "summary": "El castillo de Eilean Donan y las Cinco Hermanas de Kintail, el lago Ness con crucero opcional y el castillo de Urquhart, comida en Inverness y rumbo sur hasta Edimburgo."
+    }
+   ],
+   "meeting_point": "190 High Street (Royal Mile), Edimburgo. Preséntate 15 minutos antes de la salida.",
+   "includes": "Transporte en un vehículo de 8 a 55 plazas. Conductor-guía profesional. Alojamiento solo si reservas uno de los paquetes que lo incluyen.",
+   "excludes": "Alojamiento en la opción de solo tour. Entradas al castillo de Dunvegan, al castillo de Eilean Donan y al crucero por el lago Ness con el castillo de Urquhart. Comidas. Seguro de viaje."
+  },
+  "isle-of-skye-2-day-tour": {
+   "title": "Isla de Skye y las Highlands, 2 días desde Edimburgo",
+   "summary": "Dos días desde Edimburgo con conductor-guía: Eilean Donan, Sligachan y Portree el primer día; Kilt Rock, el Storr, el lago Ness e Inverness el segundo.",
+   "days": [
+    {
+     "title": "De Edimburgo a Portree",
+     "summary": "Dunkeld y Spean Bridge camino del norte, parada para comer en el castillo de Eilean Donan, y después por el puente de Skye hasta Sligachan y los Cuillin, y de ahí a Portree."
+    },
+    {
+     "title": "Trotternish, el lago Ness y vuelta a Edimburgo",
+     "summary": "Las cascadas de Lealt, Kilt Rock y el Old Man of Storr por la mañana; después Dornie, el castillo de Urquhart en el lago Ness, Inverness y Pitlochry. Llegada a Edimburgo sobre las 20:00–21:00."
+    }
+   ],
+   "meeting_point": "190 High Street (Royal Mile), Edimburgo. Preséntate 15 minutos antes de la salida.",
+   "includes": "Transporte en un vehículo de 8 a 55 plazas. Conductor-guía profesional. Entrada al castillo de Urquhart. Alojamiento solo si reservas uno de los paquetes que lo incluyen.",
+   "excludes": "Alojamiento en la opción de solo tour. Entradas a otras atracciones. Crucero por el lago Ness. Comidas. Seguro de viaje."
+  }
+ }
+}

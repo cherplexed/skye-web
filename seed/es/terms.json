@@ -1,0 +1,54 @@
+{
+ "_note": "Nombres en español de los términos (taxonomía → slug canónico → nombre) y entradilla de cada zona.",
+ "skye_zone": {
+  "trotternish": "Trotternish",
+  "portree": "Portree",
+  "duirinish-waternish": "Duirinish y Waternish",
+  "minginish-cuillin": "Minginish y los Cuillin",
+  "sleat": "Sleat",
+  "broadford": "Broadford",
+  "raasay": "Raasay",
+  "en-route": "De camino (fuera de la isla)"
+ },
+ "skye_category": {
+  "viewpoint": "Mirador",
+  "hike": "Caminata",
+  "castle": "Castillo",
+  "distillery": "Destilería",
+  "beach": "Playa",
+  "waterfall": "Cascada",
+  "village": "Pueblo",
+  "wildlife": "Fauna",
+  "museum": "Museo",
+  "restaurant": "Restaurante",
+  "cafe": "Cafetería",
+  "shop": "Tienda",
+  "fuel": "Gasolinera"
+ },
+ "skye_profile": {
+  "instagram": "Instagram / TikTok",
+  "nature": "Naturaleza",
+  "hiking": "Senderismo",
+  "history": "Historia",
+  "whisky": "Whisky",
+  "wildlife": "Fauna",
+  "families": "Familias",
+  "rainy-day": "Día de lluvia"
+ },
+ "skye_suitability": {
+  "children": "Niños",
+  "stroller": "Carrito de bebé",
+  "dogs": "Perros",
+  "reduced-mobility": "Movilidad reducida"
+ },
+ "zone_intros": {
+  "trotternish": "La península del norte: el Storr, el Quiraing y los acantilados de la costa este, todo en una carretera circular desde Portree.",
+  "portree": "La capital de la isla y su base principal, con el puerto, las tiendas y casi todos los sitios donde comer.",
+  "duirinish-waternish": "El noroeste: el castillo de Dunvegan, el faro de Neist Point y largas carreteras de un solo carril hasta el Atlántico.",
+  "minginish-cuillin": "Los montes Cuillin y la costa que queda a sus pies: las Fairy Pools, Sligachan y la destilería Talisker.",
+  "sleat": "La verde península del sur, adonde llega el ferri de Mallaig, en Armadale.",
+  "broadford": "El sureste de la isla: el primer tramo de carretera después del puente y su segundo pueblo.",
+  "raasay": "La isla que queda frente a Portree, a un corto trayecto en ferri desde Sconser.",
+  "en-route": "Paradas en la carretera entre Edimburgo, Glasgow o Inverness y la Isla de Skye."
+ }
+}

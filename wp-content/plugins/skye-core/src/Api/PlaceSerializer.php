@@ -61,7 +61,7 @@ final class PlaceSerializer {
 			'motorhome_parking' => (string) Meta::get( $id, 'motorhome_parking', 'no' ),
 			'overnight_allowed' => Meta::bool( $id, 'overnight_allowed' ),
 			'services_nearby'   => self::list( Meta::get( $id, 'services_nearby', [] ) ),
-			'gallery'           => array_values( array_filter( array_map( [ self::class, 'image_by_id' ], self::list( Meta::get( $id, 'gallery', [] ) ) ) ) ),
+			'gallery'           => array_values( array_filter( array_map( [ self::class, 'image_by_id' ], self::gallery_ids( $id ) ) ) ),
 			'faq'               => array_values( array_filter( self::rows( Meta::get( $id, 'faq', [] ), [ 'question', 'answer' ] ), static fn( $r ) => '' !== trim( (string) $r['question'] ) && '' !== trim( (string) $r['answer'] ) ) ),
 			'sources'           => array_values( array_filter( self::rows( Meta::get( $id, 'sources', [] ), [ 'title', 'url' ] ), static fn( $r ) => '' !== trim( (string) $r['title'] ) ) ),
 			'tips'              => array_values( array_filter( array_map( static fn( $r ) => is_array( $r ) ? (string) ( $r['tip'] ?? '' ) : (string) $r, (array) Meta::get( $id, 'tips', [] ) ) ) ),
@@ -91,7 +91,7 @@ final class PlaceSerializer {
 		if ( ! is_array( $t ) ) {
 			return [];
 		}
-		return array_values( array_map( static fn( $x ) => [ 'slug' => $x->slug, 'name' => \Skye\Text::plain( $x->name ) ], $t ) );
+		return array_values( array_map( static fn( $x ) => [ 'slug' => \Skye\Lang::term_slug( $x ), 'name' => \Skye\Text::plain( $x->name ) ], $t ) );
 	}
 
 	/** @return list<array{id:int,uuid:string,slug:string,title:string,type:string}> */
@@ -133,8 +133,18 @@ final class PlaceSerializer {
 		return is_array( $v ) ? array_values( array_map( 'strval', $v ) ) : [];
 	}
 
+	/** Gallery of the place; a translation without its own shows its original's. @return list<string> */
+	private static function gallery_ids( int $id ): array {
+		$ids = self::list( Meta::get( $id, 'gallery', [] ) );
+		if ( ! $ids ) {
+			$original = \Skye\Lang::original_post( $id, PostTypes::PLACE );
+			$ids      = $original !== $id ? self::list( Meta::get( $original, 'gallery', [] ) ) : [];
+		}
+		return $ids;
+	}
+
 	private static function image( int $id ): ?array {
-		$thumb = (int) get_post_thumbnail_id( $id );
+		$thumb = \Skye\Lang::thumbnail_id( $id );
 		return $thumb ? self::image_by_id( $thumb ) : null;
 	}
 

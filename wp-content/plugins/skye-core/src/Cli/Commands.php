@@ -8,6 +8,7 @@ use Skye\Bokun\Client;
 use Skye\Bokun\Offers;
 use Skye\Bokun\Pricing;
 use Skye\Fields;
+use Skye\Lang;
 use Skye\Meta;
 use Skye\Photos;
 use Skye\PostTypes;
@@ -20,6 +21,9 @@ use WP_CLI;
  * wp skye <command>
  */
 final class Commands {
+
+	/** Language being seeded: the default one, or the translation given with --lang. */
+	private string $lang = '';
 
 	/**
 	 * Creates the canonical taxonomy terms.
@@ -45,16 +49,30 @@ final class Commands {
 	 * [--verify-as=<user>]
 	 * : Mark items as verified by this user login (only for real data checked by a guide).
 	 *
+	 * [--lang=<code>]
+	 * : Load the translations in seed/<code>/ instead: each item of the default language that has a
+	 * translation there gets (or updates) its version in that language. Needs WPML with that language.
+	 *
 	 * ## EXAMPLES
 	 *     wp skye seed all
+	 *     wp skye seed all --lang=es
 	 *     wp skye seed places --file=/seed/places.json
 	 */
 	public function seed( array $args, array $assoc ): void {
-		[ $type ] = $args;
+		[ $type ]   = $args;
+		$this->lang = strtolower( (string) ( $assoc['lang'] ?? Lang::default() ) );
+		if ( $this->translating() && ( ! Lang::active() || ! in_array( $this->lang, Lang::codes(), true ) ) ) {
+			WP_CLI::error( "Cannot load '{$this->lang}': WPML is not active or does not have that language. Languages: " . implode( ', ', Lang::codes() ) );
+		}
+		// Everything below looks posts and terms up per language explicitly; start from the default one.
+		Lang::switch( Lang::default() );
 		// Order matters for `all`: tours point to places and brands, routes to places and tours.
 		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE ];
 		if ( 'all' === $type ) {
 			foreach ( [ 'places', ...array_keys( $generic ) ] as $t ) {
+				if ( 'brands' === $t && $this->translating() ) {
+					continue; // Brands are not translated.
+				}
 				$this->seed( [ $t ], array_diff_key( $assoc, [ 'file' => 1 ] ) );
 			}
 			return;
@@ -67,46 +85,27 @@ final class Commands {
 			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, all" );
 		}
 		Taxonomies::seed_terms();
+		$this->seed_term_translations();
+		Lang::switch( $this->lang ); // Fields and terms of each item are written with its language current.
 
-		$file = $assoc['file'] ?? ( is_dir( '/seed' ) ? "/seed/$type.json" : dirname( SKYE_CORE_DIR, 3 ) . "/seed/$type.json" );
-		if ( ! is_file( $file ) ) {
-			WP_CLI::error( "Seed file not found: $file" );
-		}
-		$json = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
+		$json = [ 'places' => $this->rows( 'places', $assoc ) ];
 		$verifier = isset( $assoc['verify-as'] ) ? get_user_by( 'login', (string) $assoc['verify-as'] ) : null;
 
 		$created = 0;
 		$updated = 0;
 		foreach ( $json['places'] as $row ) {
-			$existing = get_page_by_path( $row['slug'], OBJECT, PostTypes::PLACE );
-			$postarr  = [
-				'post_type'    => PostTypes::PLACE,
-				'post_status'  => 'publish',
-				'post_name'    => $row['slug'],
-				'post_title'   => $row['title'],
-				'post_content' => $row['content'] ?? '',
-				'post_excerpt' => $row['summary'] ?? '',
-			];
-			if ( $existing ) {
-				$postarr['ID'] = $existing->ID;
-				$id            = wp_update_post( $postarr, true );
-				++$updated;
-			} else {
-				$id = wp_insert_post( $postarr, true );
-				++$created;
-			}
-			if ( is_wp_error( $id ) ) {
-				WP_CLI::warning( "{$row['slug']}: " . $id->get_error_message() );
+			[ $id, $existing ] = $this->upsert( PostTypes::PLACE, $row );
+			if ( ! $id ) {
 				continue;
 			}
+			$existing ? ++$updated : ++$created;
 			$this->apply_place( (int) $id, $row );
-			Uuid::ensure( (int) $id );
 			if ( $verifier ) {
 				Verification::mark_verified( (int) $id, (int) $verifier->ID );
 			}
 			WP_CLI::log( sprintf( '  %s %s (#%d)', $existing ? '~' : '+', $row['title'], $id ) );
 		}
-		WP_CLI::success( "Places: $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED: a guide must check them.' ) );
+		WP_CLI::success( "Places ({$this->lang}): $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED: a guide must check them.' ) );
 	}
 
 	/**
@@ -115,36 +114,20 @@ final class Commands {
 	 */
 	private function seed_generic( string $name, string $post_type, array $assoc ): void {
 		Taxonomies::seed_terms();
-		$file = $assoc['file'] ?? ( is_dir( '/seed' ) ? "/seed/$name.json" : dirname( SKYE_CORE_DIR, 3 ) . "/seed/$name.json" );
-		if ( ! is_file( $file ) ) {
-			WP_CLI::error( "Seed file not found: $file" );
-		}
-		$json     = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
+		$this->seed_term_translations();
+		Lang::switch( $this->lang );
+		$json     = [ $name => $this->rows( $name, $assoc ) ];
 		$verifier = isset( $assoc['verify-as'] ) ? get_user_by( 'login', (string) $assoc['verify-as'] ) : null;
 		$schema   = Fields::for( $post_type );
 		$created  = 0;
 		$updated  = 0;
 
 		foreach ( $json[ $name ] as $row ) {
-			$existing = get_page_by_path( $row['slug'], OBJECT, $post_type );
-			$postarr  = [
-				'post_type'    => $post_type,
-				'post_status'  => 'publish',
-				'post_name'    => $row['slug'],
-				'post_title'   => $row['title'],
-				'post_content' => $row['content'] ?? '',
-				'post_excerpt' => $row['summary'] ?? '',
-			];
-			if ( $existing ) {
-				$postarr['ID'] = $existing->ID;
-			}
-			$id = $existing ? wp_update_post( $postarr, true ) : wp_insert_post( $postarr, true );
-			if ( is_wp_error( $id ) ) {
-				WP_CLI::warning( "{$row['slug']}: " . $id->get_error_message() );
+			[ $id, $existing ] = $this->upsert( $post_type, $row );
+			if ( ! $id ) {
 				continue;
 			}
 			$existing ? ++$updated : ++$created;
-			$id = (int) $id;
 
 			foreach ( $schema as $field => $def ) {
 				if ( array_key_exists( $field, $row ) && null !== $row[ $field ] ) {
@@ -152,15 +135,165 @@ final class Commands {
 				}
 			}
 			if ( isset( $row['profiles'] ) ) {
-				wp_set_object_terms( $id, $row['profiles'], Taxonomies::PROFILE );
+				wp_set_object_terms( $id, $this->term_ids( Taxonomies::PROFILE, $row['profiles'] ), Taxonomies::PROFILE );
 			}
-			Uuid::ensure( $id );
 			if ( $verifier ) {
 				Verification::mark_verified( $id, (int) $verifier->ID );
 			}
 			WP_CLI::log( sprintf( '  %s %s (#%d)', $existing ? '~' : '+', $row['title'], $id ) );
 		}
-		WP_CLI::success( ucfirst( $name ) . ": $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED.' ) );
+		WP_CLI::success( ucfirst( $name ) . " ({$this->lang}): $created created, $updated updated." . ( $verifier ? '' : ' All left UNVERIFIED.' ) );
+	}
+
+	private function translating(): bool {
+		return '' !== $this->lang && Lang::default() !== $this->lang;
+	}
+
+	private function seed_dir(): string {
+		return is_dir( '/seed' ) ? '/seed' : dirname( SKYE_CORE_DIR, 3 ) . '/seed';
+	}
+
+	private function read( string $file ): array {
+		if ( ! is_file( $file ) ) {
+			WP_CLI::error( "Seed file not found: $file" );
+		}
+		return json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
+	}
+
+	/**
+	 * The rows to load. In the default language, the seed file as it is. For a translation, each row
+	 * that seed/<lang>/<type>.json translates (keyed by slug), laid over its original: the translation
+	 * file only holds the texts, and everything else (coordinates, prices, stops) is written once.
+	 *
+	 * @return list<array<string, mixed>>
+	 */
+	private function rows( string $type, array $assoc ): array {
+		$rows = $this->read( $assoc['file'] ?? $this->seed_dir() . "/$type.json" )[ $type ];
+		if ( ! $this->translating() ) {
+			return $rows;
+		}
+		$translations = $this->read( $this->seed_dir() . "/{$this->lang}/$type.json" )[ $type ];
+		$out          = [];
+		foreach ( $rows as $row ) {
+			if ( isset( $translations[ $row['slug'] ] ) ) {
+				$out[] = Lang::overlay( $row, $translations[ $row['slug'] ] );
+			}
+		}
+		foreach ( array_diff( array_keys( $translations ), array_column( $rows, 'slug' ) ) as $orphan ) {
+			WP_CLI::warning( "{$this->lang}/$type.json: '$orphan' translates nothing (no such slug in $type.json)" );
+		}
+		return $out;
+	}
+
+	/**
+	 * Creates or updates the post of a row in the language being seeded.
+	 *
+	 * @return array{0:int, 1:bool} Post ID (0 on failure) and whether it already existed.
+	 */
+	private function upsert( string $post_type, array $row ): array {
+		$existing = Lang::find_post( $row['slug'], $post_type, $this->lang );
+		$original = $this->translating() ? Lang::find_post( $row['slug'], $post_type, Lang::default() ) : null;
+		if ( $this->translating() && ! $original ) {
+			WP_CLI::warning( "{$row['slug']}: no original to translate (seed the default language first)" );
+			return [ 0, false ];
+		}
+		$postarr = [
+			'post_type'    => $post_type,
+			'post_status'  => 'publish',
+			'post_name'    => $row['slug'],
+			'post_title'   => $row['title'],
+			'post_content' => $row['content'] ?? '',
+			'post_excerpt' => $row['summary'] ?? '',
+		];
+		if ( $existing ) {
+			$postarr['ID'] = $existing->ID;
+		}
+		// Saved with the target language current, so WPML files the post under it from the start.
+		$id = Lang::with( $this->lang, static fn() => $existing ? wp_update_post( $postarr, true ) : wp_insert_post( $postarr, true ) );
+		if ( is_wp_error( $id ) ) {
+			WP_CLI::warning( "{$row['slug']}: " . $id->get_error_message() );
+			return [ 0, false ];
+		}
+		$id = (int) $id;
+		if ( $original ) {
+			Lang::connect_post( $id, $post_type, $original->ID, $this->lang );
+			// A translation keeps the slug of its original. WordPress may have added "-2" before it knew the language.
+			if ( get_post_field( 'post_name', $id ) !== $row['slug'] ) {
+				global $wpdb;
+				$wpdb->update( $wpdb->posts, [ 'post_name' => $row['slug'] ], [ 'ID' => $id ] );
+				clean_post_cache( $id );
+			}
+			// One identity for an item, whatever the language.
+			update_post_meta( $id, Uuid::META, Uuid::get( $original->ID ) );
+		} else {
+			Uuid::ensure( $id );
+		}
+		return [ $id, (bool) $existing ];
+	}
+
+	/**
+	 * Term IDs, in the language being seeded, for canonical slugs.
+	 *
+	 * @param list<string> $slugs
+	 * @return list<int>
+	 */
+	private function term_ids( string $taxonomy, array $slugs ): array {
+		$ids = [];
+		foreach ( $slugs as $slug ) {
+			$id = Lang::term_id( $taxonomy, (string) $slug, $this->lang );
+			if ( $id ) {
+				$ids[] = $id;
+			} else {
+				WP_CLI::warning( "No term '$slug' in $taxonomy" );
+			}
+		}
+		return $ids;
+	}
+
+	/**
+	 * Creates or renames the translated terms from seed/<lang>/terms.json: { taxonomy: { slug: name } }
+	 * plus "zone_intros": { slug: text }. Does nothing in the default language.
+	 */
+	private function seed_term_translations(): void {
+		static $done = [];
+		if ( ! $this->translating() || isset( $done[ $this->lang ] ) ) {
+			return;
+		}
+		$done[ $this->lang ] = true;
+		$data                = $this->read( $this->seed_dir() . "/{$this->lang}/terms.json" );
+		$lang                = $this->lang;
+		$created             = 0;
+		$updated             = 0;
+		foreach ( Taxonomies::terms() as $taxonomy => $canonical ) {
+			foreach ( $data[ $taxonomy ] ?? [] as $slug => $name ) {
+				$original = Lang::term_id( $taxonomy, (string) $slug, Lang::default() );
+				if ( ! $original ) {
+					WP_CLI::warning( "$lang/terms.json: no term '$slug' in $taxonomy" );
+					continue;
+				}
+				$args = Taxonomies::ZONE === $taxonomy && isset( $data['zone_intros'][ $slug ] ) ? [ 'description' => (string) $data['zone_intros'][ $slug ] ] : [];
+				$tr   = Lang::term_translation( $taxonomy, (string) $slug, $lang );
+				if ( $tr ) {
+					$r = Lang::with( $lang, static fn() => wp_update_term( $tr, $taxonomy, [ 'name' => $name ] + $args ) );
+					is_wp_error( $r ) ? WP_CLI::warning( "$taxonomy/$slug: " . $r->get_error_message() ) : ++$updated;
+					continue;
+				}
+				// A slug must be unique in its taxonomy: when the translated name gives one that is already a
+				// canonical slug ("Portree", "Hotel"), the language code is appended. Nothing depends on it.
+				$want = sanitize_title( $name );
+				if ( '' === $want || isset( $canonical[ $want ] ) ) {
+					$want = $slug . '-' . $lang;
+				}
+				$r = Lang::with( $lang, static fn() => wp_insert_term( $name, $taxonomy, [ 'slug' => $want ] + $args ) );
+				if ( is_wp_error( $r ) ) {
+					WP_CLI::warning( "$taxonomy/$slug: " . $r->get_error_message() );
+					continue;
+				}
+				Lang::connect_term( (int) $r['term_id'], $taxonomy, $original, $lang );
+				++$created;
+			}
+		}
+		WP_CLI::log( "Terms ($lang): $created created, $updated updated." );
 	}
 
 	/** Seed value → stored value: slugs become IDs, booleans become 0/1, repeaters recurse. */
@@ -169,7 +302,8 @@ final class Commands {
 			case 'relation':
 				$ids = [];
 				foreach ( (array) $value as $slug ) {
-					$p = get_page_by_path( (string) $slug, OBJECT, $def['to'] );
+					// The version in the language being loaded; an item not translated (a brand, say) is the same for all.
+					$p = Lang::find_post( (string) $slug, $def['to'], $this->lang ) ?? Lang::find_post( (string) $slug, $def['to'], Lang::default() );
 					if ( $p ) {
 						$ids[] = $p->ID;
 					} else {
@@ -199,10 +333,10 @@ final class Commands {
 	}
 
 	private function apply_place( int $id, array $r ): void {
-		wp_set_object_terms( $id, [ $r['zone'] ], Taxonomies::ZONE );
-		wp_set_object_terms( $id, $r['categories'] ?? [], Taxonomies::CATEGORY );
-		wp_set_object_terms( $id, $r['profiles'] ?? [], Taxonomies::PROFILE );
-		wp_set_object_terms( $id, array_map( static fn( $s ) => str_replace( '_', '-', $s ), $r['suitable_for'] ?? [] ), Taxonomies::SUITABILITY );
+		wp_set_object_terms( $id, $this->term_ids( Taxonomies::ZONE, [ $r['zone'] ] ), Taxonomies::ZONE );
+		wp_set_object_terms( $id, $this->term_ids( Taxonomies::CATEGORY, $r['categories'] ?? [] ), Taxonomies::CATEGORY );
+		wp_set_object_terms( $id, $this->term_ids( Taxonomies::PROFILE, $r['profiles'] ?? [] ), Taxonomies::PROFILE );
+		wp_set_object_terms( $id, $this->term_ids( Taxonomies::SUITABILITY, array_map( static fn( $s ) => str_replace( '_', '-', $s ), $r['suitable_for'] ?? [] ) ), Taxonomies::SUITABILITY );
 
 		$scalar = [ 'gaelic_name', 'summary', 'directions', 'duration_min', 'duration_typical', 'difficulty', 'distance_km', 'elevation_gain_m', 'price_type', 'price_gbp', 'best_time', 'motorhome_parking', 'overnight_allowed' ];
 		foreach ( $scalar as $k ) {
@@ -314,7 +448,8 @@ final class Commands {
 
 		$count = [ 'uploaded' => 0, 'replaced' => 0, 'unchanged' => 0, 'failed' => 0 ];
 		foreach ( $plan['items'] as $key => $item ) {
-			$post = get_page_by_path( $item['slug'], OBJECT, $item['post_type'] );
+			// Photos belong to the default-language item; its translations show them (Lang::thumbnail_id).
+			$post = Lang::find_post( $item['slug'], $item['post_type'], Lang::default() );
 			if ( ! $post ) {
 				WP_CLI::warning( "$key: no {$item['post_type']} with slug '{$item['slug']}', " . count( $item['files'] ) . ' photo(s) skipped' );
 				continue;
