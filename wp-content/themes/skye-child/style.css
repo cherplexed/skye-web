@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.10.0
+Version: 0.11.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -318,3 +318,53 @@ a.skye-placecard:hover { border-color: var(--skye-accent); color: inherit; }
 .skye-tourstop__photo { aspect-ratio: 3 / 2; background: #C9D6D2; border-radius: 8px; flex: 0 0 104px; overflow: hidden; }
 .skye-tourstop__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
 @media (max-width: 767px) { .skye-tourstop__photo { flex-basis: 76px; } }
+
+/* ---- Home page ---- */
+.skye-home { display: flex; flex-direction: column; gap: 64px; padding: 48px 0 80px; }
+.skye-hero { align-items: center; display: grid; gap: 40px; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+.skye-hero__text { display: flex; flex-direction: column; gap: 18px; }
+.skye-hero__title { font-size: 52px; letter-spacing: -.02em; line-height: 1.05; margin: 0; }
+.skye-hero__lead { color: var(--skye-muted); font-size: 19px; line-height: 1.5; margin: 0; max-width: 520px; }
+.skye-hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.skye-hero__photo { aspect-ratio: 4 / 3; background: #C9D6D2; border-radius: 20px; overflow: hidden; }
+.skye-hero__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-home__section { display: flex; flex-direction: column; gap: 20px; }
+.skye-home__head { align-items: flex-end; display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+.skye-home__head > div { display: flex; flex-direction: column; gap: 6px; }
+.skye-home__title { font-size: 32px; letter-spacing: -.01em; line-height: 1.15; margin: 0; }
+.skye-home__more { font-weight: 600; text-decoration: none; white-space: nowrap; }
+.skye-home__more::after { content: " →"; }
+.skye-paths { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.skye-path { display: flex; flex-direction: column; }
+.skye-path__photo { background: #C9D6D2; height: 220px; }
+.skye-path__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-path__body { align-items: flex-start; display: flex; flex: 1; flex-direction: column; gap: 12px; padding: 28px; }
+.skye-path__body h3 { font-size: 24px; line-height: 1.2; margin: 0; }
+.skye-path__body p { color: var(--skye-muted); line-height: 1.5; margin: 0; }
+.skye-path__chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.skye-path__chips .skye-chip { font-size: 14px; min-height: 36px; padding: 0 14px; }
+.skye-path__chips .skye-chip:hover, .skye-profilechips .skye-chip:hover { border-color: var(--skye-accent); color: var(--skye-accent); }
+.skye-path .skye-btn { margin-top: auto; }
+.skye-zonecards { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 270px), 1fr)); }
+.skye-zonecard { color: inherit; display: flex; flex-direction: column; gap: 4px; padding: 20px; text-decoration: none; }
+a.skye-zonecard:hover { border-color: var(--skye-accent); color: inherit; }
+.skye-zonecard strong { color: var(--skye-ink); font-family: Sora, Inter, sans-serif; font-size: 19px; line-height: 1.25; }
+.skye-zonecard__count { color: var(--skye-accent); font-size: 13px; font-weight: 600; }
+.skye-zonecard__intro { color: var(--skye-muted); font-size: 14px; line-height: 1.5; margin-top: 4px; }
+.skye-profilechips { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 0; padding: 0; }
+.skye-profilechips .skye-chip { gap: 8px; }
+@media (max-width: 991px) {
+  .skye-hero { grid-template-columns: 1fr; }
+  .skye-hero__title { font-size: 40px; }
+}
+@media (max-width: 767px) {
+  .skye-home { gap: 44px; padding: 28px 0 56px; }
+  .skye-hero__title { font-size: 32px; line-height: 1.1; }
+  .skye-hero__lead { font-size: 16px; }
+  .skye-hero__actions .skye-btn { flex: 1 1 100%; }
+  .skye-home__title { font-size: 24px; }
+  .skye-paths { grid-template-columns: 1fr; }
+  .skye-path__photo { height: 180px; }
+  .skye-path__body { padding: 20px; }
+  .skye-path .skye-btn { width: 100%; }
+}
