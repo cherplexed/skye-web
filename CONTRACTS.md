@@ -171,7 +171,17 @@ Cada objeto incluye `verification: { verified_by, verified_at, valid_until, upda
 
 Todos con `dateModified` y `reviewedBy` (§10).
 
+## Idiomas (WPML)
+
+- La configuración vive en `skye-core/wpml-config.xml` (tipos y taxonomías traducibles, meta propia) y en `wpml_cf_preferences` de cada campo ACF, generado desde `Fields.php`. No se configura nada a mano en el panel.
+- Idioma por directorio: `/` inglés (por defecto), `/es/` español.
+- Los tipos públicos están en modo "traducible, con el original como respaldo": mientras una ficha no tenga traducción, en `/es/` se ve la inglesa. Las marcas no se traducen.
+- `skye_uuid` y la verificación se copian a las traducciones: una ficha tiene una sola identidad y una sola comprobación.
+- Textos de interfaz: `skye-core/languages/skye-core-{locale}.l10n.php`. Una prueba exige que cada texto del plugin tenga traducción con los mismos marcadores.
+
 ## Decisiones abiertas
+
+- Antes de publicar: pasar los tipos a "solo lo traducido" (`translate="1"`) o terminar las traducciones; con el respaldo activo, `/es/` sirve contenido en inglés.
 
 - EN-GB / EN-US como idiomas separados en WPML o detección de país.
 - Pago externo para revendedores en Bókun (afecta a `skye-booking-widget`, no a este contrato).
