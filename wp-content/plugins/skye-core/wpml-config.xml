@@ -1,0 +1,39 @@
+<wpml-config>
+	<!--
+		WPML reads this file by itself: nothing to click in the admin.
+		translate="2": translatable, and until a translation exists the original (English) is shown in
+		that language. That keeps every page reachable in every language while the translations are
+		written. Before launch, change the public types to translate="1" (only what is translated is
+		shown) or finish the translations. See CONTRACTS.md, "Idiomas".
+	-->
+	<custom-types>
+		<custom-type translate="2">place</custom-type>
+		<custom-type translate="2">route</custom-type>
+		<custom-type translate="2">tour</custom-type>
+		<custom-type translate="2">lodging</custom-type>
+		<custom-type translate="2">motorhome_spot</custom-type>
+		<custom-type translate="2">experience</custom-type>
+		<!-- A brand is an operator, the same in every language. -->
+		<custom-type translate="0">brand</custom-type>
+	</custom-types>
+	<taxonomies>
+		<taxonomy translate="1">skye_zone</taxonomy>
+		<taxonomy translate="1">skye_category</taxonomy>
+		<taxonomy translate="1">skye_profile</taxonomy>
+		<taxonomy translate="1">skye_suitability</taxonomy>
+	</taxonomies>
+	<!--
+		ACF fields are not listed here: each one carries its own "translate" or "copy" in acf-json/
+		(generated from Fields.php), which ACF Multilingual reads. Only the plugin's own meta is listed.
+	-->
+	<custom-fields>
+		<!-- One identity and one verification for an item, whatever the language. -->
+		<custom-field action="copy">skye_uuid</custom-field>
+		<custom-field action="copy">skye_verified_by</custom-field>
+		<custom-field action="copy">skye_verified_at</custom-field>
+		<custom-field action="copy">skye_valid_until</custom-field>
+		<!-- Each language keeps its own editing history. -->
+		<custom-field action="ignore">skye_change_log</custom-field>
+		<custom-field action="ignore">skye_meta_snapshot</custom-field>
+	</custom-fields>
+</wpml-config>

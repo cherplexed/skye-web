@@ -46,6 +46,19 @@ services:
       - ../wp-content/plugins/skye-core:/var/www/html/wp-content/plugins/skye-core
       - ../wp-content/themes/skye-child:/var/www/html/wp-content/themes/skye-child
       - ./php/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini:ro
+    # WordPress calls itself at its public address (WPML's REST check, Site Health, cron). Inside the
+    # container that address is localhost:<WP_PORT>, where nothing listens by default, so Apache is
+    # told to answer on that port too. Then the image's normal start-up runs.
+    command:
+      - bash
+      - -c
+      - |
+        port="${WP_PORT:-8080}"
+        if [ "$$port" != "80" ] && ! grep -q "^Listen $$port$$" /etc/apache2/ports.conf; then
+          echo "Listen $$port" >> /etc/apache2/ports.conf
+          sed -i "s/<VirtualHost \\*:80>/<VirtualHost *:80 *:$$port>/" /etc/apache2/sites-available/000-default.conf
+        fi
+        exec docker-entrypoint.sh apache2-foreground
 
   wpcli:
     image: wordpress:cli-2.11-php8.3
