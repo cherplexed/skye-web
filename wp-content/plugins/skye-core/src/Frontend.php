@@ -96,7 +96,9 @@ final class Frontend {
 		$item['image']  = self::picture( $item['image'] ?? null, $full ? '(min-width: 1264px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw', $full );
 		foreach ( $item['days'] ?? [] as $d => $day ) {
 			foreach ( $day['stops'] ?? [] as $i => $stop ) {
-				$item['days'][ $d ]['stops'][ $i ]['url'] = get_permalink( (int) $stop['id'] );
+				if ( ! empty( $stop['place']['id'] ) ) {
+					$item['days'][ $d ]['stops'][ $i ]['place']['url'] = get_permalink( (int) $stop['place']['id'] );
+				}
 			}
 		}
 		return $item;

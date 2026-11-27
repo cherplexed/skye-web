@@ -127,7 +127,19 @@ final class Fields {
 				'sub'  => [
 					'title'   => [ 'type' => 'text', 'i18n' => true ],
 					'summary' => [ 'type' => 'textarea', 'i18n' => true ],
-					'stops'   => [ 'type' => 'relation', 'i18n' => false, 'to' => PostTypes::PLACE ],
+					// Every stop of the day in order. `place` links the ones that have their own page; `title` names
+					// the others ("Loch Tulla viewpoint") or rewords one that has ("Glencoe: Three Sisters viewpoint").
+					'stops'   => [
+						'type' => 'repeater',
+						'i18n' => true,
+						'sub'  => [
+							'place'        => [ 'type' => 'relation', 'i18n' => false, 'to' => PostTypes::PLACE, 'max' => 1 ],
+							'title'        => [ 'type' => 'text', 'i18n' => true ],
+							'stop_type'    => [ 'type' => 'enum', 'i18n' => false, 'choices' => [ 'visit' => 'Visit', 'photo' => 'Photo stop', 'break' => 'Break', 'free_time' => 'Free time', 'overnight' => 'Overnight' ], 'default' => 'visit' ],
+							'duration_min' => [ 'type' => 'number', 'i18n' => false ],
+							'note'         => [ 'type' => 'text', 'i18n' => true ],
+						],
+					],
 				],
 			],
 			'products'           => [

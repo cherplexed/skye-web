@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Skye\Render;
 
+use Skye\Fields;
 use Skye\Units;
 
 /**
@@ -150,16 +151,43 @@ final class TourBlocks {
 		return sprintf( '<section class="skye-card skye-facts"><h2 class="skye-card__title">%s</h2><dl class="skye-facts__list">%s</dl></section>', Html::e( Html::t( 'Practical information' ) ), $html );
 	}
 
-	/** Day by day: title, what the day covers, and links to the stops that have their own page. */
+	/** One stop of a day: its name (linked when the place has a page), what kind of stop it is and for how long. */
+	private static function stop( array $stop ): string {
+		$place = is_array( $stop['place'] ?? null ) ? $stop['place'] : [];
+		$title = trim( (string) ( $stop['title'] ?? '' ) );
+		$title = '' !== $title ? $title : trim( (string) ( $place['title'] ?? '' ) );
+		if ( '' === $title ) {
+			return '';
+		}
+		$name    = ! empty( $place['url'] ) ? sprintf( '<a href="%s">%s</a>', Html::e( $place['url'] ), Html::e( $title ) ) : Html::e( $title );
+		$type    = (string) ( $stop['stop_type'] ?? 'visit' );
+		$choices = Fields::tour()['days']['sub']['stops']['sub']['stop_type']['choices'];
+		$meta    = [ Html::t( $choices[ $type ] ?? $choices['visit'] ) ];
+		$minutes = (int) ( $stop['duration_min'] ?? 0 );
+		if ( $minutes > 0 ) {
+			$meta[] = Units::format_duration( $minutes );
+		}
+		$note = trim( (string) ( $stop['note'] ?? '' ) );
+		return sprintf(
+			'<li class="skye-tourstop skye-tourstop--%s"><div class="skye-tourstop__head"><span class="skye-tourstop__name">%s</span><span class="skye-tourstop__meta">%s</span></div>%s</li>',
+			Html::e( $type ),
+			$name,
+			Html::e( implode( ' · ', $meta ) ),
+			'' !== $note ? '<p class="skye-tourstop__note">' . Html::e( $note ) . '</p>' : ''
+		);
+	}
+
+	/** Day by day: title, what the day covers, and every stop in order with the time allowed at each. */
 	public static function itinerary( array $t ): string {
-		$html = '';
+		$html  = '';
+		$timed = false;
 		foreach ( $t['days'] ?? [] as $i => $day ) {
 			$title   = trim( (string) ( $day['title'] ?? '' ) );
 			$summary = trim( (string) ( $day['summary'] ?? '' ) );
 			$stops   = '';
 			foreach ( $day['stops'] ?? [] as $stop ) {
-				$name   = ! empty( $stop['url'] ) ? sprintf( '<a href="%s">%s</a>', Html::e( $stop['url'] ), Html::e( $stop['title'] ) ) : Html::e( $stop['title'] );
-				$stops .= '<li>' . $name . '</li>';
+				$stops .= is_array( $stop ) ? self::stop( $stop ) : '';
+				$timed  = $timed || ( is_array( $stop ) && (int) ( $stop['duration_min'] ?? 0 ) > 0 );
 			}
 			if ( '' === $title && '' === $summary && '' === $stops ) {
 				continue;
@@ -167,10 +195,14 @@ final class TourBlocks {
 			$html .= '<li class="skye-day">';
 			$html .= '<h3 class="skye-day__title"><span class="skye-day__n">' . Html::e( sprintf( Html::t( 'Day %d' ), $i + 1 ) ) . '</span>' . ( '' !== $title ? ' ' . Html::e( $title ) : '' ) . '</h3>';
 			$html .= '' !== $summary ? '<p>' . Html::e( $summary ) . '</p>' : '';
-			$html .= '' !== $stops ? '<ul class="skye-day__stops" aria-label="' . Html::e( Html::t( 'Stops with their own guide' ) ) . '">' . $stops . '</ul>' : '';
+			$html .= '' !== $stops ? '<ol class="skye-tourstops" aria-label="' . Html::e( Html::t( 'Stops' ) ) . '">' . $stops . '</ol>' : '';
 			$html .= '</li>';
 		}
-		return '' === $html ? '' : Html::block( 'itinerary', Html::t( 'Itinerary' ), '<ol class="skye-days">' . $html . '</ol>' );
+		if ( '' === $html ) {
+			return '';
+		}
+		$small = $timed ? '<p class="skye-itinerary__small">' . Html::e( Html::t( 'The length of each stop is an estimate: it will depend on the weather, the traffic and other factors.' ) ) . '</p>' : '';
+		return Html::block( 'itinerary', Html::t( 'Itinerary' ), '<ol class="skye-days">' . $html . '</ol>' . $small );
 	}
 
 	/** One sentence per line in the editor, or sentences in a row: both become a list. @return list<string> */

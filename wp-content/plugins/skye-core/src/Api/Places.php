@@ -134,13 +134,27 @@ final class Places {
 		$out = [];
 		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $tour ) {
 			foreach ( (array) Meta::get( $tour->ID, 'days', [] ) as $day ) {
-				if ( is_array( $day ) && in_array( $place_id, Serializer::ids( $day['stops'] ?? [] ), true ) ) {
+				if ( is_array( $day ) && in_array( $place_id, self::stop_place_ids( $day['stops'] ?? [] ), true ) ) {
 					$out[] = [ 'id' => $tour->ID, 'uuid' => Uuid::get( $tour->ID ), 'slug' => $tour->post_name, 'title' => \Skye\Text::title( $tour ), 'type' => $tour->post_type ];
 					break;
 				}
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * Place IDs of a day's stops. A stop is a row with an optional `place`; data saved before stops had
+	 * durations is a plain list of places.
+	 *
+	 * @return list<int>
+	 */
+	public static function stop_place_ids( mixed $stops ): array {
+		$ids = [];
+		foreach ( is_array( $stops ) ? $stops : [] as $stop ) {
+			$ids = array_merge( $ids, Serializer::ids( is_array( $stop ) && array_key_exists( 'place', $stop ) ? $stop['place'] : [ $stop ] ) );
+		}
+		return $ids;
 	}
 
 	/** Accepts numeric ID, UUID or slug. */

@@ -175,14 +175,89 @@
                         "class": "",
                         "id": ""
                     },
-                    "wpml_cf_preferences": 1,
-                    "type": "relationship",
-                    "post_type": [
-                        "place"
-                    ],
-                    "return_format": "id",
-                    "filters": [
-                        "search"
+                    "wpml_cf_preferences": 2,
+                    "type": "repeater",
+                    "layout": "table",
+                    "button_label": "Add row",
+                    "sub_fields": [
+                        {
+                            "key": "field_skye_tour_days_stops_place",
+                            "label": "Place",
+                            "name": "place",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "relationship",
+                            "post_type": [
+                                "place"
+                            ],
+                            "return_format": "id",
+                            "filters": [
+                                "search"
+                            ],
+                            "max": 1
+                        },
+                        {
+                            "key": "field_skye_tour_days_stops_title",
+                            "label": "Title",
+                            "name": "title",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 2,
+                            "type": "text"
+                        },
+                        {
+                            "key": "field_skye_tour_days_stops_stop_type",
+                            "label": "Stop type",
+                            "name": "stop_type",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "select",
+                            "choices": {
+                                "visit": "Visit",
+                                "photo": "Photo stop",
+                                "break": "Break",
+                                "free_time": "Free time",
+                                "overnight": "Overnight"
+                            },
+                            "default_value": "visit",
+                            "return_format": "value"
+                        },
+                        {
+                            "key": "field_skye_tour_days_stops_duration_min",
+                            "label": "Duration min",
+                            "name": "duration_min",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 1,
+                            "type": "number",
+                            "default_value": ""
+                        },
+                        {
+                            "key": "field_skye_tour_days_stops_note",
+                            "label": "Note",
+                            "name": "note",
+                            "wrapper": {
+                                "width": "",
+                                "class": "",
+                                "id": ""
+                            },
+                            "wpml_cf_preferences": 2,
+                            "type": "text"
+                        }
                     ]
                 }
             ]
@@ -300,5 +375,5 @@
     "style": "default",
     "active": true,
     "show_in_rest": 1,
-    "modified": 1795797164
+    "modified": 1795814381
 }
