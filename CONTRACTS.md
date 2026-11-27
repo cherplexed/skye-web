@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.2 (26 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.3 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -65,7 +65,7 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 
 ## 4. Tour — post type `tour`
 
-`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor → `stops` (relación multi place). `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
+`title`, `summary`, `description`, `includes`, `excludes` (sí). `product_code` (SK2D, SK3D). `days_count`, `nights_count`. `departure_city`: edinburgh · glasgow. `departure_time`, `meeting_point` (sí). `days` repetidor (sí) → `title` (sí), `summary` (sí), `stops` (relación multi place). El título y el resumen del día cuentan el recorrido completo; `stops` enlaza solo los lugares que tienen ficha. `products` repetidor: `brand` (relación), `bokun_product_id`, `fallback_booking_url`. **Sin precio almacenado**: `price_from` y disponibilidad llegan de Bókun (caché 15–60 min). `rating`, `review_count`. `includes_audioguide` bool. Verificación.
 
 ## 5. Alojamiento — post type `lodging`
 

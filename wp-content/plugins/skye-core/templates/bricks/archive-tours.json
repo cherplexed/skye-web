@@ -1,0 +1,52 @@
+{
+  "slug": "skye-archive-tours",
+  "title": "Skye: Tours listing",
+  "type": "archive",
+  "conditions": [
+    {
+      "main": "archiveType",
+      "archiveType": [
+        "postType"
+      ],
+      "archivePostTypes": [
+        "tour"
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "id": "skta01",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "skta02"
+      ],
+      "settings": {
+        "_cssClasses": "skye-place"
+      },
+      "label": "Tours"
+    },
+    {
+      "id": "skta02",
+      "name": "div",
+      "parent": "skta01",
+      "children": [
+        "skta03"
+      ],
+      "settings": {
+        "_cssClasses": "skye-wrap"
+      },
+      "label": "Wrap"
+    },
+    {
+      "id": "skta03",
+      "name": "shortcode",
+      "parent": "skta02",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tours]"
+      },
+      "label": "Tours listing"
+    }
+  ]
+}

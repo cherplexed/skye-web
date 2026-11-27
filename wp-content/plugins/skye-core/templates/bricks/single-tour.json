@@ -1,0 +1,221 @@
+{
+  "slug": "skye-single-tour",
+  "title": "Skye: Tour",
+  "type": "content",
+  "conditions": [
+    {
+      "main": "postType",
+      "postType": [
+        "tour"
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "id": "sktr01",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "sktr02"
+      ],
+      "settings": {
+        "_cssClasses": "skye-place skye-place__top"
+      },
+      "label": "Top"
+    },
+    {
+      "id": "sktr02",
+      "name": "div",
+      "parent": "sktr01",
+      "children": [
+        "sktr03",
+        "sktr04"
+      ],
+      "settings": {
+        "_cssClasses": "skye-wrap skye-stack"
+      },
+      "label": "Wrap"
+    },
+    {
+      "id": "sktr03",
+      "name": "shortcode",
+      "parent": "sktr02",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"breadcrumb\"]"
+      },
+      "label": "Breadcrumb"
+    },
+    {
+      "id": "sktr04",
+      "name": "shortcode",
+      "parent": "sktr02",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"cover\"]"
+      },
+      "label": "Photo"
+    },
+    {
+      "id": "sktr10",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "sktr11"
+      ],
+      "settings": {
+        "_cssClasses": "skye-place skye-place__body"
+      },
+      "label": "Body"
+    },
+    {
+      "id": "sktr11",
+      "name": "div",
+      "parent": "sktr10",
+      "children": [
+        "sktr20",
+        "sktr30",
+        "sktr40"
+      ],
+      "settings": {
+        "_cssClasses": "skye-wrap skye-layout"
+      },
+      "label": "Two columns"
+    },
+    {
+      "id": "sktr20",
+      "name": "div",
+      "parent": "sktr11",
+      "children": [
+        "sktr21",
+        "sktr22",
+        "sktr23"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__intro"
+      },
+      "label": "Title"
+    },
+    {
+      "id": "sktr21",
+      "name": "shortcode",
+      "parent": "sktr20",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"eyebrow\"]"
+      },
+      "label": "Eyebrow"
+    },
+    {
+      "id": "sktr22",
+      "name": "heading",
+      "parent": "sktr20",
+      "children": [],
+      "settings": {
+        "text": "{post_title}",
+        "tag": "h1",
+        "_cssClasses": "skye-place__title"
+      }
+    },
+    {
+      "id": "sktr23",
+      "name": "shortcode",
+      "parent": "sktr20",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"summary\"]"
+      },
+      "label": "Summary"
+    },
+    {
+      "id": "sktr30",
+      "name": "div",
+      "parent": "sktr11",
+      "children": [
+        "sktr31",
+        "sktr32"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__aside",
+        "tag": "aside"
+      },
+      "label": "Sidebar"
+    },
+    {
+      "id": "sktr31",
+      "name": "shortcode",
+      "parent": "sktr30",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"offer\"]"
+      },
+      "label": "Booking"
+    },
+    {
+      "id": "sktr32",
+      "name": "shortcode",
+      "parent": "sktr30",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"departure\"]"
+      },
+      "label": "Practical information"
+    },
+    {
+      "id": "sktr40",
+      "name": "div",
+      "parent": "sktr11",
+      "children": [
+        "sktr41",
+        "sktr42",
+        "sktr43",
+        "sktr44"
+      ],
+      "settings": {
+        "_cssClasses": "skye-layout__main"
+      },
+      "label": "Content"
+    },
+    {
+      "id": "sktr41",
+      "name": "post-content",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "dataSource": "editor",
+        "_cssClasses": "skye-place__description"
+      },
+      "label": "Description"
+    },
+    {
+      "id": "sktr42",
+      "name": "shortcode",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"itinerary\"]"
+      },
+      "label": "Itinerary"
+    },
+    {
+      "id": "sktr43",
+      "name": "shortcode",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"includes\"]"
+      },
+      "label": "Included"
+    },
+    {
+      "id": "sktr44",
+      "name": "shortcode",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"verification\"]"
+      },
+      "label": "Verification"
+    }
+  ]
+}

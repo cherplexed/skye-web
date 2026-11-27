@@ -77,4 +77,20 @@ final class Units {
 	private static function num( float $n ): string {
 		return rtrim( rtrim( number_format( $n, 1, '.', '' ), '0' ), '.' );
 	}
+
+	/**
+	 * A price as people in the market write it: "£399" for English, "399 €" elsewhere.
+	 * Whole amounts drop the decimals; anything else shows two.
+	 */
+	public static function format_money( float $amount, string $currency, string $market ): string {
+		$currency = strtoupper( $currency );
+		$symbol   = [ 'GBP' => '£', 'EUR' => '€', 'USD' => '$', 'JPY' => '¥', 'CNY' => 'CN¥' ][ $currency ] ?? $currency;
+		$english  = str_starts_with( strtolower( $market ), 'en' );
+		$whole    = abs( $amount - round( $amount ) ) < 0.005;
+		$number   = number_format( $amount, $whole ? 0 : 2, $english ? '.' : ',', $english ? ',' : '.' );
+		if ( $english ) {
+			return ( strlen( $symbol ) === strlen( $currency ) && $symbol === $currency ? $currency . ' ' : $symbol ) . $number;
+		}
+		return $number . ' ' . $symbol;
+	}
 }
