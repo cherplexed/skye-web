@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.2.1
+Version: 0.3.1
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -16,44 +16,138 @@ Text Domain: skye-child
   --skye-heather: #5F3F7E;
 }
 
-/* ---- Place page (blocks rendered by skye-core, placed by the Bricks template "Skye: Place") ----
-   Bricks sets html { font-size: 62.5% }, so 1rem = 10px here: 1.6rem is body text. */
-.skye-place { color: var(--skye-ink); font-size: 1.7rem; line-height: 1.55; }
-.skye-place > .brxe-container { max-width: 76rem; }
-.skye-place__hero { background: var(--skye-bg); padding-block: clamp(3.2rem, 5vw, 6.4rem); }
-.skye-place__title { font-size: clamp(3.2rem, 5vw, 5.2rem); line-height: 1.1; margin: 0; }
-.skye-place__image img { border-radius: 12px; width: 100%; height: auto; margin-top: 2.4rem; }
-.skye-place__body { padding-block: clamp(2.4rem, 4vw, 4.8rem); }
-.skye-place__body > .brxe-container { gap: 4rem; }
-.skye-place__description { font-size: 1.8rem; line-height: 1.65; }
+/* ==== Design base (from the project canvas "Diseño web Isla de Skye") ====
+   Sizes are in px on purpose: Bricks sets html { font-size: 62.5% }, so rem is 10px here. */
+body { background: var(--skye-bg); color: var(--skye-ink); font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 16px; line-height: 1.6; }
+h1, h2, h3 { font-family: Sora, Inter, system-ui, sans-serif; margin: 0; }
+a { color: var(--skye-accent); }
+a:hover { color: var(--skye-accent-dark); }
 
-.skye-intro__gaelic { color: var(--skye-heather); font-style: italic; margin: 0.8rem 0 0; }
-.skye-intro__summary { font-size: 2rem; line-height: 1.5; color: var(--skye-muted); margin: 1.6rem 0 0; max-width: 64rem; }
-.skye-chips { display: flex; flex-wrap: wrap; gap: 0.8rem; list-style: none; margin: 2rem 0 0; padding: 0; }
-.skye-chip { border: 1px solid var(--skye-line); border-radius: 999px; font-size: 1.4rem; padding: 0.4rem 1.2rem; background: #fff; }
-.skye-chip--zone { background: var(--skye-accent); border-color: var(--skye-accent); color: #fff; }
+.skye-wrap { box-sizing: border-box; margin: 0 auto; max-width: 1200px; padding: 0 32px; width: 100%; }
+.skye-stack { display: flex; flex-direction: column; gap: 20px; }
+@media (max-width: 767px) { .skye-wrap { padding: 0 20px; } }
+
+.skye-btn { align-items: center; border: 0; border-radius: 10px; cursor: pointer; display: inline-flex; font-family: Inter, system-ui, sans-serif; font-size: 15px; font-weight: 600; justify-content: center; min-height: 48px; padding: 0 22px; text-decoration: none; }
+.skye-btn--primary, .skye-btn--primary:visited { background: var(--skye-accent); color: #fff; }
+.skye-btn--primary:hover { background: var(--skye-accent-dark); color: #fff; }
+.skye-btn--outline { background: transparent; border: 1.5px solid var(--skye-ink); color: var(--skye-ink); }
+.skye-btn--outline:hover { background: var(--skye-ink); color: #fff; }
+.skye-chip { align-items: center; background: #fff; border: 1.5px solid var(--skye-line); border-radius: 999px; color: var(--skye-ink); cursor: pointer; display: inline-flex; font-size: 15px; font-weight: 500; min-height: 44px; padding: 0 18px; text-decoration: none; }
+.skye-tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.skye-tag { background: #E6F0F2; border-radius: 999px; color: var(--skye-accent); font-size: 12px; font-weight: 600; padding: 4px 10px; }
+.skye-card { background: #fff; border: 1px solid var(--skye-line); border-radius: 16px; box-sizing: border-box; overflow: hidden; }
+.skye-card__title { font-size: 18px; margin: 0 0 8px; }
+.skye-eyebrow { color: var(--skye-accent); font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---- Header and footer (templates "Skye: Header" / "Skye: Footer") ---- */
+.skye-chrome { padding: 0; }
+.skye-header { background: #fff; border-bottom: 1px solid var(--skye-line); width: 100%; }
+.skye-header__inner { align-items: center; display: flex; flex-wrap: wrap; gap: 8px 16px; justify-content: space-between; min-height: 72px; }
+.skye-logo, .skye-logo:hover { color: var(--skye-ink); font-family: Sora, Inter, sans-serif; font-size: 22px; font-weight: 700; text-decoration: none; }
+.skye-logo span { color: var(--skye-accent); }
+.skye-nav { align-items: center; display: flex; flex-wrap: wrap; gap: 4px 20px; }
+.skye-nav a { border-bottom: 2px solid transparent; color: var(--skye-ink); font-size: 15px; font-weight: 500; padding: 10px 4px; text-decoration: none; white-space: nowrap; }
+.skye-nav a:hover, .skye-nav a[aria-current="page"] { border-bottom-color: var(--skye-accent); color: var(--skye-accent); }
+.skye-header__actions { align-items: center; display: flex; gap: 12px; }
+.skye-lang { position: relative; }
+.skye-lang summary { list-style: none; }
+.skye-lang summary::-webkit-details-marker { display: none; }
+.skye-lang summary::after { content: "▾"; margin-left: 6px; }
+.skye-lang ul { background: #fff; border: 1px solid var(--skye-line); border-radius: 12px; box-shadow: 0 8px 24px rgba(21, 34, 31, .12); list-style: none; margin: 6px 0 0; min-width: 160px; padding: 6px; position: absolute; right: 0; z-index: 20; }
+.skye-lang li a { border-radius: 8px; color: var(--skye-ink); display: block; padding: 10px 12px; text-decoration: none; }
+.skye-lang li a:hover { background: var(--skye-bg); }
+@media (max-width: 991px) {
+  .skye-header__inner { min-height: 56px; padding-bottom: 0; padding-top: 6px; }
+  .skye-logo { font-size: 20px; }
+  .skye-nav { flex-wrap: nowrap; margin: 0 -20px; order: 3; overflow-x: auto; padding: 0 20px; scrollbar-width: none; width: calc(100% + 40px); }
+  .skye-nav::-webkit-scrollbar { display: none; }
+  .skye-header__actions .skye-btn { min-height: 40px; padding: 0 14px; }
+  .skye-header__actions .skye-chip { min-height: 40px; padding: 0 12px; }
+}
+.skye-footer { background: var(--skye-ink); color: #C9D6D2; font-size: 14px; line-height: 1.8; width: 100%; }
+.skye-footer__inner { display: grid; gap: 32px; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); padding-bottom: 36px; padding-top: 40px; }
+.skye-footer__col { display: flex; flex-direction: column; }
+.skye-footer__col strong { color: #fff; }
+.skye-footer__col a, .skye-footer__col a:visited { color: #C9D6D2; text-decoration: none; }
+.skye-footer__col a:hover { color: #fff; text-decoration: underline; }
+.skye-footer__logo { color: #fff; font-family: Sora, Inter, sans-serif; font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+
+/* ---- Place page (blocks rendered by skye-core, placed by the Bricks template "Skye: Place") ---- */
+.skye-place { padding: 0; }
+.skye-place__top { padding-bottom: 24px; padding-top: 24px; }
+.skye-place__body { padding-bottom: 64px; }
+.skye-breadcrumb { color: var(--skye-muted); font-size: 14px; }
+.skye-gallery { display: grid; gap: 12px; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(2, 200px); }
+.skye-gallery__item { border-radius: 16px; margin: 0; overflow: hidden; }
+.skye-gallery__item:first-child { grid-column: 1 / span 2; grid-row: 1 / span 2; }
+.skye-gallery__item img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-gallery--1 .skye-gallery__item:first-child { grid-column: 1 / -1; }
+.skye-gallery--2 .skye-gallery__item:last-child { grid-row: 1 / span 2; }
+@media (max-width: 767px) {
+  .skye-place__top { padding-top: 16px; }
+  .skye-gallery { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 110px; gap: 8px; }
+  .skye-gallery__item:first-child { grid-column: 1 / -1; grid-row: 1; }
+  .skye-gallery--1 { grid-template-rows: 240px; }
+  .skye-gallery--2 .skye-gallery__item:last-child { grid-column: 1 / -1; grid-row: 2; }
+}
+
+.skye-layout { align-items: start; display: grid; gap: 28px 32px; grid-template-columns: minmax(0, 1fr) 360px; }
+.skye-layout__intro { display: flex; flex-direction: column; gap: 12px; grid-column: 1; grid-row: 1; }
+.skye-layout__aside { display: flex; flex-direction: column; gap: 20px; grid-column: 2; grid-row: 1 / span 2; }
+.skye-layout__main { display: flex; flex-direction: column; gap: 28px; grid-column: 1; grid-row: 2; min-width: 0; }
+@media (max-width: 991px) {
+  .skye-layout { grid-template-columns: minmax(0, 1fr); }
+  .skye-layout__intro, .skye-layout__aside, .skye-layout__main { grid-column: 1; grid-row: auto; }
+}
+
+.skye-place__title { font-size: 44px; letter-spacing: -.02em; line-height: 1.05; }
+@media (max-width: 767px) { .skye-place__title { font-size: 30px; line-height: 1.1; } }
+.skye-summary__gaelic { color: var(--skye-heather); font-style: italic; margin: 0 0 6px; }
+.skye-summary__text { color: var(--skye-muted); font-size: 18px; line-height: 1.5; margin: 0; }
+.skye-place__description, .skye-block p, .skye-block li { color: var(--skye-muted); line-height: 1.6; }
+.skye-place__description p { margin: 0 0 12px; }
+.skye-place__description p:last-child { margin-bottom: 0; }
 
 .skye-block { width: 100%; }
-.skye-block__title { font-size: 2.4rem; line-height: 1.2; margin: 0 0 1.6rem; }
-.skye-facts__list { border-top: 1px solid var(--skye-line); margin: 0; }
-.skye-facts__row { border-bottom: 1px solid var(--skye-line); display: grid; gap: 0.4rem 2.4rem; grid-template-columns: minmax(12.8rem, 19.2rem) 1fr; padding: 1.2rem 0; }
-.skye-facts__row dt { color: var(--skye-muted); font-weight: 600; }
-.skye-facts__row dd { margin: 0; }
-@media (max-width: 478px) { .skye-facts__row { grid-template-columns: 1fr; } }
+.skye-block__title { font-size: 24px; margin: 0 0 12px; }
+@media (max-width: 767px) { .skye-block__title { font-size: 19px; } .skye-summary__text { font-size: 15px; } }
+.skye-block p { margin: 0 0 12px; }
+.skye-block p:last-child { margin-bottom: 0; }
 
+.skye-facts, .skye-tours, .skye-lodging { padding: 24px; }
+.skye-facts__list { margin: 0; }
+.skye-fact { border-top: 1px solid var(--skye-line); display: flex; flex-direction: column; gap: 2px; padding: 12px 0; }
+.skye-fact:last-child { padding-bottom: 0; }
+.skye-fact dt { color: var(--skye-muted); font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.skye-fact dd { font-size: 15px; font-weight: 500; margin: 0; }
+
+.skye-tours { border: 2px solid var(--skye-accent); display: flex; flex-direction: column; gap: 14px; }
+.skye-tours__lead { font-size: 17px; line-height: 1.3; }
+.skye-tours__list, .skye-lodging__list { display: flex; flex-direction: column; font-size: 14px; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.skye-tours__list a, .skye-lodging__list a { font-weight: 500; }
+.skye-lodging__list li { display: flex; flex-direction: column; }
+
+.skye-tips__list { display: grid; gap: 6px; margin: 0; padding-left: 18px; }
 .skye-hours__table { border-collapse: collapse; width: 100%; }
-.skye-hours__table th, .skye-hours__table td { border-bottom: 1px solid var(--skye-line); padding: 0.96rem 0; text-align: left; vertical-align: top; }
-.skye-hours__table th { color: var(--skye-muted); padding-right: 2.4rem; width: 19.2rem; }
+.skye-hours__table th, .skye-hours__table td { border-top: 1px solid var(--skye-line); padding: 10px 0; text-align: left; vertical-align: top; }
+.skye-hours__table th { color: var(--skye-muted); font-weight: 600; padding-right: 24px; width: 40%; }
+.skye-directions__links { align-items: center; display: flex; flex-wrap: wrap; gap: 12px; }
+.skye-directions__coords { color: var(--skye-muted); font-size: 13px; white-space: nowrap; }
 
-.skye-tips__list, .skye-nearby__list, .skye-tours__list { display: grid; gap: 0.96rem; margin: 0; padding-left: 2rem; }
-.skye-nearby__meta { color: var(--skye-muted); font-size: 1.5rem; }
-.skye-nearby__subtitle { font-size: 1.8rem; margin: 2.4rem 0 1.2rem; }
-.skye-block a { color: var(--skye-accent); text-decoration: underline; text-underline-offset: .15em; }
-.skye-block a:hover { color: var(--skye-accent-dark); }
-a.skye-button { background: var(--skye-accent); border-radius: 8px; color: #fff; display: inline-block; font-weight: 600; padding: 1.04rem 1.76rem; text-decoration: none; }
-a.skye-button:hover { background: var(--skye-accent-dark); color: #fff; }
-.skye-directions__coords { color: var(--skye-muted); font-size: 1.4rem; margin-left: 1.2rem; white-space: nowrap; }
-.skye-tours { background: var(--skye-bg); border-left: 4px solid var(--skye-heather); border-radius: 0 8px 8px 0; padding: 2rem 2.4rem; }
+.skye-nearby__grid { display: grid; gap: 16px; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; margin: 0; padding: 0; }
+.skye-mini { color: inherit; display: block; height: 100%; text-decoration: none; }
+a.skye-mini:hover { border-color: var(--skye-accent); color: inherit; }
+.skye-mini__photo { background: #C9D6D2; height: 120px; }
+.skye-mini__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-mini__body { display: flex; flex-direction: column; gap: 2px; padding: 14px; }
+.skye-mini__body strong { color: var(--skye-ink); line-height: 1.3; }
+.skye-mini__meta { color: var(--skye-muted); font-size: 13px; }
+@media (max-width: 767px) {
+  .skye-nearby__grid { display: flex; margin: 0 -20px; overflow-x: auto; padding: 0 20px 4px; scroll-padding-left: 20px; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .skye-nearby__grid::-webkit-scrollbar { display: none; }
+  .skye-nearby__grid li { flex: 0 0 170px; scroll-snap-align: start; }
+  .skye-mini__photo { height: 100px; }
+}
 
-.skye-verification { border-top: 1px solid var(--skye-line); color: var(--skye-muted); font-size: 1.5rem; margin: 0; padding-top: 1.6rem; width: 100%; }
-.skye-verification--verified::before { content: "✓ "; color: var(--skye-accent); font-weight: 700; }
+.skye-verification { border-top: 1px solid var(--skye-line); color: var(--skye-muted); font-size: 14px; margin: 0; padding-top: 16px; width: 100%; }
+.skye-verification--verified::before { color: var(--skye-accent); content: "✓ "; font-weight: 700; }

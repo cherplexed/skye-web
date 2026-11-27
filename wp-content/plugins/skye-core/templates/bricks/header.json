@@ -1,0 +1,35 @@
+{
+  "slug": "skye-header",
+  "title": "Skye: Header",
+  "type": "header",
+  "conditions": [
+    {
+      "main": "any"
+    }
+  ],
+  "elements": [
+    {
+      "id": "skhd01",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "skhd02"
+      ],
+      "settings": {
+        "_cssClasses": "skye-chrome",
+        "tag": "div"
+      },
+      "label": "Header"
+    },
+    {
+      "id": "skhd02",
+      "name": "shortcode",
+      "parent": "skhd01",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_header]"
+      },
+      "label": "Header"
+    }
+  ]
+}

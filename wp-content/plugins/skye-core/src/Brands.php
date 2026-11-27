@@ -49,7 +49,7 @@ final class Brands {
 				'id'                => $p->ID,
 				'uuid'              => Uuid::get( $p->ID ),
 				'slug'              => $p->post_name,
-				'title'             => get_the_title( $p ),
+				'title'             => Text::title( $p ),
 				'domain'            => (string) Meta::get( $p->ID, 'domain', '' ),
 				'markets'           => (string) Meta::get( $p->ID, 'markets', '' ),
 				'tour_language'     => (string) Meta::get( $p->ID, 'tour_language', 'en' ),

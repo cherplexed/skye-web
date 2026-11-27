@@ -58,7 +58,7 @@ final class Geo {
 				'id'            => (int) $id,
 				'uuid'          => Uuid::get( (int) $id ),
 				'slug'          => get_post_field( 'post_name', $id ),
-				'title'         => get_the_title( $id ),
+				'title'         => Text::title( $id ),
 				'type'          => $post_type,
 				'distance_km'   => round( $d, 1 ),
 				'drive_minutes' => self::drive_minutes_estimate( $d ),
