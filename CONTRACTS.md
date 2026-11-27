@@ -85,6 +85,8 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 
 `skye_zone`, `skye_category`, `skye_profile`, `skye_suitability`. Traducibles, con slug fijo por idioma.
 
+**Directorio de lugares.** `/places/` lista todos los lugares agrupados por zona; cada zona tiene su página en `/zone/{slug}/`, con la descripción del término como entradilla. La zona va siempre en la ruta; `category` y `profile` son parámetros (`/zone/trotternish/?category=hike`), con los mismos nombres y slugs que en la API. Las vistas con parámetros llevan `noindex, follow`: solo el directorio y las páginas de zona son canónicas. Un filtro solo ofrece opciones que dan al menos un resultado. Ambas páginas publican un `ItemList` en JSON-LD.
+
 ## 9. Unidades, moneda y mercados
 
 | Mercado | Distancia | Altitud | Combustible | Temp. | Moneda | Marca |

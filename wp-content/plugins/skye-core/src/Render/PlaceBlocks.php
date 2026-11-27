@@ -42,7 +42,7 @@ final class PlaceBlocks {
 		$item  = static fn( string $label, ?string $url ): string => $url ? sprintf( '<a href="%s">%s</a>', Html::e( $url ), Html::e( $label ) ) : Html::e( $label );
 		$trail = [ $item( Html::t( 'Home' ), $links['home'] ?? null ), $item( Html::t( 'What to see' ), $links['places'] ?? null ) ];
 		if ( ! empty( $p['zone']['name'] ) ) {
-			$trail[] = Html::e( $p['zone']['name'] );
+			$trail[] = $item( (string) $p['zone']['name'], $links['zone'] ?? null );
 		}
 		$trail[] = '<span aria-current="page">' . Html::e( $p['title'] ?? '' ) . '</span>';
 		return '<nav class="skye-breadcrumb" aria-label="' . Html::e( Html::t( 'Breadcrumb' ) ) . '">' . implode( ' <span aria-hidden="true">›</span> ', $trail ) . '</nav>';

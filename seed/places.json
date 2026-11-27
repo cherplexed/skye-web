@@ -2212,7 +2212,7 @@
    "suitable_for": [
     "children"
    ],
-   "motorhome_parking": "yes_length_limit",
+   "motorhome_parking": "no",
    "overnight_allowed": false,
    "services_nearby": [
     "cafe",
