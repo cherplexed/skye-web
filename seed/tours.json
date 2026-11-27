@@ -1,130 +1,277 @@
 {
-  "_note": "Taken from the public tour pages of viajarporescocia.com on 26 Nov 2026 (same itinerary for the three brands) plus the Bókun product IDs provided by Sergio. Still unverified. Known gaps: (1) every stop named on the tour pages now has a Place, except Spean Bridge and Dornie on the 2-day tour, which are only named in the day's summary; (2) the 3-day tour is seeded with its peak-season day on Skye; from mid-October to late March that day is Sligachan, Fairy Pools, Portree, Fairy Glen, Quiraing, Kilt Rock and the Storr, and the model has no seasonal itineraries yet; (3) there is also a Glasgow departure sold as a separate product; (4) Loch Ness Bus has no booking pages yet, so its offer links to the brand's home page.",
-  "tours": [
+ "_note": "Taken from the public tour pages of viajarporescocia.com on 26 Nov 2026 (same itinerary for the three brands) plus the Bókun product IDs provided by Sergio. Still unverified. Known gaps: (1) every stop named on the tour pages now has a Place, except Spean Bridge and Dornie on the 2-day tour, which are only named in the day's summary; (2) the 3-day tour is seeded with its peak-season day on Skye; from mid-October to late March that day is Sligachan, Fairy Pools, Portree, Fairy Glen, Quiraing, Kilt Rock and the Storr, and the model has no seasonal itineraries yet; (3) there is also a Glasgow departure sold as a separate product; (4) Loch Ness Bus has no booking pages yet, so its offer links to the brand's home page.",
+ "tours": [
+  {
+   "slug": "isle-of-skye-3-day-tour",
+   "title": "Isle of Skye and the Highlands, 3 days from Edinburgh",
+   "summary": "Three days from Edinburgh with a driver-guide: Glencoe and Eilean Donan on the way, a full day on Skye, and Loch Ness and Inverness on the way back.",
+   "product_code": "SK3D",
+   "days_count": 3,
+   "nights_count": 2,
+   "departure_city": "edinburgh",
+   "includes_audioguide": true,
+   "days": [
     {
-      "slug": "isle-of-skye-3-day-tour",
-      "title": "Isle of Skye and the Highlands, 3 days from Edinburgh",
-      "summary": "Three days from Edinburgh with a driver-guide: Glencoe and Eilean Donan on the way, a full day on Skye, and Loch Ness and Inverness on the way back.",
-      "product_code": "SK3D",
-      "days_count": 3,
-      "nights_count": 2,
-      "departure_city": "edinburgh",
-      "includes_audioguide": true,
-      "days": [
-        {
-          "title": "Edinburgh to Skye through Glencoe",
-          "summary": "Stirling, Callander and Loch Lubnaig on the way north, then Glencoe, the Glenfinnan viaduct, lunch in Fort William, the Loch Garry viewpoint and Eilean Donan Castle before crossing to Skye. Night in or near Kyleakin.",
-          "stops": [
-            "stirling",
-            "callander",
-            "loch-lubnaig",
-            "glencoe",
-            "glenfinnan",
-            "fort-william",
-            "loch-garry-viewpoint",
-            "eilean-donan-castle",
-            "kyleakin"
-          ]
-        },
-        {
-          "title": "A full day on Skye",
-          "summary": "Dunvegan Castle, free time and lunch in Portree, then the Trotternish peninsula: the Quiraing, Kilt Rock and the Old Man of Storr. Night in or near Kyleakin.",
-          "stops": [
-            "dunvegan-castle",
-            "portree",
-            "quiraing",
-            "kilt-rock-and-mealt-falls",
-            "old-man-of-storr"
-          ]
-        },
-        {
-          "title": "Eilean Donan, Loch Ness and back to Edinburgh",
-          "summary": "Eilean Donan Castle and the Five Sisters of Kintail, Loch Ness with an optional cruise and Urquhart Castle, lunch in Inverness, and south to Edinburgh.",
-          "stops": [
-            "eilean-donan-castle",
-            "five-sisters-of-kintail",
-            "loch-ness-urquhart-castle",
-            "inverness",
-            "pitlochry"
-          ]
-        }
-      ],
-      "products": [
-        {
-          "brand": "viajar-por-escocia",
-          "bokun_product_id": "60870",
-          "fallback_booking_url": "https://viajarporescocia.com/tour/isla-skye/"
-        },
-        {
-          "brand": "scozia-tour",
-          "bokun_product_id": "154317",
-          "fallback_booking_url": "https://scoziatour.com/tour/isola-skye/"
-        },
-        {
-          "brand": "loch-ness-bus",
-          "bokun_product_id": "318823",
-          "fallback_booking_url": ""
-        }
-      ],
-      "departure_time": "07:30",
-      "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
-      "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Accommodation only if you book one of the packages that include it.",
-      "excludes": "Accommodation in the tour-only option. Entry to Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle. Meals. Travel insurance."
+     "title": "Edinburgh to Skye through Glencoe",
+     "summary": "North past Stirling to a first break at Kilmahog, by Callander; then Loch Tulla, Glencoe and the Three Sisters, lunch in Fort William, the Glenfinnan viaduct and a first view of Eilean Donan before crossing to Skye. Night in or near Kyleakin.",
+     "stops": [
+      {
+       "place": "callander",
+       "title": "Kilmahog, by Callander",
+       "stop_type": "break",
+       "duration_min": 45,
+       "note": "Coffee and toilets at the edge of the Highlands."
+      },
+      {
+       "title": "Loch Tulla viewpoint",
+       "stop_type": "photo",
+       "duration_min": 15,
+       "note": "On the climb to Rannoch Moor."
+      },
+      {
+       "place": "glencoe",
+       "title": "Glencoe: Three Sisters viewpoint",
+       "stop_type": "photo",
+       "duration_min": 15
+      },
+      {
+       "place": "fort-william",
+       "stop_type": "free_time",
+       "duration_min": 95,
+       "note": "Lunch on your own."
+      },
+      {
+       "place": "glenfinnan",
+       "stop_type": "visit",
+       "duration_min": 30,
+       "note": "The viaduct viewpoint and the monument."
+      },
+      {
+       "place": "eilean-donan-castle",
+       "title": "Eilean Donan Castle, from Dornie",
+       "stop_type": "photo",
+       "duration_min": 10,
+       "note": "A first look from across the water; the visit is on day three. Not made when the group travels by full-size coach."
+      },
+      {
+       "place": "kyleakin",
+       "stop_type": "overnight",
+       "note": "Arrival around 18:00."
+      }
+     ]
     },
     {
-      "slug": "isle-of-skye-2-day-tour",
-      "title": "Isle of Skye and the Highlands, 2 days from Edinburgh",
-      "summary": "Two days from Edinburgh with a driver-guide: Eilean Donan, Sligachan and Portree on day one; Kilt Rock, the Storr, Loch Ness and Inverness on day two.",
-      "product_code": "SK2D",
-      "days_count": 2,
-      "nights_count": 1,
-      "departure_city": "edinburgh",
-      "includes_audioguide": true,
-      "days": [
-        {
-          "title": "Edinburgh to Portree",
-          "summary": "Dunkeld and Spean Bridge on the way north, a lunch stop at Eilean Donan Castle, then over the Skye Bridge to Sligachan and the Cuillin, and on to Portree.",
-          "stops": [
-            "dunkeld",
-            "eilean-donan-castle",
-            "sligachan",
-            "portree"
-          ]
-        },
-        {
-          "title": "Trotternish, Loch Ness and back to Edinburgh",
-          "summary": "Lealt Falls, Kilt Rock and the Old Man of Storr in the morning, then Dornie, Urquhart Castle on Loch Ness, Inverness and Pitlochry. Back in Edinburgh around 20:00–21:00.",
-          "stops": [
-            "lealt-falls",
-            "kilt-rock-and-mealt-falls",
-            "old-man-of-storr",
-            "loch-ness-urquhart-castle",
-            "inverness",
-            "pitlochry"
-          ]
-        }
-      ],
-      "products": [
-        {
-          "brand": "viajar-por-escocia",
-          "bokun_product_id": "910659",
-          "fallback_booking_url": "https://viajarporescocia.com/tour/tour-de-2-dias-a-la-isla-de-skye-y-las-tierras-altas-con-salida-desde-edimburgo/"
-        },
-        {
-          "brand": "scozia-tour",
-          "bokun_product_id": "1092372",
-          "fallback_booking_url": "https://scoziatour.com/tour/tour-di-2-giorni-allisola-di-skye-e-highlands/"
-        },
-        {
-          "brand": "loch-ness-bus",
-          "bokun_product_id": "911390",
-          "fallback_booking_url": ""
-        }
-      ],
-      "departure_time": "07:30",
-      "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
-      "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Entry to Urquhart Castle. Accommodation only if you book one of the packages that include it.",
-      "excludes": "Accommodation in the tour-only option. Entry to other attractions. Loch Ness cruise. Meals. Travel insurance."
+     "title": "A full day on Skye",
+     "summary": "Gesto Bay, Dunvegan Castle, free time and lunch in Portree, and then the Trotternish peninsula: the Old Man of Storr, Lealt Falls, Kilt Rock and the Quiraing. Night in or near Kyleakin.",
+     "stops": [
+      {
+       "title": "Gesto Bay viewpoint",
+       "stop_type": "photo",
+       "duration_min": 15,
+       "note": "Over Loch Harport towards the Cuillin."
+      },
+      {
+       "place": "dunvegan-castle",
+       "stop_type": "visit",
+       "duration_min": 130,
+       "note": "Castle and gardens. Entry not included."
+      },
+      {
+       "place": "portree",
+       "stop_type": "free_time",
+       "duration_min": 90,
+       "note": "Lunch on your own."
+      },
+      {
+       "place": "old-man-of-storr",
+       "stop_type": "visit",
+       "duration_min": 75,
+       "note": "The viewpoint and the lower part of the path."
+      },
+      {
+       "place": "lealt-falls",
+       "stop_type": "photo",
+       "duration_min": 25
+      },
+      {
+       "place": "kilt-rock-and-mealt-falls",
+       "stop_type": "photo",
+       "duration_min": 25
+      },
+      {
+       "place": "quiraing",
+       "stop_type": "photo",
+       "duration_min": 20,
+       "note": "Or Kilmuir graveyard or the Fairy Glen, depending on the vehicle and the conditions."
+      },
+      {
+       "place": "kyleakin",
+       "stop_type": "overnight",
+       "note": "Arrival around 18:45."
+      }
+     ]
+    },
+    {
+     "title": "Eilean Donan, Loch Ness and back to Edinburgh",
+     "summary": "Eilean Donan Castle, the road through Glen Shiel under the Five Sisters of Kintail, Loch Ness with an optional cruise and Urquhart Castle, free time in Inverness and a break in Pitlochry. Back in Edinburgh around 20:00.",
+     "stops": [
+      {
+       "place": "eilean-donan-castle",
+       "stop_type": "visit",
+       "duration_min": 90,
+       "note": "Entry not included."
+      },
+      {
+       "place": "loch-ness-urquhart-castle",
+       "stop_type": "visit",
+       "duration_min": 140,
+       "note": "Urquhart Castle and the cruise are optional and not included. Otherwise, free time and lunch by the loch."
+      },
+      {
+       "place": "inverness",
+       "stop_type": "free_time",
+       "duration_min": 80
+      },
+      {
+       "place": "pitlochry",
+       "stop_type": "break",
+       "duration_min": 30
+      }
+     ]
     }
-  ]
+   ],
+   "products": [
+    {
+     "brand": "viajar-por-escocia",
+     "bokun_product_id": "60870",
+     "fallback_booking_url": "https://viajarporescocia.com/tour/isla-skye/"
+    },
+    {
+     "brand": "scozia-tour",
+     "bokun_product_id": "154317",
+     "fallback_booking_url": "https://scoziatour.com/tour/isola-skye/"
+    },
+    {
+     "brand": "loch-ness-bus",
+     "bokun_product_id": "318823",
+     "fallback_booking_url": ""
+    }
+   ],
+   "departure_time": "07:30",
+   "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
+   "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Accommodation only if you book one of the packages that include it.",
+   "excludes": "Accommodation in the tour-only option. Entry to Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle. Meals. Travel insurance."
+  },
+  {
+   "slug": "isle-of-skye-2-day-tour",
+   "title": "Isle of Skye and the Highlands, 2 days from Edinburgh",
+   "summary": "Two days from Edinburgh with a driver-guide: Eilean Donan, Sligachan, the Storr, Kilt Rock and Portree on day one; Loch Ness and Inverness on day two.",
+   "product_code": "SK2D",
+   "days_count": 2,
+   "nights_count": 1,
+   "departure_city": "edinburgh",
+   "includes_audioguide": true,
+   "days": [
+    {
+     "title": "Edinburgh to Skye: Eilean Donan, Trotternish and Portree",
+     "summary": "A break in Dunkeld and another at Spean Bridge, lunch at Eilean Donan Castle, then over the Skye Bridge to Sligachan, the Old Man of Storr, Lealt Falls and Kilt Rock, and the evening in Portree. Night in or near Kyleakin.",
+     "stops": [
+      {
+       "place": "dunkeld",
+       "stop_type": "break",
+       "duration_min": 30
+      },
+      {
+       "title": "Spean Bridge",
+       "stop_type": "break",
+       "duration_min": 15,
+       "note": "Toilet stop."
+      },
+      {
+       "place": "eilean-donan-castle",
+       "stop_type": "visit",
+       "duration_min": 90,
+       "note": "Lunch on your own and time for the castle. Entry not included."
+      },
+      {
+       "place": "sligachan",
+       "stop_type": "photo",
+       "duration_min": 15
+      },
+      {
+       "place": "old-man-of-storr",
+       "stop_type": "photo",
+       "duration_min": 20,
+       "note": "From the car park, where there are toilets."
+      },
+      {
+       "place": "lealt-falls",
+       "stop_type": "photo",
+       "duration_min": 15
+      },
+      {
+       "place": "kilt-rock-and-mealt-falls",
+       "stop_type": "photo",
+       "duration_min": 15
+      },
+      {
+       "place": "portree",
+       "stop_type": "free_time",
+       "duration_min": 75,
+       "note": "Dinner on your own."
+      },
+      {
+       "place": "kyleakin",
+       "stop_type": "overnight",
+       "note": "Arrival around 20:15."
+      }
+     ]
+    },
+    {
+     "title": "Loch Ness, Inverness and back to Edinburgh",
+     "summary": "Urquhart Castle and Loch Ness with an optional cruise, lunch in Inverness and a break in Pitlochry. Back in Edinburgh around 18:15.",
+     "stops": [
+      {
+       "place": "loch-ness-urquhart-castle",
+       "stop_type": "visit",
+       "duration_min": 115,
+       "note": "Urquhart Castle, with entry included. The cruise to Clansman Harbour is optional."
+      },
+      {
+       "place": "inverness",
+       "stop_type": "free_time",
+       "duration_min": 95,
+       "note": "Lunch on your own."
+      },
+      {
+       "place": "pitlochry",
+       "stop_type": "break",
+       "duration_min": 30
+      }
+     ]
+    }
+   ],
+   "products": [
+    {
+     "brand": "viajar-por-escocia",
+     "bokun_product_id": "910659",
+     "fallback_booking_url": "https://viajarporescocia.com/tour/tour-de-2-dias-a-la-isla-de-skye-y-las-tierras-altas-con-salida-desde-edimburgo/"
+    },
+    {
+     "brand": "scozia-tour",
+     "bokun_product_id": "1092372",
+     "fallback_booking_url": "https://scoziatour.com/tour/tour-di-2-giorni-allisola-di-skye-e-highlands/"
+    },
+    {
+     "brand": "loch-ness-bus",
+     "bokun_product_id": "911390",
+     "fallback_booking_url": ""
+    }
+   ],
+   "departure_time": "07:30",
+   "meeting_point": "190 High Street (Royal Mile), Edinburgh. Be there 15 minutes before departure.",
+   "includes": "Transport in an 8 to 55-seat vehicle. Professional driver-guide. Entry to Urquhart Castle. Accommodation only if you book one of the packages that include it.",
+   "excludes": "Accommodation in the tour-only option. Entry to other attractions. Loch Ness cruise. Meals. Travel insurance."
+  }
+ ]
 }

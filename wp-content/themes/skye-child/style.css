@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.7.0
+Version: 0.8.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -288,3 +288,18 @@ a.skye-placecard:hover { border-color: var(--skye-accent); color: inherit; }
   .skye-zone { margin-top: 32px; }
   .skye-zone__title { font-size: 22px; }
 }
+
+/* ---- Tour itinerary: every stop with its time ---- */
+.skye-tourstops { border-left: 2px solid var(--skye-line); list-style: none; margin: 14px 0 0 6px; padding: 0 0 0 20px; }
+.skye-tourstop { padding: 0 0 14px; position: relative; }
+.skye-tourstop:last-child { padding-bottom: 0; }
+.skye-tourstop::before { background: #fff; border: 2px solid var(--skye-accent); border-radius: 50%; content: ""; height: 10px; left: -27px; position: absolute; top: 6px; width: 10px; }
+.skye-tourstop--overnight::before { background: var(--skye-accent); }
+.skye-tourstop--photo::before, .skye-tourstop--break::before { border-color: var(--skye-muted); }
+.skye-tourstop__head { align-items: baseline; display: flex; flex-wrap: wrap; gap: 2px 12px; justify-content: space-between; }
+.skye-tourstop__name { color: var(--skye-ink); font-weight: 600; }
+.skye-tourstop__name a { color: var(--skye-ink); text-decoration: none; }
+.skye-tourstop__name a:hover { color: var(--skye-accent); text-decoration: underline; }
+.skye-tourstop__meta { color: var(--skye-muted); font-size: 13px; white-space: nowrap; }
+.skye-day p.skye-tourstop__note { color: var(--skye-muted); font-size: 14px; line-height: 1.5; margin: 2px 0 0; }
+.skye-itinerary__small { border-top: 1px solid var(--skye-line); color: var(--skye-muted); font-size: 12px; line-height: 1.5; margin: 16px 0 0; padding-top: 12px; }

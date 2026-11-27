@@ -222,7 +222,17 @@ final class RenderTest extends TestCase {
 			'image'               => null,
 			'days'                => [
 				[ 'title' => 'Edinburgh to Skye', 'summary' => 'Through Glencoe.', 'stops' => [] ],
-				[ 'title' => 'A full day on Skye', 'summary' => '', 'stops' => [ [ 'id' => 1, 'title' => 'Quiraing', 'url' => 'http://x/places/quiraing/' ], [ 'id' => 2, 'title' => 'Kilt Rock' ] ] ],
+				[
+					'title'   => 'A full day on Skye',
+					'summary' => '',
+					'stops'   => [
+						[ 'place' => [ 'id' => 1, 'title' => 'Quiraing', 'url' => 'http://x/places/quiraing/' ], 'title' => '', 'stop_type' => 'photo', 'duration_min' => 20, 'note' => 'Or the Fairy <Glen>.' ],
+						[ 'place' => [ 'id' => 2, 'title' => 'Dunvegan Castle' ], 'title' => 'Dunvegan: castle & gardens', 'stop_type' => 'visit', 'duration_min' => 130, 'note' => '' ],
+						[ 'place' => null, 'title' => 'Gesto Bay viewpoint', 'stop_type' => 'photo', 'duration_min' => 15, 'note' => '' ],
+						[ 'place' => [ 'id' => 3, 'title' => 'Kyleakin' ], 'title' => '', 'stop_type' => 'overnight', 'duration_min' => null, 'note' => '' ],
+						[ 'place' => null, 'title' => '', 'stop_type' => 'visit', 'duration_min' => 10, 'note' => 'nameless stops are not shown' ],
+					],
+				],
 				[ 'title' => '', 'summary' => '', 'stops' => [] ],
 			],
 			'offer'               => [
@@ -265,7 +275,13 @@ final class RenderTest extends TestCase {
 		$it = TourBlocks::itinerary( $t );
 		self::assertSame( 2, substr_count( $it, '<li class="skye-day">' ), 'a day with nothing to say is skipped' );
 		self::assertStringContainsString( '<span class="skye-day__n">Day 2</span> A full day on Skye</h3>', $it );
-		self::assertStringContainsString( '<li><a href="http://x/places/quiraing/">Quiraing</a></li><li>Kilt Rock</li>', $it );
+		self::assertSame( 4, substr_count( $it, '<li class="skye-tourstop ' ), 'every named stop, in order' );
+		self::assertStringContainsString( '<span class="skye-tourstop__name"><a href="http://x/places/quiraing/">Quiraing</a></span><span class="skye-tourstop__meta">Photo stop · 20 min</span></div><p class="skye-tourstop__note">Or the Fairy &lt;Glen&gt;.</p>', $it );
+		self::assertStringContainsString( '<span class="skye-tourstop__name">Dunvegan: castle &amp; gardens</span><span class="skye-tourstop__meta">Visit · 2h 10</span>', $it, 'its own title wins over the name of the place' );
+		self::assertStringContainsString( '<span class="skye-tourstop__name">Gesto Bay viewpoint</span>', $it, 'a stop without a page is plain text' );
+		self::assertStringContainsString( 'skye-tourstop--overnight"><div class="skye-tourstop__head"><span class="skye-tourstop__name">Kyleakin</span><span class="skye-tourstop__meta">Overnight</span>', $it, 'no duration, no dot' );
+		self::assertStringContainsString( '<p class="skye-itinerary__small">The length of each stop is an estimate: it will depend on the weather, the traffic and other factors.</p>', $it );
+		self::assertStringNotContainsString( 'skye-itinerary__small', TourBlocks::itinerary( self::tour( [ 'days' => [ [ 'title' => 'Day', 'summary' => '', 'stops' => [] ] ] ] ) ), 'no small print when no times are shown' );
 
 		$inc = TourBlocks::includes( $t );
 		self::assertStringContainsString( '<li>Transport in a minibus.</li><li>Professional driver-guide.</li><li>Audioguide</li>', $inc );

@@ -96,8 +96,13 @@ final class ApiTest extends TestCase {
 		self::assertNull( $cast( $route['equivalent_tour'], [ 404 ] ) );
 		self::assertNull( $cast( $route['equivalent_tour'], '' ) );
 
-		$days = $cast( $tour['days'], [ [ 'stops' => [ 1, 404, (object) [ 'ID' => 2 ] ] ], 'junk', [] ] );
-		self::assertSame( [ [ 'title' => '', 'summary' => '', 'stops' => [ [ 'id' => 1, 'type' => PostTypes::PLACE ], [ 'id' => 2, 'type' => PostTypes::PLACE ] ] ], [ 'title' => '', 'summary' => '', 'stops' => [] ] ], $days );
+		// A tour day lists its stops as rows: an optional place, a name, the kind of stop and the minutes there.
+		$days = $cast( $tour['days'], [ [ 'stops' => [ [ 'place' => [ 1 ], 'stop_type' => 'photo', 'duration_min' => '15' ], [ 'place' => 404, 'title' => 'Loch Tulla viewpoint', 'stop_type' => 'nonsense' ], 7 ] ], 'junk', [] ] );
+		self::assertCount( 2, $days );
+		self::assertSame( [ 'place' => [ 'id' => 1, 'type' => PostTypes::PLACE ], 'title' => '', 'stop_type' => 'photo', 'duration_min' => 15, 'note' => '' ], $days[0]['stops'][0] );
+		self::assertSame( [ 'place' => null, 'title' => 'Loch Tulla viewpoint', 'stop_type' => 'visit', 'duration_min' => null, 'note' => '' ], $days[0]['stops'][1] );
+		self::assertCount( 2, $days[0]['stops'], 'a stop that is not a row is dropped' );
+		self::assertSame( [ 1, 2, 3 ], \Skye\Api\Places::stop_place_ids( [ [ 'place' => [ 1 ] ], [ 'title' => 'No page' ], [ 'place' => 2 ], 3 ] ), 'rows, and the plain list of places stored before stops had durations' );
 
 		// Nested repeater (route → days → stops) keeps order and casts sub-fields.
 		$out = $cast( $route['days'], [ [ 'stops' => [ [ 'place' => [ 3 ], 'time_hint' => '09:00', 'note' => 'n' ] ], 'night_zone' => 'portree' ] ] );
@@ -127,7 +132,7 @@ final class ApiTest extends TestCase {
 					}
 				} elseif ( 'repeater' === $def['type'] ) {
 					foreach ( $v as $i => $sub ) {
-						$check( $def['sub'], $sub, "$path.$k[$i]" );
+						$check( $def['sub'], $sub, "{$path}.{$k}[{$i}]" );
 					}
 				} elseif ( 'enum' === $def['type'] ) {
 					self::assertArrayHasKey( $v, $def['choices'], "$path.$k" );

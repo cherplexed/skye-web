@@ -208,7 +208,6 @@ return [
 		'Departure' => 'Salida',
 		'%1$s at %2$s' => '%1$s a las %2$s',
 		'Meeting point' => 'Punto de encuentro',
-		'Stops with their own guide' => 'Paradas con guía propia',
 		'Included' => 'Incluido',
 		'Not included' => 'No incluido',
 		'What is included' => 'Qué incluye',
@@ -227,5 +226,10 @@ return [
 		'I have checked this item today (horarios, precios, estado)' => 'He comprobado esta ficha hoy (horarios, precios, estado)',
 		'Change log' => 'Historial de cambios',
 		'Verified' => 'Verificado',
+		'Photo stop' => 'Parada para fotos',
+		'Break' => 'Descanso',
+		'Free time' => 'Tiempo libre',
+		'Overnight' => 'Noche',
+		'The length of each stop is an estimate: it will depend on the weather, the traffic and other factors.' => 'La duración de las paradas del tour es estimada: dependerá del tiempo, del tráfico y de otros factores.',
 	],
 ];
