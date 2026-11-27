@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'SKYE_CORE_VERSION', '0.4.0' );
+define( 'SKYE_CORE_VERSION', '0.5.0' );
 define( 'SKYE_CORE_DIR', __DIR__ );
 define( 'SKYE_CORE_URL', plugin_dir_url( __FILE__ ) );
 

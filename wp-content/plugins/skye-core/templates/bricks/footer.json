@@ -1,0 +1,35 @@
+{
+  "slug": "skye-footer",
+  "title": "Skye: Footer",
+  "type": "footer",
+  "conditions": [
+    {
+      "main": "any"
+    }
+  ],
+  "elements": [
+    {
+      "id": "skft01",
+      "name": "section",
+      "parent": 0,
+      "children": [
+        "skft02"
+      ],
+      "settings": {
+        "_cssClasses": "skye-chrome",
+        "tag": "div"
+      },
+      "label": "Footer"
+    },
+    {
+      "id": "skft02",
+      "name": "shortcode",
+      "parent": "skft01",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_footer]"
+      },
+      "label": "Footer"
+    }
+  ]
+}
