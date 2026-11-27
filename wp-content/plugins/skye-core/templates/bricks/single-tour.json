@@ -169,6 +169,7 @@
         "sktr41",
         "sktr42",
         "sktr45",
+        "sktr46",
         "sktr43",
         "sktr44"
       ],
@@ -225,6 +226,16 @@
       "children": [],
       "settings": {
         "shortcode": "[skye_tour part=\"accommodation\"]"
+      },
+      "label": "Accommodation"
+    },
+    {
+      "id": "sktr46",
+      "name": "shortcode",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"booking\"]"
       },
       "label": "Accommodation"
     }

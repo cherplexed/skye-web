@@ -131,7 +131,8 @@ final class JsonLd {
 					'@type'         => 'Offer',
 					'price'         => round( (float) $offer['price_from'], 2 ),
 					'priceCurrency' => (string) $offer['currency'],
-					'url'           => (string) ( $offer['booking_url'] ?? '' ),
+					// Sold on this page when it carries the booking calendar; otherwise on the operator's site.
+					'url'           => ! empty( $offer['booking_widget'] ) && ! empty( $t['url'] ) ? $t['url'] . '#' . Render\TourBlocks::BOOKING_ID : (string) ( $offer['booking_url'] ?? '' ),
 					'seller'        => $brand,
 				]
 			);

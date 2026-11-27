@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.6 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.7 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -61,7 +61,7 @@ Versión 1.6 (27 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es l
 | Scozia Tour | scoziatour.com | it | it |
 | Loch Ness Bus | lochnessbus.com | `*` (todos los demás) | en |
 
-Campos: `title`, `domain`, `markets` (texto: códigos separados por comas; `*` = comodín), `tour_language`, `bokun_vendor_id`, `attribution_param`, `ga4_property`, `logo`, `rating`, `review_count`, `operator_legal_name` (TA Scotland Limited).
+Campos: `title`, `domain`, `markets` (texto: códigos separados por comas; `*` = comodín), `tour_language`, `bokun_vendor_id`, `bokun_channel_uuid` (UUID del canal de reserva de Bókun de ShyPig que vende los productos de esa marca en esta web: un canal por idioma; es público, va en el código del widget), `attribution_param`, `ga4_property`, `logo`, `rating`, `review_count`, `operator_legal_name` (TA Scotland Limited).
 
 Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` contiene el código; si ninguna, la del comodín.
 
@@ -130,11 +130,12 @@ Parámetros comunes: `lang` (código WPML; por defecto el de la petición), `mar
   "brand": { "id": 31, "slug": "loch-ness-bus", "title": "Loch Ness Bus", "domain": "lochnessbus.com", "tour_language": "en" },
   "bokun_product_id": "60870",
   "price_from": 399.2, "currency": "EUR", "next_available": "2026-11-30", "price_stale": false,
-  "booking_url": "https://lochnessbus.com/"
+  "booking_url": "https://lochnessbus.com/",
+  "booking_widget": { "channel_uuid": "bf60449b-9be3-4c80-b568-7d869491a1f4", "product_id": "60870" }
 }
 ```
 
-La marca sale de §3; la moneda pedida a Bókun, de §9. `price_from`, `currency` y `next_available` son `null` si la marca no tiene producto, Bókun no está configurado o no hay salidas. `booking_url` es el `fallback_booking_url` del producto o, si falta, la portada del dominio de la marca, con el `attribution_param` de la marca añadido.
+La marca sale de §3; la moneda pedida a Bókun, de §9. `price_from`, `currency` y `next_available` son `null` si la marca no tiene producto, Bókun no está configurado o no hay salidas. `booking_url` es el `fallback_booking_url` del producto o, si falta, la portada del dominio de la marca, con el `attribution_param` de la marca añadido. `booking_widget` es `null` salvo que la marca tenga `bokun_channel_uuid` válido y producto: entonces la página del tour incrusta el calendario de Bókun (`https://widgets.bokun.io/online-sales/{channel_uuid}/experience-calendar/{product_id}`) en el bloque `[skye_tour part="booking"]`, la reserva y el pago se hacen en esta web y `booking_url` queda solo como alternativa sin JavaScript. Será sustituido por `skye-booking-widget` (issue #33) sin cambiar la plantilla.
 
 Forma de respuesta:
 

@@ -65,7 +65,15 @@ final class ApiTest extends TestCase {
 		self::assertNull( $it['bokun_product_id'] );
 		self::assertSame( 'https://scoziatour.com/', $it['booking_url'] );
 
-		self::assertSame( [ '60870/GBP', '111/EUR' ], $asked );
+		// The widget needs a valid channel on the brand and a product; anything else leaves the plain link.
+		self::assertNull( $es['booking_widget'] );
+		$channel = 'BF60449B-9be3-4c80-b568-7d869491a1f4';
+		$es      = TourOffer::build( [ 'bokun_channel_uuid' => " $channel " ] + self::BRANDS[0], $products, 'es', 'EUR', $price );
+		self::assertSame( [ 'channel_uuid' => strtolower( $channel ), 'product_id' => '111' ], $es['booking_widget'] );
+		self::assertNull( TourOffer::build( [ 'bokun_channel_uuid' => 'x"><script>' ] + self::BRANDS[0], $products, 'es', 'EUR', $price )['booking_widget'] );
+		self::assertNull( TourOffer::build( [ 'bokun_channel_uuid' => $channel ] + self::BRANDS[1], $products, 'it', 'EUR', $price )['booking_widget'] );
+
+		self::assertSame( [ '60870/GBP', '111/EUR', '111/EUR', '111/EUR' ], $asked );
 		self::assertNull( TourOffer::build( null, $products, 'de', 'EUR', $price ) );
 	}
 

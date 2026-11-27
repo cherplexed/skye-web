@@ -271,6 +271,23 @@ final class RenderTest extends TestCase {
 		self::assertSame( '', TourBlocks::offer( self::tour( [ 'offer' => null ] ), 'de' ) );
 	}
 
+	public function test_tour_booking_block_embeds_the_calendar_of_our_channel(): void {
+		self::assertSame( '', TourBlocks::booking( self::tour() ), 'no channel: no block, the card keeps the link to the operator' );
+
+		$t = self::tour( [ 'url' => 'https://skye.test/tours/skye-3-days/' ] );
+		$t['offer']['booking_widget'] = [ 'channel_uuid' => 'bf60449b-9be3-4c80-b568-7d869491a1f4', 'product_id' => '318823' ];
+		$html = TourBlocks::booking( $t );
+		self::assertStringContainsString( '<section class="skye-block skye-booking" id="booking">', $html );
+		self::assertStringContainsString( '<div class="bokunWidget" data-src="https://widgets.bokun.io/online-sales/bf60449b-9be3-4c80-b568-7d869491a1f4/experience-calendar/318823"></div>', $html );
+		self::assertStringContainsString( 'BokunWidgetsLoader.js?bookingChannelUUID=bf60449b-9be3-4c80-b568-7d869491a1f4" async></script>', $html );
+		self::assertStringContainsString( '<noscript><p class="skye-booking__fallback">The booking calendar needs JavaScript. <a href="https://lochnessbus.com/" rel="noopener">', $html );
+
+		$card = TourBlocks::offer( $t, 'de' );
+		self::assertStringContainsString( '<a class="skye-btn skye-btn--primary" href="#booking">See dates and book</a>', $card );
+		self::assertStringContainsString( 'Operated by Loch Ness Bus. You book and pay on this site.', $card );
+		self::assertStringContainsString( 'href="https://skye.test/tours/skye-3-days/#booking"', TourBlocks::card( $t, 'de' ) );
+	}
+
 	public function test_tour_itinerary_includes_and_departure(): void {
 		$t  = self::tour();
 		$it = TourBlocks::itinerary( $t );
