@@ -50,7 +50,13 @@ final class Serializer {
 			if ( ! $full && in_array( $def['type'], self::HEAVY, true ) ) {
 				continue;
 			}
-			$out[ $name ] = self::cast( $def, Meta::get( $p->ID, $name ), [ self::class, 'ref' ], [ PlaceSerializer::class, 'image_by_id' ] );
+			$raw = Meta::get( $p->ID, $name );
+			if ( 'gallery' === $def['type'] && ! $raw ) {
+				// Photos are uploaded once, to the default-language item: a translation shows its original's.
+				$original = \Skye\Lang::original_post( $p->ID, $p->post_type );
+				$raw      = $original !== $p->ID ? Meta::get( $original, $name ) : $raw;
+			}
+			$out[ $name ] = self::cast( $def, $raw, [ self::class, 'ref' ], [ PlaceSerializer::class, 'image_by_id' ] );
 		}
 		return $out;
 	}

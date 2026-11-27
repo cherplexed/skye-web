@@ -41,13 +41,9 @@ final class TourBlocks {
 		return '<nav class="skye-breadcrumb" aria-label="' . Html::e( Html::t( 'Breadcrumb' ) ) . '">' . implode( ' <span aria-hidden="true">›</span> ', $trail ) . '</nav>';
 	}
 
+	/** Cover plus up to two photos of the tour's gallery, laid out like a Place: one large, two small. */
 	public static function cover( array $t ): string {
-		$img = $t['image'] ?? null;
-		if ( ! $img ) {
-			return '';
-		}
-		$html = ! empty( $img['html'] ) ? (string) $img['html'] : sprintf( '<img src="%s" alt="%s" loading="eager" decoding="async">', Html::e( $img['url'] ?? '' ), Html::e( $img['alt'] ?? '' ) );
-		return '<div class="skye-gallery skye-gallery--1"><figure class="skye-gallery__item">' . $html . '</figure></div>';
+		return PlaceBlocks::gallery( $t );
 	}
 
 	/** "3 days · 2 nights" */
@@ -168,13 +164,20 @@ final class TourBlocks {
 		if ( $minutes > 0 ) {
 			$meta[] = Units::format_duration( $minutes );
 		}
-		$note = trim( (string) ( $stop['note'] ?? '' ) );
+		$note  = trim( (string) ( $stop['note'] ?? '' ) );
+		$img   = is_array( $place['image'] ?? null ) ? $place['image'] : null;
+		$photo = '';
+		if ( $img ) {
+			$photo = ! empty( $img['html'] ) ? (string) $img['html'] : sprintf( '<img src="%s" alt="%s" loading="lazy" decoding="async">', Html::e( $img['url'] ?? '' ), Html::e( $img['alt'] ?? '' ) );
+			$photo = '<div class="skye-tourstop__photo">' . $photo . '</div>';
+		}
 		return sprintf(
-			'<li class="skye-tourstop skye-tourstop--%s"><div class="skye-tourstop__head"><span class="skye-tourstop__name">%s</span><span class="skye-tourstop__meta">%s</span></div>%s</li>',
+			'<li class="skye-tourstop skye-tourstop--%s"><div class="skye-tourstop__text"><div class="skye-tourstop__head"><span class="skye-tourstop__name">%s</span><span class="skye-tourstop__meta">%s</span></div>%s</div>%s</li>',
 			Html::e( $type ),
 			$name,
 			Html::e( implode( ' · ', $meta ) ),
-			'' !== $note ? '<p class="skye-tourstop__note">' . Html::e( $note ) . '</p>' : ''
+			'' !== $note ? '<p class="skye-tourstop__note">' . Html::e( $note ) . '</p>' : '',
+			$photo
 		);
 	}
 

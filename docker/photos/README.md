@@ -13,7 +13,7 @@ Una carpeta por ficha, con el identificador (slug) de la ficha como nombre:
 ```
 docker/photos/
   places/old-man-of-storr/01.jpg   ← la primera por orden alfabético es la portada
-  places/old-man-of-storr/02.jpg   ← el resto, la galería (solo los lugares tienen galería)
+  places/old-man-of-storr/02.jpg   ← el resto, la galería (lugares y tours)
   routes/trotternish-loop/01.jpg
   tours/isle-of-skye-3-day-tour/01.jpg
   photos.csv                       ← opcional: texto alternativo y crédito

@@ -19,6 +19,13 @@ final class JsonLd {
 			self::emit( self::item_list( (string) $view['title'], $view['places'] ) );
 			return;
 		}
+		if ( is_singular( PostTypes::TOUR ) ) {
+			$post = get_queried_object();
+			if ( $post instanceof \WP_Post ) {
+				self::emit( self::tour( Frontend::tour_view( $post ) ) );
+			}
+			return;
+		}
 		if ( ! is_singular( PostTypes::PLACE ) ) {
 			return;
 		}
@@ -76,6 +83,64 @@ final class JsonLd {
 				$items
 			),
 		];
+	}
+
+	/**
+	 * TouristTrip for a tour: the stops that have their own page as its itinerary, and an Offer only
+	 * when Bókun gave a price (a tour stores none).
+	 *
+	 * @return array<string, mixed>
+	 */
+	public static function tour( array $t ): array {
+		$ld = [
+			'@context' => 'https://schema.org',
+			'@type'    => 'TouristTrip',
+			'name'     => (string) ( $t['title'] ?? '' ),
+			'url'      => (string) ( $t['url'] ?? '' ),
+		];
+		if ( ! empty( $t['summary'] ) ) {
+			$ld['description'] = (string) $t['summary'];
+		}
+		if ( ! empty( $t['image']['url'] ) ) {
+			$ld['image'] = (string) $t['image']['url'];
+		}
+		$stops = [];
+		$seen  = [];
+		foreach ( $t['days'] ?? [] as $day ) {
+			foreach ( $day['stops'] ?? [] as $stop ) {
+				$place = is_array( $stop['place'] ?? null ) ? $stop['place'] : [];
+				$id    = (int) ( $place['id'] ?? 0 );
+				if ( ! $id || isset( $seen[ $id ] ) || empty( $place['url'] ) ) {
+					continue; // A place visited twice is one attraction of the trip.
+				}
+				$seen[ $id ] = true;
+				$stops[]     = [ '@type' => 'ListItem', 'position' => count( $stops ) + 1, 'item' => [ '@type' => 'TouristAttraction', 'name' => (string) ( $place['title'] ?? '' ), 'url' => (string) $place['url'] ] ];
+			}
+		}
+		if ( $stops ) {
+			$ld['itinerary'] = [ '@type' => 'ItemList', 'numberOfItems' => count( $stops ), 'itemListElement' => $stops ];
+		}
+		$offer = is_array( $t['offer'] ?? null ) ? $t['offer'] : [];
+		$brand = ! empty( $offer['brand']['title'] ) ? [ '@type' => 'Organization', 'name' => (string) $offer['brand']['title'] ] : null;
+		if ( $brand ) {
+			$ld['provider'] = $brand;
+		}
+		if ( isset( $offer['price_from'] ) && (float) $offer['price_from'] > 0 && ! empty( $offer['currency'] ) ) {
+			$ld['offers'] = array_filter(
+				[
+					'@type'         => 'Offer',
+					'price'         => round( (float) $offer['price_from'], 2 ),
+					'priceCurrency' => (string) $offer['currency'],
+					'url'           => (string) ( $offer['booking_url'] ?? '' ),
+					'seller'        => $brand,
+				]
+			);
+		}
+		$v = $t['verification'] ?? [];
+		if ( ! empty( $v['verified_at'] ) ) {
+			$ld['dateModified'] = (string) ( $v['updated_at'] ?? $v['verified_at'] );
+		}
+		return $ld;
 	}
 
 	/** @return array<string, mixed> TouristAttraction */
