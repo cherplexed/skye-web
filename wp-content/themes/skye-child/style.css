@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.3.1
+Version: 0.4.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -151,3 +151,63 @@ a.skye-mini:hover { border-color: var(--skye-accent); color: inherit; }
 
 .skye-verification { border-top: 1px solid var(--skye-line); color: var(--skye-muted); font-size: 14px; margin: 0; padding-top: 16px; width: 100%; }
 .skye-verification--verified::before { color: var(--skye-accent); content: "✓ "; font-weight: 700; }
+
+/* ---- Tour page and tours listing (templates "Skye: Tour" / "Skye: Tours listing") ---- */
+.skye-offer { border: 2px solid var(--skye-accent); display: flex; flex-direction: column; gap: 12px; padding: 24px; }
+.skye-offer p { margin: 0; }
+.skye-offer__price { align-items: baseline; display: flex; flex-wrap: wrap; gap: 6px; }
+.skye-offer__price strong { font-family: Sora, Inter, sans-serif; font-size: 32px; font-weight: 700; line-height: 1; }
+.skye-offer__from, .skye-offer__per, .skye-offer__next, .skye-offer__brand { color: var(--skye-muted); font-size: 14px; }
+.skye-offer__next { color: var(--skye-ink); font-weight: 500; }
+.skye-offer__note { font-size: 14px; line-height: 1.5; }
+.skye-offer__brand { font-size: 13px; line-height: 1.5; }
+
+.skye-days { display: flex; flex-direction: column; gap: 0; list-style: none; margin: 0; padding: 0; }
+.skye-day { border-top: 1px solid var(--skye-line); padding: 16px 0; }
+.skye-day:last-child { padding-bottom: 0; }
+.skye-day__title { font-size: 18px; line-height: 1.3; margin: 0 0 6px; }
+.skye-day__n { color: var(--skye-accent); margin-right: 4px; }
+.skye-day p { margin: 0; }
+.skye-day__stops { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; margin: 10px 0 0; padding: 0; }
+.skye-day__stops li { background: #E6F0F2; border-radius: 999px; font-size: 13px; font-weight: 600; padding: 4px 12px; }
+.skye-day__stops a { color: var(--skye-accent); text-decoration: none; }
+.skye-day__stops a:hover { text-decoration: underline; }
+
+.skye-includes { display: grid; gap: 24px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.skye-includes h3 { font-size: 16px; margin: 0 0 8px; }
+.skye-includes ul { display: grid; gap: 6px; list-style: none; margin: 0; padding: 0; }
+.skye-includes li { padding-left: 24px; position: relative; }
+.skye-includes li::before { font-weight: 700; left: 0; position: absolute; }
+.skye-includes__yes li::before { color: var(--skye-accent); content: "✓"; }
+.skye-includes__no li::before { color: var(--skye-muted); content: "–"; }
+@media (max-width: 767px) { .skye-includes { grid-template-columns: 1fr; } }
+
+.skye-listing { padding: 56px 0 72px; }
+.skye-listing__intro { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+.skye-listing__title { font-size: 48px; letter-spacing: -.02em; line-height: 1.05; max-width: 760px; }
+.skye-listing__lead { color: var(--skye-muted); font-size: 18px; line-height: 1.5; margin: 0; max-width: 720px; }
+.skye-tourcards { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }
+.skye-tourcard { display: flex; flex-direction: column; }
+.skye-tourcard--featured { border: 2px solid var(--skye-accent); }
+.skye-tourcard__photo { background: #C9D6D2; height: 260px; }
+.skye-tourcard__photo img { display: block; height: 100%; object-fit: cover; width: 100%; }
+.skye-tourcard__body { display: flex; flex: 1; flex-direction: column; gap: 16px; padding: 28px; }
+.skye-tourcard__head { align-items: flex-start; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; }
+.skye-tourcard__head h2 { font-size: 24px; line-height: 1.2; }
+.skye-tourcard__meta { color: var(--skye-muted); font-size: 14px; }
+.skye-tourcard__price { display: flex; flex-direction: column; text-align: right; }
+.skye-tourcard__price strong { font-family: Sora, Inter, sans-serif; font-size: 26px; font-weight: 700; line-height: 1.1; }
+.skye-tourcard__price span { color: var(--skye-muted); font-size: 13px; }
+.skye-tourcard__summary, .skye-tourcard__note { color: var(--skye-muted); line-height: 1.5; margin: 0; }
+.skye-tourcard__note { font-size: 14px; }
+.skye-tourcard__day { border-top: 1px solid var(--skye-line); display: grid; gap: 12px; grid-template-columns: 56px 1fr; padding: 12px 0; }
+.skye-tourcard__day span { color: var(--skye-muted); line-height: 1.5; }
+.skye-tourcard__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; }
+@media (max-width: 767px) {
+  .skye-listing { padding: 32px 0 48px; }
+  .skye-listing__title { font-size: 30px; line-height: 1.1; }
+  .skye-listing__lead { font-size: 15px; }
+  .skye-tourcard__photo { height: 200px; }
+  .skye-tourcard__body { padding: 20px; }
+  .skye-tourcard__actions .skye-btn { flex: 1 1 100%; }
+}

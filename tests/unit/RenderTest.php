@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
 use Skye\Render\PlaceBlocks;
+use Skye\Render\TourBlocks;
 
 final class RenderTest extends TestCase {
 
@@ -163,12 +164,12 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 3, $files );
+		self::assertCount( 5, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
 			$slugs[] = $t['slug'];
-			self::assertContains( $t['type'], [ 'header', 'footer', 'content' ] );
+			self::assertContains( $t['type'], [ 'header', 'footer', 'content', 'archive' ] );
 			self::assertNotEmpty( $t['conditions'] );
 			$ids = array_column( $t['elements'], 'id' );
 			self::assertSame( $ids, array_unique( $ids ) );
@@ -182,14 +183,14 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|place part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
-					if ( isset( $m[2] ) ) {
-						self::assertContains( $m[2], PlaceBlocks::PARTS );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|(place|tour) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					if ( isset( $m[3] ) ) {
+						self::assertContains( $m[3], 'tour' === $m[2] ? TourBlocks::PARTS : PlaceBlocks::PARTS );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-footer', 'skye-header', 'skye-single-place' ], $slugs );
+		self::assertSame( [ 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-tour' ], $slugs );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {
@@ -199,6 +200,98 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( ' Minginish &amp; Cuillin ', PlaceBlocks::breadcrumb( $p ) );
 		self::assertStringNotContainsString( '&amp;amp;', PlaceBlocks::breadcrumb( $p ) . PlaceBlocks::facts( $p, 'es' ) );
 		self::assertSame( 'Minginish & Cuillin, Isle of Skye', JsonLd::place( $p )['containedInPlace']['name'] );
+	}
+
+	private static function tour( array $over = [] ): array {
+		return $over + [
+			'id'                  => 40,
+			'title'               => 'Skye & the Highlands, 3 days',
+			'url'                 => 'http://x/tours/3/',
+			'summary'             => 'Three days with a guide.',
+			'days_count'          => 3,
+			'nights_count'        => 2,
+			'departure_city'      => 'edinburgh',
+			'departure_time'      => '07:30',
+			'meeting_point'       => '190 High Street (Royal Mile).',
+			'includes'            => "Transport in a minibus. Professional driver-guide.\nAudioguide",
+			'excludes'            => 'Meals. Travel insurance.',
+			'includes_audioguide' => true,
+			'image'               => null,
+			'days'                => [
+				[ 'title' => 'Edinburgh to Skye', 'summary' => 'Through Glencoe.', 'stops' => [] ],
+				[ 'title' => 'A full day on Skye', 'summary' => '', 'stops' => [ [ 'id' => 1, 'title' => 'Quiraing', 'url' => 'http://x/places/quiraing/' ], [ 'id' => 2, 'title' => 'Kilt Rock' ] ] ],
+				[ 'title' => '', 'summary' => '', 'stops' => [] ],
+			],
+			'offer'               => [
+				'market'           => 'de',
+				'brand'            => [ 'id' => 3, 'slug' => 'loch-ness-bus', 'title' => 'Loch Ness Bus', 'domain' => 'lochnessbus.com', 'tour_language' => 'en' ],
+				'bokun_product_id' => '318823',
+				'price_from'       => 283.0,
+				'currency'         => 'EUR',
+				'next_available'   => '2026-11-30',
+				'price_stale'      => false,
+				'booking_url'      => 'https://lochnessbus.com/',
+			],
+			'verification'        => [ 'status' => 'unverified' ],
+		];
+	}
+
+	public function test_tour_offer_card_speaks_the_market(): void {
+		$de = TourBlocks::offer( self::tour(), 'de' );
+		self::assertStringContainsString( '<strong>283 €</strong>', $de );
+		self::assertStringContainsString( 'Next departure: 30 November 2026', $de );
+		self::assertStringContainsString( 'Guided in English. Audioguide in your language included.', $de );
+		self::assertStringContainsString( '<a class="skye-btn skye-btn--primary" href="https://lochnessbus.com/" rel="noopener">See dates and book</a>', $de );
+		self::assertStringContainsString( 'Operated by Loch Ness Bus.', $de );
+
+		$gb = self::tour();
+		$gb['offer'] = [ 'market' => 'en-gb', 'price_from' => 399.2, 'currency' => 'GBP' ] + $gb['offer'];
+		self::assertStringContainsString( '<strong>£399.20</strong>', TourBlocks::offer( $gb, 'en-gb' ) );
+		self::assertStringContainsString( 'Guided in English. Audioguide included.', TourBlocks::offer( $gb, 'en-gb' ), 'same language: no "in your language"' );
+
+		$none = self::tour();
+		$none['offer'] = [ 'price_from' => null, 'currency' => null, 'next_available' => null, 'booking_url' => null ] + $none['offer'];
+		$html          = TourBlocks::offer( $none, 'de' );
+		self::assertStringNotContainsString( 'skye-offer__price', $html, 'no price is shown rather than a made-up one' );
+		self::assertStringNotContainsString( 'skye-btn', $html );
+		self::assertSame( '', TourBlocks::offer( self::tour( [ 'offer' => null ] ), 'de' ) );
+	}
+
+	public function test_tour_itinerary_includes_and_departure(): void {
+		$t  = self::tour();
+		$it = TourBlocks::itinerary( $t );
+		self::assertSame( 2, substr_count( $it, '<li class="skye-day">' ), 'a day with nothing to say is skipped' );
+		self::assertStringContainsString( '<span class="skye-day__n">Day 2</span> A full day on Skye</h3>', $it );
+		self::assertStringContainsString( '<li><a href="http://x/places/quiraing/">Quiraing</a></li><li>Kilt Rock</li>', $it );
+
+		$inc = TourBlocks::includes( $t );
+		self::assertStringContainsString( '<li>Transport in a minibus.</li><li>Professional driver-guide.</li><li>Audioguide</li>', $inc );
+		self::assertStringContainsString( '<h3>Not included</h3><ul class="skye-includes__no"><li>Meals.</li><li>Travel insurance.</li>', $inc );
+		self::assertSame( '', TourBlocks::includes( self::tour( [ 'includes' => '', 'excludes' => '' ] ) ) );
+
+		$dep = TourBlocks::departure( $t );
+		self::assertStringContainsString( '<dt>Departure</dt><dd>Edinburgh at 07:30</dd>', $dep );
+		self::assertStringContainsString( '<dt>Length</dt><dd>3 days · 2 nights</dd>', $dep );
+		self::assertSame( '<span class="skye-eyebrow">From Edinburgh · 3 days · 2 nights</span>', TourBlocks::eyebrow( $t ) );
+		self::assertSame( '1 day', TourBlocks::length( [ 'days_count' => 1, 'nights_count' => 0 ] ) );
+		foreach ( TourBlocks::PARTS as $part ) {
+			self::assertIsString( TourBlocks::render( $part, $t, 'de' ) );
+		}
+		self::assertStringContainsString( 'Skye &amp; the Highlands, 3 days', TourBlocks::breadcrumb( $t ) );
+	}
+
+	public function test_tours_listing_orders_by_length_and_features_the_longest(): void {
+		$two  = self::tour( [ 'title' => 'Two days', 'days_count' => 2, 'nights_count' => 1, 'url' => 'http://x/tours/2/', 'day_titles' => [ 'Up', 'Back' ] ] );
+		$html = TourBlocks::listing( [ self::tour(), $two ], 'de' );
+		self::assertStringContainsString( '<h1 class="skye-listing__title">Isle of Skye tours of 2 and 3 days</h1>', $html );
+		self::assertLessThanOrEqual( strpos( $html, 'Skye &amp; the Highlands, 3 days' ), strpos( $html, 'Two days' ) );
+		self::assertSame( 1, substr_count( $html, 'skye-tourcard--featured' ) );
+		self::assertStringContainsString( '<strong>Day 2</strong><span>Back</span>', $html );
+		self::assertStringContainsString( '<a class="skye-btn skye-btn--outline" href="http://x/tours/2/">Full itinerary</a>', $html );
+		self::assertStringContainsString( '<strong>283 €</strong>', $html );
+
+		self::assertStringNotContainsString( 'featured', TourBlocks::listing( [ $two ], 'de' ), 'a single tour is not "the most complete"' );
+		self::assertStringContainsString( 'No tours are on sale right now.', TourBlocks::listing( [], 'de' ) );
 	}
 
 	public function test_header_and_footer(): void {

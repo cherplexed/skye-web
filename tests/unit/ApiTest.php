@@ -97,7 +97,7 @@ final class ApiTest extends TestCase {
 		self::assertNull( $cast( $route['equivalent_tour'], '' ) );
 
 		$days = $cast( $tour['days'], [ [ 'stops' => [ 1, 404, (object) [ 'ID' => 2 ] ] ], 'junk', [] ] );
-		self::assertSame( [ [ 'stops' => [ [ 'id' => 1, 'type' => PostTypes::PLACE ], [ 'id' => 2, 'type' => PostTypes::PLACE ] ] ], [ 'stops' => [] ] ], $days );
+		self::assertSame( [ [ 'title' => '', 'summary' => '', 'stops' => [ [ 'id' => 1, 'type' => PostTypes::PLACE ], [ 'id' => 2, 'type' => PostTypes::PLACE ] ] ], [ 'title' => '', 'summary' => '', 'stops' => [] ] ], $days );
 
 		// Nested repeater (route → days → stops) keeps order and casts sub-fields.
 		$out = $cast( $route['days'], [ [ 'stops' => [ [ 'place' => [ 3 ], 'time_hint' => '09:00', 'note' => 'n' ] ], 'night_zone' => 'portree' ] ] );

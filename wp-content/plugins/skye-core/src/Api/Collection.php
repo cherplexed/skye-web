@@ -126,6 +126,11 @@ final class Collection {
 		return Router::ok( Router::pick( $item, (string) $r->get_param( 'fields' ) ), [ 'lang' => $lang, 'market' => $market ] );
 	}
 
+	/** The API object of any item handled here, with its computed extras. Shared with the front-end blocks. */
+	public static function item( WP_Post $p, string $market, bool $full = true ): array {
+		return self::decorate( $full ? Serializer::full( $p ) : Serializer::summary( $p ), $p, $market, $full );
+	}
+
 	/** Per-type computed extras: the tour's offer for the market, display strings, nearest places. */
 	private static function decorate( array $item, WP_Post $p, string $market, bool $full ): array {
 		switch ( $p->post_type ) {
@@ -140,6 +145,10 @@ final class Collection {
 					static fn( string $id, string $currency ) => $offers->price_from( $id, $currency )
 				);
 				unset( $item['products'] );
+				if ( ! $full ) {
+					// List view: the outline of each day (title only), enough for a comparison card.
+					$item['day_titles'] = array_values( array_map( static fn( $d ) => is_array( $d ) ? (string) ( $d['title'] ?? '' ) : '', (array) Meta::get( $p->ID, 'days', [] ) ) );
+				}
 				break;
 
 			case PostTypes::ROUTE:

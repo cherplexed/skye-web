@@ -119,7 +119,15 @@ final class Fields {
 			'departure_city'     => [ 'type' => 'enum', 'i18n' => false, 'choices' => [ 'edinburgh' => 'Edinburgh', 'glasgow' => 'Glasgow' ], 'default' => 'edinburgh' ],
 			'departure_time'     => [ 'type' => 'text', 'i18n' => false ],
 			'meeting_point'      => [ 'type' => 'textarea', 'i18n' => true ],
-			'days'               => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'stops' => [ 'type' => 'relation', 'i18n' => false, 'to' => PostTypes::PLACE ] ] ],
+			'days'               => [
+				'type' => 'repeater',
+				'i18n' => true,
+				'sub'  => [
+					'title'   => [ 'type' => 'text', 'i18n' => true ],
+					'summary' => [ 'type' => 'textarea', 'i18n' => true ],
+					'stops'   => [ 'type' => 'relation', 'i18n' => false, 'to' => PostTypes::PLACE ],
+				],
+			],
 			'products'           => [
 				'type' => 'repeater',
 				'i18n' => false,

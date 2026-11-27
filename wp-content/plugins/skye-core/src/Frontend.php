@@ -11,6 +11,8 @@ final class Frontend {
 
 	public static function register(): void {
 		add_shortcode( 'skye_place', [ self::class, 'place_shortcode' ] );
+		add_shortcode( 'skye_tour', [ self::class, 'tour_shortcode' ] );
+		add_shortcode( 'skye_tours', [ self::class, 'tours_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
 		add_action( 'after_setup_theme', static fn() => register_nav_menus( [ 'skye_primary' => __( 'Skye primary navigation', 'skye-core' ) ] ) );
@@ -72,6 +74,55 @@ final class Frontend {
 			$item['nearby_places'][ $i ]['image'] = $img( Api\PlaceSerializer::image_by_id( (int) get_post_thumbnail_id( (int) $n['id'] ) ), '(min-width: 800px) 260px, 60vw' );
 		}
 		return $item;
+	}
+
+	/** Responsive <img> markup (srcset) for an API image object. */
+	private static function picture( ?array $image, string $sizes, bool $eager = false ): ?array {
+		if ( $image && ! empty( $image['id'] ) ) {
+			$image['html'] = wp_get_attachment_image( (int) $image['id'], 'large', false, [ 'sizes' => $sizes, 'loading' => $eager ? 'eager' : 'lazy', 'fetchpriority' => $eager ? 'high' : 'auto', 'decoding' => 'async' ] );
+		}
+		return $image;
+	}
+
+	/** A tour's API object for this page view, with site links, stop links and image markup. */
+	private static function tour_item( \WP_Post $post, string $market, bool $full ): array {
+		$item           = Api\Collection::item( $post, $market, $full );
+		$item['_links'] = [ 'home' => home_url( '/' ), 'tours' => self::archive( PostTypes::TOUR ) ];
+		$item['image']  = self::picture( $item['image'] ?? null, $full ? '(min-width: 1264px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw', $full );
+		foreach ( $item['days'] ?? [] as $d => $day ) {
+			foreach ( $day['stops'] ?? [] as $i => $stop ) {
+				$item['days'][ $d ]['stops'][ $i ]['url'] = get_permalink( (int) $stop['id'] );
+			}
+		}
+		return $item;
+	}
+
+	/**
+	 * [skye_tour part="offer"]: one block of the current Tour (or of `id`). Parts: see Render\TourBlocks::PARTS.
+	 *
+	 * @param array<string, string>|string $atts
+	 */
+	public static function tour_shortcode( $atts ): string {
+		$atts = shortcode_atts( [ 'part' => 'offer', 'id' => '' ], is_array( $atts ) ? $atts : [], 'skye_tour' );
+		$post = get_post( '' !== $atts['id'] ? (int) $atts['id'] : get_the_ID() );
+		if ( ! $post || PostTypes::TOUR !== $post->post_type || ! in_array( $atts['part'], Render\TourBlocks::PARTS, true ) ) {
+			return '';
+		}
+		[ 'market' => $market ] = self::context();
+		static $items = [];
+		$key = $post->ID . '|' . $market;
+		$items[ $key ] ??= self::tour_item( $post, $market, true );
+		return Render\TourBlocks::render( $atts['part'], $items[ $key ], $market );
+	}
+
+	/** [skye_tours]: the tours listing (intro and one comparison card per published tour). */
+	public static function tours_shortcode(): string {
+		[ 'market' => $market ] = self::context();
+		$tours = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 20, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$tours[] = self::tour_item( $post, $market, false );
+		}
+		return Render\TourBlocks::listing( $tours, $market );
 	}
 
 	/** Main navigation: the "Skye primary" menu when one is assigned, else the archives that exist. */

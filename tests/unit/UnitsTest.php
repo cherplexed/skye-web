@@ -50,4 +50,13 @@ final class UnitsTest extends TestCase {
 		self::assertSame( '2h', Units::format_duration( 120 ) );
 		self::assertSame( '1h 30', Units::format_duration( 90 ) );
 	}
+
+	public function test_money_is_written_the_way_each_market_writes_it(): void {
+		self::assertSame( '£399.20', Units::format_money( 399.2, 'GBP', 'en-gb' ) );
+		self::assertSame( '$1,500', Units::format_money( 1500.0, 'usd', 'en-us' ) );
+		self::assertSame( '283 €', Units::format_money( 283.0, 'EUR', 'es' ) );
+		self::assertSame( '1.234,50 €', Units::format_money( 1234.5, 'EUR', 'de' ) );
+		self::assertSame( 'CHF 100', Units::format_money( 100.0, 'CHF', 'en-gb' ) );
+		self::assertSame( '100 CHF', Units::format_money( 100.0, 'CHF', 'it' ) );
+	}
 }
