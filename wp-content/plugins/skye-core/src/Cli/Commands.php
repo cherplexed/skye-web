@@ -292,6 +292,12 @@ final class Commands {
 		foreach ( $plan['skipped'] as $path ) {
 			WP_CLI::warning( "Ignored (expected <type>/<slug>/<image>): $path" );
 		}
+		if ( $manifest ) {
+			WP_CLI::log( sprintf( '%s: %d row(s), %d matching a photo in the folder.', Photos::MANIFEST, count( $manifest ), count( array_intersect( array_keys( $manifest ), $paths ) ) ) );
+		} else {
+			$others = glob( "$dir/*.csv" ) ?: [];
+			WP_CLI::log( is_file( "$dir/" . Photos::MANIFEST ) ? Photos::MANIFEST . ': found, but it has no usable rows (it needs a header row with a "file" column).' : 'No ' . Photos::MANIFEST . ' in the folder' . ( $others ? ' (found ' . implode( ', ', array_map( 'basename', $others ) ) . ': rename it to ' . Photos::MANIFEST . ')' : '' ) . '.' );
+		}
 		foreach ( array_diff( array_keys( $manifest ), $paths ) as $path ) {
 			WP_CLI::warning( Photos::MANIFEST . " lists a file that is not in the folder: $path" );
 		}
@@ -349,14 +355,26 @@ final class Commands {
 					$id = (int) $id;
 					update_post_meta( $id, '_skye_photo_source', $path );
 					update_post_meta( $id, '_skye_photo_hash', $hash );
+					// WordPress fills the caption from the description embedded in the file (IPTC), if any.
+					update_post_meta( $id, '_skye_embedded_caption', trim( (string) get_post_field( 'post_excerpt', $id ) ) );
 					if ( $old ) {
 						wp_delete_attachment( $old, true );
 					}
 				}
 				// Alt and credit are refreshed on every run, so editing photos.csv is enough to change them.
-				update_post_meta( $id, '_wp_attachment_image_alt', '' !== $info['alt'] ? $info['alt'] : $post->post_title );
+				// Alt: photos.csv, else the description embedded in the file, else the item's title.
+				$embedded = get_post_meta( $id, '_skye_embedded_caption', true );
+				if ( ! metadata_exists( 'post', $id, '_skye_embedded_caption' ) ) {
+					// Uploaded before this meta existed: the caption is still the embedded one unless we set a credit.
+					$caption  = trim( (string) get_post_field( 'post_excerpt', $id ) );
+					$embedded = str_starts_with( $caption, 'Photo: ' ) ? '' : $caption;
+					update_post_meta( $id, '_skye_embedded_caption', $embedded );
+				}
+				$alt = '' !== $info['alt'] ? $info['alt'] : ( '' !== (string) $embedded ? (string) $embedded : $post->post_title );
+				update_post_meta( $id, '_wp_attachment_image_alt', $alt );
 				update_post_meta( $id, '_skye_credit', $info['credit'] );
-				wp_update_post( [ 'ID' => $id, 'post_excerpt' => '' !== $info['credit'] ? 'Photo: ' . $info['credit'] : '' ] );
+				// The caption shows the credit when there is one; otherwise the embedded description stays.
+				wp_update_post( [ 'ID' => $id, 'post_excerpt' => '' !== $info['credit'] ? 'Photo: ' . $info['credit'] : (string) $embedded ] );
 
 				$ids[] = $id;
 				++$count[ $status ];
