@@ -6,6 +6,7 @@ namespace Skye\Tests;
 use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
+use Skye\Render\Home;
 use Skye\Directory;
 use Skye\Render\PlaceBlocks;
 use Skye\Render\PlaceList;
@@ -167,7 +168,7 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 8, $files );
+		self::assertCount( 9, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
@@ -186,14 +187,14 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|home|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
 					if ( isset( $m[3] ) ) {
 						self::assertContains( $m[3], [ 'place' => PlaceBlocks::PARTS, 'tour' => TourBlocks::PARTS, 'route' => RouteBlocks::PARTS ][ $m[2] ] );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
+		self::assertSame( [ 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-home', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {
@@ -582,5 +583,32 @@ final class RenderTest extends TestCase {
 	public function test_place_breadcrumb_links_to_its_zone_page(): void {
 		$html = PlaceBlocks::breadcrumb( self::place( [ '_links' => [ 'home' => 'http://x/', 'places' => 'http://x/places/', 'zone' => 'http://x/zone/trotternish/' ] ] ) );
 		$this->assertStringContainsString( '<a href="http://x/zone/trotternish/">Trotternish</a>', $html );
+	}
+
+	public function test_home_page_is_built_from_the_content_that_exists(): void {
+		$view = [
+			'links'      => [ 'tours' => 'http://x/tours/', 'places' => 'http://x/places/', 'routes' => 'http://x/routes/' ],
+			'hero_image' => [ 'url' => 'http://x/h.jpg', 'alt' => 'Storr' ],
+			'tours'      => [ self::tour( [ 'title' => 'Two days', 'days_count' => 2, 'url' => 'http://x/tours/2/' ] ), [ 'title' => 'No price', 'days_count' => 3, 'url' => 'http://x/tours/3/' ] ],
+			'routes'     => [ [ 'title' => 'Trotternish <loop>', 'url' => 'http://x/routes/t/' ] ],
+			'zones'      => [ [ 'name' => 'Minginish & Cuillin', 'count' => 6, 'url' => 'http://x/zone/m/', 'intro' => 'The Cuillin.' ], [ 'name' => 'Raasay', 'count' => 1, 'url' => 'http://x/zone/r/', 'intro' => '' ] ],
+			'profiles'   => [ [ 'name' => 'Whisky', 'count' => 2, 'url' => 'http://x/places/?profile=whisky' ] ],
+			'places'     => [ self::directory_places()[1] ],
+		];
+		$html = Home::page( $view, 'de' );
+		self::assertSame( 1, substr_count( $html, '<h1' ) );
+		self::assertStringContainsString( '<img src="http://x/h.jpg" alt="Storr" loading="eager"', $html );
+		self::assertStringContainsString( '<a class="skye-chip" href="http://x/tours/2/">2 days · from 283 €</a>', $html, 'the price Bókun gave, in the market' );
+		self::assertStringContainsString( '<a class="skye-chip" href="http://x/tours/3/">3 days</a>', $html, 'no price, no "from"' );
+		self::assertStringContainsString( '<a class="skye-chip" href="http://x/routes/t/">Trotternish &lt;loop&gt;</a>', $html );
+		self::assertStringContainsString( '<strong>Minginish &amp; Cuillin</strong><span class="skye-zonecard__count">6 places</span><span class="skye-zonecard__intro">The Cuillin.</span>', $html );
+		self::assertStringContainsString( '<strong>Raasay</strong><span class="skye-zonecard__count">1 place</span></a>', $html );
+		self::assertStringContainsString( 'href="http://x/places/?profile=whisky">Whisky <span class="skye-filter__count">2</span>', $html );
+		self::assertStringContainsString( '<h3 class="skye-placecard__title">Quiraing</h3>', $html );
+
+		$empty = Home::page( [ 'links' => [], 'hero_image' => null, 'tours' => [], 'routes' => [], 'zones' => [], 'profiles' => [], 'places' => [] ], 'en-gb' );
+		self::assertStringContainsString( '<h1', $empty );
+		self::assertStringNotContainsString( 'skye-home__section', $empty, 'a section with nothing to show is left out' );
+		self::assertStringNotContainsString( 'skye-btn', $empty );
 	}
 }

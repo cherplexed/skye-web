@@ -16,6 +16,7 @@ final class Frontend {
 		add_shortcode( 'skye_route', [ self::class, 'route_shortcode' ] );
 		add_shortcode( 'skye_routes', [ self::class, 'routes_shortcode' ] );
 		add_shortcode( 'skye_places', [ self::class, 'places_shortcode' ] );
+		add_shortcode( 'skye_home', [ self::class, 'home_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
 		add_filter( 'wp_robots', [ self::class, 'robots' ] );
@@ -223,6 +224,85 @@ final class Frontend {
 		return $out;
 	}
 
+	/** Every published place of the language being viewed, as a summary with its photo. Built once per request. */
+	private static function all_places(): array {
+		static $places = null;
+		if ( null === $places ) {
+			[ 'lang' => $lang, 'market' => $market ] = self::context();
+			$places = [];
+			foreach ( get_posts( [ 'post_type' => PostTypes::PLACE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 500, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+				$p          = Api\PlaceSerializer::summary( $post, $lang, $market );
+				$p['image'] = self::picture( $p['image'] ?? null, '(min-width: 1100px) 380px, (min-width: 700px) 50vw, 100vw' );
+				$places[]   = $p;
+			}
+		}
+		return $places;
+	}
+
+	/** Slugs of the places shown on the home page, in order. Change the list with the `skye_home_places` filter. */
+	public const HOME_PLACES = [ 'old-man-of-storr', 'quiraing', 'fairy-pools', 'neist-point', 'dunvegan-castle', 'eilean-donan-castle' ];
+
+	/** What the home page shows, all of it taken from content that exists: tours, routes, zones, places. */
+	public static function home_view(): array {
+		[ 'market' => $market ] = self::context();
+		$places = self::all_places();
+		$order  = Taxonomies::terms();
+		$base   = (string) self::archive( PostTypes::PLACE );
+		$none   = [ 'zone' => '', 'category' => '', 'profile' => '' ];
+
+		$tours = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 20, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$tours[] = self::tour_item( $post, $market, false );
+		}
+		usort( $tours, static fn( $a, $b ) => (int) ( $a['days_count'] ?? 0 ) <=> (int) ( $b['days_count'] ?? 0 ) ); // shortest first
+		$routes = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::ROUTE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 50, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
+			$routes[] = self::route_item( $post, $market, false );
+		}
+
+		$zones = [];
+		foreach ( Directory::options( $places, $none, 'zone', $order[ Taxonomies::ZONE ] ) as $z ) {
+			$id      = Lang::term_id( Taxonomies::ZONE, $z['slug'] );
+			$term    = $id ? get_term( $id, Taxonomies::ZONE ) : null;
+			$url     = self::zone_url( $z['slug'] );
+			$zones[] = [ 'name' => $z['name'], 'count' => $z['count'], 'url' => $url ?? $base, 'intro' => $term instanceof \WP_Term ? trim( wp_strip_all_tags( $term->description ) ) : '' ];
+		}
+		$profiles = [];
+		foreach ( Directory::options( $places, $none, 'profile', $order[ Taxonomies::PROFILE ] ) as $p ) {
+			$profiles[] = [ 'name' => $p['name'], 'count' => $p['count'], 'url' => (string) add_query_arg( 'profile', $p['slug'], $base ) ];
+		}
+
+		$by_slug  = array_column( $places, null, 'slug' );
+		$featured = [];
+		foreach ( (array) apply_filters( 'skye_home_places', self::HOME_PLACES ) as $slug ) {
+			if ( isset( $by_slug[ $slug ] ) ) {
+				$featured[] = $by_slug[ $slug ];
+			}
+		}
+		$hero = null;
+		foreach ( array_merge( $featured, $tours ) as $item ) {
+			if ( ! empty( $item['image']['id'] ) ) {
+				$hero = self::picture( Api\PlaceSerializer::image_by_id( (int) $item['image']['id'] ), '(min-width: 992px) 560px, 100vw', true );
+				break;
+			}
+		}
+		return [
+			'links'      => [ 'tours' => self::archive( PostTypes::TOUR ), 'places' => self::archive( PostTypes::PLACE ), 'routes' => self::archive( PostTypes::ROUTE ) ],
+			'hero_image' => $hero,
+			'tours'      => $tours,
+			'routes'     => $routes,
+			'zones'      => $zones,
+			'profiles'   => $profiles,
+			'places'     => $featured,
+		];
+	}
+
+	/** [skye_home]: the home page. */
+	public static function home_shortcode(): string {
+		[ 'market' => $market ] = self::context();
+		return Render\Home::page( self::home_view(), $market );
+	}
+
 	/**
 	 * Everything the directory (or a zone page) shows: places, groups, filters with their URLs.
 	 * The zone is part of the path (/zone/trotternish/); category and profile are query parameters.
@@ -239,12 +319,7 @@ final class Frontend {
 		$zone   = $term instanceof \WP_Term ? Lang::term_slug( $term ) : '';
 		$active = [ 'zone' => $zone ] + self::requested_filters();
 
-		$places = [];
-		foreach ( get_posts( [ 'post_type' => PostTypes::PLACE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 500, 'orderby' => 'title', 'order' => 'ASC' ] ) as $post ) {
-			$p          = Api\PlaceSerializer::summary( $post, $lang, $market );
-			$p['image'] = self::picture( $p['image'] ?? null, '(min-width: 1100px) 380px, (min-width: 700px) 50vw, 100vw' );
-			$places[]   = $p;
-		}
+		$places = self::all_places();
 
 		$order = Taxonomies::terms();
 		$base  = (string) self::archive( PostTypes::PLACE );
