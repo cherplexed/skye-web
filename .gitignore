@@ -4,6 +4,10 @@ docker/data/
 # Zips de Bricks y WPML descargados de vuestras cuentas (con licencia: no se versionan)
 docker/licensed/*
 !docker/licensed/README.md
+# Fotos originales: pesan y tienen derechos; se suben a WordPress con `wp skye photos import`
+docker/photos/*
+!docker/photos/README.md
+!docker/photos/photos.example.csv
 
 # WordPress core y terceros: se instalan, no se versionan
 wp-content/plugins/*

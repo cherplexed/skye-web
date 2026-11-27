@@ -9,6 +9,7 @@ use Skye\Bokun\Offers;
 use Skye\Bokun\Pricing;
 use Skye\Fields;
 use Skye\Meta;
+use Skye\Photos;
 use Skye\PostTypes;
 use Skye\Taxonomies;
 use Skye\Uuid;
@@ -243,6 +244,133 @@ final class Commands {
 			}
 		}
 		WP_CLI\Utils\format_items( 'table', $rows, [ 'type', 'title', 'status', 'verified_by', 'valid_until' ] );
+	}
+
+	/**
+	 * Uploads the photos in docker/photos/ and attaches them to their items. Safe to repeat.
+	 *
+	 * Layout: <type>/<slug>/<file>, e.g. places/old-man-of-storr/01.jpg. The first file of each item in
+	 * natural order becomes the featured image; the rest become the gallery (Places only). An optional
+	 * photos.csv (file, alt, credit) gives each photo its alt text and credit.
+	 *
+	 * A photo already uploaded is reused; one whose file changed is replaced. Photos removed from the
+	 * folder are detached from the item but stay in the media library.
+	 *
+	 * ## OPTIONS
+	 * <action>
+	 * : import
+	 *
+	 * [--dir=<path>]
+	 * : Photo folder. Default: /photos (docker/photos on the host).
+	 *
+	 * [--dry-run]
+	 * : Show what would happen without uploading anything.
+	 *
+	 * ## EXAMPLES
+	 *     wp skye photos import --dry-run
+	 *     wp skye photos import
+	 */
+	public function photos( array $args, array $assoc ): void {
+		if ( 'import' !== ( $args[0] ?? '' ) ) {
+			WP_CLI::error( 'Usage: wp skye photos import [--dry-run]' );
+		}
+		$dir = rtrim( (string) ( $assoc['dir'] ?? ( is_dir( '/photos' ) ? '/photos' : dirname( SKYE_CORE_DIR, 3 ) . '/docker/photos' ) ), '/' );
+		if ( ! is_dir( $dir ) ) {
+			WP_CLI::error( "Photo folder not found: $dir" );
+		}
+		$dry = isset( $assoc['dry-run'] );
+
+		$paths = [];
+		$it    = new \RecursiveIteratorIterator( new \RecursiveDirectoryIterator( $dir, \FilesystemIterator::SKIP_DOTS ) );
+		foreach ( $it as $file ) {
+			if ( $file->isFile() ) {
+				$paths[] = substr( $file->getPathname(), strlen( $dir ) + 1 );
+			}
+		}
+		$plan     = Photos::plan( $paths );
+		$manifest = is_file( "$dir/" . Photos::MANIFEST ) ? Photos::parse_manifest( (string) file_get_contents( "$dir/" . Photos::MANIFEST ) ) : [];
+		foreach ( $plan['skipped'] as $path ) {
+			WP_CLI::warning( "Ignored (expected <type>/<slug>/<image>): $path" );
+		}
+		foreach ( array_diff( array_keys( $manifest ), $paths ) as $path ) {
+			WP_CLI::warning( Photos::MANIFEST . " lists a file that is not in the folder: $path" );
+		}
+		if ( ! $plan['items'] ) {
+			WP_CLI::success( 'No photos found.' );
+			return;
+		}
+
+		require_once ABSPATH . 'wp-admin/includes/file.php';
+		require_once ABSPATH . 'wp-admin/includes/media.php';
+		require_once ABSPATH . 'wp-admin/includes/image.php';
+
+		$count = [ 'uploaded' => 0, 'replaced' => 0, 'unchanged' => 0, 'failed' => 0 ];
+		foreach ( $plan['items'] as $key => $item ) {
+			$post = get_page_by_path( $item['slug'], OBJECT, $item['post_type'] );
+			if ( ! $post ) {
+				WP_CLI::warning( "$key: no {$item['post_type']} with slug '{$item['slug']}', " . count( $item['files'] ) . ' photo(s) skipped' );
+				continue;
+			}
+			$has_gallery = isset( Fields::for( $item['post_type'] )['gallery'] );
+			$ids         = [];
+			foreach ( $item['files'] as $n => $path ) {
+				$info   = $manifest[ $path ] ?? [ 'alt' => '', 'credit' => '' ];
+				$hash   = (string) md5_file( "$dir/$path" );
+				$found  = get_posts( [ 'post_type' => 'attachment', 'post_status' => 'inherit', 'posts_per_page' => 1, 'fields' => 'ids', 'meta_key' => '_skye_photo_source', 'meta_value' => $path ] );
+				$old    = $found ? (int) $found[0] : 0;
+				$same   = $old && get_post_meta( $old, '_skye_photo_hash', true ) === $hash;
+				$status = $same ? 'unchanged' : ( $old ? 'replaced' : 'uploaded' );
+				$role   = 0 === $n ? 'cover' : ( $has_gallery ? 'gallery' : 'extra, not shown: this type has no gallery' );
+
+				if ( $dry ) {
+					WP_CLI::log( sprintf( '  %-9s %s → %s (%s)', $status, $path, $post->post_title, $role ) );
+					++$count[ $status ];
+					continue;
+				}
+
+				$id = $old;
+				if ( ! $same ) {
+					// media_handle_sideload moves the file, and the photo folder is mounted read-only: work on a copy.
+					$tmp = wp_tempnam( basename( $path ) );
+					if ( ! $tmp || ! copy( "$dir/$path", $tmp ) ) {
+						WP_CLI::warning( "$path: could not be read" );
+						++$count['failed'];
+						continue;
+					}
+					$id = media_handle_sideload( [ 'name' => Photos::upload_name( $item['slug'], $n + 1, $path ), 'tmp_name' => $tmp ], $post->ID, $post->post_title );
+					if ( is_wp_error( $id ) ) {
+						if ( is_file( $tmp ) ) {
+							unlink( $tmp ); // phpcs:ignore WordPress.WP.AlternativeFunctions.unlink_unlink
+						}
+						WP_CLI::warning( "$path: " . $id->get_error_message() );
+						++$count['failed'];
+						continue;
+					}
+					$id = (int) $id;
+					update_post_meta( $id, '_skye_photo_source', $path );
+					update_post_meta( $id, '_skye_photo_hash', $hash );
+					if ( $old ) {
+						wp_delete_attachment( $old, true );
+					}
+				}
+				// Alt and credit are refreshed on every run, so editing photos.csv is enough to change them.
+				update_post_meta( $id, '_wp_attachment_image_alt', '' !== $info['alt'] ? $info['alt'] : $post->post_title );
+				update_post_meta( $id, '_skye_credit', $info['credit'] );
+				wp_update_post( [ 'ID' => $id, 'post_excerpt' => '' !== $info['credit'] ? 'Photo: ' . $info['credit'] : '' ] );
+
+				$ids[] = $id;
+				++$count[ $status ];
+				WP_CLI::log( sprintf( '  %-9s %s → %s (%s, #%d)', $status, $path, $post->post_title, $role, $id ) );
+			}
+			if ( $dry || ! $ids ) {
+				continue;
+			}
+			set_post_thumbnail( $post->ID, $ids[0] );
+			if ( $has_gallery ) {
+				Meta::set( $post->ID, 'gallery', array_slice( $ids, 1 ) );
+			}
+		}
+		WP_CLI::success( sprintf( '%s%d uploaded, %d replaced, %d unchanged, %d failed.', $dry ? 'Dry run: ' : '', $count['uploaded'], $count['replaced'], $count['unchanged'], $count['failed'] ) );
 	}
 
 	/**

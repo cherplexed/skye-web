@@ -74,4 +74,5 @@ services:
       - ../seed:/seed:ro
       - ./scripts:/scripts:ro
       - ./licensed:/vendor-zips:ro
+      - ./photos:/photos:ro
     profiles: ["tools"]
