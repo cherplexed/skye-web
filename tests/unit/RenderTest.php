@@ -226,7 +226,7 @@ final class RenderTest extends TestCase {
 					'title'   => 'A full day on Skye',
 					'summary' => '',
 					'stops'   => [
-						[ 'place' => [ 'id' => 1, 'title' => 'Quiraing', 'url' => 'http://x/places/quiraing/' ], 'title' => '', 'stop_type' => 'photo', 'duration_min' => 20, 'note' => 'Or the Fairy <Glen>.' ],
+						[ 'place' => [ 'id' => 1, 'title' => 'Quiraing', 'url' => 'http://x/places/quiraing/', 'image' => [ 'url' => 'http://x/q.jpg', 'alt' => 'Quiraing cliffs' ] ], 'title' => '', 'stop_type' => 'photo', 'duration_min' => 20, 'note' => 'Or the Fairy <Glen>.' ],
 						[ 'place' => [ 'id' => 2, 'title' => 'Dunvegan Castle' ], 'title' => 'Dunvegan: castle & gardens', 'stop_type' => 'visit', 'duration_min' => 130, 'note' => '' ],
 						[ 'place' => null, 'title' => 'Gesto Bay viewpoint', 'stop_type' => 'photo', 'duration_min' => 15, 'note' => '' ],
 						[ 'place' => [ 'id' => 3, 'title' => 'Kyleakin' ], 'title' => '', 'stop_type' => 'overnight', 'duration_min' => null, 'note' => '' ],
@@ -276,10 +276,10 @@ final class RenderTest extends TestCase {
 		self::assertSame( 2, substr_count( $it, '<li class="skye-day">' ), 'a day with nothing to say is skipped' );
 		self::assertStringContainsString( '<span class="skye-day__n">Day 2</span> A full day on Skye</h3>', $it );
 		self::assertSame( 4, substr_count( $it, '<li class="skye-tourstop ' ), 'every named stop, in order' );
-		self::assertStringContainsString( '<span class="skye-tourstop__name"><a href="http://x/places/quiraing/">Quiraing</a></span><span class="skye-tourstop__meta">Photo stop · 20 min</span></div><p class="skye-tourstop__note">Or the Fairy &lt;Glen&gt;.</p>', $it );
+		self::assertStringContainsString( '<span class="skye-tourstop__name"><a href="http://x/places/quiraing/">Quiraing</a></span><span class="skye-tourstop__meta">Photo stop · 20 min</span></div><p class="skye-tourstop__note">Or the Fairy &lt;Glen&gt;.</p></div><div class="skye-tourstop__photo"><img src="http://x/q.jpg" alt="Quiraing cliffs" loading="lazy" decoding="async"></div></li>', $it );
 		self::assertStringContainsString( '<span class="skye-tourstop__name">Dunvegan: castle &amp; gardens</span><span class="skye-tourstop__meta">Visit · 2h 10</span>', $it, 'its own title wins over the name of the place' );
 		self::assertStringContainsString( '<span class="skye-tourstop__name">Gesto Bay viewpoint</span>', $it, 'a stop without a page is plain text' );
-		self::assertStringContainsString( 'skye-tourstop--overnight"><div class="skye-tourstop__head"><span class="skye-tourstop__name">Kyleakin</span><span class="skye-tourstop__meta">Overnight</span>', $it, 'no duration, no dot' );
+		self::assertStringContainsString( 'skye-tourstop--overnight"><div class="skye-tourstop__text"><div class="skye-tourstop__head"><span class="skye-tourstop__name">Kyleakin</span><span class="skye-tourstop__meta">Overnight</span>', $it, 'no duration, no dot' );
 		self::assertStringContainsString( '<p class="skye-itinerary__small">The length of each stop is an estimate: it will depend on the weather, the traffic and other factors.</p>', $it );
 		self::assertStringNotContainsString( 'skye-itinerary__small', TourBlocks::itinerary( self::tour( [ 'days' => [ [ 'title' => 'Day', 'summary' => '', 'stops' => [] ] ] ] ) ), 'no small print when no times are shown' );
 
@@ -287,6 +287,21 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( '<li>Transport in a minibus.</li><li>Professional driver-guide.</li><li>Audioguide</li>', $inc );
 		self::assertStringContainsString( '<h3>Not included</h3><ul class="skye-includes__no"><li>Meals.</li><li>Travel insurance.</li>', $inc );
 		self::assertSame( '', TourBlocks::includes( self::tour( [ 'includes' => '', 'excludes' => '' ] ) ) );
+
+		self::assertSame( 1, substr_count( $it, 'skye-tourstop__photo' ), 'only stops whose place has a photo show one' );
+
+		$ld = JsonLd::tour( $t + [ 'title' => 'Three days', 'url' => 'http://x/tours/3/', 'summary' => 'S' ] );
+		self::assertSame( 'TouristTrip', $ld['@type'] );
+		self::assertSame( [ 'Quiraing' ], array_map( static fn( $i ) => $i['item']['name'], $ld['itinerary']['itemListElement'] ), 'only stops with a page and a URL' );
+		self::assertSame( [ '@type' => 'Offer', 'price' => 283.0, 'priceCurrency' => 'EUR', 'url' => 'https://lochnessbus.com/', 'seller' => [ '@type' => 'Organization', 'name' => 'Loch Ness Bus' ] ], $ld['offers'] );
+		$no_price = JsonLd::tour( [ 'offer' => [ 'price_from' => null, 'brand' => [ 'title' => 'Loch Ness Bus' ] ] ] + $t );
+		self::assertArrayNotHasKey( 'offers', $no_price, 'no price from Bókun, no offer' );
+		self::assertSame( 'Loch Ness Bus', $no_price['provider']['name'] );
+
+		self::assertSame( '', TourBlocks::cover( $t ) );
+		$cover = TourBlocks::cover( [ 'image' => [ 'url' => 'http://x/a.jpg', 'alt' => 'A' ], 'gallery' => [ [ 'url' => 'http://x/b.jpg', 'alt' => 'B' ], [ 'url' => 'http://x/c.jpg', 'alt' => 'C' ], [ 'url' => 'http://x/d.jpg', 'alt' => 'D' ] ] ] );
+		self::assertStringContainsString( 'skye-gallery--3', $cover, 'cover and two more' );
+		self::assertStringNotContainsString( 'd.jpg', $cover );
 
 		$acc = TourBlocks::accommodation( [ 'accommodation_intro' => 'Two nights.', 'accommodation_options' => [ [ 'name' => 'Tour only', 'description' => 'Book <your> own.' ], [ 'name' => '', 'description' => 'nameless' ] ], 'accommodation_notes' => "Few beds.\nBook early." ] );
 		self::assertStringContainsString( '<h2 class="skye-block__title">Accommodation</h2><p>Two nights.</p>', $acc );

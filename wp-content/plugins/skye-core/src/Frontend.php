@@ -93,15 +93,31 @@ final class Frontend {
 	private static function tour_item( \WP_Post $post, string $market, bool $full ): array {
 		$item           = Api\Collection::item( $post, $market, $full );
 		$item['_links'] = [ 'home' => home_url( '/' ), 'tours' => self::archive( PostTypes::TOUR ) ];
-		$item['image']  = self::picture( $item['image'] ?? null, $full ? '(min-width: 1264px) 1200px, 100vw' : '(min-width: 800px) 600px, 100vw', $full );
+		$several        = $full && ! empty( $item['gallery'] );
+		$item['image']  = self::picture( $item['image'] ?? null, $full ? ( $several ? '(min-width: 1264px) 800px, 100vw' : '(min-width: 1264px) 1200px, 100vw' ) : '(min-width: 800px) 600px, 100vw', $full );
+		foreach ( $item['gallery'] ?? [] as $i => $g ) {
+			$item['gallery'][ $i ] = self::picture( $g, '(min-width: 1264px) 400px, 50vw' );
+		}
 		foreach ( $item['days'] ?? [] as $d => $day ) {
 			foreach ( $day['stops'] ?? [] as $i => $stop ) {
 				if ( ! empty( $stop['place']['id'] ) ) {
-					$item['days'][ $d ]['stops'][ $i ]['place']['url'] = get_permalink( (int) $stop['place']['id'] );
+					$id = (int) $stop['place']['id'];
+					$item['days'][ $d ]['stops'][ $i ]['place']['url'] = get_permalink( $id );
+					// Each stop shows the cover of its place: a photo is uploaded once and appears everywhere.
+					$item['days'][ $d ]['stops'][ $i ]['place']['image'] = self::picture( Api\PlaceSerializer::image_by_id( Lang::thumbnail_id( $id ) ), '120px' );
 				}
 			}
 		}
 		return $item;
+	}
+
+	/** The tour as its page shows it, built once per request: the blocks and the JSON-LD read the same data. */
+	public static function tour_view( \WP_Post $post ): array {
+		static $items = [];
+		[ 'market' => $market ] = self::context();
+		$key = $post->ID . '|' . $market;
+		$items[ $key ] ??= self::tour_item( $post, $market, true );
+		return $items[ $key ];
 	}
 
 	/**
@@ -116,10 +132,7 @@ final class Frontend {
 			return '';
 		}
 		[ 'market' => $market ] = self::context();
-		static $items = [];
-		$key = $post->ID . '|' . $market;
-		$items[ $key ] ??= self::tour_item( $post, $market, true );
-		return Render\TourBlocks::render( $atts['part'], $items[ $key ], $market );
+		return Render\TourBlocks::render( $atts['part'], self::tour_view( $post ), $market );
 	}
 
 	/** [skye_tours]: the tours listing (intro and one comparison card per published tour). */

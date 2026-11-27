@@ -162,6 +162,7 @@ final class Fields {
 					'fallback_booking_url' => [ 'type' => 'url', 'i18n' => false ],
 				],
 			],
+			'gallery'            => [ 'type' => 'gallery', 'i18n' => false ],
 			'rating'             => [ 'type' => 'number', 'i18n' => false ],
 			'review_count'       => [ 'type' => 'number', 'i18n' => false ],
 			'includes_audioguide' => [ 'type' => 'bool', 'i18n' => false ],

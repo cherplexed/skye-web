@@ -388,7 +388,7 @@ final class Commands {
 	 * Uploads the photos in docker/photos/ and attaches them to their items. Safe to repeat.
 	 *
 	 * Layout: <type>/<slug>/<file>, e.g. places/old-man-of-storr/01.jpg. The first file of each item in
-	 * natural order becomes the featured image; the rest become the gallery (Places only). An optional
+	 * natural order becomes the featured image; the rest become the gallery (Places and Tours). An optional
 	 * photos.csv (file, alt, credit) gives each photo its alt text and credit.
 	 *
 	 * A photo already uploaded is reused; one whose file changed is replaced. Photos removed from the
