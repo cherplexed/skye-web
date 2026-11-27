@@ -41,7 +41,7 @@ final class SchemaTest extends TestCase {
 			self::assertLessThanOrEqual( 160, mb_strlen( $p['summary'] ), "{$p['slug']}: summary > 160 chars" );
 			self::assertIsFloat( $p['location']['lat'] );
 		}
-		self::assertCount( 26, $seed['places'] );
+		self::assertCount( 46, $seed['places'] );
 	}
 
 	public function test_acf_json_matches_fields_for_every_type(): void {

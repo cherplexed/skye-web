@@ -1,5 +1,5 @@
 {
- "_note": "26 places. All were written or rewritten on 27 Nov 2026 from the sources listed in each one: official sites for prices, hours and parking, VisitScotland, and the Viajar por Escocia guide. Where a place lists no source (Sligachan, Lealt Falls, Five Sisters of Kintail, Loch Lubnaig), its text comes from general knowledge and has not been checked against anything. Coordinates are approximate. Every place is seeded as unverified and needs a guide's check before publishing.",
+ "_note": "46 places. All were written or rewritten on 27 Nov 2026 from the sources listed in each one: official sites for prices, hours and parking, VisitScotland, and the Viajar por Escocia guide. Where a place lists no source (Sligachan, Lealt Falls, Five Sisters of Kintail, Loch Lubnaig), its text comes from general knowledge and has not been checked against anything. Coordinates are approximate. Every place is seeded as unverified and needs a guide's check before publishing. The 20 places added on 27 Nov 2026 (south, west and north of Skye, and Raasay) were written mostly from general knowledge: only the facts in their listed sources were checked.",
  "places": [
   {
    "slug": "old-man-of-storr",
@@ -2428,6 +2428,1566 @@
     }
    ],
    "sources": []
+  },
+  {
+   "slug": "uig",
+   "title": "Uig",
+   "gaelic_name": null,
+   "summary": "A village round a wide bay on the west of Trotternish: the ferry port for the Outer Hebrides, and the nearest services to the Fairy Glen.",
+   "content": "<p>Uig is a scatter of houses round a deep, sheltered bay, with a long pier where the ferry leaves for Tarbert, on Harris, and Lochmaddy, on North Uist. For most visitors it is a place to pass through on the Trotternish loop, but it is also the last village with a shop, fuel and somewhere to eat before the far north of the peninsula.</p><p>The view is from above. The road from Portree drops to the bay in a wide curve, and the road north climbs out again by a hairpin, with a lay-by that looks back over the pier and the houses.</p><p>Two short outings start here: the Fairy Glen, a couple of kilometres inland, and the falls of the River Rha, a double waterfall in the woods a few minutes' walk from the road at the north end of the village.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "village"
+   ],
+   "profiles": [
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.586,
+    "lng": -6.357
+   },
+   "parking_location": null,
+   "directions": "On the A87, 25 km north-west of Portree, where the road ends at the ferry pier.",
+   "duration_min": 15,
+   "duration_typical": 40,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "If you are not taking the ferry, avoid the pier just before a sailing: it is busy with queuing cars.",
+    "Park in the village for the Fairy Glen if its own car park is full, and walk up."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Where does the ferry from Uig go?",
+     "answer": "To the Outer Hebrides: Tarbert, on the Isle of Harris, and Lochmaddy, on North Uist. Vehicles should be booked ahead, above all in summer."
+    },
+    {
+     "question": "What is there to see in Uig?",
+     "answer": "The bay itself, best seen from the lay-by on the road north, the falls of the River Rha at the north end of the village, and the Fairy Glen, a couple of kilometres inland."
+    },
+    {
+     "question": "How far is Uig from Portree?",
+     "answer": "About 25 km, half an hour by car on the main road."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "an-corran-beach",
+   "title": "An Corran beach",
+   "gaelic_name": null,
+   "summary": "A dark sand beach below the cliffs at Staffin, where dinosaur footprints some 170 million years old show in the rock at low tide.",
+   "content": "<p>An Corran is the beach of Staffin: a curve of dark sand and boulders under basalt cliffs, at the end of a narrow road that drops from the village to the shore and an old slipway.</p><p>What brings people here are the footprints. On a flat bed of rock at the foot of the beach there are tracks left by dinosaurs around 170 million years ago, when this was a warm lagoon. They were found in 2002. Each print has three toes and is about the size of a dinner plate.</p><p>They are hard to find. The rock is covered at high tide, and often by sand and seaweed after a storm, and nothing marks the exact spot. Come at low tide, look on the slabs to the right of the ramp as you face the sea, and be ready not to find them: the beach is worth the stop anyway.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "beach"
+   ],
+   "profiles": [
+    "families",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.636,
+    "lng": -6.203
+   },
+   "parking_location": null,
+   "directions": "In Staffin, take the minor road signed for the slipway and An Corran; small car park by the shore, about 2 km from the main road.",
+   "duration_min": 20,
+   "duration_typical": 45,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Low tide: the footprints are under water for much of the day.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Check a tide table before you go. Without low water there is nothing to see.",
+    "The prints are easiest to make out when the rock is wet and the light is low.",
+    "Do not make casts or chip at the rock: the site is protected."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Where exactly are the dinosaur footprints at An Corran?",
+     "answer": "On a flat slab of rock on the shore, a short way to the right of the slipway as you look out to sea. There is no marker on the spot, and sand or seaweed sometimes covers them."
+    },
+    {
+     "question": "When can you see the footprints?",
+     "answer": "Only around low tide, when the rock is uncovered. Winter storms tend to clear the sand from the slab; in summer they can be buried."
+    },
+    {
+     "question": "How old are the dinosaur footprints on Skye?",
+     "answer": "About 170 million years, from the middle of the Jurassic period. Skye is one of the few places in the world with remains from that time."
+    },
+    {
+     "question": "Is An Corran a good beach for children?",
+     "answer": "Yes for playing on the sand and looking in the rock pools, with the usual care: the rocks are slippery and the water is cold."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "skye-museum-of-island-life",
+   "title": "Skye Museum of Island Life",
+   "gaelic_name": null,
+   "summary": "A group of thatched cottages at Kilmuir that show how islanders lived a century ago, a short walk from the grave of Flora MacDonald.",
+   "content": "<p>On a hillside near the northern tip of Trotternish stands a small township of thatched cottages, kept as they were at the end of the 19th century. The museum opened in 1965, the work of a local crofter, Jonathan MacDonald, who wanted to save a way of life that was disappearing in front of him.</p><p>Each building shows one side of that life: the croft house with its peat fire in the middle of the floor, the smithy, the weaver's house, the barn with its tools. It is a small place and an honest one, and it explains better than any text why so many people left the island.</p><p>A few minutes up the road is Kilmuir graveyard, where Flora MacDonald is buried under a tall Celtic cross. She was the young woman who, in 1746, helped Charles Edward Stuart escape to Skye disguised as her maid.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "museum"
+   ],
+   "profiles": [
+    "history",
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.6603,
+    "lng": -6.369
+   },
+   "parking_location": null,
+   "directions": "On the A855 at Kilmuir, about 11 km north of Uig. Car park at the museum.",
+   "duration_min": 40,
+   "duration_typical": 60,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "Easter to early autumn",
+     "hours": "Open in the daytime; days vary. Check the official site"
+    },
+    {
+     "season": "Winter",
+     "hours": "Closed"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "The museum is open only in season, and not every day of the week: check before making the drive north.",
+    "The graveyard is open at all times and is free.",
+    "It is exposed and windy up here; the cottages are unheated."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "When is the Skye Museum of Island Life open?",
+     "answer": "From Easter to the end of the season in early autumn, during the day. It closes for the winter, and it has traditionally closed on Sundays, so check the museum's own site for the current days and hours."
+    },
+    {
+     "question": "Where is Flora MacDonald buried?",
+     "answer": "In Kilmuir graveyard, a few minutes' walk or a very short drive up the road from the museum. Her grave is marked by a tall cross that can be seen from a distance."
+    },
+    {
+     "question": "Who was Flora MacDonald?",
+     "answer": "A young woman from the islands who, after the defeat of the Jacobites at Culloden in 1746, took the fugitive Prince Charles Edward Stuart by boat to Skye, dressed as her Irish maid. She was arrested and held in London, and was released the following year."
+    },
+    {
+     "question": "How long does the visit take?",
+     "answer": "Between forty minutes and an hour for the cottages, plus a quarter of an hour for the graveyard."
+    }
+   ],
+   "sources": [
+    {
+     "title": "The Skye Museum of Island Life, official site",
+     "url": "https://www.skyemuseum.co.uk"
+    }
+   ]
+  },
+  {
+   "slug": "duntulm-castle",
+   "title": "Duntulm Castle",
+   "gaelic_name": null,
+   "summary": "The ruin of the MacDonalds' old stronghold on a headland at the northern tip of Skye, with a view across the Minch to the Outer Hebrides.",
+   "content": "<p>Duntulm stands on a rocky headland with the sea on three sides, almost at the northern end of Trotternish. It was the seat of the MacDonalds of Sleat in the 17th century, when they held this part of the island, and they left it around 1730 for a new house further south.</p><p>Very little is standing: parts of the walls and a vaulted cellar, at the edge of cliffs that have been taking the castle piece by piece. The ruin is unstable and fenced off, so you look at it from outside. People come for the position more than for the stones, and for the sunset over the islands of Harris and Uist.</p><p>A grass path leads from the roadside to the headland in about ten minutes.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "castle",
+    "viewpoint"
+   ],
+   "profiles": [
+    "history",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.683,
+    "lng": -6.346
+   },
+   "parking_location": null,
+   "directions": "Beside the A855 at Duntulm, about 14 km north of Uig. Park in the lay-by and follow the path across the field.",
+   "duration_min": 15,
+   "duration_typical": 30,
+   "difficulty": "easy",
+   "distance_km": 0.8,
+   "elevation_gain_m": 20,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Evening, for the light on the sea and the islands.",
+   "suitable_for": [
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Stay outside the fence: walls have collapsed in recent years and the cliff edge is undercut.",
+    "The lay-by is small. Do not block the gate."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Can you go inside Duntulm Castle?",
+     "answer": "No. The ruin is unsafe and is fenced off; you can walk around the headland and see it from a few metres away."
+    },
+    {
+     "question": "Who built Duntulm Castle?",
+     "answer": "It was a stronghold of the MacDonalds of Sleat, built on an older fortified site. They lived here in the 17th century and abandoned it around 1730."
+    },
+    {
+     "question": "How long is the walk to Duntulm Castle?",
+     "answer": "About ten minutes each way over grass from the lay-by on the main road. It is muddy after rain."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "brothers-point",
+   "title": "Brother's Point",
+   "gaelic_name": null,
+   "summary": "A grassy headland running out to sea from the east coast of Trotternish, with views of Kilt Rock and far fewer people than the famous stops.",
+   "content": "<p>Rubha nam Brathairean, Brother's Point, is a narrow tongue of grass and rock that juts into the sea below the township of Culnacnoc, between Lealt Falls and Kilt Rock. The name is thought to recall monks who lived here in early Christian times.</p><p>The walk goes down from the road past a ruined building to a stony beach, then out along the headland. It is 3.2 km there and back, with about 130 m of climbing on the return, and takes an hour. On the way out you pass Dun Hasan, a rocky knoll that was once fortified.</p><p>The reward is the view back along the coast, with the cliffs of Kilt Rock to the north. Dinosaur footprints have been found on the shore here too, though they are harder to locate than those at Staffin.</p>",
+   "zone": "trotternish",
+   "categories": [
+    "hike",
+    "viewpoint"
+   ],
+   "profiles": [
+    "hiking",
+    "nature",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.585,
+    "lng": -6.146
+   },
+   "parking_location": {
+    "lat": 57.588,
+    "lng": -6.157
+   },
+   "directions": "On the A855 at Culnacnoc, about 6 km south of Staffin. Small parking area by the road; the path is signed across the road.",
+   "duration_min": 45,
+   "duration_typical": 60,
+   "difficulty": "moderate",
+   "distance_km": 3.2,
+   "elevation_gain_m": 130,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "A dry, clear day: the path is steep and slippery when wet.",
+   "suitable_for": [
+    "dogs"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The last stretch along the crest is narrow, with drops on both sides. Turn back before it if you are not comfortable.",
+    "Parking is very limited. Do not use the passing places or block driveways.",
+    "Close the gates: you cross croft land with sheep."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to Brother's Point?",
+     "answer": "3.2 km there and back, about an hour, with around 130 m of ascent, most of it on the way back up to the road."
+    },
+    {
+     "question": "Is the walk to Brother's Point difficult?",
+     "answer": "It is short but not trivial: the path is steep in places, muddy after rain, and the far end of the headland is narrow and exposed. Proper footwear is needed."
+    },
+    {
+     "question": "Why is it called Brother's Point?",
+     "answer": "The Gaelic name, Rubha nam Brathairean, means the point of the brothers. It is usually taken to refer to a community of monks who settled on the headland many centuries ago."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Cicerone: five of the best short walks on the Isle of Skye",
+     "url": "https://www.cicerone.co.uk/five-of-the-best-short-walks-on-the-isle-of-skye"
+    }
+   ]
+  },
+  {
+   "slug": "coral-beach",
+   "title": "Coral Beach",
+   "gaelic_name": null,
+   "summary": "A white beach and turquoise water north of Dunvegan, made of bleached seaweed instead of coral. An easy walk of 25 minutes each way.",
+   "content": "<p>At Claigan, where the road north of Dunvegan Castle runs out, a track leads over the fields to a beach that looks as if it belonged much further south: white, with shallow water that turns turquoise when the sun is on it.</p><p>It is not coral, and it is not sand either. The beach is made of maerl, a seaweed that grows on the seabed in hard, branching pieces like tiny antlers. When it dies, the sea breaks it up and throws it ashore, and the sun bleaches it white.</p><p>The walk is 3.6 km there and back along a farm track and across pasture, about 25 minutes each way. A small hill at the end of the beach, a five-minute climb, gives the best view of it, with the island of Isay and the Waternish peninsula across the loch.</p>",
+   "zone": "duirinish-waternish",
+   "categories": [
+    "beach",
+    "hike"
+   ],
+   "profiles": [
+    "nature",
+    "families",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.5,
+    "lng": -6.64
+   },
+   "parking_location": {
+    "lat": 57.489,
+    "lng": -6.623
+   },
+   "directions": "From Dunvegan, pass the castle entrance and follow the single-track road to its end at Claigan, about 6 km. Car park at the road end.",
+   "duration_min": 60,
+   "duration_typical": 90,
+   "difficulty": "easy",
+   "distance_km": 3.6,
+   "elevation_gain_m": 40,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Low tide and sunshine, for the colour of the water.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The car park is small and the road is narrow: on a sunny day in summer, go early or late.",
+    "The track crosses fields with cattle and sheep. Keep dogs on a lead.",
+    "Parts of the path are boggy after rain."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Is Coral Beach really made of coral?",
+     "answer": "No. The white pieces are maerl, a hard red seaweed that lives on the seabed. Once dead and washed ashore, it is bleached by the sun and looks like fragments of coral."
+    },
+    {
+     "question": "How long is the walk to Coral Beach?",
+     "answer": "3.6 km there and back, about 25 minutes each way on a track and a grass path. It is easy, but not suitable for pushchairs."
+    },
+    {
+     "question": "Can you swim at Coral Beach?",
+     "answer": "You can, and the water is shallow near the shore, but it is cold all year. There are no lifeguards and no facilities of any kind."
+    },
+    {
+     "question": "Can you combine Coral Beach with Dunvegan Castle?",
+     "answer": "Easily: the car park is about ten minutes' drive beyond the castle entrance, on the same road."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Walkhighlands: Coral Beaches, Claigan",
+     "url": "https://www.walkhighlands.co.uk/skye/coralbeaches.shtml"
+    }
+   ]
+  },
+  {
+   "slug": "stein",
+   "title": "Stein",
+   "gaelic_name": null,
+   "summary": "A single row of white houses on the shore of Loch Bay, on the Waternish peninsula: a planned fishing village of the 1790s with an old inn.",
+   "content": "<p>Stein is one street of whitewashed houses facing west across Loch Bay, on the Waternish peninsula. It was laid out in the 1790s as a fishing station, part of a plan to give the Highlands an industry of their own; the fishery did not last, and the village stayed as small as it was drawn.</p><p>What it has now is its position. The houses look straight into the sunset, with the islands of the loch in front and the hills of the Outer Hebrides behind them on a clear evening. The inn at the end of the row is among the oldest on Skye, and people drive out here for a meal by the water.</p><p>The road goes on up the peninsula to Trumpan, with wide views to the west all the way.</p>",
+   "zone": "duirinish-waternish",
+   "categories": [
+    "village",
+    "restaurant"
+   ],
+   "profiles": [
+    "history",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.516,
+    "lng": -6.573
+   },
+   "parking_location": null,
+   "directions": "From the A850 at the Fairy Bridge, 5 km north-east of Dunvegan, take the B886 for about 7 km; Stein is signed down to the left.",
+   "duration_min": 15,
+   "duration_typical": 45,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Evening, for the sunset over the loch.",
+   "suitable_for": [
+    "children",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "restaurant",
+    "toilets"
+   ],
+   "tips": [
+    "In summer, book if you want to eat: there are few tables and they fill.",
+    "The road along Waternish is single-track. Allow time."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "What is there to do in Stein?",
+     "answer": "Very little, which is the point: walk the shore, watch the light on the loch and eat or have a drink by the water. It combines well with Trumpan Church, further up the same road."
+    },
+    {
+     "question": "How old is the village of Stein?",
+     "answer": "It dates from the 1790s, when it was built as a planned fishing village. The fishing station failed within a few decades."
+    },
+    {
+     "question": "How far is Stein from Dunvegan?",
+     "answer": "About 12 km, twenty minutes by car."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "trumpan-church",
+   "title": "Trumpan Church",
+   "gaelic_name": null,
+   "summary": "A roofless medieval church near the end of Waternish, the scene of a clan massacre in 1578, with a wide view over the Minch.",
+   "content": "<p>The ruin of Trumpan Church stands in its graveyard on a rise above the sea, near the end of the Waternish road. Only the walls are left, without a roof.</p><p>It is remembered for one Sunday in 1578. A party of MacDonalds from Uist landed below, barred the door while the MacLeods of the district were at worship and set fire to the thatch. Tradition says that everyone inside died except one girl, who got out through a window and raised the alarm. The MacLeods of Dunvegan caught the raiders before they could reach their boats and killed them in turn; the bodies were laid under a turf wall that was pushed over on top of them, and the fight is still known as the Battle of the Spoiling of the Dyke.</p><p>In the graveyard there is an old standing stone with a hole in it, the Trial Stone: an accused person who could put a finger into the hole blindfold at the first attempt was held to be telling the truth.</p>",
+   "zone": "duirinish-waternish",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "history"
+   ],
+   "location": {
+    "lat": 57.557,
+    "lng": -6.64
+   },
+   "parking_location": null,
+   "directions": "At the end of the B886 and its continuation up the Waternish peninsula, about 6 km beyond Stein. Small car park beside the graveyard.",
+   "duration_min": 15,
+   "duration_typical": 25,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "A clear evening: the view west is the other reason to come.",
+   "suitable_for": [
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "It is a graveyard still in use. Keep to the paths.",
+    "There is nothing beyond here: no shop, no toilets. The nearest are in Stein and Dunvegan."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "What happened at Trumpan Church?",
+     "answer": "In 1578, MacDonalds from Uist burned the church with a congregation of MacLeods inside. The MacLeods of Dunvegan then destroyed the raiding party on the shore below. It was one of the worst episodes of the long feud between the two clans."
+    },
+    {
+     "question": "What is the Trial Stone at Trumpan?",
+     "answer": "A standing stone in the graveyard with a small hole. By tradition, an accused person was blindfolded and had to put a finger into the hole at the first try to prove their innocence."
+    },
+    {
+     "question": "Is Trumpan Church worth the drive?",
+     "answer": "If the history interests you, or if you want the views of Waternish, yes. As a ruin there is little to see, and it is a long single-track road for that alone."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "talisker-bay",
+   "title": "Talisker Bay",
+   "gaelic_name": null,
+   "summary": "A beach of dark and pale sand between high cliffs on the west coast, with a sea stack and a waterfall. An easy walk of 20 minutes each way.",
+   "content": "<p>Talisker Bay is a wide bite out of the west coast, shut in by cliffs. On the north side a waterfall drops from the top straight to the shore; on the south side a sea stack stands off the point. Between them the beach is a mix of black volcanic sand and paler sand, which the tide draws into patterns, above a bank of grey boulders.</p><p>A track leads there from the end of the public road, past Talisker House and through farmland: about 3.5 km there and back, an hour of easy walking. In 1773 Samuel Johnson and James Boswell stayed at the house on their journey through the Hebrides.</p><p>The bay faces due west, and the sunset here is one of the best on the island. The sand is only uncovered when the tide is out; at high water the sea reaches the stones.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "beach",
+    "hike"
+   ],
+   "profiles": [
+    "nature",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.283,
+    "lng": -6.458
+   },
+   "parking_location": {
+    "lat": 57.287,
+    "lng": -6.44
+   },
+   "directions": "From Carbost take the minor road signed for Talisker, single-track, to its end after about 7 km. A few parking spaces near the road end; the track to the beach is signed.",
+   "duration_min": 50,
+   "duration_typical": 75,
+   "difficulty": "easy",
+   "distance_km": 3.5,
+   "elevation_gain_m": 55,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Low tide towards sunset.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Parking is for a handful of cars. Leave room for others to turn, and never block the farm entrance.",
+    "Check the tide: at high water there is no sand.",
+    "This is not the distillery, which is in Carbost, on the other side of the hill."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to Talisker Bay?",
+     "answer": "About 3.5 km there and back, an hour in all, on a level track. It is easy, and manageable with a sturdy pushchair as far as the top of the beach."
+    },
+    {
+     "question": "Is Talisker Bay where the whisky is made?",
+     "answer": "No. The Talisker distillery is in the village of Carbost, on Loch Harport, about 7 km away by road. The bay only shares the name."
+    },
+    {
+     "question": "Can you swim at Talisker Bay?",
+     "answer": "It is not advisable. The bay is open to the Atlantic, the waves can be heavy and there are currents; it is a beach for walking."
+    },
+    {
+     "question": "Why is the sand black at Talisker Bay?",
+     "answer": "It comes from the dark volcanic rock of this coast, ground down by the sea. It is mixed with lighter sand, and the two do not blend, which is what makes the patterns."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Walkhighlands: walks in Minginish and the Cuillin",
+     "url": "https://www.walkhighlands.co.uk/skye/cuillin.shtml"
+    },
+    {
+     "title": "Isle of Skye guide: Talisker beach walk",
+     "url": "https://www.isleofskye.com/skye-guide/top-ten-skye-walks/talisker-beach"
+    }
+   ]
+  },
+  {
+   "slug": "glenbrittle-beach",
+   "title": "Glenbrittle beach",
+   "gaelic_name": null,
+   "summary": "A wide beach of dark sand at the head of Loch Brittle, right under the Black Cuillin, where the Fairy Pools road ends.",
+   "content": "<p>The road that passes the Fairy Pools goes on down the glen for another few kilometres and ends at the sea, on a broad beach of grey-black sand at the head of Loch Brittle. Behind it, closer than from anywhere else you can drive to, rises the main ridge of the Black Cuillin.</p><p>Glenbrittle is where climbers have based themselves for more than a century, and the paths into the high corries start here. For everyone else it is a quiet place to end the day after the pools: a walk along the sand, or along the shore path on the east side of the loch.</p><p>Beside the beach there is a campsite with a small café and shop, open in season.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "beach"
+   ],
+   "profiles": [
+    "nature",
+    "families",
+    "hiking"
+   ],
+   "location": {
+    "lat": 57.203,
+    "lng": -6.29
+   },
+   "parking_location": null,
+   "directions": "Follow the Glenbrittle road past the Fairy Pools car park to its end, about 5 km further. Park where the road ends, before the campsite.",
+   "duration_min": 20,
+   "duration_typical": 45,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Late afternoon, when the ridge is lit from the west.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "toilets"
+   ],
+   "tips": [
+    "The paths up into the corries are mountain routes. Coire Lagan is a hard half-day; the summits need experience or a guide.",
+    "The café belongs to the campsite and keeps its own season and hours.",
+    "Midges can be fierce here on still summer evenings."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Is Glenbrittle beach worth adding to the Fairy Pools?",
+     "answer": "If you have half an hour, yes: it is ten minutes further down the same road, it is rarely busy, and the view of the Cuillin from the sand is closer and wider than from the pools."
+    },
+    {
+     "question": "Can you swim at Glenbrittle beach?",
+     "answer": "People do. The beach shelves gently and the loch is sheltered, though the water is cold and nobody is on watch."
+    },
+    {
+     "question": "Can you camp at Glenbrittle?",
+     "answer": "There is a campsite behind the beach, open in season. Check its own site for dates and whether you need to book."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "broadford",
+   "title": "Broadford",
+   "gaelic_name": null,
+   "summary": "The second village of Skye, strung along a wide bay 13 km from the bridge: supermarket, fuel and the turning for Elgol and the south.",
+   "content": "<p>Broadford is the first place of any size after the Skye Bridge and the main village of the south of the island. It runs for a long way beside its bay, with the red hills of Beinn na Caillich behind and a view out to the small islands of the Inner Sound.</p><p>It is practical more than pretty: the largest supermarket on this side of Portree, fuel, a hospital, cafés, craft shops and a good choice of places to stay. That makes it the usual alternative to Portree as a base, above all for the south and for anyone arriving late over the bridge.</p><p>Two of the best minor roads of Skye begin here: the one to Elgol, by Loch Slapin and under Blà Bheinn, and, a little to the east, the high road over to Kylerhea.</p>",
+   "zone": "broadford",
+   "categories": [
+    "village",
+    "shop",
+    "fuel",
+    "cafe"
+   ],
+   "profiles": [
+    "families",
+    "rainy-day"
+   ],
+   "location": {
+    "lat": 57.242,
+    "lng": -5.908
+   },
+   "parking_location": null,
+   "directions": "On the A87, 13 km west of the Skye Bridge and 42 km south of Portree. Car parks in the centre, by the bay.",
+   "duration_min": 15,
+   "duration_typical": 40,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "fuel",
+    "toilets"
+   ],
+   "tips": [
+    "Fill the tank here before the roads to Elgol or Kylerhea: there is no fuel on either.",
+    "In summer, book dinner. There are more beds than restaurant tables."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Is Broadford a good base for visiting Skye?",
+     "answer": "For the south of the island, yes: Elgol, Sleat and the bridge are all close. For Trotternish and Dunvegan it adds about forty minutes each way compared with Portree."
+    },
+    {
+     "question": "What is there to see in Broadford?",
+     "answer": "The bay and its shore path, and the roads that start here. The village is mainly useful for shopping, eating and sleeping."
+    },
+    {
+     "question": "How far is Broadford from the Skye Bridge?",
+     "answer": "About 13 km, fifteen minutes by car."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "elgol",
+   "title": "Elgol",
+   "gaelic_name": null,
+   "summary": "A hamlet at the end of a 23 km single-track road, with the finest view of the Cuillin, across the sea, and the boats to Loch Coruisk.",
+   "content": "<p>Elgol is where the road from Broadford gives up: a few houses on a steep slope above a jetty, facing the whole range of the Black Cuillin across Loch Scavaig. Many people who know the island well think this is its best view, and it is right there at the shore, with no walking.</p><p>The drive is part of it. The road is single-track for almost all of its 23 km, by the ruined church of Cill Chriosd, round the head of Loch Slapin under Blà Bheinn and over the moor, and it takes three quarters of an hour each way.</p><p>From the jetty, small boats cross to Loch Coruisk, in the heart of the mountains, passing a colony of seals on the way. Trips run from spring to autumn and range from an hour and a half without landing to a full day ashore.</p>",
+   "zone": "broadford",
+   "categories": [
+    "village",
+    "viewpoint",
+    "wildlife"
+   ],
+   "profiles": [
+    "nature",
+    "instagram",
+    "wildlife"
+   ],
+   "location": {
+    "lat": 57.146,
+    "lng": -6.107
+   },
+   "parking_location": null,
+   "directions": "From Broadford take the B8083, signed for Elgol, to its end: 23 km, almost all single-track. Car park above the jetty; the last descent to the shore is very steep.",
+   "duration_min": 30,
+   "duration_typical": 60,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Late afternoon and evening, when the sun is on the Cuillin.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "toilets"
+   ],
+   "tips": [
+    "Book the boat ahead in summer, and allow an hour for the drive from Broadford so you do not miss it.",
+    "Leave long or low vehicles in the upper car park: the hill down to the jetty is steep and tight.",
+    "There is no fuel after Broadford."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Is the road to Elgol difficult?",
+     "answer": "It is slow more than difficult: 23 km of single-track with passing places, some blind summits and sheep on the road. Allow 45 minutes from Broadford."
+    },
+    {
+     "question": "How do the boat trips from Elgol work?",
+     "answer": "Two companies sail from the jetty to Loch Coruisk between spring and autumn. The standard trip takes about three hours, with an hour and a half ashore; shorter trips do not land, and longer ones leave you there for most of the day. According to the listing we checked, the standard trip costs from £26 for an adult. Sailings depend on the weather."
+    },
+    {
+     "question": "Is Elgol worth it without taking a boat?",
+     "answer": "Yes, for the view of the Cuillin from the shore and for the road itself. Allow half a day from Broadford."
+    },
+    {
+     "question": "What wildlife can you see from Elgol?",
+     "answer": "Seals on almost every boat trip, and often porpoises and sea eagles. Dolphins and minke whales are seen now and then in summer."
+    }
+   ],
+   "sources": [
+    {
+     "title": "VisitScotland: Bella Jane boat trips, Loch Coruisk",
+     "url": "https://www.visitscotland.com/info/tours/loch-coruisk-standard-return-trip-3hrs-df0988df"
+    },
+    {
+     "title": "VisitScotland: Misty Isle Boat Trips",
+     "url": "https://www.visitscotland.com/info/tours/misty-isle-boat-trips-3d7bab4f"
+    }
+   ]
+  },
+  {
+   "slug": "torrin-loch-slapin",
+   "title": "Torrin and Loch Slapin",
+   "gaelic_name": null,
+   "summary": "A crofting village on the Elgol road with the classic view of Blà Bheinn, the great dark mountain that rises straight from Loch Slapin.",
+   "content": "<p>Halfway along the road to Elgol the land opens and Loch Slapin appears, a sea loch with one mountain filling the far side: Blà Bheinn, or Blaven, 928 m of dark rock rising from the shore. It stands apart from the main Cuillin ridge and is often called the most handsome mountain on Skye.</p><p>Torrin is the village on the near shore, a line of crofts with green fields that owe their colour to the limestone underneath. The same rock gives the pale marble that is still quarried just outside the village.</p><p>The stop is for the view. The best points are the shore at Torrin and the head of the loch a little further on, where the road swings round under the mountain.</p>",
+   "zone": "broadford",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "nature",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.213,
+    "lng": -6.023
+   },
+   "parking_location": null,
+   "directions": "On the B8083 from Broadford to Elgol, about 10 km from Broadford. Park in the lay-bys by the loch, clear of the passing places.",
+   "duration_min": 10,
+   "duration_typical": 20,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Morning, with the sun on the face of the mountain, and still days for the reflection.",
+   "suitable_for": [
+    "children",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe"
+   ],
+   "tips": [
+    "Passing places are for passing. Use the lay-bys to stop for photographs.",
+    "The climb of Blà Bheinn starts at the head of the loch and is a serious mountain day."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Which mountain is seen from Torrin?",
+     "answer": "Blà Bheinn, also written Blaven, 928 m high. It belongs to the Cuillin but stands on its own, to the east of the main ridge."
+    },
+    {
+     "question": "Can you walk up Blà Bheinn?",
+     "answer": "Experienced hillwalkers can, in five to seven hours, by a steep, rough path with some easy scrambling near the top. It is not a walk for trainers or for bad weather."
+    },
+    {
+     "question": "Why are the fields at Torrin so green?",
+     "answer": "Because they lie on limestone, which makes better soil than the volcanic rock of most of Skye. The marble quarried nearby is the same rock, altered by heat."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "loch-coruisk",
+   "title": "Loch Coruisk",
+   "gaelic_name": null,
+   "summary": "A freshwater loch walled in by the Black Cuillin, with no road to it: you arrive by boat from Elgol and step ashore in the middle of the mountains.",
+   "content": "<p>Loch Coruisk lies in a basin of bare rock at the centre of the Black Cuillin, shut in on three sides by the highest peaks of the island. No road comes near. A short river, one of the shortest in Britain, carries its water down to the sea in Loch Scavaig.</p><p>Almost everyone comes by boat from Elgol. The crossing takes about three quarters of an hour and stops to look at the seals hauled out on the rocks; from the landing steps it is a few minutes' walk over slabs to the shore of the loch. The usual trip leaves an hour and a half ashore, enough to walk a little way along the bank and sit with the view.</p><p>The place has drawn travellers for two centuries. Walter Scott described it in verse and Turner painted it, and both helped to fix the image of Skye as somewhere wild and remote.</p>",
+   "zone": "minginish-cuillin",
+   "categories": [
+    "viewpoint",
+    "hike",
+    "wildlife"
+   ],
+   "profiles": [
+    "nature",
+    "hiking",
+    "wildlife"
+   ],
+   "location": {
+    "lat": 57.203,
+    "lng": -6.155
+   },
+   "parking_location": {
+    "lat": 57.146,
+    "lng": -6.107
+   },
+   "directions": "By boat from the jetty at Elgol, at the end of the B8083 from Broadford. The trip is booked with the boat companies.",
+   "duration_min": 180,
+   "duration_typical": 240,
+   "difficulty": "easy",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": 26,
+   "opening_hours": [
+    {
+     "season": "April to October",
+     "hours": "Boat trips daily, weather permitting. Check with the boat companies"
+    },
+    {
+     "season": "November to March",
+     "hours": "No regular sailings"
+    }
+   ],
+   "best_time": "A settled day between May and September. Boats do not sail in strong wind.",
+   "suitable_for": [
+    "children"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "Wear boots: the ground at the loch is rock and bog, and wet even in summer.",
+    "Bring food and water. There is nothing at all at Coruisk.",
+    "The walk in from Elgol along the coast crosses the Bad Step, an exposed slab above the sea. It is not a path for the inexperienced."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "How do you get to Loch Coruisk?",
+     "answer": "By boat from Elgol, between spring and autumn. The only alternatives are long, rough walks: from Sligachan through the glen, or along the coast from Elgol, which includes a scramble across an exposed slab known as the Bad Step."
+    },
+    {
+     "question": "How long does the boat trip to Loch Coruisk take?",
+     "answer": "About three hours for the standard trip, of which an hour and a half is spent ashore. There are shorter sailings that do not land and longer ones for walkers."
+    },
+    {
+     "question": "How much does the boat to Loch Coruisk cost?",
+     "answer": "In the listing we checked, the standard three-hour trip was from £26 for an adult and £15 for a child. Prices change with the season and the company, so confirm when you book."
+    },
+    {
+     "question": "Can you walk around Loch Coruisk?",
+     "answer": "Yes, on the longer trips: the circuit of the loch takes three to four hours over rough, wet ground, with a river to cross on stepping stones that are covered after rain."
+    }
+   ],
+   "sources": [
+    {
+     "title": "VisitScotland: Bella Jane boat trips, Loch Coruisk",
+     "url": "https://www.visitscotland.com/info/tours/loch-coruisk-standard-return-trip-3hrs-df0988df"
+    }
+   ]
+  },
+  {
+   "slug": "kylerhea-otter-hide",
+   "title": "Kylerhea otter hide",
+   "gaelic_name": null,
+   "summary": "A wildlife hide above the narrow strait between Skye and the mainland: otters with luck, seals and seabirds almost always. Easy forest walk.",
+   "content": "<p>At Kylerhea the island comes within a few hundred metres of the mainland, and the tide runs through the gap like a river. The moving water brings fish, and the fish bring everything else: otters along the shore, seals, porpoises, and sea eagles overhead.</p><p>Forestry and Land Scotland keeps a hide here, a wooden building with a wall of windows over the strait. A broad gravel track leads to it through the woods from the car park, about a kilometre away, with toilets halfway; the whole circuit is 2.25 km and takes an hour without the waiting.</p><p>The waiting is the visit. Otters are shy and mostly out around the turn of the tide, early and late in the day; some people see one in ten minutes and others not at all. Seals are almost certain.</p>",
+   "zone": "broadford",
+   "categories": [
+    "wildlife",
+    "hike"
+   ],
+   "profiles": [
+    "wildlife",
+    "nature",
+    "families"
+   ],
+   "location": {
+    "lat": 57.236,
+    "lng": -5.667
+   },
+   "parking_location": {
+    "lat": 57.229,
+    "lng": -5.668
+   },
+   "directions": "From the A87, 5 km west of the Skye Bridge, take the minor road signed for Kylerhea: 11 km, single-track, steep and winding. The car park is signed on the left just before the village.",
+   "duration_min": 45,
+   "duration_typical": 75,
+   "difficulty": "easy",
+   "distance_km": 2.25,
+   "elevation_gain_m": 40,
+   "price_type": "paid_parking",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Early morning or evening, around low tide.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "toilets"
+   ],
+   "tips": [
+    "Bring binoculars and be quiet on the last stretch to the hide.",
+    "The road has steep gradients and tight bends. It is not for motorhomes or nervous drivers.",
+    "In summer a small ferry crosses from Kylerhea to Glenelg, on the mainland: a slower, far more scenic way off the island."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "Will you see otters at Kylerhea?",
+     "answer": "Possibly. It is rated one of the best places in Scotland to try, but otters are wild and wary. Your chances are best at dawn or dusk, near low tide, if you are patient and silent."
+    },
+    {
+     "question": "How long is the walk to the otter hide?",
+     "answer": "About a kilometre each way on a wide gravel track, or 2.25 km for the whole loop: an hour in all. The slope is gentle, and manageable with most pushchairs."
+    },
+    {
+     "question": "Is there a charge at Kylerhea?",
+     "answer": "The hide is free. There is a charge for the car park in season; check the sign when you arrive."
+    },
+    {
+     "question": "What is the Glenelg ferry?",
+     "answer": "A small turntable ferry, the last of its kind, that crosses the strait from Kylerhea to Glenelg in a few minutes. It runs in the summer season only and carries a handful of cars."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Forestry and Land Scotland: Kylerhea",
+     "url": "https://www.forestryandland.gov.scot/visit/kylerhea"
+    },
+    {
+     "title": "Forestry and Land Scotland: otters",
+     "url": "https://forestryandland.gov.scot/learn/wildlife/otter"
+    }
+   ]
+  },
+  {
+   "slug": "cill-chriosd",
+   "title": "Cill Chriosd",
+   "gaelic_name": null,
+   "summary": "The ivy-covered ruin of an old parish church and its graveyard, beside the road from Broadford to Elgol, under the Red Cuillin.",
+   "content": "<p>A few kilometres out of Broadford on the Elgol road, a roofless church stands in a walled graveyard beside a reedy loch, with the rounded Red Cuillin behind. This is Cill Chriosd, Christ's Church, for centuries the parish church of the district of Strath.</p><p>The walls that remain date from around the 16th century, on a site that had been used for worship long before, and the church served until the 1840s, when a new one was built in Broadford. The graveyard is older than the building and holds some carved medieval slabs.</p><p>It is a stop of a quarter of an hour, and a good first pause on the way to Elgol.</p>",
+   "zone": "broadford",
+   "categories": [
+    "viewpoint"
+   ],
+   "profiles": [
+    "history"
+   ],
+   "location": {
+    "lat": 57.216,
+    "lng": -5.966
+   },
+   "parking_location": null,
+   "directions": "Beside the B8083, about 4 km south-west of Broadford. Lay-by at the graveyard gate.",
+   "duration_min": 10,
+   "duration_typical": 15,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The ruin is fragile. Do not climb on the walls.",
+    "Loch Cill Chriosd, just beyond, is a good place for water birds in spring."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "What does Cill Chriosd mean?",
+     "answer": "It is Gaelic for Christ's Church. You will also see it written Kilchrist."
+    },
+    {
+     "question": "How old is the church of Cill Chriosd?",
+     "answer": "The ruin is thought to date from the 16th century, replacing an earlier church on the same spot. It went out of use in the 1840s."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "armadale-castle",
+   "title": "Armadale Castle, Gardens and Museum of the Isles",
+   "gaelic_name": null,
+   "summary": "The ruined seat of Clan Donald in 40 acres of gardens and woodland in the south of Skye, with a museum on the history of the Highlands and Islands.",
+   "content": "<p>Armadale was the home of the MacDonalds of Sleat, chiefs of Clan Donald, once the most powerful clan in Scotland. The castle is a roofless shell, a mansion of the early 19th century that was left to decay in the 20th, and it stands in forty acres of gardens and woods above the Sound of Sleat, looking across to the mountains of Knoydart.</p><p>The gardens are the surprise. This is the mildest corner of the island, sheltered and warmed by the sea, and trees grow here that would not survive in the north: tall specimen conifers, ponds, lawns and woodland trails.</p><p>The Museum of the Isles, in a modern building in the grounds, tells the story of the Highlands and Islands through that of the clan, from the Lords of the Isles, who ruled the west coast almost as kings, to the emigrations. There is also a café, a shop and an adventure playground.</p>",
+   "zone": "sleat",
+   "categories": [
+    "castle",
+    "museum"
+   ],
+   "profiles": [
+    "history",
+    "families",
+    "rainy-day",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.069,
+    "lng": -5.897
+   },
+   "parking_location": null,
+   "directions": "On the A851, 25 km south of Broadford and 1 km from the Armadale ferry terminal. Car park at the entrance.",
+   "duration_min": 90,
+   "duration_typical": 150,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "27 March to 1 November 2026",
+     "hours": "Daily 9:30–17:00, last entry 16:30"
+    },
+    {
+     "season": "From 2 November",
+     "hours": "Wednesday to Sunday, shorter hours. Check the official site"
+    }
+   ],
+   "best_time": "May and June, for the gardens.",
+   "suitable_for": [
+    "children",
+    "stroller",
+    "dogs"
+   ],
+   "motorhome_parking": "yes",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "From the Mallaig ferry the entrance is about ten minutes on foot.",
+    "The gardens have unfenced ponds and uneven paths: keep an eye on small children.",
+    "Dogs are welcome in the gardens on a lead, but not in the museum."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "When is Armadale Castle open?",
+     "answer": "In the 2026 season, daily from 27 March, from 9:30 to 17:00, with last entry at 16:30. From 2 November it moves to a winter timetable, Wednesday to Sunday, with shorter hours. Check the official site before you travel: storm damage has closed the gardens at short notice in the past."
+    },
+    {
+     "question": "Can you go inside Armadale Castle?",
+     "answer": "No. The castle is a ruin without a roof and is seen from outside. What you visit are the gardens around it and the museum."
+    },
+    {
+     "question": "What is the Museum of the Isles?",
+     "answer": "A museum in the castle grounds on the history of the Highlands and Islands, told through Clan Donald and the Lords of the Isles. It is included in the ticket."
+    },
+    {
+     "question": "How do you get to Armadale without going over the Skye Bridge?",
+     "answer": "By ferry from Mallaig, on the mainland: the crossing takes about 25 minutes and lands at Armadale, a kilometre from the castle. Mallaig is at the end of the road and the railway from Fort William."
+    },
+    {
+     "question": "How long do you need at Armadale?",
+     "answer": "At least an hour and a half for the gardens and the museum; half a day if you walk the woodland trails."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Armadale Castle, Gardens and Museum: opening times and prices",
+     "url": "https://armadalecastle.com/plan-your-visit/opening-times-prices/"
+    },
+    {
+     "title": "Armadale Castle, Gardens and Museum: plan your visit",
+     "url": "https://www.armadalecastle.com/plan-your-visit"
+    },
+    {
+     "title": "VisitScotland: Armadale Castle, Gardens and Museum",
+     "url": "https://www.visitscotland.com/info/see-do/armadale-castle-gardens-museum-p248481"
+    }
+   ]
+  },
+  {
+   "slug": "isleornsay",
+   "title": "Isleornsay",
+   "gaelic_name": null,
+   "summary": "A tiny harbour village on the east coast of Sleat, with an old inn on the quay and a white lighthouse on the islet offshore.",
+   "content": "<p>Isleornsay, Eilean Iarmain in Gaelic, is a handful of white buildings round a stone quay on the Sound of Sleat. In the 19th century it was a busy herring port and a regular call for the steamers from Glasgow; what is left is the inn, a shop, a gallery and one of the most photographed views of the south of Skye.</p><p>The view is of the lighthouse on the tidal islet of Ornsay, with the mountains of Knoydart and Loch Hourn behind it on the mainland. The light was built in the 1850s by the Stevenson family of engineers.</p><p>The village is also a stronghold of Gaelic: the language is in daily use here, and the signs are in it first.</p>",
+   "zone": "sleat",
+   "categories": [
+    "village",
+    "viewpoint"
+   ],
+   "profiles": [
+    "history",
+    "instagram"
+   ],
+   "location": {
+    "lat": 57.146,
+    "lng": -5.8
+   },
+   "parking_location": null,
+   "directions": "Signed off the A851, 13 km south of the junction with the A87 near Broadford. Park by the quay.",
+   "duration_min": 15,
+   "duration_typical": 40,
+   "difficulty": "none",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "Early morning, when the sun rises over the mainland hills.",
+   "suitable_for": [
+    "children",
+    "dogs",
+    "reduced_mobility"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "restaurant",
+    "shop"
+   ],
+   "tips": [
+    "The islet can be reached on foot at low tide, but the crossing is rough and the tide comes back quickly. Ask locally first.",
+    "It is a short detour from the road to Armadale: easy to combine with the castle or the ferry."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "What is the lighthouse at Isleornsay?",
+     "answer": "Ornsay lighthouse, on a small tidal island just off the village. It dates from the 1850s and is now automatic; it is not open to visitors."
+    },
+    {
+     "question": "Why does Isleornsay have two names?",
+     "answer": "Isleornsay is the English form and Eilean Iarmain the Gaelic one. Both refer to the islet off the shore, and you will see both on signs and maps."
+    },
+    {
+     "question": "Is Isleornsay worth a stop?",
+     "answer": "Yes, for twenty minutes on the quay and the view across the sound, above all if you are already driving to Armadale."
+    }
+   ],
+   "sources": []
+  },
+  {
+   "slug": "point-of-sleat",
+   "title": "Point of Sleat",
+   "gaelic_name": null,
+   "summary": "The southern tip of Skye: a three-hour walk on a rough track to a small lighthouse, with a white sand cove on the way and views of Rum and Eigg.",
+   "content": "<p>Beyond Armadale the road narrows and ends at the last houses of Aird of Sleat. From there a track carries on over moorland to the southernmost point of the island, about four kilometres away, where a small automatic light looks out to the islands of Eigg and Rum.</p><p>It is eight kilometres there and back and takes about three hours. The track is stony and climbs and falls more than the map suggests; the last part, down to the light, is a path over rock and wet ground.</p><p>Most people remember the beach more than the point. A short way off the track, near the end, is Camas Daraich, a small cove of white sand and clear water between rocky arms, as sheltered a place to swim as there is on Skye.</p>",
+   "zone": "sleat",
+   "categories": [
+    "hike",
+    "beach",
+    "viewpoint"
+   ],
+   "profiles": [
+    "hiking",
+    "nature"
+   ],
+   "location": {
+    "lat": 57.018,
+    "lng": -6.018
+   },
+   "parking_location": {
+    "lat": 57.033,
+    "lng": -5.985
+   },
+   "directions": "Follow the A851 through Armadale and on along the single-track road to its end at Aird of Sleat, 7 km further. Small parking area at the road end.",
+   "duration_min": 150,
+   "duration_typical": 180,
+   "difficulty": "moderate",
+   "distance_km": 8.0,
+   "elevation_gain_m": 200,
+   "price_type": "free",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Open access"
+    }
+   ],
+   "best_time": "A clear day: the islands on the horizon are half of the walk.",
+   "suitable_for": [
+    "dogs"
+   ],
+   "motorhome_parking": "no",
+   "overnight_allowed": false,
+   "services_nearby": [],
+   "tips": [
+    "The parking area is beside a working croft. Do not block the gates or the turning space.",
+    "Take the signed path to the right for the beach; go when the tide is out.",
+    "There is no shelter and no water on the route."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "How long is the walk to the Point of Sleat?",
+     "answer": "About 8 km there and back, three hours without long stops. Add an hour if you go down to the beach."
+    },
+    {
+     "question": "Is the walk to the Point of Sleat difficult?",
+     "answer": "It needs stamina more than skill: a rough vehicle track with several climbs, and then a wet, rocky path at the end. Boots are advisable."
+    },
+    {
+     "question": "Is there a beach at the Point of Sleat?",
+     "answer": "Yes: Camas Daraich, a cove of white sand a few minutes off the main track, signed near the last gate. At high tide very little sand is left."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Isle of Skye guide: the Point of Sleat walk",
+     "url": "https://www.isleofskye.com/skye-guide/top-ten-skye-walks/the-point-of-sleat"
+    }
+   ]
+  },
+  {
+   "slug": "raasay",
+   "title": "Isle of Raasay",
+   "gaelic_name": null,
+   "summary": "The long, quiet island facing Portree, 25 minutes by ferry from Sconser: a distillery with a famous view, forest walks and the flat top of Dùn Caan.",
+   "content": "<p>Raasay lies between Skye and the mainland, twenty-three kilometres long and never more than five wide, with about 160 people living on it. The ferry from Sconser takes 25 minutes and lands near the only village, Inverarish, and the big house of the old lairds, Raasay House.</p><p>The island's distillery, opened in 2017, stands a few minutes' walk from the pier and looks straight across the sound to the Cuillin; it runs tours every day, timed to fit the ferry. With a couple of hours you can add a walk through the woods and along the shore near the pier.</p><p>A full day lets you go further: up Dùn Caan, the flat-topped hill that is the island's summit, at 443 m, or north along the single road to Brochel Castle and Calum's Road, three kilometres of track built by one man, Calum MacLeod, with a pick, a shovel and a wheelbarrow over ten years, because the council would not build it.</p>",
+   "zone": "raasay",
+   "categories": [
+    "village",
+    "distillery",
+    "hike"
+   ],
+   "profiles": [
+    "nature",
+    "whisky",
+    "hiking",
+    "history"
+   ],
+   "location": {
+    "lat": 57.351,
+    "lng": -6.079
+   },
+   "parking_location": {
+    "lat": 57.314,
+    "lng": -6.11
+   },
+   "directions": "By ferry from Sconser, on the A87 between Broadford and Sligachan. Car park at the terminal; the village and the distillery are within walking distance of the pier on Raasay.",
+   "duration_min": 240,
+   "duration_typical": 360,
+   "difficulty": "easy",
+   "distance_km": null,
+   "elevation_gain_m": null,
+   "price_type": "ticket",
+   "price_gbp": null,
+   "opening_hours": [
+    {
+     "season": "All year",
+     "hours": "Ferry several times a day. Check the timetable"
+    }
+   ],
+   "best_time": "A dry day from May to September. A day trip without the car is enough for the south of the island.",
+   "suitable_for": [
+    "children",
+    "dogs"
+   ],
+   "motorhome_parking": "yes_length_limit",
+   "overnight_allowed": false,
+   "services_nearby": [
+    "cafe",
+    "restaurant",
+    "shop",
+    "toilets"
+   ],
+   "tips": [
+    "On foot you do not need to book the ferry: buy the ticket on board and be at the slipway ten minutes early.",
+    "If you take the car, book it: the ferry is small.",
+    "Check the time of the last sailing back before you set off on a walk.",
+    "Book the distillery tour ahead in summer."
+   ],
+   "audioguide": {
+    "enabled": false,
+    "stop_number": null,
+    "radius_m": 150
+   },
+   "faq": [
+    {
+     "question": "How do you get to Raasay?",
+     "answer": "By CalMac ferry from Sconser, on Skye. The crossing takes 25 minutes and runs all year, several times a day. Foot passengers just turn up; vehicles should be booked."
+    },
+    {
+     "question": "Do you need a car on Raasay?",
+     "answer": "Not for a day trip to the south of the island: the village, the distillery, Raasay House and several walks are all within reach of the pier on foot. You need a car or a bicycle to reach the north and Calum's Road."
+    },
+    {
+     "question": "Can you visit the Isle of Raasay Distillery?",
+     "answer": "Yes. It offers tours and tastings every day of the year, several times a day, arranged around the ferry times. Booking online is recommended."
+    },
+    {
+     "question": "How long is the walk up Dùn Caan?",
+     "answer": "About four to five hours there and back from the village, on paths that are rough and wet in places. The summit is 443 m and has a view of the whole of Skye and the mainland mountains."
+    },
+    {
+     "question": "What is Calum's Road?",
+     "answer": "A stretch of road of about three kilometres at the north end of Raasay, built by hand between the 1960s and 1970s by a crofter, Calum MacLeod, after decades of asking the authorities for it in vain. It is now part of the public road."
+    }
+   ],
+   "sources": [
+    {
+     "title": "CalMac: Sconser port, the ferry to Raasay",
+     "url": "https://www.calmac.co.uk/ports/sconser"
+    },
+    {
+     "title": "CalMac: Raasay",
+     "url": "https://www.calmac.co.uk/destinations/raasay"
+    },
+    {
+     "title": "Isle of Raasay Distillery: how to get here",
+     "url": "https://raasaydistillery.com/how-to-get-here/"
+    },
+    {
+     "title": "Isle of Raasay Distillery: tours",
+     "url": "https://raasaydistillery.com/book-whisky-tours/"
+    }
+   ]
   }
  ]
 }
