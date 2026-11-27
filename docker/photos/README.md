@@ -3,6 +3,9 @@
 Las fotos originales se dejan aquí y se suben a WordPress con un comando. **No se versionan** (están en
 `.gitignore`): pesan demasiado para git y tienen derechos de autor.
 
+> **Pendiente (issue #9):** las 13 portadas cargadas el 27 nov 2026 son provisionales. Hay que
+> sustituirlas por las que se compren con la cuenta de iStock de ShyPig antes de publicar la web.
+
 ## Dónde va cada foto
 
 Una carpeta por ficha, con el identificador (slug) de la ficha como nombre:
