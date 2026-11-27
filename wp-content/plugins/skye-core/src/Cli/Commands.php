@@ -246,6 +246,61 @@ final class Commands {
 	}
 
 	/**
+	 * Imports the Bricks templates versioned in skye-core/templates/bricks/. Idempotent: matches by slug.
+	 *
+	 * Templates are code: edit them in Bricks if you like, but the JSON in the repo is what gets deployed,
+	 * and a new import overwrites the template's elements and conditions.
+	 *
+	 * ## OPTIONS
+	 * <action>
+	 * : import
+	 *
+	 * ## EXAMPLES
+	 *     wp skye templates import
+	 */
+	public function templates( array $args ): void {
+		if ( 'import' !== ( $args[0] ?? '' ) ) {
+			WP_CLI::error( 'Usage: wp skye templates import' );
+		}
+		if ( ! defined( 'BRICKS_VERSION' ) ) {
+			WP_CLI::error( 'Bricks is not active: install it first (docker/licensed/README.md).' );
+		}
+		// Bricks' own names for its storage, with the documented values as fallback.
+		$const     = static fn( string $name, string $fallback ): string => defined( $name ) ? (string) constant( $name ) : $fallback;
+		$post_type = $const( 'BRICKS_DB_TEMPLATE_SLUG', 'bricks_template' );
+		$areas     = [
+			'header' => $const( 'BRICKS_DB_PAGE_HEADER', '_bricks_page_header_2' ),
+			'footer' => $const( 'BRICKS_DB_PAGE_FOOTER', '_bricks_page_footer_2' ),
+		];
+		$content   = $const( 'BRICKS_DB_PAGE_CONTENT', '_bricks_page_content_2' );
+
+		foreach ( glob( SKYE_CORE_DIR . '/templates/bricks/*.json' ) ?: [] as $file ) {
+			$t        = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
+			$existing = get_page_by_path( $t['slug'], OBJECT, $post_type );
+			$postarr  = [ 'post_type' => $post_type, 'post_status' => 'publish', 'post_name' => $t['slug'], 'post_title' => $t['title'] ];
+			if ( $existing ) {
+				$postarr['ID'] = $existing->ID;
+			}
+			$id = $existing ? wp_update_post( $postarr, true ) : wp_insert_post( $postarr, true );
+			if ( is_wp_error( $id ) ) {
+				WP_CLI::warning( basename( $file ) . ': ' . $id->get_error_message() );
+				continue;
+			}
+			$id         = (int) $id;
+			$conditions = [];
+			foreach ( $t['conditions'] ?? [] as $i => $c ) {
+				$conditions[] = [ 'id' => substr( md5( $t['slug'] . $i ), 0, 6 ) ] + $c;
+			}
+			update_post_meta( $id, $const( 'BRICKS_DB_TEMPLATE_TYPE', '_bricks_template_type' ), $t['type'] );
+			update_post_meta( $id, $areas[ $t['type'] ] ?? $content, $t['elements'] );
+			update_post_meta( $id, $const( 'BRICKS_DB_TEMPLATE_SETTINGS', '_bricks_template_settings' ), [ 'templateConditions' => $conditions ] );
+			update_post_meta( $id, $const( 'BRICKS_DB_EDITOR_MODE', '_bricks_editor_mode' ), 'bricks' );
+			WP_CLI::log( sprintf( '  %s %s (#%d, %d elements)', $existing ? '~' : '+', $t['title'], $id, count( $t['elements'] ) ) );
+		}
+		WP_CLI::success( 'Templates imported.' );
+	}
+
+	/**
 	 * Asks Bókun for the "from" price and next bookable date of a product. Checks credentials end to end.
 	 *
 	 * ## OPTIONS

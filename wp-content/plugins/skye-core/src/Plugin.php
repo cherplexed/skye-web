@@ -25,6 +25,8 @@ final class Plugin {
 		Fields::register();        // ACF JSON load point + fallback metaboxes
 		Verification::register();  // verified_by / valid_until / change log
 		Api\Router::register();    // /wp-json/skye/v1
+		Frontend::register();      // [skye_place] blocks for the Bricks templates
+		JsonLd::register();        // schema.org in <head>
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			\WP_CLI::add_command( 'skye', Cli\Commands::class );

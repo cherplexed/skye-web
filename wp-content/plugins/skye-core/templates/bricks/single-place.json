@@ -1,0 +1,24 @@
+{
+  "slug": "skye-single-place",
+  "title": "Skye: Place",
+  "type": "content",
+  "conditions": [ { "main": "postType", "postType": [ "place" ] } ],
+  "elements": [
+    { "id": "skpl01", "name": "section", "parent": 0, "children": [ "skpl02" ], "settings": { "_cssClasses": "skye-place skye-place__hero" }, "label": "Hero" },
+    { "id": "skpl02", "name": "container", "parent": "skpl01", "children": [ "skpl03", "skpl04", "skpl05" ], "settings": {} },
+    { "id": "skpl03", "name": "heading", "parent": "skpl02", "children": [], "settings": { "text": "{post_title}", "tag": "h1", "_cssClasses": "skye-place__title" } },
+    { "id": "skpl04", "name": "shortcode", "parent": "skpl02", "children": [], "settings": { "shortcode": "[skye_place part=\"intro\"]" }, "label": "Intro" },
+    { "id": "skpl05", "name": "image", "parent": "skpl02", "children": [], "settings": { "image": { "useDynamicData": "{featured_image}", "size": "large" }, "_cssClasses": "skye-place__image" } },
+
+    { "id": "skpl10", "name": "section", "parent": 0, "children": [ "skpl11" ], "settings": { "_cssClasses": "skye-place skye-place__body" }, "label": "Body" },
+    { "id": "skpl11", "name": "container", "parent": "skpl10", "children": [ "skpl12", "skpl13", "skpl14", "skpl15", "skpl16", "skpl17", "skpl18", "skpl19" ], "settings": {} },
+    { "id": "skpl12", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"facts\"]" }, "label": "Practical information" },
+    { "id": "skpl13", "name": "post-content", "parent": "skpl11", "children": [], "settings": { "dataSource": "editor", "_cssClasses": "skye-place__description" }, "label": "Description" },
+    { "id": "skpl14", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"tips\"]" }, "label": "Tips" },
+    { "id": "skpl15", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"hours\"]" }, "label": "Opening hours" },
+    { "id": "skpl16", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"directions\"]" }, "label": "Getting there" },
+    { "id": "skpl17", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"tours\"]" }, "label": "Tours" },
+    { "id": "skpl18", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"nearby\"]" }, "label": "Nearby" },
+    { "id": "skpl19", "name": "shortcode", "parent": "skpl11", "children": [], "settings": { "shortcode": "[skye_place part=\"verification\"]" }, "label": "Verification" }
+  ]
+}

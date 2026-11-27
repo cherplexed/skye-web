@@ -12,8 +12,9 @@ final class Meta {
 
 	public static function get( int $post_id, string $field, mixed $default = null ): mixed {
 		if ( function_exists( 'get_field' ) ) {
-			$v = get_field( $field, $post_id );
-			if ( null !== $v && false !== $v && '' !== $v ) {
+			$v = get_field( self::acf_selector( $field, $post_id ), $post_id );
+			// An empty array also means "ACF has nothing": the value may predate ACF Pro and live as JSON meta.
+			if ( null !== $v && false !== $v && '' !== $v && [] !== $v ) {
 				return $v;
 			}
 		}
@@ -32,7 +33,7 @@ final class Meta {
 
 	public static function set( int $post_id, string $field, mixed $value ): void {
 		if ( function_exists( 'update_field' ) && self::acf_field_exists( $field, $post_id ) ) {
-			update_field( $field, $value, $post_id );
+			update_field( self::acf_selector( $field, $post_id ), $value, $post_id );
 			return;
 		}
 		update_post_meta( $post_id, $field, is_array( $value ) ? wp_json_encode( $value ) : $value );
@@ -75,6 +76,16 @@ final class Meta {
 	}
 
 	/**
+	 * ACF field key for a field of this post's type. Several types share field names (`days`, `summary`,
+	 * `location`…), and ACF resolves a bare name to whichever group it finds first, so always address
+	 * fields by the deterministic key that tools/generate-acf-json.php gives them.
+	 */
+	public static function acf_selector( string $field, int $post_id ): string {
+		$type = (string) get_post_type( $post_id );
+		return in_array( $type, PostTypes::all(), true ) ? 'field_skye_' . $type . '_' . $field : $field;
+	}
+
+	/**
 	 * True only when ACF knows the field AND supports its type (free ACF has no repeater/gallery:
 	 * those fall back to JSON meta so local development works without a Pro licence).
 	 */
@@ -82,7 +93,7 @@ final class Meta {
 		if ( ! function_exists( 'acf_get_field' ) || ! function_exists( 'acf_get_field_type' ) ) {
 			return false;
 		}
-		$f = acf_get_field( $field );
+		$f = acf_get_field( self::acf_selector( $field, $post_id ) );
 		return is_array( $f ) && ! empty( $f['type'] ) && false !== acf_get_field_type( $f['type'] );
 	}
 }
