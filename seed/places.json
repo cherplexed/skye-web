@@ -1576,7 +1576,7 @@
    "title": "Glencoe",
    "gaelic_name": "Gleann Comhann",
    "summary": "Scotland's most famous glen: a deep valley between steep mountains, crossed by the main road, with a dark place in Highland history.",
-   "content": "<p>The road from the south crosses the empty expanse of Rannoch Moor and then drops into Glencoe between walls of rock. The mountain that guards the entrance, a steep pyramid standing alone at the head of the glen, is Buachaille Etive Mòr, one of the most photographed in Scotland.</p><p>Further down, on the south side, are the Three Sisters: three great buttresses, Beinn Fhada, Gearr Aonach and Aonach Dubh, that are in fact the ends of ridges running down from Bidean nam Bian, the highest mountain in this part of the country. The classic view of them is from the lay-bys beside the road.</p><p>Glencoe is also remembered for what happened in February 1692. Soldiers of the government had been living for nearly two weeks as guests in the houses of the MacDonalds of Glencoe. Early on the morning of the 13th, on orders from above, they turned on their hosts and killed some thirty-eight of them; others died in the snow as they fled. It was the breach of hospitality, more than the number of dead, that made the massacre notorious.</p><p>The scenery has been used in many films. Several scenes of the Harry Potter series were shot here, and so was part of the James Bond film Skyfall. A visitor centre near Glencoe village tells the story of the glen and its people.</p>",
+   "content": "<p>The road from the south crosses the empty expanse of Rannoch Moor and then drops into Glencoe between walls of rock, the work of ancient volcanic eruptions later carved out by ice. The mountain that guards the entrance, an almost perfect pyramid more than 1,000 m high, is Buachaille Etive Mòr, one of the most photographed in Scotland.</p><p>Further down, on the south side, are the Three Sisters: three great buttresses, Beinn Fhada (the long hill), Gearr Aonach (the short ridge) and Aonach Dubh (the black ridge), which are the ends of ridges running down from Bidean nam Bian. Between the first two lies the Lost Valley, a hollow you cannot see from the road. Below them the river drops through a small gorge at the Meeting of Three Waters and then spreads out into Loch Achtriochtan, which on a still day mirrors the slopes above it.</p><p>Glencoe is also remembered for what happened on 13 February 1692. About a hundred government soldiers had been living for close to two weeks as guests in the houses of the MacDonalds, the clan that held the glen. That morning, on orders from above, they turned on their hosts and killed thirty-eight of them; others died in the snow as they fled. The chief had sworn loyalty to King William a few days after the deadline, and the clan was made an example of. It was the breach of hospitality, more than the number of dead, that made the massacre notorious, and it is why Glencoe is still called the glen of weeping.</p><p>The scenery has been used in many films, among them several of the Harry Potter series, the Bond film Skyfall, Braveheart and Outlaw King. The visitor centre, near Glencoe village, explains how the glen was formed and tells its history, and the small folk museum in the village, in an 18th-century thatched cottage, shows objects from the houses of the MacDonalds.</p>",
    "zone": "en-route",
    "categories": [
     "viewpoint",
@@ -1620,7 +1620,8 @@
    ],
    "tips": [
     "The lay-bys are small and busy: do not stop on the road itself.",
-    "Weather changes fast here; the tops are often in cloud."
+    "Weather changes fast here; the tops are often in cloud.",
+    "The visitor centre can help you choose a walk for the weather and the time you have."
    ],
    "audioguide": {
     "enabled": false,
@@ -1630,7 +1631,7 @@
    "faq": [
     {
      "question": "What happened in the Glencoe massacre?",
-     "answer": "On 13 February 1692, government soldiers who had been lodged for twelve days with the MacDonalds of Glencoe attacked the families who were sheltering them. About thirty-eight people were killed and more died of cold after escaping into the hills. The chief had been late in swearing loyalty to the king, and the killing was meant as an example."
+     "answer": "On 13 February 1692, about a hundred government soldiers who had been lodged for close to two weeks with the MacDonalds of Glencoe attacked the families who were sheltering them. Thirty-eight people were killed and more died of cold after escaping into the hills. The chief had been a few days late in swearing loyalty to King William, and the killing was meant as an example."
     },
     {
      "question": "What are the Three Sisters of Glencoe?",
@@ -1641,15 +1642,31 @@
      "answer": "There are lay-by car parks along the main road through the glen, the best known at the Three Sisters viewpoint. They are small and fill up in the middle of the day, so do not count on a space, and never stop on the road itself."
     },
     {
-     "question": "Which films were shot in Glencoe?",
-     "answer": "Several of the Harry Potter films used the glen for outdoor scenes, including the setting of Hagrid's hut, and the Bond film Skyfall was filmed on the road down nearby Glen Etive."
-    },
-    {
      "question": "Is there a short walk in Glencoe?",
      "answer": "The best known is the path into the Lost Valley, a hidden hollow between two of the Three Sisters. It takes two to three hours there and back and is rough, with a river crossing and some easy scrambling: it needs proper footwear and dry weather."
+    },
+    {
+     "question": "Which films were shot in Glencoe?",
+     "answer": "Several of the Harry Potter films, among them The Prisoner of Azkaban, used the glen for outdoor scenes. The Bond film Skyfall was shot in the area too, as were Braveheart and Outlaw King."
+    },
+    {
+     "question": "How long does it take to drive through Glencoe?",
+     "answer": "About twenty minutes without stopping, though nobody does it without stopping. Allow at least an hour for the viewpoints, and half a day if you want to add the visitor centre or a short walk."
+    },
+    {
+     "question": "What is there to see in Glencoe village?",
+     "answer": "A single street of cottages at the foot of the glen, with a couple of cafés and the Glencoe and North Lorn Folk Museum, housed in an 18th-century cottage. Just above the village, Glencoe Lochan is a small loch in the woods with easy marked paths."
+    },
+    {
+     "question": "Why is Glencoe called the glen of weeping?",
+     "answer": "Because of the massacre of 1692. The name is a later, romantic one, but it has stuck."
     }
    ],
    "sources": [
+    {
+     "title": "Viajar por Escocia: Glen Coe",
+     "url": "https://viajarporescocia.com/guia-de-escocia/glen-coe-escocia/"
+    },
     {
      "title": "Viajar por Escocia: Highlands",
      "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
@@ -1661,7 +1678,7 @@
    "title": "Glenfinnan Viaduct and Monument",
    "gaelic_name": "Gleann Fhionnainn",
    "summary": "The curving railway viaduct known from the films, and the monument at the head of Loch Shiel where the 1745 Jacobite rising began.",
-   "content": "<p>Two monuments stand a few hundred metres apart at the head of Loch Shiel. The older is the Glenfinnan Monument, a stone tower with a Highlander on top, raised in 1815 on the spot where Prince Charles Edward Stuart rallied the clans in August 1745 and began the last Jacobite rising.</p><p>The other is the railway viaduct, which carries the West Highland Line across the glen on 21 arches in a wide curve. When it was finished in 1901 it was one of the first large structures anywhere to be built of concrete. It was already well known to railway enthusiasts before the Harry Potter films made it famous around the world as the bridge crossed by the Hogwarts Express.</p><p>A path from the car park leads up the glen and under the arches to a viewpoint on the hillside, about fifteen to twenty minutes away. From April to October a steam train, the Jacobite, crosses the viaduct on its way between Fort William and Mallaig, and that is what most visitors come to see. The days and times change every season, and the car park closes when it is full, so it pays to arrive well ahead.</p>",
+   "content": "<p>Two monuments stand a few hundred metres apart at the head of Loch Shiel. The older is the Glenfinnan Monument, a stone tower about 18 m high with a Highlander on top, raised in 1815 on the spot where Prince Charles Edward Stuart rallied the clans in August 1745 and began the last Jacobite rising.</p><p>The other is the railway viaduct, which carries the West Highland Line across the glen on 21 arches, some 30 m above the river, in a wide curve. It was built by Robert McAlpine and finished in 1901, one of the first large structures anywhere to be made of concrete. It was already well known to railway enthusiasts before four of the Harry Potter films, shot on the real bridge with no studio set, made it famous around the world as the route of the Hogwarts Express.</p><p>A signed path from behind the visitor centre climbs in a few minutes to a clearing with a view of the viaduct; a longer one leads up the glen and under the arches to the hillside beyond. From April to October a steam train, the Jacobite, crosses on its way between Fort William and Mallaig, and that is what most visitors come to see. The days and times change every season, and the car park closes when it is full, so it pays to arrive well ahead.</p>",
    "zone": "en-route",
    "categories": [
     "viewpoint",
@@ -1705,7 +1722,7 @@
     "toilets"
    ],
    "tips": [
-    "Arrive at least an hour before a steam train is due: the car park fills and then closes.",
+    "Arrive at least 45 minutes to an hour before a steam train is due: the car park fills and then closes.",
     "Steam train times change each season. Check them before planning the stop around a crossing.",
     "The only public toilets are at the visitor centre.",
     "Show a bus or train ticket at the café for a free hot drink."
@@ -1718,11 +1735,11 @@
    "faq": [
     {
      "question": "What time does the steam train cross the Glenfinnan Viaduct?",
-     "answer": "It depends on the day and the season. The Jacobite steam train runs from April to October, on dates that change each year, and usually crosses in the late morning and again in the afternoon. The exact times are posted at the visitor centre. In winter there is no steam, but ordinary trains still cross the viaduct several times a day."
+     "answer": "It depends on the day and the season. The Jacobite runs from April to October, on dates that change each year. The morning train leaves Fort William a little after ten and reaches the viaduct roughly half an hour later, close to eleven; when there is an afternoon train, it crosses in the early or mid afternoon. Check the current timetable, which is also posted at the visitor centre. In winter there is no steam, but ordinary trains still cross several times a day."
     },
     {
      "question": "Where is the best place to see the viaduct?",
-     "answer": "From the hillside viewpoint reached by the signed path from the car park, about fifteen to twenty minutes on foot. It looks down on the whole curve of the arches with the loch behind. The path is uneven and muddy after rain."
+     "answer": "The nearest is the viewpoint reached by the signed path behind the visitor centre, five to ten minutes uphill, which looks across to the whole curve of the arches. For the classic view from above the train, follow the path under the viaduct and up the far hillside, fifteen to twenty minutes from the car park. Both are uneven and muddy after rain."
     },
     {
      "question": "How much is parking at Glenfinnan?",
@@ -1730,7 +1747,7 @@
     },
     {
      "question": "Which Harry Potter films show the Glenfinnan Viaduct?",
-     "answer": "It appears in several films of the series as the route of the Hogwarts Express, most memorably in the scene with the flying car in the second film."
+     "answer": "It appears in four films of the series as the route of the Hogwarts Express, most memorably in The Chamber of Secrets, when Harry and Ron chase the train in the flying car."
     },
     {
      "question": "What does the Glenfinnan Monument commemorate?",
@@ -1738,7 +1755,11 @@
     },
     {
      "question": "Can you ride the steam train over the viaduct?",
-     "answer": "Yes: the Jacobite runs between Fort William and Mallaig and crosses the viaduct in both directions. Seats sell out months ahead in summer, so book early."
+     "answer": "Yes. The Jacobite runs from Fort William to Mallaig and back, with about two hours in Mallaig, and crosses the viaduct in both directions. It has standard and first class, and seats sell out months ahead in summer, so book early with the operator, West Coast Railways."
+    },
+    {
+     "question": "Can you climb the Glenfinnan Monument?",
+     "answer": "Yes, when the visitor centre is open: a narrow stair inside leads to the top, level with the statue, for a view down Loch Shiel. There is a small charge, and numbers are limited."
     }
    ],
    "sources": [
@@ -1751,8 +1772,8 @@
      "url": "https://www.nts.org.uk/visit/places/glenfinnan-monument/highlights/viaduct"
     },
     {
-     "title": "Viajar por Escocia: Highlands",
-     "url": "https://viajarporescocia.com/guia-de-escocia/highlands/"
+     "title": "Viajar por Escocia: el tren de Harry Potter, Glenfinnan y el Jacobite",
+     "url": "https://viajarporescocia.com/guia-de-escocia/el-tren-de-harry-potter-en-escocia-glenfinnan-y-jacobite/"
     }
    ]
   },
@@ -2153,7 +2174,7 @@
    "title": "Stirling",
    "gaelic_name": "Sruighlea",
    "summary": "The old gateway between Lowlands and Highlands, with its castle on a rock above the plain and the Wallace Monument on the hill opposite.",
-   "content": "<p>For centuries Stirling was the key to Scotland. It stood at the lowest crossing of the River Forth, on the only easy way between the Lowlands and the Highlands, and whoever held its castle controlled the road north. That is why two of the decisive battles of Scottish history were fought within sight of the walls: Stirling Bridge in 1297, won by William Wallace, and Bannockburn in 1314, won by Robert the Bruce.</p><p>The castle sits on a volcanic crag above the old town. Much of what stands today was built by the Stewart kings in the 15th and 16th centuries, when this was a royal palace as much as a fortress, and the great hall and the royal apartments have been restored to how they looked then.</p><p>On the hill across the river is the Wallace Monument, a Victorian tower raised in memory of William Wallace. Both are plain to see from the motorway, which is how most people on the way to the Highlands first meet them.</p>",
+   "content": "<p>For centuries Stirling was the key to Scotland. It stood at the lowest crossing of the River Forth, the one place where an army could get over without boats, and whoever held its castle controlled the road north: hence its old name, the gateway to the Highlands. That is why two of the decisive battles of Scottish history were fought within sight of the walls: Stirling Bridge in 1297, won by William Wallace, and Bannockburn in 1314, won by Robert the Bruce.</p><p>The castle sits on the plug of an extinct volcano, with cliffs on three sides and a single approach up through the old town. Its oldest remains go back to the 12th century, but much of what stands today was built by the Stewart kings, when this was a royal palace as much as a fortress: the great hall, in its coat of pale yellow limewash, and the Renaissance palace of James V. Mary, Queen of Scots, spent her childhood here. Statues of Bruce and Wallace stand on the esplanade outside.</p><p>Just below the castle is the Church of the Holy Rude, a Gothic church of the 15th century where the infant James VI was crowned in 1567, with John Knox preaching the sermon. Across the river, on its own hill, rises the Wallace Monument, a Victorian tower 70 m high, finished in 1869 and paid for by public subscription. You can climb its 246 steps for the view over the battlefield.</p><p>Both castle and monument are plain to see from the motorway, which is how most people on the way to the Highlands first meet them.</p>",
    "zone": "en-route",
    "categories": [
     "castle",
@@ -2212,14 +2233,6 @@
    },
    "faq": [
     {
-     "question": "How much does it cost to visit Stirling Castle?",
-     "answer": "An adult ticket is £18.50 booked online and £20.50 bought at the castle. Visitors aged 65 or over pay £15 online, and children from 7 to 15 pay £9. A guided tour is included in the price."
-    },
-    {
-     "question": "When is Stirling Castle open?",
-     "answer": "Every day from 9:30. It closes at 18:00 from April to September and at 17:00 from October to March, and it is closed on 25 and 26 December."
-    },
-    {
      "question": "Can you park at Stirling Castle?",
      "answer": "Not at present, unless you need accessible parking: the castle car park is closed to other cars. Use the Castleview park and ride, or walk up from the town; the castle is about 800 m uphill from the railway and bus stations."
     },
@@ -2230,6 +2243,30 @@
     {
      "question": "Can you take a dog into Stirling Castle?",
      "answer": "No. Only assistance dogs are allowed."
+    },
+    {
+     "question": "How much does it cost to visit Stirling Castle?",
+     "answer": "An adult ticket is £18.50 booked online and £20.50 bought at the castle. Visitors aged 65 or over pay £15 online, and children from 7 to 15 pay £9. A guided tour is included in the price."
+    },
+    {
+     "question": "When is Stirling Castle open?",
+     "answer": "Every day from 9:30. It closes at 18:00 from April to September and at 17:00 from October to March, with last entry 45 minutes before closing, and it is closed on 25 and 26 December."
+    },
+    {
+     "question": "Can you climb the Wallace Monument?",
+     "answer": "Yes. A spiral staircase of 246 steps leads to the open crown at the top, past rooms that tell Wallace's story and display a sword said to be his. The monument is about half an hour on foot from the castle, or ten minutes by local bus, and has its own ticket."
+    },
+    {
+     "question": "Why was Stirling so important?",
+     "answer": "Because of the river. For centuries the bridge at Stirling was the lowest point where the Forth could be crossed on foot, so any army moving between the Lowlands and the Highlands had to pass under the castle."
+    },
+    {
+     "question": "What else is there to see in Stirling besides the castle?",
+     "answer": "The old town on the way up: the Church of the Holy Rude and its graveyard, the old jail, the ruined façade of Mar's Wark and the market cross on Broad Street. Stirling Old Bridge, a stone footbridge of the 15th century, is about twenty minutes' walk from the castle."
+    },
+    {
+     "question": "How far is Stirling from Edinburgh and Glasgow?",
+     "answer": "About an hour by car from Edinburgh, or fifty minutes by train, and a little over half an hour by car from Glasgow."
     }
    ],
    "sources": [
@@ -2240,6 +2277,10 @@
     {
      "title": "Historic Environment Scotland: Stirling Castle, opening times",
      "url": "https://www.historicenvironment.scot/visit-a-place/places/stirling-castle/tickets/"
+    },
+    {
+     "title": "Viajar por Escocia: Guía de Stirling",
+     "url": "https://viajarporescocia.com/guia-de-escocia/guia-de-stirling/"
     }
    ]
   },
