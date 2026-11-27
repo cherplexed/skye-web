@@ -56,14 +56,29 @@ final class Meta {
 	/** @return array<string, float>|null */
 	public static function latlng( int $post_id, string $field ): ?array {
 		$v = self::get( $post_id, $field );
-		if ( is_array( $v ) && isset( $v['lat'], $v['lng'] ) ) {
-			return [ 'lat' => (float) $v['lat'], 'lng' => (float) $v['lng'] ];
-		}
 		if ( is_string( $v ) && str_contains( $v, ',' ) ) {
-			[ $lat, $lng ] = array_map( 'floatval', explode( ',', $v, 2 ) );
-			return [ 'lat' => $lat, 'lng' => $lng ];
+			[ $lat, $lng ] = explode( ',', $v, 2 );
+			$v             = [ 'lat' => trim( $lat ), 'lng' => trim( $lng ) ];
 		}
-		return null;
+		return self::point( $v );
+	}
+
+	/**
+	 * A usable coordinate pair, or null. An unset ACF group comes back as empty strings, which must not
+	 * turn into the point 0,0 (a real place, in the Gulf of Guinea, and never one of ours).
+	 *
+	 * @param mixed $v
+	 */
+	public static function point( $v ): ?array {
+		if ( ! is_array( $v ) || ! isset( $v['lat'], $v['lng'] ) || ! is_numeric( $v['lat'] ) || ! is_numeric( $v['lng'] ) ) {
+			return null;
+		}
+		$lat = (float) $v['lat'];
+		$lng = (float) $v['lng'];
+		if ( ( 0.0 === $lat && 0.0 === $lng ) || abs( $lat ) > 90 || abs( $lng ) > 180 ) {
+			return null;
+		}
+		return [ 'lat' => $lat, 'lng' => $lng ];
 	}
 
 	/** @return list<int> */
