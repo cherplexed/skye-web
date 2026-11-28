@@ -26,7 +26,9 @@ final class JsonLd {
 		if ( is_singular( PostTypes::TOUR ) ) {
 			$post = get_queried_object();
 			if ( $post instanceof \WP_Post ) {
-				self::emit( self::tour( Frontend::tour_view( $post ) ) );
+				$view = Frontend::tour_view( $post );
+				self::emit( self::tour( $view ) );
+				self::emit( self::faq( Render\TourBlocks::faq_items( $view ) ) );
 			}
 			return;
 		}

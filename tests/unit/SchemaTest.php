@@ -72,6 +72,20 @@ final class SchemaTest extends TestCase {
 		self::assertCount( 13, $seed['spots'] );
 	}
 
+	public function test_seed_tours_answer_the_questions_asked_before_booking(): void {
+		$seed = json_decode( (string) file_get_contents( __DIR__ . '/../../seed/tours.json' ), true, 512, JSON_THROW_ON_ERROR );
+		foreach ( $seed['tours'] as $t ) {
+			self::assertTrue( count( $t['faq'] ) >= 15, $t['slug'] );
+			self::assertNotEmpty( $t['sources'], $t['slug'] );
+			$questions = array_column( $t['faq'], 'question' );
+			self::assertSame( $questions, array_unique( $questions ), "{$t['slug']}: a question is asked twice" );
+			foreach ( $t['faq'] as $row ) {
+				self::assertSame( '?', substr( $row['question'], -1 ), $row['question'] );
+				self::assertTrue( '' !== trim( $row['answer'] ), $row['question'] );
+			}
+		}
+	}
+
 	public function test_acf_json_matches_fields_for_every_type(): void {
 		foreach ( Fields::all() as $type => $fields ) {
 			$json  = json_decode( (string) file_get_contents( SKYE_CORE_DIR . "/acf-json/group_skye_$type.json" ), true, 512, JSON_THROW_ON_ERROR );

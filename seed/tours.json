@@ -180,7 +180,91 @@
      "description": "Well-located bed and breakfasts and hotels."
     }
    ],
-   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nIn high season it may be necessary to spend both nights in or near Inverness, in which case day two is given over to Portree and Trotternish.\nThe price of each option appears when you choose your date."
+   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nIn high season it may be necessary to spend both nights in or near Inverness, in which case day two is given over to Portree and Trotternish.\nThe price of each option appears when you choose your date.",
+   "faq": [
+    {
+     "question": "Where and when does the tour leave?",
+     "answer": "From 190 High Street, on the Royal Mile in Edinburgh, at 07:30. Be there 15 minutes early. There is no pick-up from your accommodation, and you do not need to print anything: give the name on the booking to the guide."
+    },
+    {
+     "question": "Can I join the tour in Glasgow?",
+     "answer": "Sometimes. The operator offers a pick-up at 09:00 from 19 Killermont Street, Glasgow, but only when there is space and at least 6 people ask for it. Ask before you book. The tour always ends in Edinburgh."
+    },
+    {
+     "question": "Where and when does the tour end?",
+     "answer": "In the centre of Edinburgh, at 76 Hanover Street, at about 18:30 on the third day. The time is an estimate: it depends on the weather, the traffic and other factors, so do not book a train or a flight close to it."
+    },
+    {
+     "question": "How much luggage can I bring?",
+     "answer": "One cabin-size case of up to 15 kg and one small bag per person. Two people travelling together may bring one large case between them instead. There is no room for extra luggage on the day, so leave big cases in a left-luggage office in Edinburgh."
+    },
+    {
+     "question": "Can children come?",
+     "answer": "From 5 years old. Children under 12 have their own price, lower when they share a room with their parents: ask before you book. Family rooms depend on what the accommodation has free."
+    },
+    {
+     "question": "Can I cancel?",
+     "answer": "Yes, at no cost up to 10 days before departure. Travel insurance, if you bought it, is not refunded."
+    },
+    {
+     "question": "Is the tour cancelled in bad weather?",
+     "answer": "No. It runs in rain and snow, and is only cancelled when there is a risk to safety or the authorities advise against travel. Stops and times can change with the weather."
+    },
+    {
+     "question": "How big is the group, and what is the vehicle like?",
+     "answer": "It depends on how many people have booked: the vehicle has 8, 16, 19 or 37 seats, and sometimes 55 in high season. The number is confirmed the day before. There is no toilet on board, but the stops are frequent and have one."
+    },
+    {
+     "question": "What should I wear and bring?",
+     "answer": "Comfortable, warm and waterproof clothes and waterproof shoes, in summer too. Bring water and a snack for the road; eating on the bus is allowed. In summer, insect repellent helps against midges, which are a nuisance but not dangerous."
+    },
+    {
+     "question": "Are meals included?",
+     "answer": "No. Lunch stops are in places with restaurants, pubs and supermarkets, and the guide suggests where to eat. Breakfast is included in bed and breakfast accommodation and not in the hostel."
+    },
+    {
+     "question": "Which entry tickets do I pay for on the day?",
+     "answer": "Dunvegan Castle, Eilean Donan Castle and the Loch Ness cruise with Urquhart Castle are optional and not included. For children aged 5 to 15 the operator lists £12 for Dunvegan, £6.50 for Eilean Donan and £26 for the cruise with Urquhart; under-5s go free. Bring cash for Dunvegan."
+    },
+    {
+     "question": "Will we sleep on Skye, and both nights in the same place?",
+     "answer": "That is the plan: two nights in the same accommodation in Kyleakin, Broadford, Breakish, Kyle of Lochalsh, Portree or nearby. When Skye is full, above all from June to September, the nights may be in or near Inverness, and day two is then given over to Portree and Trotternish."
+    },
+    {
+     "question": "What is the difference between the accommodation options?",
+     "answer": "Basic is a hostel: a shared room of up to 12 beds, usually mixed and with bunks, shared bathrooms, no breakfast and no towels. Standard is a selected bed and breakfast, comparable to a two-star hotel, with a private bathroom and breakfast. Superior is comparable to three stars or more, with breakfast and usually an en-suite bathroom."
+    },
+    {
+     "question": "I am travelling alone. Where do I sleep?",
+     "answer": "Either in the hostel, in a shared mixed dormitory, or in a single room in one of the options with private rooms. Single rooms are few: book early."
+    },
+    {
+     "question": "What documents do I need to enter the United Kingdom?",
+     "answer": "A valid passport: a national identity card is not accepted. Most visitors who do not need a visa, including citizens of the European Union, also need an electronic travel authorisation (ETA). The operator gives its cost as £20, valid for two years, and advises applying at least 72 hours ahead. Check the official UK government site for your nationality."
+    },
+    {
+     "question": "I have reduced mobility. Can I take the tour?",
+     "answer": "Tell us what you need when you book, or ask before booking, so the operator can confirm whether the vehicle and the accommodation of your date are suitable."
+    },
+    {
+     "question": "Can I smoke in the room?",
+     "answer": "No. Smoking and vaping are forbidden in rooms and in enclosed public places in Scotland, and there are fines."
+    },
+    {
+     "question": "On which days does the tour run?",
+     "answer": "It depends on the language of the guide. According to the operator, the tour in Spanish leaves on Mondays, Thursdays and Saturdays and the tour in Italian on Saturdays; outside those days it can run for groups of more than four people, usually in low season. The booking calendar shows the dates open in your language."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: página del tour",
+     "url": "https://viajarporescocia.com/tour/isla-skye/"
+    },
+    {
+     "title": "Viajar por Escocia: Preguntas frecuentes",
+     "url": "https://viajarporescocia.com/preguntas-frecuentes/"
+    }
+   ]
   },
   {
    "slug": "isle-of-skye-2-day-tour",
@@ -307,7 +391,87 @@
      "description": "A private room with a private bathroom, which may be en suite or outside the room but for your use alone. Breakfast is included."
     }
    ],
-   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nThe price of each option appears when you choose your date."
+   "accommodation_notes": "There are few beds on Skye: book as early as you can, above all in high season.\nTriple rooms depend on what is free when you book.\nThe price of each option appears when you choose your date.",
+   "faq": [
+    {
+     "question": "Where and when does the tour leave?",
+     "answer": "From 190 High Street, on the Royal Mile in Edinburgh, at 07:30. Be there 15 minutes early. There is no pick-up from your accommodation, and you do not need to print anything: give the name on the booking to the guide."
+    },
+    {
+     "question": "Can I join the tour somewhere other than Edinburgh?",
+     "answer": "No. The two-day tour only leaves from Edinburgh."
+    },
+    {
+     "question": "Where and when does the tour end?",
+     "answer": "In the centre of Edinburgh, at about 18:30 on the second day. The time is an estimate: it depends on the weather, the traffic and other factors, so do not book a train or a flight close to it."
+    },
+    {
+     "question": "How much luggage can I bring?",
+     "answer": "One cabin-size case of up to 15 kg and one small bag per person. Two people travelling together may bring one large case between them instead. There is no room for extra luggage on the day, so leave big cases in a left-luggage office in Edinburgh."
+    },
+    {
+     "question": "Can children come?",
+     "answer": "From 5 years old. Children under 12 have their own price, lower when they share a room with their parents: ask before you book. Family rooms depend on what the accommodation has free."
+    },
+    {
+     "question": "Can I cancel?",
+     "answer": "Yes, at no cost up to 10 days before departure. Travel insurance, if you bought it, is not refunded."
+    },
+    {
+     "question": "Is the tour cancelled in bad weather?",
+     "answer": "No. It runs in rain and snow, and is only cancelled when there is a risk to safety or the authorities advise against travel. Stops and times can change with the weather."
+    },
+    {
+     "question": "How big is the group, and what is the vehicle like?",
+     "answer": "It depends on how many people have booked: the vehicle has 8, 16, 19 or 37 seats, and sometimes 55 in high season. The number is confirmed the day before. There is no toilet on board, but the stops are frequent and have one."
+    },
+    {
+     "question": "What should I wear and bring?",
+     "answer": "Comfortable, warm and waterproof clothes and waterproof shoes, in summer too. Bring water and a snack for the road; eating on the bus is allowed. In summer, insect repellent helps against midges, which are a nuisance but not dangerous."
+    },
+    {
+     "question": "Are meals included?",
+     "answer": "No. Lunch stops are in places with restaurants, pubs and supermarkets, and the guide suggests where to eat. Breakfast is included in bed and breakfast accommodation and not in the hostel."
+    },
+    {
+     "question": "Which entry tickets do I pay for on the day?",
+     "answer": "Entry to Urquhart Castle is included. The Loch Ness cruise and any other attraction you choose to go into are not."
+    },
+    {
+     "question": "Will we sleep on Skye?",
+     "answer": "That is the aim, but from June to September, when the island is full, the night may be in another town nearby."
+    },
+    {
+     "question": "What is the difference between the accommodation options?",
+     "answer": "Basic is a hostel: a shared room of up to 12 beds, shared bathrooms, no breakfast and no towels. Bed and breakfast is comparable to a two-star hotel, with a private bathroom and breakfast included. You can also book the tour only and arrange your own bed: tell us the town, and the guide drops you in its centre on the first day and collects you there on the second."
+    },
+    {
+     "question": "I am travelling alone. Where do I sleep?",
+     "answer": "Either in the hostel, in a shared mixed dormitory, or in a single room in one of the options with private rooms. Single rooms are few: book early."
+    },
+    {
+     "question": "What documents do I need to enter the United Kingdom?",
+     "answer": "A valid passport: a national identity card is not accepted. Most visitors who do not need a visa, including citizens of the European Union, also need an electronic travel authorisation (ETA). The operator gives its cost as £20, valid for two years, and advises applying at least 72 hours ahead. Check the official UK government site for your nationality."
+    },
+    {
+     "question": "I have reduced mobility. Can I take the tour?",
+     "answer": "Tell us what you need when you book, or ask before booking, so the operator can confirm whether the vehicle and the accommodation of your date are suitable."
+    },
+    {
+     "question": "Can I smoke in the room?",
+     "answer": "No. Smoking and vaping are forbidden in rooms and in enclosed public places in Scotland, and there are fines."
+    }
+   ],
+   "sources": [
+    {
+     "title": "Viajar por Escocia: página del tour",
+     "url": "https://viajarporescocia.com/tour/tour-de-2-dias-a-la-isla-de-skye-y-las-tierras-altas-con-salida-desde-edimburgo/"
+    },
+    {
+     "title": "Viajar por Escocia: Preguntas frecuentes",
+     "url": "https://viajarporescocia.com/preguntas-frecuentes/"
+    }
+   ]
   }
  ]
 }

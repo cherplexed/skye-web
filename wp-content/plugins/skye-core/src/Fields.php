@@ -154,6 +154,8 @@ final class Fields {
 				],
 			],
 			'accommodation_notes'   => [ 'type' => 'textarea', 'i18n' => true ],
+			'faq'                   => [ 'type' => 'repeater', 'i18n' => true, 'sub' => [ 'question' => [ 'type' => 'text', 'i18n' => true ], 'answer' => [ 'type' => 'textarea', 'i18n' => true ] ] ],
+			'sources'               => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'title' => [ 'type' => 'text', 'i18n' => false ], 'url' => [ 'type' => 'url', 'i18n' => false ] ] ],
 			'products'           => [
 				'type' => 'repeater',
 				'i18n' => false,

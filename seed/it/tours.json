@@ -100,7 +100,81 @@
      "description": "Bed and breakfast e hotel in buona posizione."
     }
    ],
-   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIn alta stagione può essere necessario passare entrambe le notti a Inverness o dintorni; in tal caso il secondo giorno è dedicato a Portree e Trotternish.\nIl prezzo di ogni opzione compare quando scegli la data."
+   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIn alta stagione può essere necessario passare entrambe le notti a Inverness o dintorni; in tal caso il secondo giorno è dedicato a Portree e Trotternish.\nIl prezzo di ogni opzione compare quando scegli la data.",
+   "faq": [
+    {
+     "question": "Da dove e a che ora parte il tour?",
+     "answer": "Da 190 High Street, sul Royal Mile di Edimburgo, alle 07:30. Presentati 15 minuti prima. Non c'è il ritiro presso il tuo alloggio e non serve stampare nulla: basta dire alla guida il nome della prenotazione."
+    },
+    {
+     "question": "Posso salire a Glasgow?",
+     "answer": "A volte. L'operatore offre una partenza alle 09:00 da 19 Killermont Street, Glasgow, ma solo se c'è posto e la chiedono almeno 6 persone. Chiedi prima di prenotare. Il tour termina sempre a Edimburgo."
+    },
+    {
+     "question": "Dove e a che ora finisce il tour?",
+     "answer": "Nel centro di Edimburgo, al 76 di Hanover Street, verso le 18:30 del terzo giorno. L'orario è indicativo: dipende dal meteo, dal traffico e da altri fattori, quindi non prenotare un treno o un volo a ridosso."
+    },
+    {
+     "question": "Quanto bagaglio posso portare?",
+     "answer": "Un trolley da cabina fino a 15 kg e una borsa piccola a persona. Se viaggiate in due, potete portare al suo posto una valigia grande in due. Il giorno del tour non c'è spazio per bagagli in più: lascia le valigie grandi in un deposito a Edimburgo."
+    },
+    {
+     "question": "Possono venire i bambini?",
+     "answer": "Dai 5 anni in su. I minori di 12 anni hanno un prezzo dedicato, più basso se dividono la camera con i genitori: chiedi prima di prenotare. Le camere familiari dipendono dalla disponibilità dell'alloggio."
+    },
+    {
+     "question": "Posso annullare?",
+     "answer": "Sì, senza costi fino a 10 giorni prima della partenza. L'assicurazione di viaggio, se l'hai acquistata, non viene rimborsata."
+    },
+    {
+     "question": "Il tour viene annullato in caso di maltempo?",
+     "answer": "No. Parte con la pioggia e con la neve, e viene annullato solo se c'è un rischio per la sicurezza o se le autorità sconsigliano di viaggiare. Soste e orari possono cambiare in base al meteo."
+    },
+    {
+     "question": "Quanto è grande il gruppo e com'è il veicolo?",
+     "answer": "Dipende dalle prenotazioni: il veicolo ha 8, 16, 19 o 37 posti, e a volte 55 in alta stagione. Il numero viene confermato il giorno prima. A bordo non c'è il bagno, ma le soste sono frequenti e ne hanno uno."
+    },
+    {
+     "question": "Come mi vesto e che cosa conviene portare?",
+     "answer": "Abiti comodi, caldi e impermeabili e scarpe impermeabili, anche d'estate. Porta acqua e uno spuntino per il viaggio; sul pullman si può mangiare. D'estate un repellente aiuta contro i midge, moscerini fastidiosi ma non pericolosi."
+    },
+    {
+     "question": "I pasti sono inclusi?",
+     "answer": "No. Le soste per il pranzo sono in luoghi con ristoranti, pub e supermercati, e la guida consiglia dove mangiare. La colazione è inclusa nei bed and breakfast e non nell'ostello."
+    },
+    {
+     "question": "Quali ingressi si pagano durante il tour?",
+     "answer": "Il castello di Dunvegan, quello di Eilean Donan e la crociera su Loch Ness con il castello di Urquhart sono facoltativi e non inclusi. Per i bambini da 5 a 15 anni l'operatore indica 12 £ per Dunvegan, 6,50 £ per Eilean Donan e 26 £ per la crociera con Urquhart; sotto i 5 anni non si paga. Porta contanti per Dunvegan."
+    },
+    {
+     "question": "Dormiremo a Skye, e tutte e due le notti nello stesso posto?",
+     "answer": "L'idea è questa: due notti nello stesso alloggio a Kyleakin, Broadford, Breakish, Kyle of Lochalsh, Portree o dintorni. Quando Skye è al completo, soprattutto da giugno a settembre, le notti possono essere a Inverness o nei dintorni, e allora il secondo giorno è dedicato a Portree e Trotternish."
+    },
+    {
+     "question": "Che differenza c'è tra le opzioni di alloggio?",
+     "answer": "La base è un ostello: camera condivisa fino a 12 letti, di solito mista e con letti a castello, bagni in comune, senza colazione e senza asciugamani. La standard è un bed and breakfast selezionato, paragonabile a un hotel a due stelle, con bagno privato e colazione. La superior equivale a tre stelle o più, con colazione e di solito bagno in camera."
+    },
+    {
+     "question": "Viaggio da solo. Dove dormo?",
+     "answer": "In ostello, in un dormitorio condiviso misto, oppure in una camera singola in una delle opzioni con camera privata. Le singole sono poche: prenota presto."
+    },
+    {
+     "question": "Quali documenti servono per entrare nel Regno Unito?",
+     "answer": "Il passaporto in corso di validità: la carta d'identità non è accettata. La maggior parte dei viaggiatori che non hanno bisogno di visto, compresi i cittadini dell'Unione Europea, deve avere anche un'autorizzazione elettronica di viaggio (ETA). L'operatore indica un costo di 20 £, una validità di due anni e consiglia di richiederla almeno 72 ore prima. Verifica il tuo caso sul sito ufficiale del governo britannico."
+    },
+    {
+     "question": "Ho mobilità ridotta. Posso fare il tour?",
+     "answer": "Indicaci le tue esigenze al momento della prenotazione, o chiedi prima, così l'operatore può confermare se il veicolo e l'alloggio della tua data sono adatti."
+    },
+    {
+     "question": "Posso fumare in camera?",
+     "answer": "No. In Scozia è vietato fumare e svapare nelle camere e nei luoghi pubblici chiusi, e sono previste multe."
+    },
+    {
+     "question": "In quali giorni parte il tour?",
+     "answer": "Dipende dalla lingua della guida. Secondo l'operatore, il tour in spagnolo parte il lunedì, il giovedì e il sabato, e quello in italiano il sabato; negli altri giorni può essere organizzato per gruppi di più di quattro persone, di solito in bassa stagione. Il calendario delle prenotazioni mostra le date aperte nella tua lingua."
+    }
+   ]
   },
   "isle-of-skye-2-day-tour": {
    "title": "Isola di Skye e Highlands, 2 giorni da Edimburgo",
@@ -165,7 +239,77 @@
      "description": "Camera privata con bagno privato, che può essere in camera oppure esterno, ma sempre a tuo uso esclusivo. Colazione inclusa."
     }
    ],
-   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIl prezzo di ogni opzione compare quando scegli la data."
+   "accommodation_notes": "A Skye i posti letto sono pochi: prenota con il massimo anticipo possibile, soprattutto in alta stagione.\nLe camere triple dipendono dalla disponibilità al momento della prenotazione.\nIl prezzo di ogni opzione compare quando scegli la data.",
+   "faq": [
+    {
+     "question": "Da dove e a che ora parte il tour?",
+     "answer": "Da 190 High Street, sul Royal Mile di Edimburgo, alle 07:30. Presentati 15 minuti prima. Non c'è il ritiro presso il tuo alloggio e non serve stampare nulla: basta dire alla guida il nome della prenotazione."
+    },
+    {
+     "question": "Posso salire in un luogo diverso da Edimburgo?",
+     "answer": "No. Il tour di due giorni parte solo da Edimburgo."
+    },
+    {
+     "question": "Dove e a che ora finisce il tour?",
+     "answer": "Nel centro di Edimburgo, verso le 18:30 del secondo giorno. L'orario è indicativo: dipende dal meteo, dal traffico e da altri fattori, quindi non prenotare un treno o un volo a ridosso."
+    },
+    {
+     "question": "Quanto bagaglio posso portare?",
+     "answer": "Un trolley da cabina fino a 15 kg e una borsa piccola a persona. Se viaggiate in due, potete portare al suo posto una valigia grande in due. Il giorno del tour non c'è spazio per bagagli in più: lascia le valigie grandi in un deposito a Edimburgo."
+    },
+    {
+     "question": "Possono venire i bambini?",
+     "answer": "Dai 5 anni in su. I minori di 12 anni hanno un prezzo dedicato, più basso se dividono la camera con i genitori: chiedi prima di prenotare. Le camere familiari dipendono dalla disponibilità dell'alloggio."
+    },
+    {
+     "question": "Posso annullare?",
+     "answer": "Sì, senza costi fino a 10 giorni prima della partenza. L'assicurazione di viaggio, se l'hai acquistata, non viene rimborsata."
+    },
+    {
+     "question": "Il tour viene annullato in caso di maltempo?",
+     "answer": "No. Parte con la pioggia e con la neve, e viene annullato solo se c'è un rischio per la sicurezza o se le autorità sconsigliano di viaggiare. Soste e orari possono cambiare in base al meteo."
+    },
+    {
+     "question": "Quanto è grande il gruppo e com'è il veicolo?",
+     "answer": "Dipende dalle prenotazioni: il veicolo ha 8, 16, 19 o 37 posti, e a volte 55 in alta stagione. Il numero viene confermato il giorno prima. A bordo non c'è il bagno, ma le soste sono frequenti e ne hanno uno."
+    },
+    {
+     "question": "Come mi vesto e che cosa conviene portare?",
+     "answer": "Abiti comodi, caldi e impermeabili e scarpe impermeabili, anche d'estate. Porta acqua e uno spuntino per il viaggio; sul pullman si può mangiare. D'estate un repellente aiuta contro i midge, moscerini fastidiosi ma non pericolosi."
+    },
+    {
+     "question": "I pasti sono inclusi?",
+     "answer": "No. Le soste per il pranzo sono in luoghi con ristoranti, pub e supermercati, e la guida consiglia dove mangiare. La colazione è inclusa nei bed and breakfast e non nell'ostello."
+    },
+    {
+     "question": "Quali ingressi si pagano durante il tour?",
+     "answer": "L'ingresso al castello di Urquhart è incluso. La crociera su Loch Ness e qualsiasi altra attrazione in cui decidi di entrare, no."
+    },
+    {
+     "question": "Dormiremo a Skye?",
+     "answer": "È ciò che si cerca di fare, ma da giugno a settembre, quando l'isola è al completo, la notte può essere in un'altra località vicina."
+    },
+    {
+     "question": "Che differenza c'è tra le opzioni di alloggio?",
+     "answer": "La base è un ostello: camera condivisa fino a 12 letti, bagni in comune, senza colazione e senza asciugamani. Il bed and breakfast è paragonabile a un hotel a due stelle, con bagno privato e colazione inclusa. Puoi anche prenotare solo il tour e cercare tu l'alloggio: dicci la località e la guida ti lascia in centro il primo giorno e ti riprende lì il secondo."
+    },
+    {
+     "question": "Viaggio da solo. Dove dormo?",
+     "answer": "In ostello, in un dormitorio condiviso misto, oppure in una camera singola in una delle opzioni con camera privata. Le singole sono poche: prenota presto."
+    },
+    {
+     "question": "Quali documenti servono per entrare nel Regno Unito?",
+     "answer": "Il passaporto in corso di validità: la carta d'identità non è accettata. La maggior parte dei viaggiatori che non hanno bisogno di visto, compresi i cittadini dell'Unione Europea, deve avere anche un'autorizzazione elettronica di viaggio (ETA). L'operatore indica un costo di 20 £, una validità di due anni e consiglia di richiederla almeno 72 ore prima. Verifica il tuo caso sul sito ufficiale del governo britannico."
+    },
+    {
+     "question": "Ho mobilità ridotta. Posso fare il tour?",
+     "answer": "Indicaci le tue esigenze al momento della prenotazione, o chiedi prima, così l'operatore può confermare se il veicolo e l'alloggio della tua data sono adatti."
+    },
+    {
+     "question": "Posso fumare in camera?",
+     "answer": "No. In Scozia è vietato fumare e svapare nelle camere e nei luoghi pubblici chiusi, e sono previste multe."
+    }
+   ]
   }
  }
 }
