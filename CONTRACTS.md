@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.10 (28 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.11 (28 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -82,6 +82,12 @@ Regla de enrutado: `brand_for_market(market)` devuelve la marca cuyo `markets` c
 ## 7. Experiencia — post type `experience`
 
 `title`, `summary`, `description` (sí). `experience_type`: tasting · cruise · wildlife · kayak · fishing · mountain_guide · private_tour · ticket. `departure_place` (relación). `duration_min`. `price_from_gbp`. `languages` (códigos de idioma). `season` (sí). `suitable_for`. `provider`, `booking_url`. `commission_pct` (interno, no público). Verificación.
+
+## 7b. Guía práctica — post type `guide`
+
+Información que no pertenece a ningún lugar concreto y que el bot necesita para responder: cómo llegar, moverse sin coche, clima y horas de luz, salud y emergencias. Archivo en `/info/` (`/es/informacion/`, `/it/informazioni/`), una página por guía.
+
+`title` (sí), `summary` (sí, ≤160), contenido (sí), `sort_order` (orden en el listado), `faq` repetidor (sí) → `question`, `answer`, `sources` repetidor → `title`, `url`. Verificación. API: `GET /guides`, `GET /guides/{id|uuid|slug}`. JSON-LD `FAQPage` en cada guía. Datos piloto en `seed/guides.json` (`wp skye seed guides`).
 
 ## 8. Taxonomías
 

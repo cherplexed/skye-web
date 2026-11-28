@@ -18,6 +18,8 @@ final class Frontend {
 		add_shortcode( 'skye_places', [ self::class, 'places_shortcode' ] );
 		add_shortcode( 'skye_home', [ self::class, 'home_shortcode' ] );
 		add_shortcode( 'skye_motorhome', [ self::class, 'motorhome_shortcode' ] );
+		add_shortcode( 'skye_guide', [ self::class, 'guide_shortcode' ] );
+		add_shortcode( 'skye_guides', [ self::class, 'guides_shortcode' ] );
 		add_shortcode( 'skye_header', [ self::class, 'header_shortcode' ] );
 		add_shortcode( 'skye_footer', [ self::class, 'footer_shortcode' ] );
 		add_filter( 'wp_robots', [ self::class, 'robots' ] );
@@ -225,6 +227,34 @@ final class Frontend {
 			'routes' => $routes,
 		];
 		return $view;
+	}
+
+	/** A guide as the page and the structured data need it: the full item, its excerpt and the links around it. */
+	public static function guide_view( \WP_Post $post ): array {
+		static $items = [];
+		[ 'market' => $market ] = self::context();
+		if ( ! isset( $items[ $post->ID ] ) ) {
+			$item             = Api\Collection::item( $post, $market, true );
+			if ( empty( $item['summary'] ) ) {
+				$item['summary'] = Text::plain( $post->post_excerpt );
+			}
+			$item['_links']   = [ 'home' => home_url( '/' ), 'guides' => self::archive( PostTypes::GUIDE ) ];
+			$items[ $post->ID ] = $item;
+		}
+		return $items[ $post->ID ];
+	}
+
+	/** [skye_guide]: the page of the current guide. */
+	public static function guide_shortcode(): string {
+		$post = get_post( get_the_ID() );
+		return $post && PostTypes::GUIDE === $post->post_type ? Render\GuideBlocks::page( self::guide_view( $post ) ) : '';
+	}
+
+	/** [skye_guides]: the practical information listing, in the order set on each guide. */
+	public static function guides_shortcode(): string {
+		$guides = array_map( [ self::class, 'guide_view' ], get_posts( [ 'post_type' => PostTypes::GUIDE, 'post_status' => 'publish', 'suppress_filters' => false, 'posts_per_page' => 100 ] ) );
+		usort( $guides, static fn( array $a, array $b ) => [ (float) ( $a['sort_order'] ?? 0 ), (string) $a['title'] ] <=> [ (float) ( $b['sort_order'] ?? 0 ), (string) $b['title'] ] );
+		return Render\GuideBlocks::listing( [ 'guides' => $guides, 'links' => [ 'home' => home_url( '/' ) ] ] );
 	}
 
 	/** [skye_motorhome]: the car and motorhome page. */
@@ -448,7 +478,9 @@ final class Frontend {
 
 	/** Browser title of the directory and the zone pages: what a visitor would call them. */
 	public static function title_parts( array $parts ): array {
-		if ( is_post_type_archive( PostTypes::MOTORHOME ) ) {
+		if ( is_post_type_archive( PostTypes::GUIDE ) ) {
+			$parts['title'] = __( 'Practical information for the Isle of Skye', 'skye-core' );
+		} elseif ( is_post_type_archive( PostTypes::MOTORHOME ) ) {
 			$parts['title'] = __( 'Skye by car or motorhome', 'skye-core' );
 		} elseif ( is_post_type_archive( PostTypes::PLACE ) ) {
 			$parts['title'] = __( 'What to see on the Isle of Skye', 'skye-core' );
@@ -482,6 +514,7 @@ final class Frontend {
 			PostTypes::PLACE     => __( 'What to see', 'skye-core' ),
 			PostTypes::LODGING   => __( 'Where to stay', 'skye-core' ),
 			PostTypes::MOTORHOME => __( 'Car and motorhome', 'skye-core' ),
+			PostTypes::GUIDE     => __( 'Practical information', 'skye-core' ),
 		];
 		$current  = is_singular() ? (string) get_post_type() : ( is_tax( Taxonomies::ZONE ) ? PostTypes::PLACE : ( is_post_type_archive() ? (string) get_query_var( 'post_type' ) : '' ) );
 		foreach ( $defaults as $type => $label ) {

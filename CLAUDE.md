@@ -35,7 +35,7 @@ No se versiona el core de WordPress, ni plugins de terceros (Bricks, ACF Pro, WP
 ## Convenciones de código
 
 - PHP 8.2+, namespace `Skye\`, autoload PSR-4 desde `skye-core/src/`. Una clase por archivo. Prefijo `skye_` para hooks, opciones y meta.
-- Tipos de contenido (post types): `place`, `route`, `tour`, `brand`, `lodging`, `motorhome_spot`, `experience`. Taxonomías: `skye_zone`, `skye_category`, `skye_profile`, `skye_suitability`.
+- Tipos de contenido (post types): `place`, `route`, `tour`, `brand`, `lodging`, `motorhome_spot`, `experience`, `guide`. Taxonomías: `skye_zone`, `skye_category`, `skye_profile`, `skye_suitability`.
 - Campos ACF guardados como JSON en `acf-json/` (ACF los sincroniza). Nombres de campo en inglés, `snake_case`, con el prefijo del tipo cuando hay ambigüedad.
 - API REST: namespace `skye/v1`. Respuestas en JSON con claves en `snake_case`, unidades métricas, moneda GBP, y un objeto `meta` con `lang`, `generated_at`, `verified`.
 - Textos de interfaz en inglés como idioma base, traducibles con `__( '…', 'skye-core' )`.
@@ -48,7 +48,7 @@ cp .env.example .env          # rellenar licencias si las hay; sin ellas el stac
 docker compose --env-file .env -f docker/docker-compose.yml up -d
 docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli bash /scripts/install.sh
 # → http://localhost:8080  (admin: ver .env)
-docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed all      # 46 lugares, 3 marcas, 2 tours, 4 rutas y 13 áreas de autocaravana (borradores sin verificar)
+docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed all      # 46 lugares, 3 marcas, 2 tours, 4 rutas, 13 áreas de autocaravana y 4 guías prácticas (borradores sin verificar)
 docker compose --env-file .env -f docker/docker-compose.yml run --rm wpcli wp skye seed all --lang=es   # traducciones (necesita WPML con ese idioma; igual con --lang=it)
 curl http://localhost:8080/wp-json/skye/v1/places
 ```

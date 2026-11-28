@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Skye;
 
 /**
- * The seven content types of CONTRACTS.md. Slugs are public URLs and must stay stable.
+ * The eight content types of CONTRACTS.md. Slugs are public URLs and must stay stable.
  */
 final class PostTypes {
 
@@ -15,10 +15,11 @@ final class PostTypes {
 	public const LODGING    = 'lodging';
 	public const MOTORHOME  = 'motorhome_spot';
 	public const EXPERIENCE = 'experience';
+	public const GUIDE      = 'guide';
 
 	/** @return list<string> */
 	public static function all(): array {
-		return [ self::PLACE, self::ROUTE, self::TOUR, self::BRAND, self::LODGING, self::MOTORHOME, self::EXPERIENCE ];
+		return [ self::PLACE, self::ROUTE, self::TOUR, self::BRAND, self::LODGING, self::MOTORHOME, self::EXPERIENCE, self::GUIDE ];
 	}
 
 	/** @return list<string> Types that carry a geographic location. */
@@ -35,6 +36,7 @@ final class PostTypes {
 			self::LODGING    => [ 'Lodging', 'Lodging', 'stay', 'building', 24, [ 'skye_zone', 'skye_suitability' ] ],
 			self::MOTORHOME  => [ 'Motorhome spot', 'Motorhome spots', 'motorhome', 'car', 25, [ 'skye_zone' ] ],
 			self::EXPERIENCE => [ 'Experience', 'Experiences', 'experiences', 'star-filled', 26, [ 'skye_zone', 'skye_suitability' ] ],
+			self::GUIDE      => [ 'Guide', 'Guides', 'info', 'info', 27, [] ],
 		];
 
 		foreach ( $types as $type => [ $singular, $plural, $slug, $icon, $position, $taxonomies ] ) {

@@ -1,0 +1,133 @@
+{
+ "_note": "Traduzione italiana di seed/guides.json: solo i testi.",
+ "guides": {
+  "getting-to-skye": {
+   "title": "Come arrivare a Skye",
+   "url_slug": "come-arrivare-a-skye",
+   "summary": "Su strada attraverso il ponte, in traghetto da Mallaig o da Glenelg, o in pullman da Glasgow e Inverness: i modi per raggiungere l'isola e che cosa prenotare.",
+   "content": "<p>Skye è un'isola che si raggiunge in auto. Il ponte di Skye collega Kyleakin a Kyle of Lochalsh, sulla terraferma, porta la strada principale verso Portree e si attraversa gratis a qualsiasi ora. Quasi tutti i visitatori arrivano da qui, da Fort William o da Inverness.</p><p>L'altro accesso è via mare. CalMac gestisce un traghetto per veicoli da Mallaig, dove finiscono la strada e la ferrovia da Fort William, ad Armadale, nel sud di Skye. La traversata dura da 30 a 45 minuti, e CalMac indica che la prenotazione è indispensabile. Nella stagione estiva c'è anche un piccolo traghetto comunitario da Glenelg a Kylerhea.</p><p>Senza auto, i pullman di Scottish Citylink arrivano a Portree da Glasgow, passando per Fort William, e da Inverness. In treno si arriva a Kyle of Lochalsh da Inverness e a Mallaig da Glasgow; da entrambe si prosegue in autobus o in traghetto. Skye non ha un aeroporto con voli di linea: il più vicino è Inverness.</p>",
+   "faq": [
+    {
+     "question": "Si paga per attraversare il ponte di Skye?",
+     "answer": "No. Il ponte è gratuito ed è aperto a tutte le ore."
+    },
+    {
+     "question": "Quanto dura il traghetto da Mallaig ad Armadale e bisogna prenotare?",
+     "answer": "Da 30 a 45 minuti, a seconda della nave. CalMac indica che la prenotazione è indispensabile, soprattutto con un veicolo, e chiede ai conducenti di essere pronti all'imbarco 20 minuti prima della partenza."
+    },
+    {
+     "question": "Il traghetto da Mallaig funziona d'inverno?",
+     "answer": "Sì, con orario ridotto: quello attuale va dal 19 ottobre 2026 al 25 marzo 2027, quello estivo dal 26 marzo al 17 ottobre 2027. D'inverno la nave carica da un solo lato, quindi sul ponte auto bisogna fare manovra in retromarcia. Controlla lo stato del servizio il giorno stesso: con il maltempo le corse vengono annullate."
+    },
+    {
+     "question": "Posso imbarcare un camper sul traghetto?",
+     "answer": "CalMac ha una procedura di lista d'attesa specifica per camper, van e roulotte, e negli inverni passati i veicoli oltre i 6 m non potevano viaggiare su questa rotta. Leggi la pagina di CalMac prima di contarci; il ponte non ha questi limiti."
+    },
+    {
+     "question": "C'è un pullman per Skye da Glasgow o da Inverness?",
+     "answer": "Sì, con Scottish Citylink. Quello da Glasgow passa per Fort William e impiega circa sette ore fino a Portree; quello da Inverness poco più di tre. Le partenze sono poche ogni giorno: d'estate conviene prenotare il posto."
+    },
+    {
+     "question": "Si può arrivare a Skye in treno?",
+     "answer": "Fino all'isola no. Il treno da Inverness termina a Kyle of Lochalsh, accanto al ponte, e quello da Glasgow a Mallaig, da dove parte il traghetto. Da entrambe si prosegue in autobus o in traghetto."
+    },
+    {
+     "question": "Quanto ci vuole in auto da Edimburgo a Skye?",
+     "answer": "Calcola da cinque a sei ore fino al ponte senza soste lunghe, per Stirling, Glencoe e Fort William oppure per Perth e Inverness. Per questo i nostri tour durano due o tre giorni."
+    }
+   ]
+  },
+  "getting-around-without-a-car": {
+   "title": "Muoversi a Skye senza auto",
+   "url_slug": "muoversi-a-skye-senza-auto",
+   "summary": "Gli autobus locali raggiungono i paesi principali, ma non la maggior parte dei luoghi famosi, e passano poche volte al giorno. Che cosa funziona e che cosa no.",
+   "content": "<p>Il trasporto pubblico a Skye sono gli autobus, e non molti. Stagecoach gestisce le linee locali tra i paesi principali, come Portree–Broadford–Armadale o Kyle of Lochalsh–Broadford–Elgol, e i pullman Citylink fermano a Kyleakin, Broadford, Sligachan e Portree nel tragitto da e per la terraferma; alcuni proseguono fino a Uig.</p><p>Il problema è la frequenza e la copertura. Molte linee hanno solo poche corse al giorno, meno la domenica, e gli orari sono pensati per chi vive qui, non per i turisti. Luoghi come le Fairy Pools, Neist Point, il Quiraing o la baia di Talisker sono lontani da qualsiasi fermata.</p><p>Per questo chi arriva senza auto di solito sceglie tra un tour guidato, che percorre l'isola sfruttando le ore di luce, e una base a Portree per vedere qualcosa in autobus e a piedi. I taxi ci sono, ma sono pochi: prenotali in anticipo.</p>",
+   "faq": [
+    {
+     "question": "Si può visitare Skye senza auto?",
+     "answer": "Sì, ma con dei limiti. Gli autobus collegano i paesi principali poche volte al giorno e non arrivano alla maggior parte dei luoghi famosi. Senza auto, un tour guidato è il modo per vedere l'isola in due o tre giorni."
+    },
+    {
+     "question": "Quali autobus ci sono a Skye?",
+     "answer": "Stagecoach gestisce le linee locali, tra cui Portree–Broadford–Armadale e Kyle of Lochalsh–Broadford–Elgol. Anche i pullman Citylink tra la terraferma e Portree o Uig trasportano passeggeri all'interno dell'isola."
+    },
+    {
+     "question": "Esiste un biglietto giornaliero per gli autobus?",
+     "answer": "Stagecoach vende un biglietto DayRider per viaggiare senza limiti sui propri autobus per un giorno. Non vale sui pullman Citylink."
+    },
+    {
+     "question": "Posso arrivare in autobus alle Fairy Pools, al Quiraing o a Neist Point?",
+     "answer": "In modo pratico, no. Nessuno di questi luoghi è vicino a una fermata con servizio regolare. Servono un'auto, un taxi prenotato in anticipo o un tour."
+    },
+    {
+     "question": "Ci sono taxi a Skye?",
+     "answer": "Alcuni, soprattutto a Portree e a Broadford. Prenotali in anticipo, in particolare al mattino presto, la sera e per le coincidenze con traghetto o autobus: non contare di trovarne uno in attesa."
+    }
+   ]
+  },
+  "weather-daylight-and-midges": {
+   "title": "Meteo, ore di luce e midge",
+   "url_slug": "meteo-ore-di-luce-e-midge",
+   "summary": "Pioggia in qualsiasi giorno dell'anno, da 7 ore di luce in inverno a 18 in giugno, e i midge d'estate: che cosa aspettarsi mese per mese.",
+   "content": "<p>Il clima di Skye è mite, umido e variabile. Può piovere in qualsiasi giorno dell'anno, e la stessa giornata porta spesso sole, nuvole, vento e rovesci a turno. Secondo le medie storiche, i mesi più asciutti sono quelli primaverili, con poco più di 100 mm di pioggia in aprile e in maggio, e i più piovosi vanno da settembre a gennaio, con oltre 200 mm al mese.</p><p>Ciò che cambia di più durante l'anno è la luce. Ci sono circa 7 ore di luce in dicembre e gennaio, 12 in marzo, 17 in maggio e luglio e 18 in giugno, per scendere a 13 in settembre e 10 in ottobre. D'estate c'è tempo per lunghe giornate all'aperto; d'inverno le visite devono stare tra metà mattina e metà pomeriggio.</p><p>I midge, i minuscoli moscerini che pungono delle Highlands, sono una faccenda estiva. A inizio e metà maggio sono ancora rari, danno il peggio nelle mattine e nelle sere umide e senza vento di piena estate, e spariscono con la brezza. Sono un fastidio, non un pericolo: bastano un repellente e le maniche lunghe.</p>",
+   "faq": [
+    {
+     "question": "Qual è il periodo migliore per visitare Skye?",
+     "answer": "Maggio e giugno offrono l'equilibrio migliore: le giornate più lunghe dell'anno, i mesi in media più asciutti e pochi midge. Luglio e agosto sono i più affollati. Da ottobre a marzo le giornate sono corte e il tempo più duro, ma l'isola è tranquilla e i prezzi scendono."
+    },
+    {
+     "question": "Quante ore di luce ci sono?",
+     "answer": "Circa 7 ore in dicembre e gennaio, 9 in febbraio, 12 in marzo, 14 in aprile, 17 in maggio, 18 in giugno, 17 in luglio, 15 in agosto, 13 in settembre, 10 in ottobre e 8 in novembre."
+    },
+    {
+     "question": "Piove molto a Skye?",
+     "answer": "Sì. Piove spesso tutto l'anno; aprile e maggio sono in media i mesi più asciutti, e da settembre a gennaio i più piovosi. Raramente dura tutto il giorno: rovesci e schiarite si alternano."
+    },
+    {
+     "question": "Come mi vesto?",
+     "answer": "A strati, con giacca impermeabile e scarpe o scarponi impermeabili, anche d'estate. Il vento fa percepire più freddo di quanto dica il termometro, soprattutto sui promontori come Neist Point."
+    },
+    {
+     "question": "Quando ci sono i midge e quanto danno fastidio?",
+     "answer": "Dalla tarda primavera all'inizio dell'autunno, soprattutto in piena estate, nelle mattine e nelle sere umide e senza vento. Non trasmettono malattie. Usa un repellente, copri braccia e gambe e mettiti dove tira aria: con la brezza non riescono a volare."
+    },
+    {
+     "question": "I tour partono con il maltempo?",
+     "answer": "Sì. I tour partono con la pioggia o con la neve e vengono annullati solo se c'è un rischio per la sicurezza. Soste e orari possono cambiare sul momento."
+    }
+   ]
+  },
+  "health-and-emergencies": {
+   "title": "Salute ed emergenze",
+   "url_slug": "salute-ed-emergenze",
+   "summary": "Chi chiamare, dov'è l'ospedale e che cosa fare se qualcosa va storto in montagna: i numeri e i luoghi da conoscere prima di averne bisogno.",
+   "content": "<p>In caso di emergenza chiama il 999 o il 112, gratis da qualsiasi telefono, e chiedi ambulanza, polizia, vigili del fuoco o guardia costiera. Per un incidente in montagna o su un sentiero isolato, chiedi la polizia e poi il soccorso alpino. La copertura mobile è discontinua fuori dai paesi: per un'escursione, comunica a qualcuno il percorso e l'ora in cui pensi di rientrare.</p><p>L'ospedale dell'isola è a Broadford, nel sud, e ha un pronto soccorso aperto giorno e notte. Portree ha un ospedale di comunità con un servizio di cure urgenti per problemi che non mettono in pericolo la vita, come tagli, distorsioni o piccole ustioni.</p><p>Per ciò che non può aspettare ma non è un'emergenza, chiama prima NHS 24, al 111: ti dicono dove andare, e NHS Highland chiede di telefonare prima di presentarsi a un centro di cure urgenti. Qui le distanze contano: dal nord di Trotternish o da Glendale, Broadford è a più di un'ora di auto.</p>",
+   "faq": [
+    {
+     "question": "Che numero chiamo in caso di emergenza?",
+     "answer": "Il 999 o il 112. Entrambi sono gratuiti e funzionano da qualsiasi telefono, anche da un cellulare straniero."
+    },
+    {
+     "question": "C'è un ospedale a Skye?",
+     "answer": "Sì. L'ospedale di Broadford, nel sud dell'isola, ha un pronto soccorso aperto 24 ore su 24. L'ospedale di comunità di Portree offre cure urgenti per problemi che non mettono in pericolo la vita."
+    },
+    {
+     "question": "Non mi sento bene ma non è un'emergenza. Che cosa faccio?",
+     "answer": "Chiama NHS 24, al 111. Ti valutano per telefono e ti indirizzano al posto giusto. NHS Highland chiede di chiamare il 111 prima di andare a un centro di cure urgenti."
+    },
+    {
+     "question": "Che cosa faccio se qualcuno si fa male durante un'escursione?",
+     "answer": "Chiama il 999 o il 112, chiedi la polizia e poi il soccorso alpino, e indica la tua posizione nel modo più preciso possibile. Se non c'è segnale, manda qualcuno dove ce n'è e tieni la persona ferita al caldo e al riparo."
+    },
+    {
+     "question": "Il telefono prende dappertutto a Skye?",
+     "answer": "No. La copertura è buona a Portree, a Broadford e lungo la strada principale, debole o assente in molte valli e sulla costa. Scarica le mappe per usarle offline e non affidarti al telefono per orientarti in un'escursione."
+    },
+    {
+     "question": "L'assistenza sanitaria è gratuita per i visitatori?",
+     "answer": "Le cure di emergenza al pronto soccorso non si pagano al momento, ma altre prestazioni possono essere a pagamento a seconda del paese di provenienza. La scelta prudente è un'assicurazione di viaggio che copra le spese mediche."
+    }
+   ]
+  }
+ }
+}

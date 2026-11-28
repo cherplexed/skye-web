@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.13.0
+Version: 0.14.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -405,3 +405,12 @@ a.skye-mhroute:hover { border-color: var(--skye-accent); }
   .skye-mh__section { margin-top: 36px; }
   .skye-spot__facts div { grid-template-columns: 1fr; gap: 2px; }
 }
+
+/* Practical information */
+.skye-guide { max-width: 760px; }
+.skye-guide__text { font-size: 17px; line-height: 1.65; }
+.skye-guide__text p { margin: 0 0 16px; }
+.skye-guide .skye-faq { margin-top: 40px; }
+.skye-guide .skye-sources { margin-top: 24px; }
+.skye-guides .skye-mhroute h2 { font-size: 21px; line-height: 1.25; margin: 0 0 8px; }
+.skye-guide__count { color: var(--skye-accent) !important; font-size: 13px !important; font-weight: 600; margin-top: 12px !important; }

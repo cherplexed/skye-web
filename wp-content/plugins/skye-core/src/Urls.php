@@ -15,8 +15,8 @@ final class Urls {
 
 	/** Base of each language, by the base WordPress registers. A language not listed keeps the registered ones. */
 	public const BASES = [
-		'es' => [ 'places' => 'lugares', 'routes' => 'rutas', 'tours' => 'tours', 'stay' => 'alojamiento', 'motorhome' => 'autocaravana', 'experiences' => 'actividades', 'zone' => 'zona' ],
-		'it' => [ 'places' => 'luoghi', 'routes' => 'percorsi', 'tours' => 'tour', 'stay' => 'alloggi', 'motorhome' => 'camper', 'experiences' => 'attivita', 'zone' => 'zona' ],
+		'es' => [ 'places' => 'lugares', 'routes' => 'rutas', 'tours' => 'tours', 'stay' => 'alojamiento', 'motorhome' => 'autocaravana', 'experiences' => 'actividades', 'info' => 'informacion', 'zone' => 'zona' ],
+		'it' => [ 'places' => 'luoghi', 'routes' => 'percorsi', 'tours' => 'tour', 'stay' => 'alloggi', 'motorhome' => 'camper', 'experiences' => 'attivita', 'info' => 'informazioni', 'zone' => 'zona' ],
 	];
 
 	/** Registered base => what it routes to: a post type, or the zone taxonomy. */
@@ -27,6 +27,7 @@ final class Urls {
 		'stay'        => PostTypes::LODGING,
 		'motorhome'   => PostTypes::MOTORHOME,
 		'experiences' => PostTypes::EXPERIENCE,
+		'info'        => PostTypes::GUIDE,
 		'zone'        => Taxonomies::ZONE,
 	];
 

@@ -14,6 +14,7 @@ final class UrlsTest extends TestCase {
 		self::assertSame( '/es/zona/trotternish-es/?category=hike#list', Urls::localize( '/es/zone/trotternish-es/?category=hike#list', 'es' ) );
 		self::assertSame( '/es/autocaravana/', Urls::localize( '/es/motorhome/', 'es-ES' ) );
 		self::assertSame( '/it/tour/x/', Urls::localize( '/it/tours/x/', 'it' ) );
+		self::assertSame( '/es/informacion/como-llegar-a-skye/', Urls::localize( '/es/info/como-llegar-a-skye/', 'es' ) );
 		// From the base of one language to another, and back to the registered one for the rest.
 		self::assertSame( '/it/percorsi/skye-in-un-giorno/', Urls::localize( '/it/rutas/skye-in-un-giorno/', 'it' ) );
 		self::assertSame( '/places/quiraing/', Urls::localize( '/lugares/quiraing/', 'en' ) );

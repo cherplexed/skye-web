@@ -142,20 +142,20 @@ final class I18nTest extends TestCase {
 		foreach ( self::seed_languages() as $lang ) {
 			$this->check_translated_seed( $lang );
 		}
-		foreach ( [ 'places', 'tours', 'routes' ] as $name ) {
+		foreach ( [ 'places', 'tours', 'routes', 'guides' ] as $name ) {
 			foreach ( self::seed_languages() as $lang ) {
 				foreach ( self::json( "$lang/$name.json" )[ $name ] as $slug => $row ) {
 					$this->assertTrue( isset( $row['url_slug'] ), "$lang/$name/$slug has the slug of its own address" );
 				}
 			}
 		}
-		foreach ( [ 'places', 'tours', 'routes', 'spots' ] as $name ) {
+		foreach ( [ 'places', 'tours', 'routes', 'spots', 'guides' ] as $name ) {
 			$this->assertSame( array_column( self::json( "$name.json" )[ $name ], 'slug' ), array_keys( self::json( "es/$name.json" )[ $name ] ), "Spanish translates every item of $name, in order" );
 		}
 	}
 
 	private function check_translated_seed( string $lang ): void {
-		$types = [ 'places' => PostTypes::PLACE, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE, 'spots' => PostTypes::MOTORHOME ];
+		$types = [ 'places' => PostTypes::PLACE, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE, 'spots' => PostTypes::MOTORHOME, 'guides' => PostTypes::GUIDE ];
 		foreach ( $types as $name => $post_type ) {
 			if ( ! is_file( __DIR__ . "/../../seed/$lang/$name.json" ) ) {
 				continue; // A language can be translated in stages.
