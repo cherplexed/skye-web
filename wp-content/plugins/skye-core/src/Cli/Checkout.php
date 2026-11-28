@@ -19,7 +19,8 @@ use WP_CLI;
 final class Checkout {
 
 	/** Name and address every test booking is made under, so they are easy to find and cancel. */
-	public const TEST_CONTACT = [ 'firstName' => 'Joe', 'lastName' => 'Dole', 'email' => 'doedole@youdole.com' ];
+	// The phone number is from the range Ofcom reserves for fiction (07700 900xxx): it belongs to nobody.
+	public const TEST_CONTACT = [ 'firstName' => 'Joe', 'lastName' => 'Dole', 'email' => 'doedole@youdole.com', 'phoneNumber' => '+44 7700 900123' ];
 
 	/**
 	 * The shape of a value without its bulk: every key, one sample of each list, strings cut short.
@@ -339,7 +340,23 @@ final class Checkout {
 		if ( $missing ) {
 			WP_CLI::error( 'Bókun requires contact answers the test traveller does not have (' . implode( ', ', $missing ) . '), so nothing was reserved.' );
 		}
+		// Required questions of the booking itself: a yes/no gets "no" (no children), a box to tick gets ticked.
+		$answers = [];
+		foreach ( (array) ( $options['questions']['activityBookings'][0]['questions'] ?? [] ) as $q ) {
+			if ( empty( $q['required'] ) ) {
+				continue;
+			}
+			$type = (string) ( $q['dataType'] ?? '' );
+			if ( ! in_array( $type, [ 'BOOLEAN', 'CHECKBOX_TOGGLE' ], true ) ) {
+				WP_CLI::error( sprintf( 'Bókun requires an answer to "%s" (%s) that the test cannot make up, so nothing was reserved.', (string) ( $q['label'] ?? '' ), $type ) );
+			}
+			$answers[] = [ 'questionId' => (string) $q['questionId'], 'values' => [ 'BOOLEAN' === $type ? 'false' : 'true' ] ];
+		}
+		if ( $answers ) {
+			$request['activityBookings'][0]['answers'] = $answers;
+		}
 		$body = [
+			'checkoutOptionAnswers'         => [ [ 'questionId' => 'sendNotificationToMainContact', 'values' => [ 'false' ] ] ],
 			'checkoutOption'                => (string) $option['type'],
 			'paymentMethod'                 => $method,
 			'source'                        => 'DIRECT_REQUEST',
