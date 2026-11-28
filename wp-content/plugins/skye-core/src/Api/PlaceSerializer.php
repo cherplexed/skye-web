@@ -23,7 +23,7 @@ final class PlaceSerializer {
 		return [
 			'id'               => $id,
 			'uuid'             => Uuid::get( $id ),
-			'slug'             => $p->post_name,
+			'slug'             => \Skye\Lang::slug( $p ),
 			'title'            => \Skye\Text::title( $p ),
 			'summary'          => (string) Meta::get( $id, 'summary', '' ),
 			'url'              => get_permalink( $p ),
@@ -100,7 +100,7 @@ final class PlaceSerializer {
 		foreach ( $ids as $rid ) {
 			$rp = get_post( $rid );
 			if ( $rp && 'publish' === $rp->post_status ) {
-				$out[] = [ 'id' => $rp->ID, 'uuid' => Uuid::get( $rp->ID ), 'slug' => $rp->post_name, 'title' => \Skye\Text::title( $rp ), 'type' => $rp->post_type ];
+				$out[] = [ 'id' => $rp->ID, 'uuid' => Uuid::get( $rp->ID ), 'slug' => \Skye\Lang::slug( $rp ), 'title' => \Skye\Text::title( $rp ), 'type' => $rp->post_type ];
 			}
 		}
 		return $out;

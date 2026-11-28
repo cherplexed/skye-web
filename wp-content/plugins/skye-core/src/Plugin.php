@@ -25,6 +25,7 @@ final class Plugin {
 		Fields::register();        // ACF JSON load point + fallback metaboxes
 		Verification::register();  // verified_by / valid_until / change log
 		Api\Router::register();    // /wp-json/skye/v1
+		Urls::register();          // /es/lugares/, /it/luoghi/: bases in the language of the page
 		Frontend::register();      // [skye_place] blocks for the Bricks templates
 		JsonLd::register();        // schema.org in <head>
 

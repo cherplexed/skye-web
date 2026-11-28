@@ -57,7 +57,7 @@ final class Geo {
 			$rows[] = [
 				'id'            => (int) $id,
 				'uuid'          => Uuid::get( (int) $id ),
-				'slug'          => get_post_field( 'post_name', $id ),
+				'slug'          => Lang::slug( get_post( (int) $id ) ),
 				'title'         => Text::title( $id ),
 				'type'          => $post_type,
 				'distance_km'   => round( $d, 1 ),

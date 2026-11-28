@@ -39,7 +39,7 @@ final class Audioguide {
 				'number'    => Meta::int( $id, 'audioguide_stop_number', 0 ),
 				'id'        => $id,
 				'uuid'      => Uuid::get( $id ),
-				'slug'      => $p->post_name,
+				'slug'      => \Skye\Lang::slug( $p ),
 				'title'     => \Skye\Text::title( $p ),
 				'summary'   => (string) Meta::get( $id, 'summary', '' ),
 				'location'  => Meta::latlng( $id, 'location' ),
