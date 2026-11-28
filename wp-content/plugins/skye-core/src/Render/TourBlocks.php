@@ -143,6 +143,7 @@ final class TourBlocks {
 	public static function checkout_strings(): array {
 		return [
 			'loading' => Html::t( 'Loading dates…' ),
+			'pricing' => Html::t( 'Checking the price…' ),
 			'no_dates' => Html::t( 'There are no departures open for booking right now.' ),
 			'when' => Html::t( 'When do you want to go?' ),
 			'from' => Html::t( 'from %s' ),
