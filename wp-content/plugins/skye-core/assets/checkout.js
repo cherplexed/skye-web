@@ -224,6 +224,7 @@
 		} );
 	}
 	var card = null;
+	var shownView = null;
 	function mountCard() {
 		loadSdk().then( function () {
 			return cfg.mode === 'sandbox' ? window.RevolutCheckout( state.hold.order_token, 'sandbox' ) : window.RevolutCheckout( state.hold.order_token );
@@ -327,6 +328,15 @@
 			}
 		}
 		root.replaceChildren.apply( root, kids.filter( Boolean ) );
+		// Moving to the payment or to the result replaces a long form with a short block: without this
+		// the window is left looking at whatever comes after the checkout.
+		var view = state.done ? 'done' : ( state.hold ? 'pay' : 'form' );
+		if ( view !== shownView ) {
+			if ( shownView !== null ) {
+				( root.closest( '.skye-booking' ) || root ).scrollIntoView( { behavior: 'smooth', block: 'start' } );
+			}
+			shownView = view;
+		}
 	}
 
 	render();
