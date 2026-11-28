@@ -116,7 +116,7 @@ final class TourBlocks {
 		if ( '' !== $note ) {
 			$out .= '<p class="skye-offer__note">' . Html::e( $note ) . '</p>';
 		}
-		$here = ! empty( $offer['booking_widget'] );
+		$here = ! empty( $offer['booking_widget'] ) || ! empty( $t['_checkout'] );
 		if ( $here ) {
 			$out .= sprintf( '<a class="skye-btn skye-btn--primary" href="#%s">%s</a>', self::BOOKING_ID, Html::e( Html::t( 'See dates and book' ) ) );
 		} elseif ( ! empty( $offer['booking_url'] ) ) {
@@ -139,7 +139,99 @@ final class TourBlocks {
 	 * booking channel. The calendar is the one thing on the page that needs JavaScript, so without
 	 * it the block falls back to a plain link. Empty when the brand has no channel or no product.
 	 */
+	/** @return array<string, string> Every text of the checkout, for its script. */
+	public static function checkout_strings(): array {
+		return [
+			'loading' => Html::t( 'Loading dates…' ),
+			'no_dates' => Html::t( 'There are no departures open for booking right now.' ),
+			'when' => Html::t( 'When do you want to go?' ),
+			'from' => Html::t( 'from %s' ),
+			'few' => Html::t( '%s places left' ),
+			'more_dates' => Html::t( 'Show more dates' ),
+			'who' => Html::t( 'How do you want to travel?' ),
+			'who_hint' => Html::t( 'Choose how many people travel in each option. The price is per person and includes the accommodation of that option.' ),
+			'per_person' => Html::t( '%s per person' ),
+			'less' => Html::t( 'One fewer' ),
+			'more' => Html::t( 'One more' ),
+			'details' => Html::t( 'Your details' ),
+			'first' => Html::t( 'First name' ),
+			'last' => Html::t( 'Last name' ),
+			'email' => Html::t( 'Email' ),
+			'phone' => Html::t( 'Mobile phone' ),
+			'phone_help' => Html::t( 'With the country code, for example +34 600 000 000. The guide only uses it on the day of departure.' ),
+			'yes' => Html::t( 'Yes' ),
+			'no' => Html::t( 'No' ),
+			'required' => Html::t( 'This field is required' ),
+			'check' => Html::t( 'Check the fields marked in red.' ),
+			'agree' => Html::t( 'I accept the booking conditions and the cancellation policy.' ),
+			'agree_first' => Html::t( 'Accept the booking conditions to continue.' ),
+			'total' => Html::t( 'Total' ),
+			'continue' => Html::t( 'Continue to payment · %s' ),
+			'reserving' => Html::t( 'Holding your places…' ),
+			'no_charge_yet' => Html::t( 'Nothing is charged yet. Your places are held for 30 minutes while you pay.' ),
+			'payment' => Html::t( 'Payment' ),
+			'held' => Html::t( 'Your places are held for 30 minutes. Pay by card to confirm the booking.' ),
+			'pay' => Html::t( 'Pay %s' ),
+			'paying' => Html::t( 'Processing the payment…' ),
+			'change' => Html::t( 'Change the booking' ),
+			'secure' => Html::t( 'Your card details go straight to Revolut, encrypted. We never see or store them.' ),
+			'sandbox' => Html::t( 'TEST MODE: no real money is charged.' ),
+			'done_title' => Html::t( 'Booking confirmed' ),
+			'done_text' => Html::t( 'We have sent the confirmation to %s.' ),
+			'code' => Html::t( 'Booking reference:' ),
+			'failed_title' => Html::t( 'The payment did not go through' ),
+			'failed_text' => Html::t( 'Nothing has been charged and your places have been released. You can try again.' ),
+			'pending_title' => Html::t( 'We are confirming your booking' ),
+			'pending_text' => Html::t( 'We have received the payment, but the confirmation is taking longer than usual. Keep your booking reference: we will email you, and you do not need to pay again.' ),
+			'err_unavailable' => Html::t( 'Booking is not available right now. Please try again in a few minutes.' ),
+			'err_not_bookable' => Html::t( 'That departure can no longer be booked with those options. Choose another date or fewer places.' ),
+			'err_payment_unavailable' => Html::t( 'The payment could not be started. Nothing has been charged. Please try again.' ),
+			'err_too_many' => Html::t( 'Too many attempts. Please wait a few minutes.' ),
+			'err_expired' => Html::t( 'The time to pay ran out and the places were released. Please start again.' ),
+			'err_card' => Html::t( 'The card payment failed.' ),
+		];
+	}
+
+	/** @return array<string, string> What Bókun calls each way of travelling => how we say it. */
+	public static function checkout_categories(): array {
+		return [
+			'Only tour' => Html::t( 'Tour only, no accommodation' ),
+			'Hostel' => Html::t( 'Hostel: bed in a shared room' ),
+			'Medium (individual)' => Html::t( 'Standard B&B: single room' ),
+			'People in Medium (double)' => Html::t( 'Standard B&B: double room' ),
+			'People in Medium (triple)' => Html::t( 'Standard B&B: triple room' ),
+			'Superior (individual)' => Html::t( 'Superior B&B: single room' ),
+			'People in Superior (double)' => Html::t( 'Superior B&B: double room' ),
+			'People in Superior (triple)' => Html::t( 'Superior B&B: triple room' ),
+		];
+	}
+
+	/**
+	 * Our own checkout: the shell the script fills, with a plain link for a browser without JavaScript.
+	 *
+	 * @param array{api:string, tour:int, lang:string, locale:string, mode:string, embed:string, max:int} $c
+	 */
+	public static function checkout( array $t, array $c ): string {
+		$config   = $c + [ 'title' => (string) ( $t['title'] ?? '' ), 'strings' => self::checkout_strings(), 'categories' => self::checkout_categories() ];
+		$fallback = Html::e( Html::t( 'Booking needs JavaScript.' ) );
+		if ( ! empty( $t['offer']['booking_url'] ) ) {
+			$fallback .= sprintf( ' <a href="%s" rel="noopener">%s</a>', Html::e( $t['offer']['booking_url'] ), Html::e( Html::t( 'Book on the operator\'s website' ) ) );
+		}
+		$json = (string) json_encode( $config, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP );
+		return sprintf(
+			'<section class="skye-block skye-booking" id="%s"><h2 class="skye-block__title">%s</h2><div class="skye-co" data-skye-checkout="%s"><p class="skye-co__loading">%s</p></div><noscript><p class="skye-booking__fallback">%s</p></noscript></section>',
+			self::BOOKING_ID,
+			Html::e( Html::t( 'Dates and booking' ) ),
+			Html::e( $json ),
+			Html::e( Html::t( 'Loading dates…' ) ),
+			$fallback
+		);
+	}
+
 	public static function booking( array $t ): string {
+		if ( ! empty( $t['_checkout'] ) && is_array( $t['_checkout'] ) ) {
+			return self::checkout( $t, $t['_checkout'] );
+		}
 		$offer  = $t['offer'] ?? null;
 		$widget = is_array( $offer ) ? ( $offer['booking_widget'] ?? null ) : null;
 		if ( ! is_array( $widget ) || empty( $widget['channel_uuid'] ) || empty( $widget['product_id'] ) ) {
@@ -333,7 +425,7 @@ final class TourBlocks {
 			}
 		}
 		$buttons = '';
-		if ( ! empty( $t['offer']['booking_widget'] ) && ! empty( $t['url'] ) ) {
+		if ( ( ! empty( $t['offer']['booking_widget'] ) || ! empty( $t['_checkout'] ) ) && ! empty( $t['url'] ) ) {
 			$buttons .= sprintf( '<a class="skye-btn skye-btn--primary" href="%s#%s">%s</a>', Html::e( $t['url'] ), self::BOOKING_ID, Html::e( Html::t( 'See dates and book' ) ) );
 		} elseif ( ! empty( $t['offer']['booking_url'] ) ) {
 			$buttons .= sprintf( '<a class="skye-btn skye-btn--primary" href="%s" rel="noopener">%s</a>', Html::e( $t['offer']['booking_url'] ), Html::e( Html::t( 'See dates and book' ) ) );

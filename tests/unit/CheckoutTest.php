@@ -36,7 +36,7 @@ final class CheckoutTest extends TestCase {
 	}
 
 	public function test_a_rejected_bokun_request_says_why_without_the_rest_of_the_body(): void {
-		$client = new Bokun( 'access-key', 'secret-key', 'https://api.example', static fn() => [ 'status' => 400, 'body' => '{"message":"Missing answer for secret-key question","fields":{"phoneNumber":"required"},"stack":"internal detail"}', 'headers' => [] ] );
+		$client = new Bokun( 'access-key-1', 'secret-key-1', 'https://api.example', static fn() => [ 'status' => 400, 'body' => '{"message":"Missing answer for secret-key-1 question","fields":{"phoneNumber":"required"},"stack":"internal detail"}', 'headers' => [] ] );
 		try {
 			$client->post( '/checkout.json/submit', [ 'a' => 1 ] );
 			self::assertTrue( false, 'a 400 must throw' );

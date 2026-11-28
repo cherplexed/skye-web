@@ -144,7 +144,8 @@ final class Client {
 		}
 		$text = trim( (string) preg_replace( '/\s+/', ' ', implode( ' · ', $parts ) ) );
 		foreach ( $secrets as $secret ) {
-			if ( '' !== $secret ) {
+			// A real key is long; a one-letter stand-in would blank half the message.
+			if ( strlen( $secret ) >= 8 ) {
 				$text = str_replace( $secret, '[key]', $text );
 			}
 		}
