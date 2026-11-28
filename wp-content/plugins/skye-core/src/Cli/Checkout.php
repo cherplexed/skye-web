@@ -1,0 +1,224 @@
+<?php
+declare(strict_types=1);
+
+namespace Skye\Cli;
+
+use Skye\Bokun\BokunException;
+use Skye\Bokun\Client as Bokun;
+use Skye\Config;
+use Skye\Meta;
+use Skye\PostTypes;
+use Skye\Revolut\Client as Revolut;
+use Skye\Revolut\RevolutException;
+use WP_CLI;
+
+/**
+ * Checks and discovery for our own checkout (issue #33). Nothing here prints a key, and nothing
+ * creates a booking: `options` only asks Bókun what a booking would need and cost.
+ */
+final class Checkout {
+
+	/** Name and address every test booking is made under, so they are easy to find and cancel. */
+	public const TEST_CONTACT = [ 'firstName' => 'Joe', 'lastName' => 'Dole', 'email' => 'doedole@youdole.com' ];
+
+	/**
+	 * The shape of a value without its bulk: every key, one sample of each list, strings cut short.
+	 *
+	 * @return list<string> Lines "path: sample".
+	 */
+	public static function outline( mixed $value, string $path = '', int $depth = 0, int $max_depth = 5 ): array {
+		if ( is_array( $value ) ) {
+			if ( ! $value ) {
+				return [ ( '' === $path ? '(root)' : $path ) . ': ' . '[]' ];
+			}
+			if ( $depth >= $max_depth ) {
+				return [ $path . ': ' . ( array_is_list( $value ) ? 'list of ' . count( $value ) : '{' . implode( ', ', array_slice( array_map( 'strval', array_keys( $value ) ), 0, 12 ) ) . '}' ) ];
+			}
+			if ( array_is_list( $value ) ) {
+				return self::outline( $value[0], $path . '[' . count( $value ) . ']', $depth + 1, $max_depth );
+			}
+			$lines = [];
+			foreach ( $value as $key => $item ) {
+				array_push( $lines, ...self::outline( $item, '' === $path ? (string) $key : $path . '.' . $key, $depth + 1, $max_depth ) );
+			}
+			return $lines;
+		}
+		$sample = is_string( $value ) ? '"' . mb_substr( trim( (string) preg_replace( '/\s+/', ' ', wp_strip_all_tags( $value ) ) ), 0, 70 ) . '"' : (string) json_encode( $value );
+		return [ $path . ': ' . $sample ];
+	}
+
+	/** @return list<array{tour:string, brand:string, product_id:string}> The Bókun products of the tours, default language. */
+	private static function products(): array {
+		$out = [];
+		foreach ( get_posts( [ 'post_type' => PostTypes::TOUR, 'post_status' => 'publish', 'posts_per_page' => 20, 'orderby' => 'title', 'order' => 'ASC', 'suppress_filters' => true ] ) as $tour ) {
+			foreach ( (array) Meta::get( $tour->ID, 'products', [] ) as $row ) {
+				$id = is_array( $row ) ? trim( (string) ( $row['bokun_product_id'] ?? '' ) ) : '';
+				if ( '' === $id || isset( $out[ $id ] ) ) {
+					continue;
+				}
+				$brand      = is_array( $row['brand'] ?? null ) ? (int) ( $row['brand'][0] ?? 0 ) : (int) ( $row['brand'] ?? 0 );
+				$out[ $id ] = [ 'tour' => $tour->post_name, 'brand' => $brand ? (string) get_post_field( 'post_name', $brand ) : '?', 'product_id' => $id ];
+			}
+		}
+		return array_values( $out );
+	}
+
+	/**
+	 * Checks that Bókun and Revolut answer with the configured keys, and lists the products the checkout will sell.
+	 *
+	 * In sandbox it creates a Revolut order of 1.00 GBP and cancels it at once. It never creates a booking.
+	 *
+	 * ## EXAMPLES
+	 *     wp skye checkout doctor
+	 */
+	public function doctor(): void {
+		$bokun = Bokun::from_config();
+		if ( ! $bokun ) {
+			WP_CLI::warning( 'Bókun: not configured (BOKUN_ACCESS_KEY, BOKUN_SECRET_KEY).' );
+		} else {
+			$base = Config::get( 'BOKUN_BASE_URL' );
+			WP_CLI::log( 'Bókun: keys present · ' . ( '' === $base || str_contains( $base, 'api.bokun.io' ) ? 'PRODUCTION (bookings take real seats)' : 'test environment' ) );
+			$products = self::products();
+			WP_CLI::log( sprintf( 'Bókun: %d products on the tours', count( $products ) ) );
+			foreach ( $products as $p ) {
+				try {
+					$a = $bokun->activity( $p['product_id'] );
+				} catch ( BokunException $e ) {
+					WP_CLI::warning( "  {$p['product_id']} ({$p['tour']} / {$p['brand']}): " . $e->getMessage() );
+					continue;
+				}
+				WP_CLI::log( sprintf( '  %s  %s / %s  "%s"  bookingType=%s', $p['product_id'], $p['tour'], $p['brand'], (string) ( $a['title'] ?? '?' ), (string) ( $a['bookingType'] ?? '?' ) ) );
+				foreach ( (array) ( $a['rates'] ?? [] ) as $rate ) {
+					WP_CLI::log( sprintf( '      rate %s "%s" categories=%s', (string) ( $rate['id'] ?? '?' ), (string) ( $rate['title'] ?? '' ), (string) json_encode( $rate['pricingCategoryIds'] ?? null ) ) );
+				}
+				foreach ( (array) ( $a['pricingCategories'] ?? [] ) as $c ) {
+					WP_CLI::log( sprintf( '      category %s "%s" ages %s-%s', (string) ( $c['id'] ?? '?' ), (string) ( $c['title'] ?? $c['fullTitle'] ?? '' ), (string) ( $c['minAge'] ?? '?' ), (string) ( $c['maxAge'] ?? '?' ) ) );
+				}
+				foreach ( (array) ( $a['startTimes'] ?? [] ) as $s ) {
+					WP_CLI::log( sprintf( '      start time %s  %02d:%02d', (string) ( $s['id'] ?? '?' ), (int) ( $s['hour'] ?? 0 ), (int) ( $s['minute'] ?? 0 ) ) );
+				}
+			}
+		}
+
+		$env    = Revolut::environment();
+		$public = '' !== Config::get( 'REVOLUT_PUBLIC_KEY' );
+		$client = Revolut::from_config();
+		WP_CLI::log( sprintf( 'Revolut: environment=%s · public key %s · secret key %s', $env, $public ? 'present' : 'MISSING', $client ? 'present' : 'MISSING' ) );
+		if ( ! $client ) {
+			WP_CLI::warning( 'Revolut: set REVOLUT_SECRET_KEY and REVOLUT_PUBLIC_KEY in .env and restart the stack.' );
+			return;
+		}
+		if ( 'sandbox' !== $env ) {
+			WP_CLI::warning( 'Revolut: production keys. The doctor does not create test orders outside the sandbox.' );
+			return;
+		}
+		try {
+			$order = $client->create_order( 100, 'GBP', [ 'description' => 'skye-web checkout doctor' ] );
+			WP_CLI::log( sprintf( 'Revolut: test order created · state=%s · token %s', (string) ( $order['state'] ?? '?' ), empty( $order['token'] ) ? 'MISSING' : 'returned' ) );
+			$cancelled = $client->cancel_order( (string) ( $order['id'] ?? '' ) );
+			WP_CLI::success( 'Revolut: test order cancelled · state=' . (string) ( $cancelled['state'] ?? '?' ) );
+		} catch ( RevolutException $e ) {
+			WP_CLI::warning( $e->getMessage() );
+		}
+	}
+
+	/**
+	 * Prints the shape of a Bókun product and of its next departures: what the checkout has to offer and ask.
+	 *
+	 * ## OPTIONS
+	 * <product_id>
+	 * : Bókun product (activity) ID.
+	 *
+	 * [--currency=<code>]
+	 * : Default GBP.
+	 *
+	 * [--depth=<n>]
+	 * : How deep to print nested data. Default 4.
+	 *
+	 * ## EXAMPLES
+	 *     wp skye checkout product 60870 --currency=EUR
+	 */
+	public function product( array $args, array $assoc ): void {
+		$bokun = Bokun::from_config();
+		if ( ! $bokun ) {
+			WP_CLI::error( 'Bókun is not configured.' );
+		}
+		$currency = strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) );
+		$depth    = max( 1, (int) ( $assoc['depth'] ?? 4 ) );
+		try {
+			$activity = $bokun->activity( (string) $args[0], $currency );
+			$days     = $bokun->availabilities( (string) $args[0], gmdate( 'Y-m-d' ), gmdate( 'Y-m-d', time() + 60 * DAY_IN_SECONDS ), $currency );
+		} catch ( BokunException $e ) {
+			WP_CLI::error( $e->getMessage() );
+		}
+		// Long texts and photos say nothing about how to book.
+		foreach ( [ 'description', 'excerpt', 'photos', 'keyPhoto', 'videos', 'agendaItems', 'included', 'excluded', 'requirements', 'attention', 'knowBeforeYouGoItems', 'googlePlace', 'tripadvisorReview', 'vendor' ] as $skip ) {
+			unset( $activity[ $skip ] );
+		}
+		WP_CLI::log( '== PRODUCT ==' );
+		WP_CLI::log( implode( "\n", self::outline( $activity, '', 0, $depth ) ) );
+		WP_CLI::log( sprintf( '== AVAILABILITY == %d departures in the next 60 days; the first one:', count( $days ) ) );
+		WP_CLI::log( $days ? implode( "\n", self::outline( $days[0], '', 0, $depth + 1 ) ) : '(none)' );
+	}
+
+	/**
+	 * Asks Bókun what a booking would need and cost, without making it: checkout options and questions.
+	 *
+	 * The request is for the test traveller (Joe Dole). Nothing is reserved.
+	 *
+	 * ## OPTIONS
+	 * <product_id>
+	 * : Bókun product (activity) ID.
+	 *
+	 * <date>
+	 * : Departure date, YYYY-MM-DD.
+	 *
+	 * --category=<id>
+	 * : Pricing category ID of the one traveller (see `wp skye checkout doctor`).
+	 *
+	 * [--rate=<id>]
+	 * : Rate ID.
+	 *
+	 * [--start-time=<id>]
+	 * : Start time ID, for products booked by date and time.
+	 *
+	 * [--currency=<code>]
+	 * : Default GBP.
+	 *
+	 * [--depth=<n>]
+	 * : How deep to print nested data. Default 6.
+	 *
+	 * ## EXAMPLES
+	 *     wp skye checkout options 60870 2027-05-14 --category=12345 --rate=678 --start-time=910 --currency=EUR
+	 */
+	public function options( array $args, array $assoc ): void {
+		$bokun = Bokun::from_config();
+		if ( ! $bokun ) {
+			WP_CLI::error( 'Bókun is not configured.' );
+		}
+		if ( 1 !== preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $args[1] ?? '' ) ) ) {
+			WP_CLI::error( 'The date must be YYYY-MM-DD.' );
+		}
+		$booking = array_filter(
+			[
+				'activityId'  => (int) $args[0],
+				'rateId'      => isset( $assoc['rate'] ) ? (int) $assoc['rate'] : null,
+				'date'        => (string) $args[1],
+				'startTimeId' => isset( $assoc['start-time'] ) ? (int) $assoc['start-time'] : null,
+				'passengers'  => [ [ 'pricingCategoryId' => (int) $assoc['category'] ] ],
+			],
+			static fn( $v ) => null !== $v
+		);
+		$contact = [];
+		foreach ( self::TEST_CONTACT as $question => $value ) {
+			$contact[] = [ 'questionId' => $question, 'values' => [ $value ] ];
+		}
+		try {
+			$res = $bokun->post( '/checkout.json/options/booking-request', [ 'mainContactDetails' => $contact, 'activityBookings' => [ $booking ] ], [ 'currency' => strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) ) ] );
+		} catch ( BokunException $e ) {
+			WP_CLI::error( $e->getMessage() );
+		}
+		WP_CLI::log( implode( "\n", self::outline( $res, '', 0, max( 1, (int) ( $assoc['depth'] ?? 6 ) ) ) ) );
+		WP_CLI::success( 'Nothing was booked.' );
+	}
+}

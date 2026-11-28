@@ -38,6 +38,9 @@ services:
         define( 'SKYE_BOKUN_SECRET_KEY', '${BOKUN_SECRET_KEY:-}' );
         define( 'SKYE_BOKUN_VENDOR_ID', '${BOKUN_VENDOR_ID:-}' );
         define( 'SKYE_BOKUN_BASE_URL', '${BOKUN_BASE_URL:-}' );
+        define( 'SKYE_REVOLUT_ENV', '${REVOLUT_ENV:-sandbox}' );
+        define( 'SKYE_REVOLUT_PUBLIC_KEY', '${REVOLUT_PUBLIC_KEY:-}' );
+        define( 'SKYE_REVOLUT_SECRET_KEY', '${REVOLUT_SECRET_KEY:-}' );
         if ( '${WPML_SITE_KEY:-}' ) { define( 'OTGS_INSTALLER_SITE_KEY_WPML', '${WPML_SITE_KEY:-}' ); }
         define( 'WP_HOME', '${WP_HOME:-http://localhost:8080}' );
         define( 'WP_SITEURL', '${WP_HOME:-http://localhost:8080}' );
@@ -80,6 +83,9 @@ services:
       BOKUN_SECRET_KEY: ${BOKUN_SECRET_KEY:-}
       BOKUN_VENDOR_ID: ${BOKUN_VENDOR_ID:-}
       BOKUN_BASE_URL: ${BOKUN_BASE_URL:-}
+      REVOLUT_ENV: ${REVOLUT_ENV:-sandbox}
+      REVOLUT_PUBLIC_KEY: ${REVOLUT_PUBLIC_KEY:-}
+      REVOLUT_SECRET_KEY: ${REVOLUT_SECRET_KEY:-}
     volumes:
       - ./data/wp:/var/www/html
       - ../wp-content/plugins/skye-core:/var/www/html/wp-content/plugins/skye-core
