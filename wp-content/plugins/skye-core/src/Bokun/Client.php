@@ -112,8 +112,9 @@ final class Client {
 			throw new BokunException( 'Bókun rate limit reached', 429, max( 1, $retry ) );
 		}
 		if ( $status < 200 || $status >= 300 ) {
-			// Never include the response body or the headers: they can echo keys.
-			throw new BokunException( "Bókun answered HTTP $status for $path", $status );
+			// Never the whole body or the headers. A rejected request (4xx) carries Bókun's own explanation
+			// in "message" and "fields": that much is needed to fix the request, and only that is kept.
+			throw new BokunException( "Bókun answered HTTP $status for $path" . self::reason( $status, (string) ( $res['body'] ?? '' ), [ $this->access_key, $this->secret_key ] ), $status );
 		}
 
 		$data = json_decode( (string) ( $res['body'] ?? '' ), true );
@@ -121,6 +122,33 @@ final class Client {
 			throw new BokunException( "Bókun returned invalid JSON for $path", $status );
 		}
 		return $data;
+	}
+
+	/**
+	 * Bókun's explanation of a rejected request, cut short and with our keys blanked in case it quotes them.
+	 *
+	 * @param list<string> $secrets
+	 */
+	public static function reason( int $status, string $body, array $secrets = [] ): string {
+		if ( $status < 400 || $status >= 500 ) {
+			return '';
+		}
+		$data  = json_decode( $body, true );
+		$parts = [];
+		if ( is_array( $data ) ) {
+			foreach ( [ 'message', 'error', 'fields' ] as $key ) {
+				if ( isset( $data[ $key ] ) && '' !== $data[ $key ] && [] !== $data[ $key ] ) {
+					$parts[] = is_scalar( $data[ $key ] ) ? (string) $data[ $key ] : (string) json_encode( $data[ $key ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES );
+				}
+			}
+		}
+		$text = trim( (string) preg_replace( '/\s+/', ' ', implode( ' · ', $parts ) ) );
+		foreach ( $secrets as $secret ) {
+			if ( '' !== $secret ) {
+				$text = str_replace( $secret, '[key]', $text );
+			}
+		}
+		return '' === $text ? '' : ': ' . mb_substr( $text, 0, 400 );
 	}
 
 	/** Default transport: the WordPress HTTP API. */
