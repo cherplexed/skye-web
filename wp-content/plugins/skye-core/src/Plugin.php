@@ -31,6 +31,7 @@ final class Plugin {
 
 		if ( defined( 'WP_CLI' ) && WP_CLI ) {
 			\WP_CLI::add_command( 'skye', Cli\Commands::class );
+			\WP_CLI::add_command( 'skye checkout', Cli\Checkout::class );
 		}
 	}
 }

@@ -3,11 +3,14 @@ declare(strict_types=1);
 
 namespace Skye\Bokun;
 
+use Skye\Config;
+
 /**
- * Signed, read-only HTTP client for the Bókun REST API. Knows nothing about caching (see Offers).
+ * Signed HTTP client for the Bókun REST API. Knows nothing about caching (see Offers) or about
+ * the checkout flow (see Skye\Checkout).
  *
  * The transport is injectable so the client is unit-tested without WordPress or network:
- * fn( string $method, string $url, array $headers ): array{ status:int, body:string, headers:array<string,string> }
+ * fn( string $method, string $url, array $headers, ?string $body ): array{ status:int, body:string, headers:array<string,string> }
  */
 final class Client {
 
@@ -32,21 +35,13 @@ final class Client {
 	 * of the same name without the SKYE_ prefix (the WP-CLI container only has the latter).
 	 */
 	public static function from_config(): ?self {
-		$access = self::config( 'BOKUN_ACCESS_KEY' );
-		$secret = self::config( 'BOKUN_SECRET_KEY' );
+		$access = Config::get( 'BOKUN_ACCESS_KEY' );
+		$secret = Config::get( 'BOKUN_SECRET_KEY' );
 		if ( '' === $access || '' === $secret ) {
 			return null;
 		}
-		$base = self::config( 'BOKUN_BASE_URL' );
+		$base = Config::get( 'BOKUN_BASE_URL' );
 		return new self( $access, $secret, rtrim( '' !== $base ? $base : self::PRODUCTION, '/' ) );
-	}
-
-	private static function config( string $name ): string {
-		if ( defined( 'SKYE_' . $name ) && '' !== (string) constant( 'SKYE_' . $name ) ) {
-			return trim( (string) constant( 'SKYE_' . $name ) );
-		}
-		$env = getenv( $name );
-		return false === $env ? '' : trim( $env );
 	}
 
 	/**
@@ -70,12 +65,41 @@ final class Client {
 	 * @throws BokunException
 	 */
 	public function get( string $path, array $query = [] ): array {
+		return $this->request( 'GET', $path, $query, null );
+	}
+
+	/**
+	 * Signed POST with a JSON body. Used by the checkout: it creates and changes bookings.
+	 *
+	 * @param array<string, scalar> $query
+	 * @param array<mixed>          $body
+	 * @return array<mixed>
+	 * @throws BokunException
+	 */
+	public function post( string $path, array $body = [], array $query = [] ): array {
+		return $this->request( 'POST', $path, $query, (string) json_encode( $body ? $body : new \stdClass(), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) );
+	}
+
+	/** Product (activity) as Bókun describes it: rates, pricing categories, start times, extras. */
+	public function activity( string $product_id, string $currency = '', string $lang = '' ): array {
+		return $this->get( '/activity.json/' . rawurlencode( $product_id ), array_filter( [ 'currency' => strtoupper( $currency ), 'lang' => strtoupper( $lang ) ] ) );
+	}
+
+	/**
+	 * @param array<string, scalar> $query
+	 * @return array<mixed>
+	 * @throws BokunException
+	 */
+	private function request( string $method, string $path, array $query, ?string $body ): array {
 		// The signature covers path + query exactly as sent, so build the string once and use it for both.
 		$path_and_query = $path . ( $query ? '?' . http_build_query( $query, '', '&', PHP_QUERY_RFC3986 ) : '' );
-		$headers        = Signer::headers( $this->access_key, $this->secret_key, 'GET', $path_and_query );
+		$headers        = Signer::headers( $this->access_key, $this->secret_key, $method, $path_and_query );
+		if ( null !== $body ) {
+			$headers['Content-Type'] = 'application/json;charset=UTF-8';
+		}
 
 		try {
-			$res = ( $this->transport )( 'GET', $this->base_url . $path_and_query, $headers );
+			$res = ( $this->transport )( $method, $this->base_url . $path_and_query, $headers, $body );
 		} catch ( BokunException $e ) {
 			throw $e;
 		} catch ( \Throwable $e ) {
@@ -100,8 +124,12 @@ final class Client {
 	}
 
 	/** Default transport: the WordPress HTTP API. */
-	public static function wp_transport( string $method, string $url, array $headers ): array {
-		$r = wp_remote_request( $url, [ 'method' => $method, 'headers' => $headers, 'timeout' => 10, 'redirection' => 0 ] );
+	public static function wp_transport( string $method, string $url, array $headers, ?string $body = null ): array {
+		$args = [ 'method' => $method, 'headers' => $headers, 'timeout' => null === $body ? 10 : 25, 'redirection' => 0 ];
+		if ( null !== $body ) {
+			$args['body'] = $body;
+		}
+		$r = wp_remote_request( $url, $args );
 		if ( is_wp_error( $r ) ) {
 			throw new BokunException( 'Bókun request failed: ' . $r->get_error_message() );
 		}
