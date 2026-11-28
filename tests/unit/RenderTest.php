@@ -335,6 +335,22 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( 'href="https://skye.test/tours/skye-3-days/#booking"', TourBlocks::card( $t, 'de' ) );
 	}
 
+	public function test_tour_faq_is_shown_with_its_sources_and_feeds_the_structured_data(): void {
+		self::assertSame( '', TourBlocks::faq( self::tour() ) );
+		$t = self::tour(
+			[
+				'faq'     => [ [ 'question' => 'Can I cancel?', 'answer' => "Yes, up to 10 days before.\n\nInsurance is not refunded <b>." ], [ 'question' => ' ', 'answer' => 'orphan' ], [ 'question' => 'Empty?', 'answer' => '' ] ],
+				'sources' => [ [ 'title' => 'Operator FAQ', 'url' => 'https://example.org/faq' ] ],
+			]
+		);
+		self::assertSame( [ [ 'question' => 'Can I cancel?', 'answer' => "Yes, up to 10 days before.\n\nInsurance is not refunded <b>." ] ], TourBlocks::faq_items( $t ) );
+		$html = TourBlocks::faq( $t );
+		self::assertStringContainsString( '<details class="skye-faq__item"><summary>Can I cancel?</summary><div class="skye-faq__answer"><p>Yes, up to 10 days before.</p><p>Insurance is not refunded &lt;b&gt;.</p></div></details>', $html );
+		self::assertStringContainsString( '<a href="https://example.org/faq" rel="noopener">Operator FAQ</a>', $html );
+		self::assertSame( 1, substr_count( $html, '<details' ) );
+		self::assertSame( 'FAQPage', JsonLd::faq( TourBlocks::faq_items( $t ) )['@type'] );
+	}
+
 	public function test_tour_itinerary_includes_and_departure(): void {
 		$t  = self::tour();
 		$it = TourBlocks::itinerary( $t );

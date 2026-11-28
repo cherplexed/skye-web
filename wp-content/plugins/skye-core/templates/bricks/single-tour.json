@@ -171,6 +171,7 @@
         "sktr45",
         "sktr46",
         "sktr43",
+        "sktr47",
         "sktr44"
       ],
       "settings": {
@@ -208,6 +209,16 @@
         "shortcode": "[skye_tour part=\"includes\"]"
       },
       "label": "Included"
+    },
+    {
+      "id": "sktr47",
+      "name": "shortcode",
+      "parent": "sktr40",
+      "children": [],
+      "settings": {
+        "shortcode": "[skye_tour part=\"faq\"]"
+      },
+      "label": "Tour FAQ"
     },
     {
       "id": "sktr44",

@@ -13,7 +13,7 @@ use Skye\Units;
  */
 final class TourBlocks {
 
-	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'accommodation', 'booking', 'includes', 'verification' ];
+	public const PARTS = [ 'breadcrumb', 'cover', 'eyebrow', 'summary', 'offer', 'departure', 'itinerary', 'accommodation', 'booking', 'includes', 'faq', 'verification' ];
 
 	private const LANGUAGES = [ 'en' => 'English', 'es' => 'Spanish', 'it' => 'Italian' ];
 	private const CITIES    = [ 'edinburgh' => 'Edinburgh', 'glasgow' => 'Glasgow' ];
@@ -30,6 +30,7 @@ final class TourBlocks {
 			'itinerary'    => self::itinerary( $t ),
 			'accommodation' => self::accommodation( $t ),
 			'includes'     => self::includes( $t ),
+			'faq'          => self::faq( $t ),
 			'verification' => PlaceBlocks::verification( $t ),
 			default        => '',
 		};
@@ -258,6 +259,36 @@ final class TourBlocks {
 	private static function lines( string $text ): array {
 		$parts = preg_split( '/\R+|(?<=[.!?])\s+(?=\p{Lu})/u', trim( $text ) ) ?: [];
 		return array_values( array_filter( array_map( static fn( $s ) => trim( $s ), $parts ) ) );
+	}
+
+	/**
+	 * The questions people ask before booking, as written on the tour. The page shows them and the
+	 * FAQPage structured data repeats them, so both read this list.
+	 *
+	 * @return list<array{question:string, answer:string}>
+	 */
+	public static function faq_items( array $t ): array {
+		$items = [];
+		foreach ( $t['faq'] ?? [] as $row ) {
+			$question = trim( (string) ( $row['question'] ?? '' ) );
+			$answer   = trim( (string) ( $row['answer'] ?? '' ) );
+			if ( '' !== $question && '' !== $answer ) {
+				$items[] = [ 'question' => $question, 'answer' => $answer ];
+			}
+		}
+		return $items;
+	}
+
+	public static function faq( array $t ): string {
+		$html = '';
+		foreach ( self::faq_items( $t ) as $item ) {
+			$paragraphs = implode( '', array_map( static fn( $p ) => '<p>' . Html::e( $p ) . '</p>', preg_split( '/\R{2,}/', $item['answer'] ) ?: [] ) );
+			$html      .= sprintf( '<details class="skye-faq__item"><summary>%s</summary><div class="skye-faq__answer">%s</div></details>', Html::e( $item['question'] ), $paragraphs );
+		}
+		if ( '' === $html ) {
+			return '';
+		}
+		return Html::block( 'faq', Html::t( 'Frequently asked questions' ), '<div class="skye-faq__list">' . $html . '</div>' ) . PlaceBlocks::sources( $t );
 	}
 
 	/** Where you sleep: the options offered when booking, and what to know before choosing. */
