@@ -109,6 +109,8 @@ final class Frontend {
 				'locale' => str_replace( '_', '-', (string) get_locale() ),
 				'mode'   => $sandbox ? 'sandbox' : 'prod',
 				'embed'  => ( $sandbox ? Revolut\Client::SANDBOX : Revolut\Client::PRODUCTION ) . '/embed.js',
+				// The public key is meant for the browser: it draws the Apple Pay, Google Pay and Revolut Pay buttons.
+				'public' => Config::get( 'REVOLUT_PUBLIC_KEY' ),
 				'max'    => Checkout\Service::MAX_PEOPLE,
 			];
 		}
