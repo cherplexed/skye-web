@@ -35,6 +35,18 @@ final class CheckoutTest extends TestCase {
 		self::assertSame( '{}', $seen['body'], 'an empty body is still a JSON object' );
 	}
 
+	public function test_a_rejected_bokun_request_says_why_without_the_rest_of_the_body(): void {
+		$client = new Bokun( 'access-key', 'secret-key', 'https://api.example', static fn() => [ 'status' => 400, 'body' => '{"message":"Missing answer for secret-key question","fields":{"phoneNumber":"required"},"stack":"internal detail"}', 'headers' => [] ] );
+		try {
+			$client->post( '/checkout.json/submit', [ 'a' => 1 ] );
+			self::assertTrue( false, 'a 400 must throw' );
+		} catch ( \Skye\Bokun\BokunException $e ) {
+			self::assertSame( 'Bókun answered HTTP 400 for /checkout.json/submit: Missing answer for [key] question · {"phoneNumber":"required"}', $e->getMessage() );
+		}
+		self::assertSame( '', Bokun::reason( 500, '{"message":"boom"}' ) );
+		self::assertSame( '', Bokun::reason( 404, '<html>not json</html>' ) );
+	}
+
 	public function test_revolut_orders_are_created_read_and_cancelled_with_the_secret_key(): void {
 		$calls  = [];
 		$client = new Revolut(
