@@ -20,7 +20,7 @@ final class Checkout {
 
 	/** Name and address every test booking is made under, so they are easy to find and cancel. */
 	// The phone number is from the range Ofcom reserves for fiction (07700 900xxx): it belongs to nobody.
-	public const TEST_CONTACT = [ 'firstName' => 'Joe', 'lastName' => 'Dole', 'email' => 'doedole@youdole.com', 'phoneNumber' => '+44 7700 900123' ];
+	public const TEST_CONTACT = [ 'firstName' => 'Joe', 'lastName' => 'Dole', 'email' => 'doedole@youdole.com', 'phoneNumber' => '+447700900123' ];
 
 	/**
 	 * The shape of a value without its bulk: every key, one sample of each list, strings cut short.
@@ -236,6 +236,9 @@ final class Checkout {
 		);
 		$contact = [];
 		foreach ( self::TEST_CONTACT as $question => $value ) {
+			if ( 'phoneNumber' === $question && ! empty( $assoc['phone'] ) ) {
+				$value = (string) preg_replace( '/[^0-9+]/', '', (string) $assoc['phone'] );
+			}
 			$contact[] = [ 'questionId' => $question, 'values' => [ $value ] ];
 		}
 		return [ 'mainContactDetails' => $contact, 'activityBookings' => [ $booking ] ];
@@ -298,6 +301,9 @@ final class Checkout {
 	 *
 	 * [--currency=<code>]
 	 * : Default GBP.
+	 *
+	 * [--phone=<number>]
+	 * : Phone number of the test traveller, in international format (+34600000000), if Bókun rejects the default one.
 	 *
 	 * [--keep]
 	 * : Do not release the reservation (it expires by itself after at most 30 minutes).
@@ -381,7 +387,8 @@ final class Checkout {
 			return;
 		}
 		try {
-			$aborted = $bokun->post( '/booking.json/' . rawurlencode( $code ) . '/abort-reserved' );
+			// The API reference (rest-v1) gives this operation as a GET.
+			$aborted = $bokun->get( '/booking.json/' . rawurlencode( $code ) . '/abort-reserved' );
 			WP_CLI::log( '== RELEASED ==' );
 			WP_CLI::log( implode( "\n", self::outline( $aborted, '', 0, 2 ) ) );
 			WP_CLI::success( "Reservation $code released." );
