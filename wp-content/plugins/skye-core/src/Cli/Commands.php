@@ -41,7 +41,7 @@ final class Commands {
 	 *
 	 * ## OPTIONS
 	 * <type>
-	 * : places, brands, tours, routes, spots or all (in that order: later types reference earlier ones by slug)
+	 * : places, brands, tours, routes, spots, guides or all (in that order: later types reference earlier ones by slug)
 	 *
 	 * [--file=<path>]
 	 * : JSON file. Default: /seed/<type>.json (docker) or ../../../../seed/<type>.json
@@ -67,7 +67,7 @@ final class Commands {
 		// Everything below looks posts and terms up per language explicitly; start from the default one.
 		Lang::switch( Lang::default() );
 		// Order matters for `all`: tours point to places and brands, routes to places and tours.
-		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE, 'spots' => PostTypes::MOTORHOME ];
+		$generic = [ 'brands' => PostTypes::BRAND, 'tours' => PostTypes::TOUR, 'routes' => PostTypes::ROUTE, 'spots' => PostTypes::MOTORHOME, 'guides' => PostTypes::GUIDE ];
 		if ( 'all' === $type ) {
 			foreach ( [ 'places', ...array_keys( $generic ) ] as $t ) {
 				if ( 'brands' === $t && $this->translating() ) {
@@ -82,7 +82,7 @@ final class Commands {
 			return;
 		}
 		if ( 'places' !== $type ) {
-			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, spots, all" );
+			WP_CLI::error( "Unknown seed type '$type'. Available: places, brands, tours, routes, spots, guides, all" );
 		}
 		Taxonomies::seed_terms();
 		$this->seed_term_translations();

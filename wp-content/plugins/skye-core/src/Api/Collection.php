@@ -34,6 +34,7 @@ final class Collection {
 			'lodging'         => [ 'type' => PostTypes::LODGING, 'tax' => [ 'zone' => Taxonomies::ZONE ], 'meta' => [ 'type' => 'lodging_type' ], 'near' => true ],
 			'motorhome-spots' => [ 'type' => PostTypes::MOTORHOME, 'tax' => [ 'zone' => Taxonomies::ZONE ], 'meta' => [ 'type' => 'spot_type', 'overnight' => 'overnight_allowed' ], 'near' => true ],
 			'experiences'     => [ 'type' => PostTypes::EXPERIENCE, 'tax' => [ 'zone' => Taxonomies::ZONE, 'suitable_for' => Taxonomies::SUITABILITY ], 'meta' => [ 'type' => 'experience_type' ], 'near' => true ],
+			'guides'          => [ 'type' => PostTypes::GUIDE, 'tax' => [], 'meta' => [], 'near' => false ],
 		];
 	}
 

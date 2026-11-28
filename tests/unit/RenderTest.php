@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 use Skye\JsonLd;
 use Skye\Render\Chrome;
 use Skye\Render\Motorhome;
+use Skye\Render\GuideBlocks;
 use Skye\Render\Home;
 use Skye\Directory;
 use Skye\Render\PlaceBlocks;
@@ -169,7 +170,7 @@ final class RenderTest extends TestCase {
 
 	public function test_bricks_templates_are_consistent_trees_using_known_shortcodes(): void {
 		$files = glob( SKYE_CORE_DIR . '/templates/bricks/*.json' );
-		self::assertCount( 10, $files );
+		self::assertCount( 12, $files );
 		$slugs = [];
 		foreach ( $files as $file ) {
 			$t       = json_decode( (string) file_get_contents( $file ), true, 512, JSON_THROW_ON_ERROR );
@@ -188,14 +189,14 @@ final class RenderTest extends TestCase {
 					self::assertSame( $el['id'], $by[ $child ]['parent'], $child );
 				}
 				if ( 'shortcode' === $el['name'] ) {
-					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|home|motorhome|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
+					self::assertSame( 1, preg_match( '/^\[skye_(header|footer|tours|routes|places|home|motorhome|guides?|(place|tour|route) part="([a-z]+)")\]$/', $el['settings']['shortcode'], $m ), $el['settings']['shortcode'] );
 					if ( isset( $m[3] ) ) {
 						self::assertContains( $m[3], [ 'place' => PlaceBlocks::PARTS, 'tour' => TourBlocks::PARTS, 'route' => RouteBlocks::PARTS ][ $m[2] ] );
 					}
 				}
 			}
 		}
-		self::assertSame( [ 'skye-archive-motorhome', 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-home', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
+		self::assertSame( [ 'skye-archive-guides', 'skye-archive-motorhome', 'skye-archive-places', 'skye-archive-routes', 'skye-archive-tours', 'skye-footer', 'skye-header', 'skye-home', 'skye-single-guide', 'skye-single-place', 'skye-single-route', 'skye-single-tour' ], $slugs );
 	}
 
 	public function test_car_and_motorhome_page_groups_spots_and_always_links_to_a_map(): void {
@@ -238,6 +239,28 @@ final class RenderTest extends TestCase {
 		self::assertSame( [ 'ParkingFacility', 'Place', 'Campground' ], array_map( static fn( $i ) => $i['item']['@type'], $ld['itemListElement'] ) );
 		self::assertSame( 'https://booking.example/sligachan', $ld['itemListElement'][2]['item']['url'] );
 		self::assertNull( JsonLd::spot_list( 'x', [] ) );
+	}
+
+	public function test_guide_page_and_listing(): void {
+		$g = [
+			'title' => 'Getting to Skye', 'summary' => 'By road, ferry or coach.', 'url' => 'https://skye.test/info/getting-to-skye/',
+			'description_html' => '<p>Skye is an island you can drive onto.</p>',
+			'faq' => [ [ 'question' => 'Is the bridge free?', 'answer' => 'Yes <always>.' ] ],
+			'sources' => [ [ 'title' => 'CalMac', 'url' => 'https://www.calmac.co.uk/' ] ],
+			'_links' => [ 'home' => 'https://skye.test/', 'guides' => 'https://skye.test/info/' ],
+		];
+		$html = GuideBlocks::page( $g );
+		self::assertStringContainsString( '<a href="https://skye.test/info/">Practical information</a>', $html );
+		self::assertStringContainsString( '<h1 class="skye-listing__title">Getting to Skye</h1><p class="skye-listing__lead">By road, ferry or coach.</p>', $html );
+		self::assertStringContainsString( '<div class="skye-guide__text"><p>Skye is an island you can drive onto.</p></div>', $html );
+		self::assertStringContainsString( '<summary>Is the bridge free?</summary><div class="skye-faq__answer"><p>Yes &lt;always&gt;.</p></div>', $html );
+		self::assertStringContainsString( '<a href="https://www.calmac.co.uk/" rel="noopener">CalMac</a>', $html );
+		self::assertStringContainsString( 'Not yet checked by our team.', $html );
+		self::assertStringNotContainsString( 'Not yet checked', GuideBlocks::page( [ 'verification' => [ 'status' => 'verified' ] ] + $g ) );
+
+		$list = GuideBlocks::listing( [ 'guides' => [ $g, [ 'title' => 'No address yet' ] ], 'links' => [ 'home' => 'https://skye.test/' ] ] );
+		self::assertStringContainsString( '<a class="skye-card skye-mhroute" href="https://skye.test/info/getting-to-skye/"><h2>Getting to Skye</h2><p>By road, ferry or coach.</p><p class="skye-guide__count">1 question answered</p></a>', $list );
+		self::assertStringNotContainsString( 'No address yet', $list );
 	}
 
 	public function test_names_from_wordpress_are_decoded_once_then_escaped_once(): void {

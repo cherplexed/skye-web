@@ -221,6 +221,19 @@ final class Fields {
 		];
 	}
 
+
+	/**
+	 * CONTRACTS.md §7b. Practical information that belongs to no single place: getting there,
+	 * weather, health. Title, summary (excerpt) and text are the post's own.
+	 */
+	public static function guide(): array {
+		return [
+			'summary'    => [ 'type' => 'textarea', 'i18n' => true ],
+			'sort_order' => [ 'type' => 'number', 'i18n' => false ],
+			'faq'        => [ 'type' => 'repeater', 'i18n' => true, 'sub' => [ 'question' => [ 'type' => 'text', 'i18n' => true ], 'answer' => [ 'type' => 'textarea', 'i18n' => true ] ] ],
+			'sources'    => [ 'type' => 'repeater', 'i18n' => false, 'sub' => [ 'title' => [ 'type' => 'text', 'i18n' => false ], 'url' => [ 'type' => 'url', 'i18n' => false ] ] ],
+		];
+	}
 	/** @return array<string, array<string, array<string, mixed>>> post type => fields, for every content type. */
 	public static function all(): array {
 		return [
@@ -231,6 +244,7 @@ final class Fields {
 			PostTypes::LODGING    => self::lodging(),
 			PostTypes::MOTORHOME  => self::motorhome_spot(),
 			PostTypes::EXPERIENCE => self::experience(),
+			PostTypes::GUIDE      => self::guide(),
 		];
 	}
 

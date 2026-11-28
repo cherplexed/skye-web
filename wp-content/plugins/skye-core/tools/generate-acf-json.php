@@ -62,6 +62,7 @@ $titles = [
 	PostTypes::LODGING    => 'Lodging',
 	PostTypes::MOTORHOME  => 'Motorhome spot',
 	PostTypes::EXPERIENCE => 'Experience',
+	PostTypes::GUIDE      => 'Guide (practical information)',
 ];
 
 $check = in_array( '--check', $argv, true );

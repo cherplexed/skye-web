@@ -23,6 +23,13 @@ final class JsonLd {
 			self::emit( self::spot_list( __( 'Skye by car or motorhome', 'skye-core' ), Frontend::motorhome_view()['spots'] ) );
 			return;
 		}
+		if ( is_singular( PostTypes::GUIDE ) ) {
+			$post = get_queried_object();
+			if ( $post instanceof \WP_Post ) {
+				self::emit( self::faq( Render\GuideBlocks::faq_items( Frontend::guide_view( $post ) ) ) );
+			}
+			return;
+		}
 		if ( is_singular( PostTypes::TOUR ) ) {
 			$post = get_queried_object();
 			if ( $post instanceof \WP_Post ) {
