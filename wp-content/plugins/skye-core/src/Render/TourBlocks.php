@@ -148,7 +148,10 @@ final class TourBlocks {
 			'when' => Html::t( 'When do you want to go?' ),
 			'from' => Html::t( 'from %s' ),
 			'few' => Html::t( '%s places left' ),
-			'more_dates' => Html::t( 'Show more dates' ),
+			'prev_month' => Html::t( 'Previous month' ),
+			'next_month' => Html::t( 'Next month' ),
+			'price_legend' => Html::t( 'Price per person, from' ),
+			'few_legend' => Html::t( 'Last places' ),
 			'who' => Html::t( 'How do you want to travel?' ),
 			'who_hint' => Html::t( 'Choose how many people travel in each option. The price is per person and includes the accommodation of that option.' ),
 			'per_person' => Html::t( '%s per person' ),
@@ -171,7 +174,8 @@ final class TourBlocks {
 			'reserving' => Html::t( 'Holding your places…' ),
 			'no_charge_yet' => Html::t( 'Nothing is charged yet. Your places are held for 30 minutes while you pay.' ),
 			'payment' => Html::t( 'Payment' ),
-			'held' => Html::t( 'Your places are held for 30 minutes. Pay by card to confirm the booking.' ),
+			'held' => Html::t( 'Your places are held for 30 minutes. Pay to confirm the booking.' ),
+			'or_card' => Html::t( 'or pay by card' ),
 			'pay' => Html::t( 'Pay %s' ),
 			'paying' => Html::t( 'Processing the payment…' ),
 			'change' => Html::t( 'Change the booking' ),
@@ -190,6 +194,7 @@ final class TourBlocks {
 			'err_too_many' => Html::t( 'Too many attempts. Please wait a few minutes.' ),
 			'err_expired' => Html::t( 'The time to pay ran out and the places were released. Please start again.' ),
 			'err_card' => Html::t( 'The card payment failed.' ),
+			'err_pay' => Html::t( 'The payment failed. Nothing has been charged.' ),
 		];
 	}
 
@@ -210,7 +215,7 @@ final class TourBlocks {
 	/**
 	 * Our own checkout: the shell the script fills, with a plain link for a browser without JavaScript.
 	 *
-	 * @param array{api:string, tour:int, lang:string, locale:string, mode:string, embed:string, max:int} $c
+	 * @param array{api:string, tour:int, lang:string, locale:string, mode:string, embed:string, public:string, max:int} $c
 	 */
 	public static function checkout( array $t, array $c ): string {
 		$config   = $c + [ 'title' => (string) ( $t['title'] ?? '' ), 'strings' => self::checkout_strings(), 'categories' => self::checkout_categories() ];

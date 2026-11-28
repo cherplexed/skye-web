@@ -1,7 +1,7 @@
 /*
 Theme Name: Skye Child
 Template: bricks
-Version: 0.15.0
+Version: 0.16.0
 Description: Child theme of Bricks Builder for skye-web. Holds only base tokens and helpers; all layout is Bricks templates fed by skye-core fields.
 Text Domain: skye-child
 */
@@ -420,12 +420,35 @@ a.skye-mhroute:hover { border-color: var(--skye-accent); }
 .skye-co__step { background: #fff; border: 1px solid var(--skye-line); border-radius: 16px; display: flex; flex-direction: column; gap: 14px; padding: 20px; }
 .skye-co__title { align-items: center; display: flex; font-size: 19px; gap: 10px; margin: 0; }
 .skye-co__n { align-items: center; background: var(--skye-accent); border-radius: 50%; color: #fff; display: inline-flex; flex: none; font-size: 14px; height: 28px; justify-content: center; width: 28px; }
-.skye-co__dates { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.skye-co__date { align-items: flex-start; background: #fff; border: 1.5px solid var(--skye-line); border-radius: 12px; color: var(--skye-ink); cursor: pointer; display: flex; flex-direction: column; font: inherit; gap: 2px; min-height: 64px; padding: 10px 14px; text-align: left; }
-.skye-co__date span { color: var(--skye-muted); font-size: 14px; }
-.skye-co__date em { color: #8A4B00; font-size: 13px; font-style: normal; font-weight: 600; }
-.skye-co__date:hover, .skye-co__date.is-on { border-color: var(--skye-accent); }
-.skye-co__date.is-on { background: #EEF5F6; border-width: 2px; padding: 9.5px 13.5px; }
+.skye-co__cal { display: flex; flex-direction: column; gap: 10px; }
+.skye-co__calhead { align-items: center; display: flex; justify-content: space-between; }
+.skye-co__month { font-size: 17px; }
+.skye-co__nav { background: #fff; border: 1.5px solid var(--skye-line); border-radius: 50%; color: var(--skye-ink); cursor: pointer; font-size: 22px; height: 44px; line-height: 1; width: 44px; }
+.skye-co__nav:disabled { cursor: default; opacity: .35; }
+.skye-co__grid7 { display: grid; gap: 4px; grid-template-columns: repeat(7, minmax(0, 1fr)); }
+.skye-co__dow { color: var(--skye-muted); font-size: 13px; font-weight: 600; padding: 4px 0; text-align: center; }
+.skye-co__day { align-items: center; background: none; border: 1.5px solid transparent; border-radius: 10px; box-sizing: border-box; color: var(--skye-ink); display: flex; flex-direction: column; font: inherit; gap: 1px; justify-content: center; min-height: 52px; padding: 4px 0; position: relative; }
+.skye-co__day b { font-size: 15px; font-weight: 600; }
+.skye-co__day span { color: var(--skye-accent); font-size: 12px; font-weight: 600; line-height: 1.2; }
+.skye-co__day.is-off b { color: #A9B4B7; font-weight: 400; }
+button.skye-co__day { background: #EEF5F6; cursor: pointer; }
+button.skye-co__day:hover { border-color: var(--skye-accent); }
+button.skye-co__day.is-on { background: var(--skye-accent); border-color: var(--skye-accent); color: #fff; }
+button.skye-co__day.is-on span { color: #fff; }
+button.skye-co__day.is-few::after, .skye-co__key.is-few { background: #C76A00; }
+button.skye-co__day.is-few::after { border-radius: 50%; content: ""; height: 7px; position: absolute; right: 5px; top: 5px; width: 7px; }
+button.skye-co__day.is-on.is-few::after { background: #FFD08A; }
+.skye-co__legend { color: var(--skye-muted); display: flex; flex-wrap: wrap; font-size: 13px; gap: 6px 18px; margin: 0; }
+.skye-co__legend span { align-items: center; display: inline-flex; gap: 6px; }
+.skye-co__key { background: #EEF5F6; border: 1px solid var(--skye-accent); border-radius: 4px; display: inline-block; height: 12px; width: 12px; }
+.skye-co__key.is-few { border: 0; border-radius: 50%; height: 8px; width: 8px; }
+.skye-co__chosen { border-top: 1px solid var(--skye-line); margin: 0; padding-top: 12px; }
+.skye-co__chosen em { color: #8A4B00; font-size: 14px; font-style: normal; font-weight: 600; }
+.skye-co__wallets { display: flex; flex-direction: column; gap: 10px; }
+.skye-co__wallets[hidden], .skye-co__wallet[hidden] { display: none; }
+.skye-co__wallet { min-height: 48px; }
+.skye-co__or { align-items: center; color: var(--skye-muted); display: flex; font-size: 14px; gap: 12px; margin: 4px 0 0; }
+.skye-co__or::before, .skye-co__or::after { background: var(--skye-line); content: ""; flex: 1; height: 1px; }
 .skye-co__more { align-self: flex-start; background: none; border: 0; color: var(--skye-accent); cursor: pointer; font: inherit; font-weight: 600; min-height: 44px; padding: 0; text-decoration: underline; }
 .skye-co__hint, .skye-co__small { color: var(--skye-muted); font-size: 14px; line-height: 1.5; margin: 0; }
 .skye-co__row { align-items: center; border-top: 1px solid var(--skye-line); display: flex; gap: 12px; padding-top: 12px; }
@@ -457,6 +480,8 @@ a.skye-mhroute:hover { border-color: var(--skye-accent); }
 .skye-co__done h3, .skye-co__done p { margin: 0; }
 .skye-co__code strong { font-size: 18px; }
 @media (max-width: 599px) {
-  .skye-co__dates, .skye-co__grid { grid-template-columns: 1fr; }
+  .skye-co__grid { grid-template-columns: 1fr; }
+  .skye-co__day { min-height: 48px; }
+  .skye-co__day span { font-size: 11px; }
   .skye-co__step, .skye-co__summary { padding: 16px; }
 }

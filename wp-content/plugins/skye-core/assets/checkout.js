@@ -7,7 +7,8 @@
 	}
 	var cfg = JSON.parse( root.getAttribute( 'data-skye-checkout' ) );
 	var T = cfg.strings;
-	var state = { cal: null, date: null, people: {}, contact: {}, answers: {}, agree: false, hold: null, busy: false, error: '', fieldError: {}, shown: 8, done: null, quote: null, quoting: 0 };
+	var state = { cal: null, date: null, people: {}, contact: {}, answers: {}, agree: false, hold: null, busy: false, error: '', fieldError: {}, month: null, done: null, quote: null, quoting: 0, resuming: false, notice: '' };
+	var KEY = 'skye_co_hold';
 
 	function t( key, a ) {
 		var s = T[ key ] || key;
@@ -109,19 +110,93 @@
 		return el( 'section', { class: 'skye-co__step' }, [ el( 'h3', { class: 'skye-co__title' }, [ el( 'span', { class: 'skye-co__n', text: String( n ) } ), title ] ) ].concat( body ) );
 	}
 
+	function ym( iso ) {
+		return iso.slice( 0, 7 );
+	}
+	function shortMoney( amount ) {
+		try {
+			return new Intl.NumberFormat( cfg.locale, { style: 'currency', currency: state.cal.currency, currencyDisplay: 'narrowSymbol', minimumFractionDigits: 0, maximumFractionDigits: amount % 1 ? 2 : 0 } ).format( amount );
+		} catch ( e ) {
+			return money( amount );
+		}
+	}
+	function fromPrice( d ) {
+		return Math.min.apply( null, Object.keys( d.prices ).map( function ( k ) { return d.prices[ k ]; } ) );
+	}
+	function pick( d ) {
+		state.date = d;
+		Object.keys( state.people ).forEach( function ( k ) { if ( ! ( k in d.prices ) ) { delete state.people[ k ]; } } );
+		state.error = '';
+		state.notice = '';
+		requote();
+		render();
+		var on = root.querySelector( '.skye-co__day.is-on' );
+		if ( on ) {
+			on.focus( { preventScroll: true } );
+		}
+	}
+	function turn( delta ) {
+		var p = state.month.split( '-' );
+		var d = new Date( Date.UTC( +p[ 0 ], +p[ 1 ] - 1 + delta, 1 ) );
+		state.month = d.toISOString().slice( 0, 7 );
+		render();
+	}
+
+	// A month at a time, Monday first: the days with a departure are buttons with their lowest price.
 	function dates() {
-		var list = state.cal.dates.slice( 0, state.shown ).map( function ( d ) {
-			var from = Math.min.apply( null, Object.keys( d.prices ).map( function ( k ) { return d.prices[ k ]; } ) );
-			var on = state.date && state.date.date === d.date;
-			return el( 'button', { type: 'button', class: 'skye-co__date' + ( on ? ' is-on' : '' ), 'aria-pressed': on ? 'true' : 'false', onclick: function () {
-				state.date = d;
-				Object.keys( state.people ).forEach( function ( k ) { if ( ! ( k in d.prices ) ) { delete state.people[ k ]; } } );
-				requote();
-				render();
-			} }, [ el( 'strong', { text: day( d.date ) } ), el( 'span', { text: t( 'from', money( from ) ) } ), d.seats <= 6 ? el( 'em', { text: t( 'few', d.seats ) } ) : null ] );
-		} );
-		var more = state.cal.dates.length > state.shown ? el( 'button', { type: 'button', class: 'skye-co__more', text: t( 'more_dates' ), onclick: function () { state.shown += 12; render(); } } ) : null;
-		return step( 1, t( 'when' ), [ el( 'div', { class: 'skye-co__dates' }, list ), more ] );
+		var all = state.cal.dates;
+		var first = ym( all[ 0 ].date );
+		var last = ym( all[ all.length - 1 ].date );
+		var open = {};
+		all.forEach( function ( d ) { if ( ! open[ d.date ] ) { open[ d.date ] = d; } } );
+		var p = state.month.split( '-' );
+		var y = +p[ 0 ];
+		var m = +p[ 1 ] - 1;
+		var title = new Intl.DateTimeFormat( cfg.locale, { month: 'long', year: 'numeric', timeZone: 'UTC' } ).format( new Date( Date.UTC( y, m, 1 ) ) );
+		var head = el( 'div', { class: 'skye-co__calhead' }, [
+			el( 'button', { type: 'button', class: 'skye-co__nav', 'aria-label': t( 'prev_month' ), disabled: state.month <= first, onclick: function () { turn( -1 ); }, text: '‹' } ),
+			el( 'strong', { class: 'skye-co__month', 'aria-live': 'polite', text: title.charAt( 0 ).toUpperCase() + title.slice( 1 ) } ),
+			el( 'button', { type: 'button', class: 'skye-co__nav', 'aria-label': t( 'next_month' ), disabled: state.month >= last, onclick: function () { turn( 1 ); }, text: '›' } ),
+		] );
+		var cells = [];
+		var i;
+		for ( i = 0; i < 7; i++ ) {
+			// 1 January 2024 was a Monday.
+			cells.push( el( 'span', { class: 'skye-co__dow', 'aria-hidden': 'true', text: new Intl.DateTimeFormat( cfg.locale, { weekday: 'narrow', timeZone: 'UTC' } ).format( new Date( Date.UTC( 2024, 0, 1 + i ) ) ).toUpperCase() } ) );
+		}
+		var lead = ( new Date( Date.UTC( y, m, 1 ) ).getUTCDay() + 6 ) % 7;
+		for ( i = 0; i < lead; i++ ) {
+			cells.push( el( 'span', { class: 'skye-co__day is-blank', 'aria-hidden': 'true' } ) );
+		}
+		var days = new Date( Date.UTC( y, m + 1, 0 ) ).getUTCDate();
+		var some = false;
+		for ( i = 1; i <= days; i++ ) {
+			var iso = state.month + '-' + ( i < 10 ? '0' : '' ) + i;
+			var d = open[ iso ];
+			if ( ! d ) {
+				cells.push( el( 'span', { class: 'skye-co__day is-off', 'aria-hidden': 'true' }, [ el( 'b', { text: String( i ) } ) ] ) );
+				continue;
+			}
+			some = true;
+			var on = state.date && state.date.date === iso;
+			var few = d.seats <= 6;
+			cells.push( el( 'button', {
+				type: 'button',
+				class: 'skye-co__day' + ( on ? ' is-on' : '' ) + ( few ? ' is-few' : '' ),
+				'aria-pressed': on ? 'true' : 'false',
+				'aria-label': day( iso, true ) + ', ' + t( 'from', money( fromPrice( d ) ) ) + ( few ? ', ' + t( 'few', d.seats ) : '' ),
+				onclick: ( function ( x ) { return function () { pick( x ); }; }( d ) ),
+			}, [ el( 'b', { text: String( i ) } ), el( 'span', { text: shortMoney( fromPrice( d ) ) } ) ] ) );
+		}
+		var legend = el( 'p', { class: 'skye-co__legend' }, [
+			el( 'span', {}, [ el( 'i', { class: 'skye-co__key' } ), t( 'price_legend' ) ] ),
+			el( 'span', {}, [ el( 'i', { class: 'skye-co__key is-few' } ), t( 'few_legend' ) ] ),
+		] );
+		var chosen = state.date ? el( 'p', { class: 'skye-co__chosen', role: 'status' }, [
+			el( 'strong', { text: day( state.date.date, true ) + ' · ' + state.date.time } ),
+			state.date.seats <= 6 ? el( 'em', { text: ' ' + t( 'few', state.date.seats ) } ) : null,
+		] ) : null;
+		return step( 1, t( 'when' ), [ el( 'div', { class: 'skye-co__cal' }, [ head, el( 'div', { class: 'skye-co__grid7' + ( some ? '' : ' is-empty' ) }, cells ) ] ), legend, chosen ] );
 	}
 
 	function people() {
@@ -207,6 +282,7 @@
 		api( '/reserve', { date: state.date.date, start_time_id: state.date.start_time_id, rate_id: state.cal.rate_id, passengers: state.people, contact: state.contact, answers: answers } ).then( function ( hold ) {
 			state.hold = hold;
 			state.busy = false;
+			remember( { reference: hold.reference, confirmation_code: hold.confirmation_code, email: state.contact.email, tour: cfg.tour, at: Date.now() } );
 			render();
 			mountCard();
 		} ).catch( fail );
@@ -224,19 +300,121 @@
 		} );
 	}
 	var card = null;
+	var payments = null;
 	var shownView = null;
+	// The hold is remembered so that a customer who pays in the Revolut app and comes back to a fresh page still gets the result.
+	function remember( v ) {
+		try {
+			if ( v ) {
+				window.localStorage.setItem( KEY, JSON.stringify( v ) );
+			} else {
+				window.localStorage.removeItem( KEY );
+			}
+		} catch ( e ) {
+			void e;
+		}
+	}
+	function remembered() {
+		try {
+			var v = JSON.parse( window.localStorage.getItem( KEY ) || 'null' );
+			return v && v.tour === cfg.tour && Date.now() - v.at < 45 * 60000 ? v : null;
+		} catch ( e ) {
+			return null;
+		}
+	}
+	function dropWallets() {
+		if ( payments ) {
+			try { payments.destroy(); } catch ( e ) { void e; }
+			payments = null;
+		}
+	}
+	function paid() {
+		state.busy = true;
+		state.error = '';
+		paintPay();
+		finish( 0 );
+	}
+	function payError( key ) {
+		return function ( message ) {
+			var text = message && message.message ? message.message : message;
+			state.busy = false;
+			state.error = t( key ) + ( text ? ' (' + String( text ).slice( 0, 140 ) + ')' : '' );
+			paintPay();
+		};
+	}
 	function mountCard() {
 		loadSdk().then( function () {
+			mountWallets();
 			return cfg.mode === 'sandbox' ? window.RevolutCheckout( state.hold.order_token, 'sandbox' ) : window.RevolutCheckout( state.hold.order_token );
 		} ).then( function ( rc ) {
 			card = rc.createCardField( {
 				target: document.getElementById( 'skye-co-card' ),
 				locale: cfg.lang,
-				onSuccess: finish,
-				onError: function ( message ) { state.busy = false; state.error = t( 'err_card' ) + ( message ? ' (' + String( message ).slice( 0, 140 ) + ')' : '' ); paintPay(); },
+				onSuccess: function () { finish( 0 ); },
+				onError: payError( 'err_card' ),
 				onCancel: function () { state.busy = false; paintPay(); },
 			} );
 		} ).catch( function () { fail( { reason: 'payment_unavailable' } ); } );
+	}
+
+	// Apple Pay or Google Pay (whichever the device offers) and Revolut Pay, above the card. They pay the same
+	// order as the card, and none of them is needed: if one cannot be drawn, the card is still there.
+	function mountWallets() {
+		var box = document.getElementById( 'skye-co-wallets' );
+		if ( ! box || ! cfg.public || typeof window.RevolutCheckout.payments !== 'function' ) {
+			return;
+		}
+		var hold = state.hold;
+		var amount = Math.round( hold.amount * 100 );
+		var order = function () { return Promise.resolve( { publicId: hold.order_token } ); };
+		var show = function () { box.hidden = false; };
+		Promise.resolve( window.RevolutCheckout.payments( { publicToken: cfg.public, mode: cfg.mode, locale: cfg.lang } ) ).then( function ( p ) {
+			if ( state.hold !== hold ) {
+				return p.destroy();
+			}
+			payments = p;
+			try {
+				var back = window.location.origin + window.location.pathname;
+				p.revolutPay.mount( document.getElementById( 'skye-co-rpay' ), {
+					currency: hold.currency,
+					totalAmount: amount,
+					createOrder: order,
+					buttonStyle: { height: '48px', radius: 'small', size: 'large', variant: 'dark', action: 'pay' },
+					mobileRedirectUrls: { success: back + '?skye_pay=ok', failure: back + '?skye_pay=no', cancel: back + '?skye_pay=no' },
+				} );
+				p.revolutPay.on( 'payment', function ( ev ) {
+					if ( ev.type === 'success' ) {
+						paid();
+					} else if ( ev.type === 'error' ) {
+						payError( 'err_pay' )( ev.error );
+					}
+				} );
+				show();
+			} catch ( e ) {
+				void e;
+			}
+			try {
+				var target = document.getElementById( 'skye-co-wallet' );
+				var pr = p.paymentRequest( target, {
+					currency: hold.currency,
+					amount: amount,
+					createOrder: order,
+					onSuccess: paid,
+					onError: payError( 'err_pay' ),
+					buttonStyle: { height: '48px', radius: 'small', size: 'large', variant: 'dark', action: 'pay' },
+				} );
+				pr.canMakePayment().then( function ( method ) {
+					if ( method ) {
+						target.hidden = false;
+						show();
+						return pr.render();
+					}
+					pr.destroy();
+				} ).catch( function () {} );
+			} catch ( e ) {
+				void e;
+			}
+		} ).catch( function () {} );
 	}
 	function pay() {
 		if ( ! card || state.busy ) {
@@ -254,13 +432,17 @@
 				return setTimeout( function () { finish( tries + 1 ); }, 2000 );
 			}
 			state.busy = false;
+			state.resuming = false;
 			state.done = r;
+			remember( null );
+			dropWallets();
 			render();
 		} ).catch( function () {
 			if ( tries < 15 ) {
 				return setTimeout( function () { finish( tries + 1 ); }, 2000 );
 			}
 			state.busy = false;
+			state.resuming = false;
 			state.done = { status: 'pending', confirmation_code: state.hold.confirmation_code };
 			render();
 		} );
@@ -269,6 +451,8 @@
 		var ref = state.hold.reference;
 		state.hold = null;
 		card = null;
+		dropWallets();
+		remember( null );
 		state.error = '';
 		render();
 		api( '/cancel', { reference: ref } ).catch( function () {} );
@@ -294,10 +478,12 @@
 			var ok = state.done.status === 'confirmed';
 			kids = [ el( 'div', { class: 'skye-co__done' + ( ok ? '' : ' is-warn' ), role: 'status' }, [
 				el( 'h3', { text: ok ? t( 'done_title' ) : ( state.done.status === 'failed' ? t( 'failed_title' ) : t( 'pending_title' ) ) } ),
-				el( 'p', { text: ok ? t( 'done_text', state.done.email || state.contact.email ) : ( state.done.status === 'failed' ? t( 'failed_text' ) : t( 'pending_text' ) ) } ),
+				el( 'p', { text: ok ? t( 'done_text', state.done.email || state.contact.email || state.hold.email ) : ( state.done.status === 'failed' ? t( 'failed_text' ) : t( 'pending_text' ) ) } ),
 				state.done.confirmation_code ? el( 'p', { class: 'skye-co__code' }, [ t( 'code' ) + ' ', el( 'strong', { text: state.done.confirmation_code } ) ] ) : null,
-				ok ? summary() : null,
+				ok && state.date ? summary() : null,
 			] ) ];
+		} else if ( state.resuming ) {
+			kids = [ el( 'p', { class: 'skye-co__loading', role: 'status', text: t( 'paying' ) } ) ];
 		} else if ( ! state.cal ) {
 			kids = [ el( 'p', { class: 'skye-co__loading', text: state.error || t( 'loading' ) } ) ];
 		} else if ( ! state.cal.dates.length ) {
@@ -305,6 +491,11 @@
 		} else if ( state.hold ) {
 			kids = [ summary(), step( 4, t( 'payment' ), [
 				el( 'p', { class: 'skye-co__hint', text: t( 'held' ) } ),
+				el( 'div', { id: 'skye-co-wallets', class: 'skye-co__wallets', hidden: true }, [
+					el( 'div', { id: 'skye-co-wallet', class: 'skye-co__wallet', hidden: true } ),
+					el( 'div', { id: 'skye-co-rpay', class: 'skye-co__wallet' } ),
+					el( 'p', { class: 'skye-co__or' }, [ el( 'span', { text: t( 'or_card' ) } ) ] ),
+				] ),
 				el( 'div', { id: 'skye-co-card', class: 'skye-co__card' } ),
 				el( 'p', { id: 'skye-co-msg', class: 'skye-co__err', role: 'alert', hidden: ! state.error, text: state.error } ),
 				el( 'button', { id: 'skye-co-pay', type: 'button', class: 'skye-btn skye-btn--primary skye-co__go', onclick: pay, text: t( 'pay', money( state.hold.amount ) ) } ),
@@ -312,7 +503,7 @@
 				el( 'p', { class: 'skye-co__small', text: t( 'secure' ) + ( cfg.mode === 'sandbox' ? ' ' + t( 'sandbox' ) : '' ) } ),
 			] ) ];
 		} else {
-			kids = [ dates() ];
+			kids = [ state.notice ? el( 'p', { class: 'skye-co__err', role: 'alert', text: state.notice } ) : null, dates() ];
 			if ( state.date ) {
 				kids.push( people() );
 			}
@@ -330,7 +521,7 @@
 		root.replaceChildren.apply( root, kids.filter( Boolean ) );
 		// Moving to the payment or to the result replaces a long form with a short block: without this
 		// the window is left looking at whatever comes after the checkout.
-		var view = state.done ? 'done' : ( state.hold ? 'pay' : 'form' );
+		var view = state.done ? 'done' : ( state.resuming ? 'wait' : ( state.hold ? 'pay' : 'form' ) );
 		if ( view !== shownView ) {
 			if ( shownView !== null ) {
 				( root.closest( '.skye-booking' ) || root ).scrollIntoView( { behavior: 'smooth', block: 'start' } );
@@ -339,6 +530,35 @@
 		}
 	}
 
+	function calendar() {
+		api( '/calendar' ).then( function ( cal ) {
+			state.cal = cal;
+			if ( cal.dates.length ) {
+				state.month = ym( cal.dates[ 0 ].date );
+			}
+			render();
+		} ).catch( function () { state.error = t( 'err_unavailable' ); render(); } );
+	}
+
+	// Back from paying with Revolut Pay on a phone: the page is new, the hold is the one remembered.
+	var came = new URLSearchParams( window.location.search ).get( 'skye_pay' );
+	var kept = came ? remembered() : null;
+	if ( came ) {
+		window.history.replaceState( null, '', window.location.pathname + '#' + ( ( root.closest( '.skye-booking' ) || root ).id || '' ) );
+	}
+	if ( kept && came === 'ok' ) {
+		state.hold = kept;
+		state.resuming = true;
+		render();
+		( root.closest( '.skye-booking' ) || root ).scrollIntoView( { block: 'start' } );
+		finish( 0 );
+		return;
+	}
+	if ( kept ) {
+		remember( null );
+		api( '/cancel', { reference: kept.reference } ).catch( function () {} );
+		state.notice = t( 'failed_text' );
+	}
 	render();
-	api( '/calendar' ).then( function ( cal ) { state.cal = cal; render(); } ).catch( function ( e ) { state.error = t( 'err_unavailable' ); render(); void e; } );
+	calendar();
 }() );
