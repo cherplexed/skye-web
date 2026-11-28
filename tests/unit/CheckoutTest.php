@@ -61,6 +61,14 @@ final class CheckoutTest extends TestCase {
 		self::assertSame( 1999, Revolut::minor_units( 19.99 ) );
 	}
 
+	public function test_key_kind_describes_a_key_without_showing_it(): void {
+		self::assertSame( 'a production key, 20 characters', \Skye\Cli\Checkout::key_kind( 'x_prod_AAAAAAAAAAAAA' ) );
+		self::assertSame( 'a sandbox key, 19 characters', \Skye\Cli\Checkout::key_kind( 'x_sandbox_BBBBBBBBB' ) );
+		self::assertSame( 'a key of unknown type, 8 characters', \Skye\Cli\Checkout::key_kind( 'CCCCCCCC' ) );
+		self::assertStringContainsString( 'WITH spaces or quotes', \Skye\Cli\Checkout::key_kind( '"x_sandbox_DDDD"' ) );
+		self::assertSame( 'missing', \Skye\Cli\Checkout::key_kind( '' ) );
+	}
+
 	public function test_revolut_errors_name_the_status_and_code_but_never_the_key_or_the_body(): void {
 		$client = new Revolut( 'sk_secret_value', Revolut::SANDBOX, '2026-08-17', static fn() => [ 'status' => 401, 'body' => '{"code":"unauthorized","message":"key sk_secret_value is wrong"}' ] );
 		try {

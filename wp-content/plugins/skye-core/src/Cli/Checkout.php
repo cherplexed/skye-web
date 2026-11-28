@@ -47,6 +47,19 @@ final class Checkout {
 		return [ $path . ': ' . $sample ];
 	}
 
+	/**
+	 * What kind of key a value looks like, without showing any of it: the environment its prefix
+	 * names, its length, and whether it was pasted with quotes or spaces.
+	 */
+	public static function key_kind( string $key ): string {
+		if ( '' === $key ) {
+			return 'missing';
+		}
+		$head = strtolower( substr( $key, 0, 12 ) );
+		$type = str_contains( $head, 'prod' ) || str_contains( $head, 'live' ) ? 'a production key' : ( str_contains( $head, 'sand' ) || str_contains( $head, 'test' ) ? 'a sandbox key' : 'a key of unknown type' );
+		return sprintf( '%s, %d characters%s', $type, strlen( $key ), 1 === preg_match( '/\s|["\']/', $key ) ? ', WITH spaces or quotes inside' : '' );
+	}
+
 	/** @return list<array{tour:string, brand:string, product_id:string}> The Bókun products of the tours, default language. */
 	private static function products(): array {
 		$out = [];
@@ -84,7 +97,14 @@ final class Checkout {
 				try {
 					$a = $bokun->activity( $p['product_id'] );
 				} catch ( BokunException $e ) {
-					WP_CLI::warning( "  {$p['product_id']} ({$p['tour']} / {$p['brand']}): " . $e->getMessage() );
+					// Prices can be readable where the product itself is not: then the key's booking channel does not carry it.
+					try {
+						$days = $bokun->availabilities( $p['product_id'], gmdate( 'Y-m-d' ), gmdate( 'Y-m-d', time() + 30 * DAY_IN_SECONDS ) );
+						$hint = sprintf( ' · availability answers (%d departures in 30 days), so the product exists but this key cannot read its details', count( $days ) );
+					} catch ( BokunException $e2 ) {
+						$hint = ' · availability fails too: ' . $e2->getMessage();
+					}
+					WP_CLI::warning( "  {$p['product_id']} ({$p['tour']} / {$p['brand']}): " . $e->getMessage() . $hint );
 					continue;
 				}
 				WP_CLI::log( sprintf( '  %s  %s / %s  "%s"  bookingType=%s', $p['product_id'], $p['tour'], $p['brand'], (string) ( $a['title'] ?? '?' ), (string) ( $a['bookingType'] ?? '?' ) ) );
@@ -104,6 +124,16 @@ final class Checkout {
 		$public = '' !== Config::get( 'REVOLUT_PUBLIC_KEY' );
 		$client = Revolut::from_config();
 		WP_CLI::log( sprintf( 'Revolut: environment=%s · public key %s · secret key %s', $env, $public ? 'present' : 'MISSING', $client ? 'present' : 'MISSING' ) );
+		foreach ( [ 'public' => 'REVOLUT_PUBLIC_KEY', 'secret' => 'REVOLUT_SECRET_KEY' ] as $which => $name ) {
+			$kind = self::key_kind( Config::get( $name ) );
+			WP_CLI::log( "Revolut: the $which key is $kind" );
+			if ( 'sandbox' === $env && str_starts_with( $kind, 'a production' ) ) {
+				WP_CLI::warning( "Revolut: the $which key is a production key but REVOLUT_ENV is sandbox. The sandbox refuses production keys." );
+			}
+		}
+		if ( $public && Config::get( 'REVOLUT_PUBLIC_KEY' ) === Config::get( 'REVOLUT_SECRET_KEY' ) ) {
+			WP_CLI::warning( 'Revolut: the public and the secret key are the same value. They are two different keys.' );
+		}
 		if ( ! $client ) {
 			WP_CLI::warning( 'Revolut: set REVOLUT_SECRET_KEY and REVOLUT_PUBLIC_KEY in .env and restart the stack.' );
 			return;
