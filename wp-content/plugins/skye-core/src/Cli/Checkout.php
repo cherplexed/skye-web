@@ -149,6 +149,36 @@ final class Checkout {
 			WP_CLI::success( 'Revolut: test order cancelled · state=' . (string) ( $cancelled['state'] ?? '?' ) );
 		} catch ( RevolutException $e ) {
 			WP_CLI::warning( $e->getMessage() );
+			if ( 401 === $e->getCode() || 403 === $e->getCode() ) {
+				self::probe_revolut();
+			}
+		}
+	}
+
+	/**
+	 * A refused key is usually the right key in the wrong place. Asks both Revolut hosts to list one
+	 * order with each of the two keys (a read; nothing is created) and says which pair is accepted.
+	 */
+	private static function probe_revolut(): void {
+		WP_CLI::log( 'Revolut: trying each key against each environment (read-only) to find the pair that is accepted…' );
+		$found = false;
+		foreach ( [ 'secret' => 'REVOLUT_SECRET_KEY', 'public' => 'REVOLUT_PUBLIC_KEY' ] as $which => $name ) {
+			$key = Config::get( $name );
+			if ( '' === $key ) {
+				continue;
+			}
+			foreach ( [ 'sandbox' => Revolut::SANDBOX, 'production' => Revolut::PRODUCTION ] as $env => $host ) {
+				try {
+					( new Revolut( $key, $host ) )->orders( 1 );
+					$found = true;
+					WP_CLI::log( "  the $which key at $env: ACCEPTED" );
+				} catch ( RevolutException $e ) {
+					WP_CLI::log( "  the $which key at $env: " . $e->getMessage() );
+				}
+			}
+		}
+		if ( ! $found ) {
+			WP_CLI::warning( 'Revolut: neither key is accepted anywhere. Create a new API key with the Merchant permission in the API Console, in Sandbox, and copy it again.' );
 		}
 	}
 

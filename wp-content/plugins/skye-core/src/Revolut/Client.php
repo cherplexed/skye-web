@@ -67,6 +67,15 @@ final class Client {
 		return $this->request( 'GET', '/api/orders/' . rawurlencode( $order_id ), null );
 	}
 
+	/**
+	 * The most recent orders. Reads only: also the cheapest way to learn whether a key is accepted.
+	 *
+	 * @return array<mixed>
+	 */
+	public function orders( int $limit = 1 ): array {
+		return $this->request( 'GET', '/api/orders?limit=' . max( 1, $limit ), null );
+	}
+
 	/** Only an order nobody has paid yet can be cancelled. @return array<string, mixed> */
 	public function cancel_order( string $order_id ): array {
 		return $this->request( 'POST', '/api/orders/' . rawurlencode( $order_id ) . '/cancel', [] );
