@@ -99,6 +99,19 @@ final class Frontend {
 		$item['_links'] = [ 'home' => home_url( '/' ), 'tours' => self::archive( PostTypes::TOUR ) ];
 		// Bókun's firewall answers 403 to a calendar embedded from a loopback address.
 		$item['_loopback'] = in_array( (string) wp_parse_url( home_url(), PHP_URL_HOST ), [ 'localhost', '127.0.0.1', '[::1]' ], true );
+		// Our own checkout replaces the link out and Bókun's widget wherever it is configured and the tour has a product.
+		if ( Api\Checkout::enabled() && ! empty( $item['offer']['bokun_product_id'] ) ) {
+			$sandbox           = 'sandbox' === Revolut\Client::environment();
+			$item['_checkout'] = [
+				'api'    => untrailingslashit( rest_url( 'skye/v1/checkout' ) ),
+				'tour'   => $post->ID,
+				'lang'   => self::context()['lang'],
+				'locale' => str_replace( '_', '-', (string) get_locale() ),
+				'mode'   => $sandbox ? 'sandbox' : 'prod',
+				'embed'  => ( $sandbox ? Revolut\Client::SANDBOX : Revolut\Client::PRODUCTION ) . '/embed.js',
+				'max'    => Checkout\Service::MAX_PEOPLE,
+			];
+		}
 		$several        = $full && ! empty( $item['gallery'] );
 		$item['image']  = self::picture( $item['image'] ?? null, $full ? ( $several ? '(min-width: 1264px) 800px, 100vw' : '(min-width: 1264px) 1200px, 100vw' ) : '(min-width: 800px) 600px, 100vw', $full );
 		foreach ( $item['gallery'] ?? [] as $i => $g ) {
@@ -126,6 +139,11 @@ final class Frontend {
 		return $items[ $key ];
 	}
 
+	/** The checkout script, loaded only on a page that shows the booking block. */
+	private static function enqueue_checkout(): void {
+		wp_enqueue_script( 'skye-checkout', plugins_url( 'assets/checkout.js', SKYE_CORE_DIR . '/skye-core.php' ), [], SKYE_CORE_VERSION . '-' . (string) @filemtime( SKYE_CORE_DIR . '/assets/checkout.js' ), true ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+	}
+
 	/**
 	 * [skye_tour part="offer"]: one block of the current Tour (or of `id`). Parts: see Render\TourBlocks::PARTS.
 	 *
@@ -138,7 +156,11 @@ final class Frontend {
 			return '';
 		}
 		[ 'market' => $market ] = self::context();
-		return Render\TourBlocks::render( $atts['part'], self::tour_view( $post ), $market );
+		$view                   = self::tour_view( $post );
+		if ( 'booking' === $atts['part'] && ! empty( $view['_checkout'] ) ) {
+			self::enqueue_checkout();
+		}
+		return Render\TourBlocks::render( $atts['part'], $view, $market );
 	}
 
 	/** [skye_tours]: the tours listing (intro and one comparison card per published tour). */

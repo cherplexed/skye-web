@@ -358,6 +358,20 @@ final class RenderTest extends TestCase {
 		self::assertStringContainsString( 'href="https://skye.test/tours/skye-3-days/#booking"', TourBlocks::card( $t, 'de' ) );
 	}
 
+	public function test_our_checkout_takes_the_place_of_the_widget_and_of_the_link_out(): void {
+		$t    = self::tour( [ 'url' => 'https://skye.test/tours/skye-3-days/', '_checkout' => [ 'api' => 'https://skye.test/wp-json/skye/v1/checkout', 'tour' => 40, 'lang' => 'en', 'locale' => 'en-GB', 'mode' => 'sandbox', 'embed' => 'https://sandbox-merchant.revolut.com/embed.js', 'max' => 12 ] ] );
+		$html = TourBlocks::booking( $t );
+		self::assertStringContainsString( '<section class="skye-block skye-booking" id="booking">', $html );
+		self::assertStringNotContainsString( 'bokunWidget', $html );
+		self::assertSame( 1, preg_match( '/data-skye-checkout="([^"]+)"/', $html, $m ) );
+		$config = json_decode( html_entity_decode( $m[1], ENT_QUOTES ), true );
+		self::assertSame( [ 40, 'sandbox', 'Skye & the Highlands, 3 days', 'Pay %s', 'Hostel: bed in a shared room' ], [ $config['tour'], $config['mode'], $config['title'], $config['strings']['pay'], $config['categories']['Hostel'] ] );
+		self::assertStringContainsString( '<noscript><p class="skye-booking__fallback">Booking needs JavaScript. <a href="https://lochnessbus.com/"', $html );
+		self::assertStringContainsString( 'href="#booking">See dates and book</a>', TourBlocks::offer( $t, 'de' ) );
+		self::assertStringContainsString( 'You book and pay on this site.', TourBlocks::offer( $t, 'de' ) );
+		self::assertStringContainsString( 'href="https://skye.test/tours/skye-3-days/#booking"', TourBlocks::card( $t, 'de' ) );
+	}
+
 	public function test_tour_faq_is_shown_with_its_sources_and_feeds_the_structured_data(): void {
 		self::assertSame( '', TourBlocks::faq( self::tour() ) );
 		$t = self::tour(

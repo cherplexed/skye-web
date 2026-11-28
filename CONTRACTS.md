@@ -1,6 +1,6 @@
 # CONTRACTS — modelo de datos y API de skye-web
 
-Versión 1.11 (28 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
+Versión 1.12 (28 nov 2026), derivada del modelo de datos v0.5 del proyecto. Es la fuente de verdad para `skye-core`, `skye-bot`, `skye-audioguide` y `skye-booking-widget`. Un cambio de modelo se hace aquí primero, luego en `acf-json/`, luego en el código.
 
 ## 0. Reglas transversales
 
@@ -166,6 +166,19 @@ Cada objeto incluye `verification: { verified_by, verified_at, valid_until, upda
 - **Caché** (`Skye\Bokun\Offers`): 30 min por producto y moneda. Si Bókun falla se sirve la última respuesta buena (hasta 7 días) marcada `stale: true`, y no se reintenta en 5 min (o lo que diga `Retry-After` en un 429; el límite de Bókun es 400 peticiones/min por vendedor). Se consulta en ventanas de 60 días, hasta 6, y se para en la primera con salidas.
 - **Forma del resultado:** `{ price_from, currency, next_available (Y-m-d), departures, fetched_at, stale }` o `null` si no hay nada a la venta o Bókun no está configurado.
 - Comprobación manual: `wp skye bokun <product_id> [--currency=EUR] [--category=<id>]`.
+
+### Checkout propio (provisional en `skye-core`, issue #33)
+
+Bókun guarda las plazas, Revolut cobra y la reserva solo se confirma con el pedido pagado. El importe es siempre el que da Bókun para la reserva, nunca uno enviado por la página.
+
+| Ruta (`skye/v1`) | Qué hace |
+|---|---|
+| `GET /checkout/calendar?tour={id}&lang=` | Categorías de viajero (el alojamiento es la categoría), preguntas de la reserva y salidas abiertas con precio por categoría. Caché 5 min. |
+| `POST /checkout/reserve` | `date`, `start_time_id`, `rate_id`, `passengers` `{categoría: n}`, `contact` (`firstName`, `lastName`, `email`, `phoneNumber`), `answers` `{id: valor}`. Reserva en Bókun con `RESERVE_FOR_EXTERNAL_PAYMENT`, crea el pedido en Revolut y devuelve `reference`, `order_token`, `amount`, `currency`, `confirmation_code`, `expires_at` (30 min). |
+| `POST /checkout/complete` | `reference`. Consulta el pedido en Revolut; si está `completed`, confirma en Bókun (`confirm-reserved`) y devuelve `status: confirmed`. `pending` mientras tanto; `failed` si el pago se rechaza (libera las plazas); `paid_unconfirmed` si se cobró y Bókun no confirmó (atención manual). Idempotente. |
+| `POST /checkout/cancel` | `reference`. Libera las plazas y cierra el pedido si no se ha pagado. |
+
+Errores: `{ "error": { "reason", "message"?, "field"? } }` con `reason` ∈ `invalid`, `not_bookable`, `unavailable`, `payment_unavailable`, `too_many`, `expired`. Sin avisos automáticos (webhooks) por ahora: la página pregunta el estado. Configuración: `BOKUN_*` y `REVOLUT_ENV|PUBLIC_KEY|SECRET_KEY` en `.env`. La página del tour muestra este checkout en el bloque `booking` cuando hay claves y producto; si no, el widget de Bókun o el enlace a la marca.
 
 ## 13. JSON-LD
 

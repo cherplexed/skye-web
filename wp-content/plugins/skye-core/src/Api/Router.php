@@ -41,6 +41,7 @@ final class Router {
 				]
 			);
 		}
+		Checkout::routes( self::NS );
 		register_rest_route( self::NS, '/health', $read + [ 'callback' => static fn() => self::ok( [ 'version' => SKYE_CORE_VERSION ] ) ] );
 	}
 
