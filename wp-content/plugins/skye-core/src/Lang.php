@@ -109,10 +109,13 @@ final class Lang {
 		if ( ! self::active() ) {
 			return get_post( $ids[0] );
 		}
-		// WPML's own answer first: the version, in that language, of any post of the group.
+		// WPML's own answer first: the version, in that language, of a post with this slug. A
+		// translation has its own slug, so originals are asked before translations that happen to share it.
+		$default = self::default();
+		usort( $ids, static fn( int $a, int $b ) => ( self::of_post( $a, $post_type ) === $default ? 0 : 1 ) <=> ( self::of_post( $b, $post_type ) === $default ? 0 : 1 ) ?: $a <=> $b );
 		foreach ( $ids as $id ) {
 			$t = (int) apply_filters( 'wpml_object_id', $id, $post_type, false, $lang );
-			if ( $t && in_array( $t, $ids, true ) ) {
+			if ( $t && in_array( get_post_status( $t ), $statuses, true ) ) {
 				return get_post( $t );
 			}
 		}
@@ -142,6 +145,12 @@ final class Lang {
 	/** ID of the default-language version of a post (the post itself when it is the original). */
 	public static function original_post( int $id, string $post_type ): int {
 		return self::post_in( $id, $post_type, self::default(), true ) ?? $id;
+	}
+
+	/** The slug an item is known by everywhere but in its own address: that of its default-language version. */
+	public static function slug( \WP_Post $post ): string {
+		$original = self::original_post( $post->ID, $post->post_type );
+		return $original !== $post->ID ? (string) get_post_field( 'post_name', $original ) : $post->post_name;
 	}
 
 	/** Records that $id is the $lang translation of $original. */

@@ -498,7 +498,7 @@ final class Frontend {
 		$out = [];
 		foreach ( (array) apply_filters( 'wpml_active_languages', [], [ 'skip_missing' => 0, 'orderby' => 'code' ] ) as $l ) {
 			if ( is_array( $l ) && isset( $l['language_code'], $l['url'] ) ) {
-				$out[] = [ 'code' => (string) $l['language_code'], 'label' => (string) ( $l['native_name'] ?? $l['language_code'] ), 'url' => (string) $l['url'], 'active' => ! empty( $l['active'] ) ];
+				$out[] = [ 'code' => (string) $l['language_code'], 'label' => (string) ( $l['native_name'] ?? $l['language_code'] ), 'url' => Urls::localize( (string) $l['url'], (string) $l['language_code'] ), 'active' => ! empty( $l['active'] ) ];
 			}
 		}
 		return $out;

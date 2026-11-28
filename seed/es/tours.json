@@ -3,6 +3,7 @@
  "tours": {
   "isle-of-skye-3-day-tour": {
    "title": "Isla de Skye y las Highlands, 3 días desde Edimburgo",
+   "url_slug": "isla-de-skye-y-las-highlands-3-dias-desde-edimburgo",
    "summary": "Tres días desde Edimburgo con conductor-guía: Glencoe y Eilean Donan a la ida, un día entero en Skye, y el lago Ness e Inverness a la vuelta.",
    "days": [
     {
@@ -103,6 +104,7 @@
   },
   "isle-of-skye-2-day-tour": {
    "title": "Isla de Skye y las Highlands, 2 días desde Edimburgo",
+   "url_slug": "isla-de-skye-y-las-highlands-2-dias-desde-edimburgo",
    "summary": "Dos días desde Edimburgo con conductor-guía: Eilean Donan, Sligachan, el Storr, Kilt Rock y Portree el primer día; el lago Ness e Inverness el segundo.",
    "days": [
     {

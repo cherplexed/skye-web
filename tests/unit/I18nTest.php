@@ -142,6 +142,13 @@ final class I18nTest extends TestCase {
 		foreach ( self::seed_languages() as $lang ) {
 			$this->check_translated_seed( $lang );
 		}
+		foreach ( [ 'places', 'tours', 'routes' ] as $name ) {
+			foreach ( self::seed_languages() as $lang ) {
+				foreach ( self::json( "$lang/$name.json" )[ $name ] as $slug => $row ) {
+					$this->assertTrue( isset( $row['url_slug'] ), "$lang/$name/$slug has the slug of its own address" );
+				}
+			}
+		}
 		foreach ( [ 'places', 'tours', 'routes', 'spots' ] as $name ) {
 			$this->assertSame( array_column( self::json( "$name.json" )[ $name ], 'slug' ), array_keys( self::json( "es/$name.json" )[ $name ] ), "Spanish translates every item of $name, in order" );
 		}
@@ -158,10 +165,17 @@ final class I18nTest extends TestCase {
 			$this->assertSame( [], array_values( array_diff( array_keys( $translations ), array_keys( $originals ) ) ), "$lang/$name: every translation has an original" );
 
 			$schema = Fields::for( $post_type );
+			$taken  = [];
 			foreach ( $translations as $slug => $row ) {
 				$this->assertTrue( '' !== trim( (string) ( $row['title'] ?? '' ) ), "$lang/$name/$slug has a title" );
+				if ( isset( $row['url_slug'] ) ) {
+					// The slug of the address in this language: plain ASCII, and one item per slug.
+					$this->assertSame( 1, preg_match( '/^[a-z0-9]+(-[a-z0-9]+)*$/', $row['url_slug'] ), "$lang/$name/$slug url_slug" );
+					$this->assertTrue( ! isset( $taken[ $row['url_slug'] ] ), "$lang/$name: url_slug {$row['url_slug']} is used twice" );
+					$taken[ $row['url_slug'] ] = true;
+				}
 				foreach ( $row as $field => $value ) {
-					if ( in_array( $field, [ 'title', 'content' ], true ) ) {
+					if ( in_array( $field, [ 'title', 'content', 'url_slug' ], true ) ) {
 						continue;
 					}
 					$this->assertTrue( isset( $schema[ $field ] ), "$lang/$name/$slug.$field is a field of the type" );

@@ -206,10 +206,12 @@ final class Commands {
 			WP_CLI::warning( "{$row['slug']}: no original to translate (seed the default language first)" );
 			return [ 0, false ];
 		}
+		// A translation has the slug of its own language in its address (url_slug); everything else knows it by the original's.
+		$name    = $this->translating() && ! empty( $row['url_slug'] ) ? sanitize_title( (string) $row['url_slug'] ) : $row['slug'];
 		$postarr = [
 			'post_type'    => $post_type,
 			'post_status'  => 'publish',
-			'post_name'    => $row['slug'],
+			'post_name'    => $name,
 			'post_title'   => $row['title'],
 			'post_content' => $row['content'] ?? '',
 			'post_excerpt' => $row['summary'] ?? '',
@@ -226,10 +228,10 @@ final class Commands {
 		$id = (int) $id;
 		if ( $original ) {
 			Lang::connect_post( $id, $post_type, $original->ID, $this->lang );
-			// A translation keeps the slug of its original. WordPress may have added "-2" before it knew the language.
-			if ( get_post_field( 'post_name', $id ) !== $row['slug'] ) {
+			// WordPress may have added "-2" to the slug before it knew the language of the post.
+			if ( get_post_field( 'post_name', $id ) !== $name ) {
 				global $wpdb;
-				$wpdb->update( $wpdb->posts, [ 'post_name' => $row['slug'] ], [ 'ID' => $id ] );
+				$wpdb->update( $wpdb->posts, [ 'post_name' => $name ], [ 'ID' => $id ] );
 				clean_post_cache( $id );
 			}
 			// One identity for an item, whatever the language.

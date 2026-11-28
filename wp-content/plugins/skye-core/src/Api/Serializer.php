@@ -32,7 +32,7 @@ final class Serializer {
 		return [
 			'id'           => $p->ID,
 			'uuid'         => Uuid::get( $p->ID ),
-			'slug'         => $p->post_name,
+			'slug'         => \Skye\Lang::slug( $p ),
 			'type'         => $p->post_type,
 			'title'        => \Skye\Text::title( $p ),
 			'url'          => PostTypes::BRAND === $p->post_type ? null : get_permalink( $p ),
@@ -163,7 +163,7 @@ final class Serializer {
 		if ( ! $p || 'publish' !== $p->post_status || $post_type !== $p->post_type ) {
 			return null;
 		}
-		$r = [ 'id' => $p->ID, 'uuid' => Uuid::get( $p->ID ), 'slug' => $p->post_name, 'title' => \Skye\Text::title( $p ), 'type' => $p->post_type ];
+		$r = [ 'id' => $p->ID, 'uuid' => Uuid::get( $p->ID ), 'slug' => \Skye\Lang::slug( $p ), 'title' => \Skye\Text::title( $p ), 'type' => $p->post_type ];
 		if ( in_array( $p->post_type, PostTypes::located(), true ) ) {
 			$r['location'] = Meta::latlng( $p->ID, 'location' );
 		}

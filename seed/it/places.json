@@ -3,6 +3,7 @@
  "places": {
   "old-man-of-storr": {
    "title": "Old Man of Storr",
+   "url_slug": "old-man-of-storr",
    "summary": "Il simbolo di Skye: un pinnacolo di roccia di 50 m sotto la cresta di Trotternish. Si raggiunge con una salita ripida, circa due ore tra andata e ritorno.",
    "content": "<p>L'Old Man of Storr è il più alto di un gruppo di pinnacoli di roccia che si alzano sotto le pareti dello Storr, sul versante orientale della penisola di Trotternish. In una giornata limpida si vede da molto lontano lungo la strada costiera, e anche dal mare.</p><p>È opera di un'antica frana. La cresta di Trotternish è una scarpata lunga circa 30 km, dove un pesante strato di roccia vulcanica poggia su sedimenti più teneri del Giurassico. Molto tempo fa il bordo cedette e scivolò verso il mare, lasciando in piedi i pinnacoli. Il terreno non è ancora del tutto fermo: nell'estate del 2004 grandi massi si staccarono dalla parete e si fermarono ai piedi dell'Old Man.</p><p>In gaelico si chiama Bodach an Stòir. Una leggenda locale dice che il pinnacolo è il pollice di un gigante sepolto nel pendio; un'altra, che nella parete si riconosce il volto di un vecchio.</p><p>La camminata parte dal parcheggio lungo la A855. Il sentiero è ben tenuto ma ripido ed esposto al maltempo, e sale senza tregua. Quasi tutti arrivano ai piedi del pinnacolo e al belvedere poco sopra, da cui si vede l'Old Man con lo stretto di Raasay e la terraferma sullo sfondo. Oltre quel punto il terreno è più difficile e richiede carta, bussola ed esperienza di montagna.</p>",
    "directions": "11 km a nord di Portree sulla A855 in direzione di Staffin, circa 15 minuti in auto. Il parcheggio è sulla sinistra; in estate a metà mattina è pieno.",
@@ -57,6 +58,7 @@
   },
   "quiraing": {
    "title": "Quiraing",
+   "url_slug": "quiraing",
    "summary": "La più grande frana della Gran Bretagna, ancora in movimento: un belvedere accanto alla strada e un anello di 2 ore tra i pinnacoli di roccia.",
    "content": "<p>Il Quiraing è l'estremità nord della grande frana che percorre tutta la cresta di Trotternish, e la sua parte più spettacolare. Sotto le pareti di Meall na Suiramach il terreno si è spezzato in torri, cenge e conche nascoste, e non ha ancora finito di muoversi: la strada che passa ai suoi piedi va riparata di continuo.</p><p>Tre formazioni hanno un nome. The Needle (l'Ago) è un pinnacolo aguzzo; The Prison (la Prigione), un blocco di roccia che sembra una fortezza in rovina; The Table (la Tavola), un prato piatto sollevato tra le rupi, invisibile dal basso, dove secondo la tradizione si nascondeva il bestiame dai razziatori.</p><p>Non serve camminare molto. La vista dal parcheggio, in cima al passo tra Staffin e Uig, abbraccia già tutta la linea delle pareti e il mare sullo sfondo, e il primo chilometro del sentiero è quasi in piano. L'anello completo prosegue sotto le rupi e torna dall'alto: circa 6,8 km e due ore senza soste, con tratti stretti ed esposti che diventano scivolosi con il bagnato.</p>",
    "directions": "Strada a una corsia tra Staffin e Uig. Il parcheggio, a pagamento, è in cima al passo.",
@@ -102,6 +104,7 @@
   },
   "kilt-rock-and-mealt-falls": {
    "title": "Kilt Rock e la cascata di Mealt",
+   "url_slug": "kilt-rock-e-la-cascata-di-mealt",
    "summary": "Una scogliera di 55 m con colonne di basalto che ricordano le pieghe di un kilt, e una cascata che cade dritta in mare. Sosta di 10 minuti.",
    "content": "<p>Kilt Rock è una scogliera alta circa 55 m sulla costa est di Trotternish. La parte superiore è fatta di colonne verticali di basalto scuro appoggiate su fasce di roccia più chiara, e il disegno ricorda le pieghe di un kilt: da qui il nome.</p><p>Proprio accanto al belvedere, l'acqua di Loch Mealt si affaccia sul bordo della scogliera e cade direttamente in mare. Nelle giornate di vento la cascata viene risospinta in alto in una nuvola di spruzzi prima di toccare l'acqua.</p><p>È una sosta di pochi minuti, non una camminata: la ringhiera è a pochi passi dal parcheggio. Guarda anche in basso, non solo lungo la scogliera. Sulle cenge nidificano uccelli marini, e al largo si vedono a volte delfini e balene.</p>",
    "directions": "Sulla A855, tra Portree e Staffin; piazzola segnalata con parcheggio.",
@@ -138,6 +141,7 @@
   },
   "fairy-glen": {
    "title": "Fairy Glen",
+   "url_slug": "fairy-glen",
    "summary": "Un paesaggio in miniatura di colline coniche erbose, un laghetto e una torre di roccia chiamata Castle Ewen, vicino a Uig. Passeggiata facile di 45 minuti.",
    "content": "<p>Il Fairy Glen, la «valle delle fate», è una piccola conca tra le colline sopra Uig che sembra il resto di Trotternish visto in miniatura: coni erbosi dai fianchi rigati, un laghetto, sorbi contorti e, sopra tutto, una torre di roccia detta Castle Ewen. Come il Quiraing, è stato modellato da una frana, ma su scala molto più piccola.</p><p>Nonostante il nome, non ha nessuna leggenda antica. La gente ha cominciato a chiamarlo Fairy Glen semplicemente perché sembra il genere di posto dove vivrebbero le fate.</p><p>È un luogo dove girovagare più che seguire un percorso. I sentieri passano tra i poggi e salgono ai piedi di Castle Ewen, e una breve arrampicata in una fessura della roccia porta in cima. Il terreno è erboso e irregolare, e dopo la pioggia diventa fangoso.</p>",
    "directions": "Strada a una corsia da Uig, indicata per Balnaknock/Sheader. Parcheggio piccolo; non parcheggiare sul ciglio.",
@@ -183,6 +187,7 @@
   },
   "fairy-pools": {
    "title": "Fairy Pools",
+   "url_slug": "fairy-pools",
    "summary": "Pozze d'acqua cristallina e piccole cascate sotto i Black Cuillin. Camminata facile di circa 40 minuti a tratta dal parcheggio.",
    "content": "<p>Le Fairy Pools, le «pozze delle fate», sono una serie di pozze limpide e piccole cascate lungo un torrente di montagna che scende dai Black Cuillin in Glen Brittle. L'acqua è fredda, limpidissima e verde-azzurra sulla roccia chiara, con la parete scura dei Cuillin alle spalle.</p><p>Di fronte al parcheggio parte un sentiero che risale il torrente attraversandolo su passerelle. La prima grande cascata con la sua pozza è a circa 1,2 km dall'inizio, quindi tra andata e ritorno sono 2,4 km; calcola da quaranta minuti a un'ora e mezza, a seconda di quanto sali e di quanto ti fermi. Il sentiero è ben fatto per quasi tutto il percorso, ma un breve tratto è ripido e sassoso, e questo esclude sedie a rotelle e passeggini.</p><p>C'è chi fa il bagno. L'acqua scende dalla montagna ed è freddissima anche in agosto: è un tuffo veloce, non una nuotata.</p>",
    "directions": "Dalla strada di Carbost, prendi la strada a una corsia indicata per Glenbrittle. Il parcheggio, a pagamento, è sulla destra dopo circa 8 km; il sentiero comincia dall'altra parte della strada.",
@@ -228,6 +233,7 @@
   },
   "talisker-distillery": {
    "title": "Distilleria Talisker",
+   "url_slug": "distilleria-talisker",
    "summary": "La più antica distilleria in attività di Skye, sulla riva di Loch Harport, a Carbost. Visite e degustazioni quasi ogni giorno; in estate prenota.",
    "content": "<p>Talisker produce whisky a Carbost, sulla riva di Loch Harport, dal 1830: è la più antica distilleria in attività di Skye. Il suo single malt è noto per un carattere affumicato, pepato e leggermente salino che molti collegano all'aria di mare di questa costa.</p><p>Si può visitare in due modi. Le visite guidate attraversano la distilleria, dagli alambicchi di rame alle botti, e finiscono con una degustazione; ci sono degustazioni più brevi senza visita ed esperienze più lunghe e costose per gli appassionati. Oppure puoi semplicemente entrare nell'edificio per i visitatori, che ha negozio e bar e non richiede biglietto.</p><p>Nonostante il nome, la distilleria non è nella baia di Talisker. Si trova nel paese di Carbost; la baia è qualche chilometro più in là, in fondo a una strada secondaria.</p>",
    "directions": "Nel paese di Carbost, sulla B8009. Parcheggio alla distilleria.",
@@ -272,6 +278,7 @@
   },
   "dunvegan-castle": {
    "title": "Castello di Dunvegan e i suoi giardini",
+   "url_slug": "castello-di-dunvegan-e-i-suoi-giardini",
    "summary": "Sede del clan MacLeod da 800 anni, con la Fairy Flag, i giardini e le gite in barca per vedere le foche dal molo del castello. Calcola 2 ore.",
    "content": "<p>Dunvegan è la casa dei capi del clan MacLeod da circa ottocento anni, ed è di solito descritto come il castello abitato senza interruzioni più antico della Scozia. Sorge su una roccia sopra Loch Dunvegan, e quello che si vede è opera di molti secoli, da un torrione medievale alle merlature vittoriane.</p><p>All'interno si conservano i tesori del clan. Il più famoso è la Fairy Flag, la «bandiera delle fate»: un fragile stendardo di seta che, secondo la tradizione, protegge i MacLeod quando viene spiegato in un momento di pericolo. Accanto ci sono la Coppa di Dunvegan e il Corno di Rory Mor, un corno per bere che ogni nuovo capo deve svuotare di vino in un solo sorso.</p><p>I giardini attirano quanto la casa. Tracciati a partire dal Settecento, comprendono un giardino murato, un giardino d'acqua con cascate e passeggiate nel bosco fino al lago. Dal molo sotto il castello, piccole barche portano a vedere le foche che vivono sugli isolotti del lago.</p>",
    "directions": "1 km a nord del paese di Dunvegan sulla A850. Parcheggio gratuito all'ingresso.",
@@ -321,6 +328,7 @@
   },
   "neist-point": {
    "title": "Neist Point",
+   "url_slug": "neist-point",
    "summary": "Il punto più occidentale di Skye: un faro su un promontorio di scogliere, raggiunto da un ripido sentiero di cemento. Il miglior tramonto dell'isola.",
    "content": "<p>Neist Point è l'estremità più occidentale di Skye: un promontorio lungo e stretto di erba e basalto che si spinge nel Minch, con un faro in punta e scogliere su entrambi i lati. In una giornata limpida le Ebridi Esterne si disegnano all'orizzonte.</p><p>Dal parcheggio scende un sentiero di cemento, prima con una lunga scalinata e poi lungo il dorso del promontorio fino al faro: 2,2 km tra andata e ritorno. Richiede circa 45 minuti senza soste, ma tutti si fermano. Tieni presente che il facile viene prima: il ritorno è una salita costante, con due strappi ripidi prima del parcheggio.</p><p>Il faro è dei primi del Novecento. Funziona in automatico dal 1990 e i suoi edifici sono chiusi, quindi la passeggiata vale per l'ambiente, non per la visita. La fotografia più nota, con tutto il promontorio e il faro in punta, non si scatta dal sentiero ma dalla cima della scogliera a destra del parcheggio.</p><p>È anche uno dei posti migliori di Skye per osservare il mare. In estate passano vicino alla costa balenottere minori, delfini e focene, e sule e altri uccelli marini pescano davanti alla punta.</p>",
    "directions": "Da Glendale segui la strada a una corsia fino alla fine; il parcheggio è in cima alle scogliere.",
@@ -366,6 +374,7 @@
   },
   "portree": {
    "title": "Portree",
+   "url_slug": "portree",
    "summary": "Il capoluogo di Skye e la base più pratica: il porto dalle case colorate, quasi tutti i ristoranti e i negozi dell'isola e le gite in barca per la fauna.",
    "content": "<p>Portree è il capoluogo di Skye e la sua unica vera cittadina. Si raccoglie intorno a una baia riparata sulla costa est, più o meno al centro dell'isola, ed è per questo che quasi tutti i visitatori la usano come base: qui si incontrano le strade di Trotternish, di Dunvegan e del sud, e anche gli autobus dell'isola.</p><p>L'immagine che tutti conoscono è Quay Street, la fila di case dipinte lungo il porto, oggi negozi, alloggi e ristoranti. Bank Street, un livello più su, è la via principale. Dal molo partono ancora le barche da pesca e, in stagione, le escursioni per vedere la fauna.</p><p>Il nome viene di solito spiegato come «il porto del re», per la visita di Giacomo V di Scozia, che nel 1540 navigò fino a Skye con una flotta per mettere fine alle contese tra i MacLeod e i MacDonald. Due secoli dopo la cittadina vide un altro ospite reale: nel 1746 Carlo Edoardo Stuart, in fuga dopo Culloden, salutò Flora MacDonald nella locanda che sorgeva dove oggi c'è il Royal Hotel.</p><p>Da questo porto, nel Settecento, salparono navi cariche di emigranti dirette in Nord America, quando l'isola non riusciva più a sfamare la sua gente. Nell'Ottocento i piroscafi da Glasgow fecero di Portree il centro commerciale di Skye e portarono i primi turisti.</p><p>Dalla cittadina partono due brevi passeggiate. The Lump è il promontorio alberato sopra il porto, con una vecchia torre su cui si può salire per vedere la baia e i Cuillin, e un anfiteatro naturale dove in estate si tengono i Giochi delle Highlands di Skye. L'anello di Scorrybreac segue la riva dal lato nord della baia, gira intorno a un promontorio e torna dalla collina; dal sentiero a volte si vedono le foche.</p>",
    "directions": "Sulla A87, a 55 km dal ponte di Skye. I parcheggi sono segnalati in centro, che è piccolo e si visita meglio a piedi.",
@@ -415,6 +424,7 @@
   },
   "sligachan": {
    "title": "Ponte vecchio di Sligachan",
+   "url_slug": "ponte-vecchio-di-sligachan",
    "summary": "Il ponte a tre arcate del 1810 con i Black Cuillin alle spalle: la veduta più dipinta di Skye. Sosta di 10 minuti all'incrocio tra A87 e A863.",
    "content": "<p>Sligachan è un incrocio, un hotel e un vecchio ponte di pietra, e una delle grandi vedute di Skye. Dal ponte si guarda dritto nella valle che separa le due catene dei Cuillin: le cime scure e frastagliate dei Black Cuillin da una parte e i Red Cuillin, lisci e arrotondati, dall'altra.</p><p>Il ponte vecchio, con le sue tre arcate, è dei primi dell'Ottocento e oggi è riservato ai pedoni; la strada moderna gli passa accanto. Vicino al parcheggio c'è un bronzo di Norman Collie e John Mackenzie, lo scienziato e la guida locale che insieme esplorarono e cartografarono queste montagne.</p><p>Il fiume ha una sua leggenda. Si dice che, se ti inginocchi sulla riva e tieni il viso nell'acqua per sette secondi, le fate ti concederanno una bellezza duratura, a patto di lasciarlo asciugare all'aria senza toccarlo.</p>",
    "directions": "All'incrocio di Sligachan, sulla A87, 14 km a sud di Portree. Parcheggio gratuito accanto all'hotel.",
@@ -451,6 +461,7 @@
   },
   "kyleakin": {
    "title": "Kyleakin",
+   "url_slug": "kyleakin",
    "summary": "Il primo paese di Skye, accanto al ponte: un porticciolo, le rovine di Castle Moil e la vista sulla terraferma. Tappa abituale per la notte.",
    "content": "<p>A Kyleakin arrivava il traghetto dalla terraferma finché, nel 1995, non fu aperto il ponte di Skye. Il pedaggio del ponte fu abolito nel 2004, e oggi il paese è un posto tranquillo a due passi dalla strada principale, con il porto, qualche locale dove mangiare e dove dormire.</p><p>Sulla punta oltre il porto si alza ciò che resta di Castle Moil. La leggenda locale lo attribuisce a una principessa norrena, nota come Saucy Mary, che si dice tendesse una catena attraverso lo stretto per far pagare il pedaggio alle navi.</p>",
    "directions": "Indicato dalla A87 all'estremità del ponte dal lato di Skye. Parcheggio gratuito al porto.",
@@ -486,6 +497,7 @@
   },
   "lealt-falls": {
    "title": "Cascate di Lealt",
+   "url_slug": "cascate-di-lealt",
    "summary": "Una cascata che precipita in una gola profonda accanto alla strada di Trotternish. Si vede da un belvedere a pochi minuti dal parcheggio.",
    "content": "<p>Il fiume Lealt cade in due salti dentro una gola stretta nel suo cammino verso il mare. Un breve sentiero asfaltato porta dal parcheggio a una piattaforma sopra il salto superiore, con vista lungo la costa e fino alla terraferma.</p><p>Un sentiero più accidentato prosegue fino al bordo della scogliera sopra la riva, da cui si vedono in basso le rovine di un vecchio stabilimento per la diatomite.</p>",
    "directions": "Accanto alla A855, tra l'Old Man of Storr e Kilt Rock. Parcheggio segnalato sul lato della strada verso il mare.",
@@ -513,6 +525,7 @@
   },
   "eilean-donan-castle": {
    "title": "Castello di Eilean Donan",
+   "url_slug": "castello-di-eilean-donan",
    "summary": "Il castello più fotografato della Scozia, su un isolotto dove si incontrano tre bracci di mare, collegato alla riva da un ponte di pietra. Sulla via per Skye.",
    "content": "<p>Eilean Donan sorge su un isolotto di marea nel punto in cui si incontrano tre bracci di mare: Loch Duich, Loch Long e Loch Alsh. Un ponte di pietra a tre arcate lo collega alla riva, accanto alla strada principale per Skye, ed è per questo che quasi chiunque vada verso l'isola si ferma qui.</p><p>L'isola prende il nome da Donan, un missionario irlandese che si dice si sia stabilito qui nel VI secolo. Il primo castello fu costruito all'inizio del Duecento, durante il regno di Alessandro II, per difendere questa costa dalle incursioni norrene. Per quasi tutti i secoli successivi appartenne ai Mackenzie di Kintail, con i MacRae come custodi.</p><p>La fine arrivò nel 1719. L'insurrezione giacobita di quell'anno aveva l'appoggio spagnolo, e nel castello fu lasciata una guarnigione di soldati spagnoli a guardia della polveriera. Navi della Marina Reale risalirono il lago, bombardarono le mura, fecero prigioniera la guarnigione e fecero saltare ciò che restava. Poche settimane dopo l'insurrezione fu sconfitta nella battaglia di Glen Shiel, poco più su nella valle.</p><p>Le rovine rimasero esposte alle intemperie per quasi duecento anni. Il tenente colonnello John MacRae-Gilstrap le acquistò e ricostruì il castello tra il 1912 e il 1932, partendo dalla pianta superstite; il ponte è degli stessi lavori. Quello che si visita è dunque un castello del Novecento su fondamenta medievali, e oggi appartiene a una fondazione benefica che lo cura e lo tiene aperto.</p><p>All'interno, le sale sono arredate come una casa delle Highlands del Sei e Settecento, con una sala dei banchetti e una mostra sulla storia del castello. Alcune stanze sono private. Il castello ha anche una lunga carriera al cinema: è la casa del clan in Highlander e una base dell'MI6 in Il mondo non basta.</p>",
    "directions": "A Dornie, sulla A87, 13 km a est di Kyle of Lochalsh e del ponte di Skye. Parcheggio al centro visitatori, accanto alla strada.",
@@ -591,6 +604,7 @@
   },
   "loch-ness-urquhart-castle": {
    "title": "Loch Ness e castello di Urquhart",
+   "url_slug": "loch-ness-e-castello-di-urquhart",
    "summary": "Le rovine di uno dei più grandi castelli della Scozia su un promontorio di Loch Ness, con centro visitatori e gite in barca sul lago.",
    "content": "<p>Loch Ness si allunga per circa 37 km lungo il Great Glen ed è profondo più di 200 m: per questo contiene più acqua di qualsiasi altro lago della Scozia, e per questo la storia del suo mostro è durata così a lungo. La leggenda moderna risale agli anni Trenta del Novecento, quando una nuova strada aprì la riva e le prime testimonianze arrivarono ai giornali.</p><p>Il castello di Urquhart, su un promontorio roccioso a circa metà della riva nord, è il posto migliore per abbracciare il lago con lo sguardo. Fu uno dei più grandi castelli della Scozia e passò di mano più volte tra scozzesi e inglesi durante le guerre d'indipendenza. La sua fine fu voluta: l'ultima guarnigione governativa lo fece saltare andandosene, all'epoca delle insurrezioni giacobite, perché nessun altro potesse usarlo.</p><p>Ciò che resta è un'ampia rovina di mura e torri che scende fino all'acqua. Sulla torre Grant, ricostruita nel Cinquecento, si può ancora salire per vedere il lago in tutta la sua lunghezza. Il centro visitatori, scavato nel pendio, ha un filmato, una mostra degli oggetti trovati sul posto e una caffetteria con terrazza.</p>",
    "directions": "Accanto alla A82, sulla riva nord-ovest di Loch Ness, a circa 3 km da Drumnadrochit. Il parcheggio del centro visitatori va prenotato online.",
@@ -647,6 +661,7 @@
   },
   "inverness": {
    "title": "Inverness",
+   "url_slug": "inverness",
    "summary": "La capitale delle Highlands, sul fiume Ness: un centro raccolto con il lungofiume, il Victorian Market e tanti posti dove pranzare.",
    "content": "<p>Inverness è l'unica città delle Highlands e la tappa naturale tra Skye e il sud. È cresciuta dove il fiume Ness arriva al mare, a pochi chilometri dall'estremità nord di Loch Ness, e da moltissimo tempo è il punto d'incontro delle strade delle Highlands.</p><p>Il centro è così piccolo che si visita a piedi in un'ora. Il castello è su una collina sopra il fiume; l'edificio attuale è del 1847, ma qui ci sono state fortezze fin dal Medioevo. Ai suoi piedi, alcune passerelle attraversano il Ness fino alla cattedrale di Sant'Andrea, costruita in pietra rossa nell'Ottocento. La Old High Church, sulla riva est, ha una torre medievale che è la costruzione più antica della città.</p><p>Se hai più tempo, risali il fiume fino alle Ness Islands, una serie di isolotti alberati collegati da passerelle vittoriane, parco pubblico dagli anni Quaranta dell'Ottocento.</p><p>Due luoghi appena fuori città spiegano buona parte della storia delle Highlands. Culloden, dove nel 1746 fu annientato l'ultimo esercito giacobita, è a breve distanza in auto verso est; e Fort George, l'enorme forte d'artiglieria costruito dopo per tenere sottomesse le Highlands, si trova sulla costa poco oltre ed è ancora una base dell'esercito.</p>",
    "directions": "Dove si incontrano la A9, la A82 e la A96. Diversi parcheggi a pagamento in centro.",
@@ -686,6 +701,7 @@
   },
   "pitlochry": {
    "title": "Pitlochry",
+   "url_slug": "pitlochry",
    "summary": "Una cittadina di villeggiatura vittoriana tra le colline del Perthshire, accanto alla A9: una via di negozi e caffè e una diga con la scala dei salmoni.",
    "content": "<p>Pitlochry si trova più o meno a metà strada tra Edimburgo e Inverness, a due passi dalla A9, ed è per questo che quasi ogni viaggio tra le due città si ferma qui. Nacque come un gruppo di case accanto al paese più antico di Moulin e crebbe quando lungo la valle fu aperta una strada militare verso nord, che portò viaggiatori, locande e negozi. Il soggiorno della regina Vittoria nel vicino castello di Blair, nel 1842, fece il resto, e la cittadina conserva l'aria di una località di villeggiatura vittoriana.</p><p>Tutto è su Atholl Road, la via principale, o lì vicino: edifici in pietra di quell'epoca, caffè, pub e negozi di articoli da montagna e souvenir. Scendendo un poco a piedi si arriva al fiume Tummel e alla scala dei salmoni, una successione di vasche a gradini che permette ai pesci di superare la diga risalendo la corrente.</p><p>Sopra la diga il fiume si allarga e forma Loch Faskally, con un sentiero lungo la riva alberata. Con più tempo di quello di una sosta in pullman, le mete abituali sono Queen's View, un belvedere famoso a pochi chilometri, le due distillerie della zona, Blair Athol ed Edradour, e il monte Ben Vrackie, alle spalle della cittadina.</p>",
    "directions": "Indicato dalla A9, circa 45 km a nord di Perth. Parcheggi a pagamento dietro la via principale.",
@@ -733,6 +749,7 @@
   },
   "glencoe": {
    "title": "Glencoe",
+   "url_slug": "glencoe",
    "summary": "La valle più famosa della Scozia: una gola profonda tra montagne ripide, attraversata dalla strada, con una pagina nera nella sua storia.",
    "content": "<p>La strada che arriva da sud attraversa la distesa vuota di Rannoch Moor e poi scende in Glencoe tra pareti di roccia, opera di antiche eruzioni vulcaniche poi scolpite dal ghiaccio. La montagna che fa la guardia all'ingresso, una piramide quasi perfetta di oltre 1.000 m, è il Buachaille Etive Mòr, una delle più fotografate della Scozia.</p><p>Più in basso, sul lato sud, ci sono le Tre Sorelle: tre grandi contrafforti, Beinn Fhada (la collina lunga), Gearr Aonach (la cresta corta) e Aonach Dubh (la cresta nera), che sono la fine delle creste che scendono da Bidean nam Bian. Tra le prime due si nasconde la Lost Valley, la «valle perduta», una conca che dalla strada non si vede. Ai loro piedi il fiume salta in una piccola gola al Meeting of Three Waters e poi si allarga in Loch Achtriochtan, che nelle giornate senza vento rispecchia i pendii.</p><p>Glencoe è ricordata anche per ciò che accadde il 13 febbraio 1692. Un centinaio di soldati governativi era ospite da quasi due settimane nelle case dei MacDonald, il clan che dominava la valle. Quel mattino, per ordini superiori, si rivoltarono contro chi li ospitava e ne uccisero trentotto; altri morirono nella neve durante la fuga. Il capo aveva giurato fedeltà a re Guglielmo qualche giorno dopo la scadenza, e si volle dare un esempio. Fu il tradimento dell'ospitalità, più del numero dei morti, a rendere tristemente celebre il massacro, ed è per questo che Glencoe è ancora chiamata la valle delle lacrime.</p><p>Il paesaggio ha fatto da scenario a molti film, tra cui diversi della saga di Harry Potter, Skyfall di James Bond, Braveheart e Outlaw King. Il centro visitatori, vicino al paese di Glencoe, spiega come si è formata la valle e ne racconta la storia, e il piccolo museo del paese, in una casa dal tetto di paglia del Settecento, espone oggetti provenienti dalle case dei MacDonald.</p>",
    "directions": "Sulla A82, tra Tyndrum e Fort William. Piazzole con parcheggio lungo la valle; il belvedere delle Tre Sorelle è segnalato.",
@@ -785,6 +802,7 @@
   },
   "glenfinnan": {
    "title": "Viadotto e monumento di Glenfinnan",
+   "url_slug": "viadotto-e-monumento-di-glenfinnan",
    "summary": "Il viadotto ferroviario in curva reso celebre dal cinema, e il monumento in riva a Loch Shiel dove cominciò l'insurrezione giacobita del 1745.",
    "content": "<p>Due monumenti sorgono a poche centinaia di metri l'uno dall'altro in testa a Loch Shiel. Il più antico è il monumento di Glenfinnan, una torre di pietra alta circa 18 m sormontata da un highlander, eretta nel 1815 nel punto in cui il principe Carlo Edoardo Stuart radunò i clan nell'agosto del 1745 e diede inizio all'ultima insurrezione giacobita.</p><p>L'altro è il viadotto ferroviario, che porta la linea West Highland da un lato all'altro della valle su 21 arcate, a circa 30 m sopra il fiume, disegnando un'ampia curva. Fu costruito da Robert McAlpine e terminato nel 1901; fu una delle prime grandi opere al mondo realizzate in calcestruzzo. Era già ben noto agli appassionati di ferrovie prima che quattro film di Harry Potter, girati sul ponte vero e senza scenografie, lo rendessero famoso in tutto il mondo come il percorso dell'Espresso per Hogwarts.</p><p>Dietro il centro visitatori parte un sentiero segnalato che sale in pochi minuti a una radura con vista sul viadotto; un altro, più lungo, risale la valle, passa sotto le arcate e sale sul pendio di fronte. Da aprile a ottobre il viadotto è attraversato da un treno a vapore, il Jacobite, nel suo viaggio tra Fort William e Mallaig, ed è questo che la maggior parte dei visitatori viene a vedere. Giorni e orari cambiano a ogni stagione, e il parcheggio viene chiuso quando è pieno: conviene arrivare con largo anticipo.</p>",
    "directions": "Sulla A830, tra Fort William e Mallaig, circa 27 km a ovest di Fort William. Parcheggi a pagamento al centro visitatori.",
@@ -834,6 +852,7 @@
   },
   "fort-william": {
    "title": "Fort William",
+   "url_slug": "fort-william",
    "summary": "Il centro principale delle Highlands occidentali, su Loch Linnhe e ai piedi del Ben Nevis. La sosta abituale per il pranzo sulla via per Skye.",
    "content": "<p>Fort William è il centro principale delle Highlands occidentali e si allunga sulla riva di Loch Linnhe, un lungo braccio di mare. È una cittadina di lavoro più che una cittadina graziosa, ma è piccola, pianeggiante e facile da girare a piedi, e ha quello che serve in un lungo viaggio: una via principale pedonale con posti dove mangiare, supermercati e distributori.</p><p>Il Ben Nevis si alza proprio alle sue spalle. Con i suoi 1.345 m è la montagna più alta della Gran Bretagna, e la sua cima è ciò che resta della cupola crollata di un antico vulcano. La prima salita documentata fu compiuta nel 1771 da un botanico di Edimburgo; oggi ci salgono più di 100.000 persone l'anno. Dalla cittadina la cima non si vede: è nascosta dai pendii bassi della montagna stessa.</p><p>Se hai un'ora, il West Highland Museum, in Cameron Square, accanto alla via principale, è gratuito e merita anche solo per la sua collezione giacobita. A circa 3 km a nord del centro ci sono le rovine del castello di Inverlochy, costruito alla fine del Duecento dai Comyn, rivali di Robert the Bruce; si visitano liberamente e senza pagare.</p><p>Da Fort William parte inoltre il treno a vapore Jacobite per Mallaig, che lungo il percorso attraversa il viadotto di Glenfinnan.</p>",
    "directions": "Sulla A82. Parcheggi a pagamento alle due estremità della via principale.",
@@ -882,6 +901,7 @@
   },
   "loch-garry-viewpoint": {
    "title": "Belvedere di Loch Garry",
+   "url_slug": "belvedere-di-loch-garry",
    "summary": "Un belvedere lungo la strada, in alto sopra Loch Garry, noto perché da qui il lago ha la forma della carta della Scozia.",
    "content": "<p>La strada per Skye sale ripida dal Great Glen, e quasi in cima c'è una piazzola da cui si vede Loch Garry in tutta la sua lunghezza. Da questa angolazione la forma del lago e delle sue rive boscose ricorda il profilo della Scozia.</p>",
    "directions": "Una piazzola segnalata sulla A87, pochi chilometri dopo il bivio dalla A82 a Invergarry.",
@@ -904,6 +924,7 @@
   },
   "commando-memorial": {
    "title": "Monumento ai Commando",
+   "url_slug": "monumento-ai-commando",
    "summary": "Un bronzo di tre commando che guardano verso il Ben Nevis, su un'altura sopra Spean Bridge, in ricordo dei soldati che si addestrarono su questi monti.",
    "content": "<p>Il monumento fu inaugurato nel 1952 in memoria dei commando della Seconda guerra mondiale, che si addestrarono nella vicina Achnacarry. Sorge in terreno aperto, con una delle viste più ampie del Lochaber: in una giornata limpida, il Ben Nevis e l'Aonach Mòr verso sud.</p><p>Accanto c'è un piccolo giardino della memoria.</p>",
    "directions": "Accanto alla A82, circa 2 km a nord-ovest di Spean Bridge, all'incrocio con la B8004. Parcheggio gratuito.",
@@ -930,6 +951,7 @@
   },
   "five-sisters-of-kintail": {
    "title": "Le Cinque Sorelle di Kintail",
+   "url_slug": "le-cinque-sorelle-di-kintail",
    "summary": "Una cresta di cinque cime aguzze che si alza dalla testa di Loch Duich: la grande veduta di montagna del tragitto tra Skye e Loch Ness.",
    "content": "<p>Le Cinque Sorelle si allineano sul lato nord di Glen Shiel, tre delle quali sopra i 914 m. La strada principale corre ai loro piedi, e si vedono al meglio voltandosi indietro dalla riva di Loch Duich.</p><p>La traversata dell'intera cresta è una giornata di montagna lunga e seria, per escursionisti esperti.</p>",
    "directions": "Sulla A87, attraverso Glen Shiel, tra Shiel Bridge e Cluanie. Piazzole lungo la strada e accanto a Loch Duich.",
@@ -956,6 +978,7 @@
   },
   "dunkeld": {
    "title": "Dunkeld",
+   "url_slug": "dunkeld",
    "summary": "Una piccola cittadina del Perthshire sul fiume Tay, con una cattedrale in parte in rovina sulla riva e vie di case settecentesche restaurate.",
    "content": "<p>Dunkeld è una cittadina molto piccola di case imbiancate sulla riva del Tay, il fiume più lungo della Scozia, a due passi dalla A9. Sembra un angolo tranquillo, ma un tempo fu il cuore religioso del paese: nel IX secolo Kenneth MacAlpin, primo re degli scozzesi, fece costruire qui una chiesa di pietra per custodire le reliquie di san Columba e fece di Dunkeld il centro del suo regno.</p><p>La cattedrale sorge su un prato in riva al fiume. Metà è una rovina senza tetto e l'altra metà è ancora la chiesa parrocchiale. Fu danneggiata due volte: prima con la Riforma, e di nuovo nel 1689, quando giacobiti e truppe governative combatterono per le strade nella battaglia di Dunkeld e quasi tutta la cittadina bruciò. Sui suoi muri si vedono ancora i segni delle palle di moschetto.</p><p>Le case intorno alla piazza furono ricostruite dopo quella battaglia e sono state restaurate con cura, e il ponte sul Tay è del 1809. Sull'altra sponda c'è Birnam, il cui bosco è quello che avanza contro il re nel Macbeth di Shakespeare.</p>",
    "directions": "Indicato dalla A9, circa 24 km a nord di Perth. Parcheggio a pagamento in riva al fiume.",
@@ -1000,6 +1023,7 @@
   },
   "stirling": {
    "title": "Stirling",
+   "url_slug": "stirling",
    "summary": "L'antica porta tra Lowlands e Highlands, con il castello su una roccia sopra la pianura e il Monumento a Wallace sulla collina di fronte.",
    "content": "<p>Per secoli Stirling fu la chiave della Scozia. Sorgeva al passaggio più basso del fiume Forth, l'unico punto in cui un esercito poteva attraversare senza barche, e chi teneva il castello controllava la strada per il nord: da qui il suo vecchio soprannome, la porta delle Highlands. Per questo due delle battaglie decisive della storia scozzese furono combattute in vista delle sue mura: Stirling Bridge nel 1297, vinta da William Wallace, e Bannockburn nel 1314, vinta da Robert the Bruce.</p><p>Il castello poggia sul collo di un vulcano spento, con pareti a picco su tre lati e un unico accesso che sale attraverso la città vecchia. I resti più antichi sono del XII secolo, ma buona parte di ciò che si vede oggi fu costruita dai re Stuart, quando era palazzo reale quanto fortezza: la grande sala, con il suo intonaco giallo pallido, e il palazzo rinascimentale di Giacomo V. Maria Stuarda vi trascorse l'infanzia. Sulla spianata esterna ci sono le statue di Bruce e di Wallace.</p><p>Subito sotto il castello c'è la chiesa di Holy Rude, un edificio gotico del Quattrocento dove nel 1567 fu incoronato Giacomo VI, ancora in fasce, con John Knox a tenere il sermone. Dall'altra parte del fiume, sulla sua collina, si alza il Monumento a Wallace, una torre vittoriana di 70 m, terminata nel 1869 e pagata con una sottoscrizione pubblica. Si può salire per i suoi 246 gradini per vedere il campo di battaglia.</p><p>Castello e monumento si vedono bene dall'autostrada, ed è così che li incontra per la prima volta la maggior parte di chi va verso le Highlands.</p>",
    "directions": "Accanto alla M9, circa 60 km a nord-ovest di Edimburgo. Il castello è in cima alla città vecchia; il suo parcheggio è chiuso a quasi tutte le auto, quindi usa il parcheggio scambiatore di Castleview.",
@@ -1060,6 +1084,7 @@
   },
   "callander": {
    "title": "Callander",
+   "url_slug": "callander",
    "summary": "Una cittadina al margine delle Highlands, sulla strada che sale da Stirling, e porta del Parco nazionale di Loch Lomond e dei Trossachs.",
    "content": "<p>Callander si trova dove finisce la pianura e cominciano le montagne. La sua lunga via principale ha caffè, panetterie e negozi, e questo ne fa la prima sosta comoda sulla strada verso nord da Edimburgo o da Glasgow.</p><p>È uno dei centri principali del Parco nazionale di Loch Lomond e dei Trossachs, istituito nel 2002, che copre 1.865 km² di montagne, foreste e più di venti grandi laghi. I Trossachs, la parte del parco intorno a Callander, sono la terra di Rob Roy MacGregor, il fuorilegge che il romanzo di Walter Scott trasformò in un Robin Hood scozzese.</p><p>Per molti visitatori Callander è anche la prima occasione per vedere le mucche delle Highlands, la razza dal pelo lungo e dalle grandi corna, che si trovano spesso nei prati all'uscita del paese.</p>",
    "directions": "Sulla A84, circa 25 km a nord-ovest di Stirling. Parcheggi a pagamento accanto alla via principale.",
@@ -1099,6 +1124,7 @@
   },
   "loch-lubnaig": {
    "title": "Loch Lubnaig",
+   "url_slug": "loch-lubnaig",
    "summary": "Un lago stretto tra ripidi pendii boscosi, proprio accanto alla strada a nord di Callander: il primo vero paesaggio delle Highlands del viaggio.",
    "content": "<p>La strada segue la riva est di Loch Lubnaig per diversi chilometri, con il Ben Ledi che si alza sull'altra sponda. I parcheggi in riva al lago permettono di passare qualche minuto vicino all'acqua.</p>",
    "directions": "Accanto alla A84, pochi chilometri a nord di Callander. Parcheggi segnalati sulla riva.",
@@ -1119,6 +1145,7 @@
   },
   "uig": {
    "title": "Uig",
+   "url_slug": "uig",
    "summary": "Un paese intorno a un'ampia baia a ovest di Trotternish: porto del traghetto per le Ebridi Esterne e i servizi più vicini al Fairy Glen.",
    "content": "<p>Uig è una manciata di case sparse intorno a una baia profonda e riparata, con un lungo molo da cui parte il traghetto per Tarbert, su Harris, e Lochmaddy, su North Uist. Per la maggior parte dei visitatori è un luogo di passaggio sul giro di Trotternish, ma è anche l'ultimo paese con negozio, distributore e un posto dove mangiare prima dell'estremo nord della penisola.</p><p>La vista è dall'alto. La strada da Portree scende alla baia con un'ampia curva, e quella che prosegue verso nord risale con un tornante, con una piazzola da cui si vedono il molo e le case.</p><p>Da qui partono due brevi uscite: il Fairy Glen, a un paio di chilometri nell'interno, e le cascate del fiume Rha, un doppio salto nel bosco a pochi minuti a piedi dalla strada, all'estremità nord del paese.</p>",
    "directions": "Sulla A87, 25 km a nord-ovest di Portree, dove la strada finisce al molo del traghetto.",
@@ -1150,6 +1177,7 @@
   },
   "an-corran-beach": {
    "title": "Spiaggia di An Corran",
+   "url_slug": "spiaggia-di-an-corran",
    "summary": "Una spiaggia di sabbia scura sotto le scogliere di Staffin, dove con la bassa marea si vedono nella roccia impronte di dinosauro di circa 170 milioni di anni.",
    "content": "<p>An Corran è la spiaggia di Staffin: un arco di sabbia scura e massi sotto scogliere di basalto, in fondo a una strada stretta che scende dal paese alla riva e a un vecchio scivolo per le barche.</p><p>A portare qui la gente sono le impronte. Su una lastra piatta di roccia ai piedi della spiaggia ci sono orme lasciate dai dinosauri circa 170 milioni di anni fa, quando questa era una laguna calda. Furono scoperte nel 2002. Ogni impronta ha tre dita ed è grande più o meno come un piatto piano.</p><p>Sono difficili da trovare. La roccia è coperta dall'alta marea, e spesso da sabbia e alghe dopo una mareggiata, e niente segnala il punto esatto. Vieni con la bassa marea, cerca sulle lastre a destra dello scivolo guardando il mare, e metti in conto di non trovarle: la spiaggia merita comunque la sosta.</p>",
    "directions": "A Staffin prendi la strada secondaria indicata per lo scivolo e An Corran; piccolo parcheggio in riva al mare, a circa 2 km dalla strada principale.",
@@ -1186,6 +1214,7 @@
   },
   "skye-museum-of-island-life": {
    "title": "Museo della Vita Isolana di Skye",
+   "url_slug": "museo-della-vita-isolana-di-skye",
    "summary": "Un gruppo di case dal tetto di paglia a Kilmuir che mostra come vivevano gli isolani un secolo fa, a due passi dalla tomba di Flora MacDonald.",
    "content": "<p>Su un pendio vicino all'estremità nord di Trotternish c'è un piccolo villaggio di case dal tetto di paglia, conservate com'erano alla fine dell'Ottocento. Il museo aprì nel 1965, opera di un contadino del posto, Jonathan MacDonald, che volle salvare un modo di vivere che stava scomparendo sotto i suoi occhi.</p><p>Ogni edificio mostra un aspetto di quella vita: la casa con il fuoco di torba al centro del pavimento, la fucina, la casa del tessitore, il fienile con i suoi attrezzi. È un posto piccolo e onesto, e spiega meglio di qualsiasi testo perché tanta gente lasciò l'isola.</p><p>A pochi minuti lungo la strada c'è il cimitero di Kilmuir, dove riposa Flora MacDonald sotto un'alta croce celtica. Fu la giovane che, nel 1746, aiutò Carlo Edoardo Stuart a fuggire a Skye travestito da sua cameriera.</p>",
    "directions": "Sulla A855, a Kilmuir, circa 11 km a nord di Uig. Parcheggio al museo.",
@@ -1226,6 +1255,7 @@
   },
   "duntulm-castle": {
    "title": "Castello di Duntulm",
+   "url_slug": "castello-di-duntulm",
    "summary": "Le rovine dell'antica roccaforte dei MacDonald su un promontorio all'estremo nord di Skye, con la vista sulle Ebridi Esterne oltre il Minch.",
    "content": "<p>Duntulm sorge su un promontorio roccioso con il mare su tre lati, quasi all'estremità nord di Trotternish. Fu la sede dei MacDonald di Sleat nel Seicento, quando dominavano questa parte dell'isola, e la lasciarono intorno al 1730 per una nuova casa più a sud.</p><p>Resta in piedi molto poco: parti delle mura e una cantina a volta, sul bordo di scogliere che si sono portate via il castello pezzo dopo pezzo. La rovina è instabile ed è recintata, quindi si guarda da fuori. La gente viene più per la posizione che per le pietre, e per il tramonto sulle isole di Harris e Uist.</p><p>Un sentiero erboso porta dalla strada al promontorio in una decina di minuti.</p>",
    "directions": "Accanto alla A855, a Duntulm, circa 14 km a nord di Uig. Parcheggia nella piazzola e segui il sentiero attraverso il prato.",
@@ -1257,6 +1287,7 @@
   },
   "brothers-point": {
    "title": "Brother's Point",
+   "url_slug": "brother-s-point",
    "summary": "Un promontorio erboso che si allunga in mare dalla costa est di Trotternish, con vista su Kilt Rock e molta meno gente delle soste famose.",
    "content": "<p>Rubha nam Brathairean, Brother's Point, è una lingua stretta di erba e roccia che sporge in mare sotto il villaggio di Culnacnoc, tra le cascate di Lealt e Kilt Rock. Si pensa che il nome ricordi dei monaci che vissero qui nei primi tempi del cristianesimo.</p><p>Il sentiero scende dalla strada, passa accanto a un edificio in rovina, arriva a una spiaggia di ciottoli e prosegue lungo il promontorio. Sono 3,2 km tra andata e ritorno, con circa 130 m di salita al rientro, e richiede un'ora. Lungo il percorso si passa accanto a Dun Hasan, un poggio roccioso un tempo fortificato.</p><p>La ricompensa è la vista all'indietro lungo la costa, con le scogliere di Kilt Rock a nord. Anche qui sono state trovate impronte di dinosauro sulla riva, ma sono più difficili da individuare di quelle di Staffin.</p>",
    "directions": "Sulla A855, a Culnacnoc, circa 6 km a sud di Staffin. Piccola area di sosta accanto alla strada; il sentiero è segnalato dall'altra parte.",
@@ -1289,6 +1320,7 @@
   },
   "coral-beach": {
    "title": "Coral Beach",
+   "url_slug": "coral-beach",
    "summary": "Una spiaggia bianca dall'acqua turchese a nord di Dunvegan, fatta di alghe sbiancate e non di corallo. Passeggiata facile di 25 minuti a tratta.",
    "content": "<p>A Claigan, dove finisce la strada che passa per il castello di Dunvegan verso nord, una pista attraversa i prati fino a una spiaggia che sembra appartenere a latitudini ben più meridionali: bianca, con un'acqua bassa che diventa turchese quando c'è il sole.</p><p>Non è corallo, e non è nemmeno sabbia. La spiaggia è fatta di maerl, un'alga che cresce sul fondo del mare in pezzi duri e ramificati, come minuscole corna. Quando muore, il mare la spezza e la getta a riva, e il sole la sbianca.</p><p>La passeggiata è di 3,6 km tra andata e ritorno lungo una pista agricola e attraverso i pascoli, circa 25 minuti a tratta. Una collinetta in fondo alla spiaggia, a cinque minuti di salita, offre la vista migliore, con l'isola di Isay e la penisola di Waternish dall'altra parte del lago.</p>",
    "directions": "Da Dunvegan supera l'ingresso del castello e segui la strada a una corsia fino alla fine, a Claigan, circa 6 km. Parcheggio dove finisce la strada.",
@@ -1325,6 +1357,7 @@
   },
   "stein": {
    "title": "Stein",
+   "url_slug": "stein",
    "summary": "Un'unica fila di case bianche sulla riva di Loch Bay, nella penisola di Waternish: un villaggio di pescatori pianificato negli anni 1790, con un'antica locanda.",
    "content": "<p>Stein è una via di case imbiancate che guardano a ovest, verso Loch Bay, nella penisola di Waternish. Fu tracciato negli anni Novanta del Settecento come stazione di pesca, parte di un piano per dare alle Highlands un'industria propria; la pesca non durò, e il villaggio rimase piccolo com'era stato disegnato.</p><p>Quello che ha oggi è la posizione. Le case guardano dritto verso il tramonto, con le isole del lago davanti e, nelle sere limpide, i monti delle Ebridi Esterne dietro. La locanda in fondo alla fila è tra le più antiche di Skye, e la gente arriva fin qui per mangiare in riva all'acqua.</p><p>La strada prosegue lungo la penisola fino a Trumpan, con ampie viste a ovest per tutto il percorso.</p>",
    "directions": "Dalla A850, al Fairy Bridge, 5 km a nord-est di Dunvegan, prendi la B886 per circa 7 km; Stein è indicato scendendo a sinistra.",
@@ -1356,6 +1389,7 @@
   },
   "trumpan-church": {
    "title": "Chiesa di Trumpan",
+   "url_slug": "chiesa-di-trumpan",
    "summary": "Una chiesa medievale senza tetto quasi in fondo a Waternish, teatro di un massacro tra clan nel 1578, con un'ampia vista sul Minch.",
    "content": "<p>Le rovine della chiesa di Trumpan stanno dentro il loro cimitero, su un'altura sopra il mare, quasi in fondo alla strada di Waternish. Restano solo i muri, senza tetto.</p><p>La si ricorda per una domenica del 1578. Un gruppo di MacDonald di Uist sbarcò lì sotto, sbarrò la porta mentre i MacLeod della zona erano in chiesa e diede fuoco al tetto di paglia. La tradizione dice che morirono tutti quelli che erano dentro tranne una ragazza, che uscì da una finestra e diede l'allarme. I MacLeod di Dunvegan raggiunsero gli assalitori prima che arrivassero alle barche e li uccisero a loro volta; i corpi furono deposti ai piedi di un muro di zolle che venne rovesciato su di loro, e lo scontro è ancora noto come la battaglia del Muro Abbattuto (Spoiling of the Dyke).</p><p>Nel cimitero c'è un'antica pietra eretta con un foro, la Pietra del Giudizio: l'accusato che riusciva a infilare un dito nel foro al primo tentativo, con gli occhi bendati, era ritenuto sincero.</p>",
    "directions": "In fondo alla B886 e al suo proseguimento lungo la penisola di Waternish, circa 6 km oltre Stein. Piccolo parcheggio accanto al cimitero.",
@@ -1387,6 +1421,7 @@
   },
   "talisker-bay": {
    "title": "Baia di Talisker",
+   "url_slug": "baia-di-talisker",
    "summary": "Una spiaggia di sabbia scura e chiara tra alte scogliere sulla costa ovest, con un faraglione e una cascata. Passeggiata facile di 20 minuti a tratta.",
    "content": "<p>La baia di Talisker è un grande morso nella costa ovest, chiuso dalle scogliere. Sul lato nord una cascata cade dall'alto direttamente sulla riva; sul lato sud un faraglione si alza davanti alla punta. Tra i due, la spiaggia è un misto di sabbia vulcanica nera e sabbia più chiara, che la marea dispone in disegni, sopra un cordone di massi grigi.</p><p>Ci si arriva con una pista che parte dalla fine della strada, passa accanto a Talisker House e attraversa i campi: circa 3,5 km tra andata e ritorno, un'ora di cammino facile. Nel 1773 nella casa soggiornarono Samuel Johnson e James Boswell, durante il loro viaggio nelle Ebridi.</p><p>La baia guarda esattamente a ovest, e il tramonto qui è tra i più belli dell'isola. La sabbia resta scoperta solo con la bassa marea; con l'alta, il mare arriva fino ai sassi.</p>",
    "directions": "Da Carbost prendi la strada secondaria indicata per Talisker, a una corsia, fino alla fine, dopo circa 7 km. Pochi posti per parcheggiare vicino alla fine della strada; la pista per la spiaggia è segnalata.",
@@ -1423,6 +1458,7 @@
   },
   "glenbrittle-beach": {
    "title": "Spiaggia di Glenbrittle",
+   "url_slug": "spiaggia-di-glenbrittle",
    "summary": "Un'ampia spiaggia di sabbia scura in testa a Loch Brittle, proprio sotto i Black Cuillin, dove finisce la strada delle Fairy Pools.",
    "content": "<p>La strada che passa per le Fairy Pools prosegue lungo la valle per qualche altro chilometro e finisce al mare, su un'ampia spiaggia di sabbia grigio-nera in testa a Loch Brittle. Alle sue spalle, più vicina che da qualsiasi altro punto raggiungibile in auto, si alza la cresta principale dei Black Cuillin.</p><p>Glenbrittle è la base degli alpinisti da più di un secolo, e da qui partono i sentieri per i circhi d'alta quota. Per tutti gli altri è un posto tranquillo dove finire la giornata dopo le pozze: una passeggiata sulla sabbia, o lungo il sentiero sulla riva est del lago.</p><p>Accanto alla spiaggia c'è un campeggio con una piccola caffetteria e un negozio, aperto in stagione.</p>",
    "directions": "Segui la strada di Glenbrittle oltre il parcheggio delle Fairy Pools fino alla fine, circa 5 km più avanti. Parcheggia dove finisce la strada, prima del campeggio.",
@@ -1455,6 +1491,7 @@
   },
   "broadford": {
    "title": "Broadford",
+   "url_slug": "broadford",
    "summary": "Il secondo paese di Skye, disteso lungo un'ampia baia a 13 km dal ponte: supermercato, carburante e il bivio per Elgol e il sud.",
    "content": "<p>Broadford è il primo centro di una certa dimensione dopo il ponte di Skye e il paese principale del sud dell'isola. Si allunga per un bel tratto accanto alla sua baia, con le colline rosse di Beinn na Caillich alle spalle e la vista sulle isolette dell'Inner Sound.</p><p>È pratico più che grazioso: il supermercato più grande da questa parte di Portree, carburante, un ospedale, caffè, negozi di artigianato e una buona scelta di posti dove dormire. Per questo è l'alternativa abituale a Portree come base, soprattutto per il sud e per chi arriva tardi dal ponte.</p><p>Da qui partono due delle più belle strade secondarie di Skye: quella per Elgol, lungo Loch Slapin e sotto il Blà Bheinn, e, poco più a est, la strada alta che scavalca i monti fino a Kylerhea.</p>",
    "directions": "Sulla A87, 13 km a ovest del ponte di Skye e 42 km a sud di Portree. Parcheggi in centro, accanto alla baia.",
@@ -1486,6 +1523,7 @@
   },
   "elgol": {
    "title": "Elgol",
+   "url_slug": "elgol",
    "summary": "Un borgo in fondo a 23 km di strada a una corsia, con la più bella vista dei Cuillin, al di là del mare, e le barche per Loch Coruisk.",
    "content": "<p>Elgol è il punto in cui la strada da Broadford si arrende: poche case su un pendio ripido sopra un molo, di fronte all'intera catena dei Black Cuillin al di là di Loch Scavaig. Molti di quelli che conoscono bene l'isola pensano che questa sia la sua vista più bella, ed è lì, sulla riva, senza dover camminare.</p><p>Il viaggio fa parte dell'esperienza. La strada è a una corsia per quasi tutti i suoi 23 km: passa accanto alla chiesa in rovina di Cill Chriosd, gira intorno alla testa di Loch Slapin sotto il Blà Bheinn e attraversa la brughiera, e richiede tre quarti d'ora a tratta.</p><p>Dal molo piccole barche attraversano fino a Loch Coruisk, nel cuore delle montagne, passando accanto a una colonia di foche. Le gite si fanno dalla primavera all'autunno e vanno da un'ora e mezza senza sbarco a una giornata intera a terra.</p>",
    "directions": "Da Broadford prendi la B8083, indicata per Elgol, fino alla fine: 23 km, quasi tutti a una corsia. Parcheggio sopra il molo; l'ultima discesa fino alla riva è molto ripida.",
@@ -1522,6 +1560,7 @@
   },
   "torrin-loch-slapin": {
    "title": "Torrin e Loch Slapin",
+   "url_slug": "torrin-e-loch-slapin",
    "summary": "Un villaggio di piccoli poderi sulla strada per Elgol, con la vista classica del Blà Bheinn, la grande montagna scura che si alza da Loch Slapin.",
    "content": "<p>A metà della strada per Elgol il paesaggio si apre e compare Loch Slapin, un braccio di mare con una sola montagna a riempire l'altra sponda: il Blà Bheinn, o Blaven, 928 m di roccia scura che si alzano dalla riva. Sta in disparte rispetto alla cresta principale dei Cuillin, e spesso viene detto la montagna più bella di Skye.</p><p>Torrin è il villaggio sulla sponda vicina, una fila di piccoli poderi con prati verdi che devono il loro colore al calcare che c'è sotto. La stessa roccia dà il marmo chiaro che si estrae ancora appena fuori dal villaggio.</p><p>Ci si ferma per la vista. I punti migliori sono la riva a Torrin e la testa del lago poco più avanti, dove la strada gira sotto la montagna.</p>",
    "directions": "Sulla B8083 da Broadford a Elgol, a circa 10 km da Broadford. Parcheggia nelle piazzole di sosta accanto al lago, lasciando libere le piazzole di scambio.",
@@ -1553,6 +1592,7 @@
   },
   "loch-coruisk": {
    "title": "Loch Coruisk",
+   "url_slug": "loch-coruisk",
    "summary": "Un lago d'acqua dolce chiuso tra i Black Cuillin, senza strada: si arriva in barca da Elgol e si sbarca in mezzo alle montagne.",
    "content": "<p>Loch Coruisk giace in una conca di roccia nuda al centro dei Black Cuillin, chiuso su tre lati dalle cime più alte dell'isola. Nessuna strada ci si avvicina. Un breve fiume, uno dei più corti della Gran Bretagna, porta la sua acqua al mare, in Loch Scavaig.</p><p>Quasi tutti arrivano in barca da Elgol. La traversata dura circa tre quarti d'ora e si ferma a guardare le foche distese sugli scogli; dalla scaletta d'approdo bastano pochi minuti a piedi sulle lastre di roccia per arrivare alla riva del lago. La gita abituale lascia un'ora e mezza a terra, quanto basta per camminare un po' lungo la sponda e sedersi davanti al panorama.</p><p>Il luogo attira viaggiatori da due secoli. Walter Scott lo descrisse in versi e Turner lo dipinse, ed entrambi contribuirono a fissare l'immagine di Skye come terra selvaggia e remota.</p>",
    "directions": "In barca dal molo di Elgol, in fondo alla B8083 da Broadford. La gita si prenota con le compagnie delle barche.",
@@ -1593,6 +1633,7 @@
   },
   "kylerhea-otter-hide": {
    "title": "Osservatorio delle lontre di Kylerhea",
+   "url_slug": "osservatorio-delle-lontre-di-kylerhea",
    "summary": "Un capanno di osservazione sopra lo stretto tra Skye e la terraferma: lontre con un po' di fortuna, foche e uccelli marini quasi sempre.",
    "content": "<p>A Kylerhea l'isola arriva a poche centinaia di metri dalla terraferma, e la marea corre nel varco come un fiume. L'acqua in movimento porta i pesci, e i pesci portano tutto il resto: lontre lungo la riva, foche, focene, e aquile di mare in cielo.</p><p>Forestry and Land Scotland vi tiene un capanno di osservazione, una costruzione di legno con una parete di finestre sullo stretto. Ci si arriva dal parcheggio, a circa un chilometro, con un'ampia pista di ghiaia nel bosco, con i bagni a metà strada; l'intero anello è di 2,25 km e richiede un'ora, senza contare l'attesa.</p><p>L'attesa è la visita. Le lontre sono schive ed escono soprattutto intorno al cambio di marea, la mattina presto e la sera; c'è chi ne vede una in dieci minuti e chi non ne vede affatto. Le foche sono quasi una certezza.</p>",
    "directions": "Dalla A87, 5 km a ovest del ponte di Skye, prendi la strada secondaria indicata per Kylerhea: 11 km a una corsia, ripida e tortuosa. Il parcheggio è segnalato sulla sinistra poco prima del villaggio.",
@@ -1629,6 +1670,7 @@
   },
   "cill-chriosd": {
    "title": "Cill Chriosd",
+   "url_slug": "cill-chriosd",
    "summary": "Le rovine coperte d'edera di un'antica chiesa parrocchiale e il suo cimitero, accanto alla strada da Broadford a Elgol, sotto i Red Cuillin.",
    "content": "<p>A pochi chilometri da Broadford, sulla strada per Elgol, una chiesa senza tetto sta dentro un cimitero cintato da un muro, accanto a un laghetto di canne, con le cime tondeggianti dei Red Cuillin alle spalle. È Cill Chriosd, la chiesa di Cristo, per secoli la parrocchiale del distretto di Strath.</p><p>I muri rimasti sono del Cinquecento circa, su un sito usato per il culto da molto prima, e la chiesa restò in uso fino agli anni Quaranta dell'Ottocento, quando ne fu costruita una nuova a Broadford. Il cimitero è più antico dell'edificio e conserva alcune lastre medievali scolpite.</p><p>È una sosta di un quarto d'ora, e una buona prima pausa sulla via per Elgol.</p>",
    "directions": "Accanto alla B8083, circa 4 km a sud-ovest di Broadford. Piazzola davanti al cancello del cimitero.",
@@ -1656,6 +1698,7 @@
   },
   "armadale-castle": {
    "title": "Castello di Armadale, giardini e Museo delle Isole",
+   "url_slug": "castello-di-armadale-giardini-e-museo-delle-isole",
    "summary": "La sede in rovina del clan Donald tra 16 ettari di giardini e bosco nel sud di Skye, con un museo sulla storia delle Highlands e delle isole.",
    "content": "<p>Armadale fu la casa dei MacDonald di Sleat, capi del clan Donald, un tempo il più potente della Scozia. Il castello è un guscio senza tetto, una residenza dell'inizio dell'Ottocento lasciata andare in rovina nel Novecento, e sorge tra sedici ettari di giardini e bosco sopra il Sound of Sleat, di fronte alle montagne di Knoydart.</p><p>La sorpresa sono i giardini. Questo è l'angolo più mite dell'isola, riparato e scaldato dal mare, e qui crescono alberi che al nord non sopravviverebbero: grandi conifere monumentali, laghetti, prati e sentieri nel bosco.</p><p>Il Museo delle Isole, in un edificio moderno dentro la tenuta, racconta la storia delle Highlands e delle isole attraverso quella del clan, dai Signori delle Isole, che governarono la costa ovest quasi da re, fino alle emigrazioni. Ci sono anche una caffetteria, un negozio e un parco giochi avventura.</p>",
    "directions": "Sulla A851, 25 km a sud di Broadford e a 1 km dal terminal dei traghetti di Armadale. Parcheggio all'ingresso.",
@@ -1700,6 +1743,7 @@
   },
   "isleornsay": {
    "title": "Isleornsay",
+   "url_slug": "isleornsay",
    "summary": "Un minuscolo villaggio portuale sulla costa est di Sleat, con un'antica locanda sul molo e un faro bianco sull'isolotto di fronte.",
    "content": "<p>Isleornsay, Eilean Iarmain in gaelico, è una manciata di edifici bianchi intorno a un molo di pietra sul Sound of Sleat. Nell'Ottocento fu un vivace porto delle aringhe e uno scalo regolare dei piroscafi da Glasgow; ne restano la locanda, un negozio, una galleria e una delle vedute più fotografate del sud di Skye.</p><p>La veduta è quella del faro sull'isolotto di marea di Ornsay, con dietro, sulla terraferma, le montagne di Knoydart e Loch Hourn. Il faro fu costruito negli anni Cinquanta dell'Ottocento dagli Stevenson, la famiglia di ingegneri.</p><p>Il villaggio è anche una roccaforte del gaelico: qui la lingua si usa ogni giorno, e sui cartelli viene per prima.</p>",
    "directions": "Indicato dalla A851, 13 km a sud dell'incrocio con la A87 vicino a Broadford. Parcheggia accanto al molo.",
@@ -1731,6 +1775,7 @@
   },
   "point-of-sleat": {
    "title": "Point of Sleat",
+   "url_slug": "point-of-sleat",
    "summary": "La punta sud di Skye: tre ore di cammino su una pista sconnessa fino a un piccolo faro, con una caletta di sabbia bianca e la vista su Rum ed Eigg.",
    "content": "<p>Dopo Armadale la strada si restringe e finisce alle ultime case di Aird of Sleat. Da lì una pista prosegue sulla brughiera fino al punto più meridionale dell'isola, a circa quattro chilometri, dove un piccolo faro automatico guarda verso le isole di Eigg e Rum.</p><p>Sono otto chilometri tra andata e ritorno, e ci vogliono circa tre ore. La pista è sassosa e sale e scende più di quanto la carta lasci pensare; l'ultimo tratto, in discesa verso il faro, è un sentiero su roccia e terreno bagnato.</p><p>I più ricordano la spiaggia più della punta. Poco fuori dalla pista, verso la fine, c'è Camas Daraich, una caletta di sabbia bianca e acqua limpida tra due bracci di roccia: un posto riparato per fare il bagno come pochi altri a Skye.</p>",
    "directions": "Segui la A851 oltre Armadale e continua sulla strada a una corsia fino alla fine, ad Aird of Sleat, 7 km più avanti. Piccola area di sosta dove finisce la strada.",
@@ -1763,6 +1808,7 @@
   },
   "raasay": {
    "title": "Isola di Raasay",
+   "url_slug": "isola-di-raasay",
    "summary": "L'isola lunga e tranquilla di fronte a Portree, a 25 minuti di traghetto da Sconser: una distilleria con una vista famosa, sentieri nel bosco e il Dùn Caan.",
    "content": "<p>Raasay si trova tra Skye e la terraferma: è lunga ventitré chilometri e mai più larga di cinque, e ci vivono circa 160 persone. Il traghetto da Sconser impiega 25 minuti e attracca vicino all'unico villaggio, Inverarish, e a Raasay House, la grande casa degli antichi signori dell'isola.</p><p>La distilleria dell'isola, aperta nel 2017, è a pochi minuti a piedi dal molo e guarda dritto verso i Cuillin, al di là dello stretto; fa visite guidate tutti i giorni, in orari pensati per il traghetto. Con un paio d'ore puoi aggiungere una passeggiata nel bosco e lungo la riva vicino al molo.</p><p>Con una giornata intera si va più lontano: su al Dùn Caan, la collina dalla cima piatta che è il punto più alto dell'isola, a 443 m, oppure a nord lungo l'unica strada fino al castello di Brochel e a Calum's Road, tre chilometri di pista costruiti da un uomo solo, Calum MacLeod, con piccone, pala e carriola nel corso di dieci anni, perché il comune non voleva farla.</p>",
    "directions": "In traghetto da Sconser, sulla A87 tra Broadford e Sligachan. Parcheggio al terminal; a Raasay il villaggio e la distilleria si raggiungono a piedi dal molo.",

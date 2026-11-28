@@ -3,6 +3,7 @@
  "routes": {
   "trotternish-loop": {
    "title": "Il giro di Trotternish",
+   "url_slug": "il-giro-di-trotternish",
    "summary": "Il classico percorso di un giorno a nord di Portree: lo Storr, Kilt Rock, il Quiraing e il Fairy Glen su un'unica strada ad anello.",
    "content": "<p>Un percorso ad anello in auto intorno alla penisola di Trotternish, con partenza e arrivo a Portree. Fallo in senso antiorario (verso nord sulla A855), così il parcheggio dello Storr è il primo, prima che si riempia. Buona parte del tratto nord è a una corsia con piazzole di scambio.</p>",
    "days": [
@@ -30,6 +31,7 @@
   },
   "skye-in-one-day": {
    "title": "Skye in un giorno",
+   "url_slug": "skye-in-un-giorno",
    "summary": "Se hai solo un giorno: Sligachan e i Cuillin, Portree e il lato est di Trotternish con lo Storr, Kilt Rock e il Quiraing.",
    "content": "<p>Una giornata piena che comincia a Sligachan, sulla strada che arriva dal ponte di Skye, e finisce a Portree. Resta nel nord-est dell'isola, dove i luoghi più noti sono vicini tra loro, e lascia l'ovest per un altro giorno.</p><p>L'unica camminata lunga è quella dell'Old Man of Storr. Se il tempo si guasta, accorciala e dedica quel tempo al Quiraing, dove la vista comincia già dal parcheggio.</p>",
    "days": [
@@ -57,6 +59,7 @@
   },
   "west-skye": {
    "title": "L'ovest di Skye: castello, faro e whisky",
+   "url_slug": "l-ovest-di-skye-castello-faro-e-whisky",
    "summary": "Una lunga giornata nell'ovest, più tranquillo: il castello di Dunvegan, le scogliere di Neist Point, la visita a Talisker e le Fairy Pools.",
    "content": "<p>È il giorno con più chilometri al volante, molti su strade a una corsia con piazzole di scambio, quindi parti presto. In inverno le ore di luce non bastano per tutte e quattro le tappe: togli le Fairy Pools o il faro.</p><p>Due tappe richiedono organizzazione. Il castello di Dunvegan è chiuso in inverno, e le visite a Talisker in estate vanno esaurite: prenota la distilleria prima di fissare il resto della giornata.</p>",
    "days": [
@@ -84,6 +87,7 @@
   },
   "skye-in-three-days": {
    "title": "Skye in tre giorni",
+   "url_slug": "skye-in-tre-giorni",
    "summary": "Tutta l'isola senza fretta, con base a Portree: i Cuillin e Talisker, il giro di Trotternish, e l'ovest con Dunvegan e Neist Point.",
    "content": "<p>Tre giorni sono quello che serve per quasi tutta l'isola. Ogni giorno è un anello da Portree, così disfi la valigia una volta sola e puoi scambiare le giornate in base al meteo: tieni il giorno di Trotternish per la previsione più serena.</p><p>Il primo giorno comincia a Sligachan, da cui passi arrivando dal ponte di Skye, quindi funziona come giorno di arrivo.</p>",
    "days": [
