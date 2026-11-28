@@ -7,7 +7,7 @@
 	}
 	var cfg = JSON.parse( root.getAttribute( 'data-skye-checkout' ) );
 	var T = cfg.strings;
-	var state = { cal: null, date: null, people: {}, contact: {}, answers: {}, agree: false, hold: null, busy: false, error: '', fieldError: {}, shown: 8, done: null };
+	var state = { cal: null, date: null, people: {}, contact: {}, answers: {}, agree: false, hold: null, busy: false, error: '', fieldError: {}, shown: 8, done: null, quote: null, quoting: 0 };
 
 	function t( key, a ) {
 		var s = T[ key ] || key;
@@ -80,6 +80,31 @@
 		render();
 	}
 
+	// The questions depend on who travels (the bed for a double, a warning for tour only), so they are asked for each choice.
+	function requote() {
+		var ticket = ++state.quoting;
+		state.quote = null;
+		if ( ! state.date || ! count() ) {
+			return;
+		}
+		setTimeout( function () {
+			if ( ticket !== state.quoting ) {
+				return;
+			}
+			api( '/quote', { date: state.date.date, start_time_id: state.date.start_time_id, rate_id: state.cal.rate_id, passengers: state.people } ).then( function ( q ) {
+				if ( ticket === state.quoting ) {
+					state.quote = q;
+					state.error = '';
+					render();
+				}
+			} ).catch( function ( e ) {
+				if ( ticket === state.quoting ) {
+					fail( e );
+				}
+			} );
+		}, 350 );
+	}
+
 	function step( n, title, body ) {
 		return el( 'section', { class: 'skye-co__step' }, [ el( 'h3', { class: 'skye-co__title' }, [ el( 'span', { class: 'skye-co__n', text: String( n ) } ), title ] ) ].concat( body ) );
 	}
@@ -91,6 +116,7 @@
 			return el( 'button', { type: 'button', class: 'skye-co__date' + ( on ? ' is-on' : '' ), 'aria-pressed': on ? 'true' : 'false', onclick: function () {
 				state.date = d;
 				Object.keys( state.people ).forEach( function ( k ) { if ( ! ( k in d.prices ) ) { delete state.people[ k ]; } } );
+				requote();
 				render();
 			} }, [ el( 'strong', { text: day( d.date ) } ), el( 'span', { text: t( 'from', money( from ) ) } ), d.seats <= 6 ? el( 'em', { text: t( 'few', d.seats ) } ) : null ] );
 		} );
@@ -108,6 +134,8 @@
 						return;
 					}
 					if ( next ) { state.people[ c.id ] = next; } else { delete state.people[ c.id ]; }
+					state.error = '';
+					requote();
 					render();
 				};
 			}
@@ -142,7 +170,7 @@
 
 	function details() {
 		var c = state.contact;
-		var qs = state.cal.questions.map( function ( q ) {
+		var qs = state.quote.questions.map( function ( q ) {
 			return field( q.id, q.label, q.type === 'SHORT_TEXT' ? 'text' : q.type, state.answers, q.required, q.help );
 		} );
 		return step( 3, t( 'details' ), [
@@ -154,12 +182,12 @@
 		var lines = state.cal.categories.filter( function ( c ) { return state.people[ c.id ]; } ).map( function ( c ) {
 			return el( 'div', { class: 'skye-co__line' }, [ el( 'span', { text: state.people[ c.id ] + ' × ' + catTitle( c ) } ), el( 'span', { text: money( state.people[ c.id ] * state.date.prices[ c.id ] ) } ) ] );
 		} );
-		return el( 'div', { class: 'skye-co__summary' }, [ el( 'strong', { text: cfg.title } ), el( 'span', { text: day( state.date.date, true ) + ' · ' + state.date.time } ) ].concat( lines, [ el( 'div', { class: 'skye-co__line skye-co__total' }, [ el( 'span', { text: t( 'total' ) } ), el( 'span', { text: money( state.hold ? state.hold.amount : total() ) } ) ] ) ] ) );
+		return el( 'div', { class: 'skye-co__summary' }, [ el( 'strong', { text: cfg.title } ), el( 'span', { text: day( state.date.date, true ) + ' · ' + state.date.time } ) ].concat( lines, [ el( 'div', { class: 'skye-co__line skye-co__total' }, [ el( 'span', { text: t( 'total' ) } ), el( 'span', { text: money( state.hold ? state.hold.amount : ( state.quote ? state.quote.amount : total() ) ) } ) ] ) ] ) );
 	}
 
 	function missing() {
 		var need = [ 'firstName', 'lastName', 'email', 'phoneNumber' ].filter( function ( k ) { return ! ( state.contact[ k ] || '' ).trim(); } );
-		state.cal.questions.forEach( function ( q ) { if ( q.required && ! state.answers[ q.id ] ) { need.push( q.id ); } } );
+		state.quote.questions.forEach( function ( q ) { if ( q.required && ! state.answers[ q.id ] ) { need.push( q.id ); } } );
 		return need;
 	}
 
@@ -174,7 +202,9 @@
 		state.busy = true;
 		state.error = '';
 		render();
-		api( '/reserve', { date: state.date.date, start_time_id: state.date.start_time_id, rate_id: state.cal.rate_id, passengers: state.people, contact: state.contact, answers: state.answers } ).then( function ( hold ) {
+		var answers = {};
+		state.quote.questions.forEach( function ( q ) { if ( state.answers[ q.id ] ) { answers[ q.id ] = state.answers[ q.id ]; } } );
+		api( '/reserve', { date: state.date.date, start_time_id: state.date.start_time_id, rate_id: state.cal.rate_id, passengers: state.people, contact: state.contact, answers: answers } ).then( function ( hold ) {
 			state.hold = hold;
 			state.busy = false;
 			render();
@@ -285,11 +315,14 @@
 			if ( state.date ) {
 				kids.push( people() );
 			}
-			if ( state.date && count() ) {
+			if ( state.date && count() && ! state.quote ) {
+				kids.push( state.error ? el( 'p', { class: 'skye-co__err', role: 'alert', text: state.error } ) : el( 'p', { class: 'skye-co__loading', text: t( 'pricing' ) } ) );
+			}
+			if ( state.date && count() && state.quote ) {
 				kids.push( details(), summary(),
 					el( 'label', { class: 'skye-co__check' }, [ el( 'input', { type: 'checkbox', checked: state.agree, onchange: function ( e ) { state.agree = e.target.checked; } } ), el( 'span', { text: t( 'agree' ) + ' *' } ) ] ),
 					state.error ? el( 'p', { class: 'skye-co__err', role: 'alert', text: state.error } ) : null,
-					el( 'button', { type: 'button', class: 'skye-btn skye-btn--primary skye-co__go', disabled: state.busy, onclick: reserve, text: state.busy ? t( 'reserving' ) : t( 'continue', money( total() ) ) } ),
+					el( 'button', { type: 'button', class: 'skye-btn skye-btn--primary skye-co__go', disabled: state.busy, onclick: reserve, text: state.busy ? t( 'reserving' ) : t( 'continue', money( state.quote.amount ) ) } ),
 					el( 'p', { class: 'skye-co__small', text: t( 'no_charge_yet' ) } ) );
 			}
 		}

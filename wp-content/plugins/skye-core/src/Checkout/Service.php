@@ -40,8 +40,8 @@ final class Service {
 	}
 
 	/**
-	 * What can be booked: the ways to travel (Bókun's pricing categories), the questions of the
-	 * booking and every open departure with its price per category.
+	 * What can be booked: the ways to travel (Bókun's pricing categories) and every open departure
+	 * with its price per category. The questions depend on the travellers: see quote().
 	 *
 	 * @return array<string, mixed>
 	 * @throws CheckoutException
@@ -71,12 +71,6 @@ final class Service {
 		if ( $allowed ) {
 			// The order of the rate is the order the operator wants them offered in.
 			$categories = array_replace( array_intersect_key( array_flip( $allowed ), $categories ), $categories );
-		}
-		$questions = [];
-		foreach ( (array) ( $activity['bookingQuestions'] ?? [] ) as $q ) {
-			if ( 'BOOKING' === ( $q['context'] ?? 'BOOKING' ) && isset( $q['id'] ) ) {
-				$questions[] = [ 'id' => (string) $q['id'], 'label' => (string) ( $q['label'] ?? '' ), 'help' => (string) ( $q['help'] ?? '' ), 'type' => (string) ( $q['dataType'] ?? 'SHORT_TEXT' ), 'required' => ! empty( $q['required'] ) ];
-			}
 		}
 		$cutoff   = max( 0, (int) ( $activity['bookingCutoff'] ?? 0 ) ) * 60;
 		$zone     = new \DateTimeZone( (string) ( $activity['timeZone'] ?? 'Europe/London' ) );
@@ -111,7 +105,61 @@ final class Service {
 			}
 		}
 		usort( $dates, static fn( array $a, array $b ) => strcmp( $a['date'], $b['date'] ) );
-		return [ 'product_id' => $product_id, 'rate_id' => $rate_id, 'currency' => $currency, 'categories' => array_values( $categories ), 'questions' => $questions, 'dates' => $dates ];
+		return [ 'product_id' => $product_id, 'rate_id' => $rate_id, 'currency' => $currency, 'categories' => array_values( $categories ), 'dates' => $dates ];
+	}
+
+	/** @return list<array<string, int>> One passenger per person, from { category: how many }. */
+	private static function passengers( mixed $by_category ): array {
+		$passengers = [];
+		foreach ( (array) $by_category as $category => $count ) {
+			for ( $i = 0; $i < max( 0, (int) $count ) && count( $passengers ) <= self::MAX_PEOPLE; $i++ ) {
+				$passengers[] = [ 'pricingCategoryId' => (int) $category ];
+			}
+		}
+		if ( ! $passengers || count( $passengers ) > self::MAX_PEOPLE ) {
+			throw new CheckoutException( 'invalid', 'Choose between 1 and ' . self::MAX_PEOPLE . ' travellers', 'passengers' );
+		}
+		return $passengers;
+	}
+
+	/**
+	 * What this choice of date and travellers costs and which questions Bókun asks for it. A
+	 * product has questions that only apply to some options (the bed for a double room, say), so
+	 * they are asked for the travellers chosen, not read from the product. Nothing is reserved.
+	 *
+	 * @param array{date:string, start_time_id?:int, rate_id?:int, passengers:array<int|string,int>} $in
+	 * @return array{amount:float, currency:string, questions:list<array<string,mixed>>}
+	 * @throws CheckoutException
+	 */
+	public function quote( string $product_id, array $in ): array {
+		if ( 1 !== preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $in['date'] ?? '' ) ) ) {
+			throw new CheckoutException( 'invalid', 'Choose a date', 'date' );
+		}
+		$booking = array_filter( [ 'activityId' => (int) $product_id, 'rateId' => (int) ( $in['rate_id'] ?? 0 ), 'date' => (string) $in['date'], 'startTimeId' => (int) ( $in['start_time_id'] ?? 0 ), 'passengers' => self::passengers( $in['passengers'] ?? [] ) ] );
+		try {
+			$options = $this->bokun->post( '/checkout.json/options/booking-request', [ 'activityBookings' => [ $booking ] ] );
+		} catch ( BokunException $e ) {
+			throw self::from_bokun( $e );
+		}
+		$amount   = 0.0;
+		$currency = '';
+		foreach ( (array) ( $options['options'] ?? [] ) as $o ) {
+			if ( in_array( self::METHOD, (array) ( $o['paymentMethods']['allowedMethods'] ?? [] ), true ) ) {
+				$amount   = (float) ( $o['amount'] ?? 0 );
+				$currency = (string) ( $o['currency'] ?? '' );
+				break;
+			}
+		}
+		if ( $amount <= 0 ) {
+			throw new CheckoutException( 'not_bookable', 'Bókun offers no way to book this', '', 409 );
+		}
+		$questions = [];
+		foreach ( (array) ( $options['questions']['activityBookings'][0]['questions'] ?? [] ) as $q ) {
+			if ( isset( $q['questionId'] ) ) {
+				$questions[] = [ 'id' => (string) $q['questionId'], 'label' => (string) ( $q['label'] ?? '' ), 'help' => (string) ( $q['help'] ?? '' ), 'type' => (string) ( $q['dataType'] ?? 'SHORT_TEXT' ), 'required' => ! empty( $q['required'] ) ];
+			}
+		}
+		return [ 'amount' => $amount, 'currency' => $currency, 'questions' => $questions ];
 	}
 
 	/**
@@ -125,16 +173,8 @@ final class Service {
 		if ( 1 !== preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $in['date'] ?? '' ) ) ) {
 			throw new CheckoutException( 'invalid', 'Choose a date', 'date' );
 		}
-		$passengers = [];
-		foreach ( (array) ( $in['passengers'] ?? [] ) as $category => $count ) {
-			for ( $i = 0; $i < max( 0, (int) $count ); $i++ ) {
-				$passengers[] = [ 'pricingCategoryId' => (int) $category ];
-			}
-		}
-		if ( ! $passengers || count( $passengers ) > self::MAX_PEOPLE ) {
-			throw new CheckoutException( 'invalid', 'Choose between 1 and ' . self::MAX_PEOPLE . ' travellers', 'passengers' );
-		}
-		$contact = [];
+		$passengers = self::passengers( $in['passengers'] ?? [] );
+		$contact    = [];
 		foreach ( self::CONTACT as $field ) {
 			$value = trim( (string) ( $in['contact'][ $field ] ?? '' ) );
 			if ( '' === $value || ( 'email' === $field && false === filter_var( $value, FILTER_VALIDATE_EMAIL ) ) ) {

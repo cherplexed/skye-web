@@ -244,6 +244,7 @@ return [
 		'No booking: first come, first served' => 'Senza prenotazione: in ordine di arrivo',
 		'Website and booking' => 'Sito e prenotazioni',
 		'Open in maps' => 'Apri nella mappa',
+		'Checking the price…' => 'Verifica del prezzo…',
 		'Loading dates…' => 'Caricamento delle date…',
 		'There are no departures open for booking right now.' => 'Al momento non ci sono partenze prenotabili.',
 		'When do you want to go?' => 'Quando vuoi partire?',

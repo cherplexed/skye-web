@@ -46,7 +46,7 @@ final class CheckoutServiceTest extends TestCase {
 					] ) ];
 				}
 				if ( str_contains( $path, '/options/booking-request' ) ) {
-					return [ 'status' => 200, 'headers' => [], 'body' => '{"options":[{"type":"AGENT_RESELLER","paymentMethods":{"allowedMethods":["CASH","RESERVE_FOR_EXTERNAL_PAYMENT"]}}]}' ];
+					return [ 'status' => 200, 'headers' => [], 'body' => '{"options":[{"type":"AGENT_RESELLER","amount":488,"currency":"GBP","paymentMethods":{"allowedMethods":["CASH","RESERVE_FOR_EXTERNAL_PAYMENT"]}}],"questions":{"activityBookings":[{"questions":[{"questionId":"130041","label":"Children?","dataType":"BOOLEAN","required":true},{"questionId":"130038","label":"Remarks","help":"Allergies","dataType":"LONG_TEXT","required":false}]}]}}' ];
 				}
 				if ( str_contains( $path, '/checkout.json/submit' ) ) {
 					return [ 'status' => $this->submit_status, 'headers' => [], 'body' => $this->submit_body ];
@@ -91,11 +91,19 @@ final class CheckoutServiceTest extends TestCase {
 		self::assertSame( [ [ 'id' => 892493, 'title' => 'Only tour' ], [ 'id' => 87695, 'title' => 'Hostel' ] ], $cal['categories'], 'the categories of the rate, in its order' );
 		self::assertSame( 'GBP', $cal['currency'] );
 		self::assertSame( 92027, $cal['rate_id'] );
-		self::assertSame( [ [ 'id' => '130041', 'label' => 'Children?', 'help' => '', 'type' => 'BOOLEAN', 'required' => true ] ], $cal['questions'] );
+		self::assertTrue( ! isset( $cal['questions'] ), 'questions depend on the travellers: they come with the quote' );
 		// Tomorrow is inside the two-day cutoff, one day is sold out and one has no places: two departures remain, in date order.
 		self::assertSame( [ gmdate( 'Y-m-d', self::NOW + 3 * 86400 ), gmdate( 'Y-m-d', self::NOW + 9 * 86400 ) ], array_column( $cal['dates'], 'date' ) );
 		self::assertSame( [ 87695 => 244.0, 892493 => 170.0 ], $cal['dates'][0]['prices'] );
 		self::assertSame( 166782, $cal['dates'][0]['start_time_id'] );
+	}
+
+	public function test_quote_asks_bokun_for_the_price_and_the_questions_of_these_travellers_without_reserving(): void {
+		$quote = $this->service()->quote( '60870', [ 'date' => '2026-12-03', 'start_time_id' => 166782, 'rate_id' => 92027, 'passengers' => [ '87695' => 2 ] ] );
+		self::assertSame( [ 'POST /checkout.json/options/booking-request' ], $this->trail() );
+		self::assertSame( [ [ 'pricingCategoryId' => 87695 ], [ 'pricingCategoryId' => 87695 ] ], $this->calls[0][2]['activityBookings'][0]['passengers'] );
+		self::assertSame( [ 488.0, 'GBP' ], [ $quote['amount'], $quote['currency'] ] );
+		self::assertSame( [ [ 'id' => '130041', 'label' => 'Children?', 'help' => '', 'type' => 'BOOLEAN', 'required' => true ], [ 'id' => '130038', 'label' => 'Remarks', 'help' => 'Allergies', 'type' => 'LONG_TEXT', 'required' => false ] ], $quote['questions'] );
 	}
 
 	public function test_reserve_holds_the_places_then_opens_an_order_for_the_amount_bokun_gives(): void {

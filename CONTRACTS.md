@@ -173,7 +173,8 @@ Bókun guarda las plazas, Revolut cobra y la reserva solo se confirma con el ped
 
 | Ruta (`skye/v1`) | Qué hace |
 |---|---|
-| `GET /checkout/calendar?tour={id}&lang=` | Categorías de viajero (el alojamiento es la categoría), preguntas de la reserva y salidas abiertas con precio por categoría. Caché 5 min. |
+| `GET /checkout/calendar?tour={id}&lang=` | Categorías de viajero (el alojamiento es la categoría) y salidas abiertas con precio por categoría. Caché 5 min. |
+| `POST /checkout/quote` | `date`, `start_time_id`, `rate_id`, `passengers`. Precio y preguntas de la reserva **para esos viajeros** (hay preguntas que solo aplican a ciertas opciones). No reserva nada. |
 | `POST /checkout/reserve` | `date`, `start_time_id`, `rate_id`, `passengers` `{categoría: n}`, `contact` (`firstName`, `lastName`, `email`, `phoneNumber`), `answers` `{id: valor}`. Reserva en Bókun con `RESERVE_FOR_EXTERNAL_PAYMENT`, crea el pedido en Revolut y devuelve `reference`, `order_token`, `amount`, `currency`, `confirmation_code`, `expires_at` (30 min). |
 | `POST /checkout/complete` | `reference`. Consulta el pedido en Revolut; si está `completed`, confirma en Bókun (`confirm-reserved`) y devuelve `status: confirmed`. `pending` mientras tanto; `failed` si el pago se rechaza (libera las plazas); `paid_unconfirmed` si se cobró y Bókun no confirmó (atención manual). Idempotente. |
 | `POST /checkout/cancel` | `reference`. Libera las plazas y cierra el pedido si no se ha pagado. |

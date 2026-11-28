@@ -48,7 +48,7 @@ final class Checkout {
 	public static function routes( string $ns ): void {
 		$open = [ 'permission_callback' => '__return_true' ];
 		register_rest_route( $ns, '/checkout/calendar', $open + [ 'methods' => 'GET', 'callback' => [ self::class, 'calendar' ] ] );
-		foreach ( [ 'reserve', 'complete', 'cancel' ] as $step ) {
+		foreach ( [ 'quote', 'reserve', 'complete', 'cancel' ] as $step ) {
 			register_rest_route( $ns, '/checkout/' . $step, $open + [ 'methods' => 'POST', 'callback' => [ self::class, $step ] ] );
 		}
 	}
@@ -98,6 +98,16 @@ final class Checkout {
 					set_transient( $key, $data, self::CACHE );
 				}
 				return $data + [ 'environment' => Revolut::environment(), 'max_people' => Service::MAX_PEOPLE ];
+			}
+		);
+	}
+
+	public static function quote( WP_REST_Request $r ): WP_REST_Response {
+		return self::run(
+			static function ( Service $service ) use ( $r ): array {
+				[ $product ] = self::product( $r );
+				$in          = (array) $r->get_json_params();
+				return $service->quote( $product, [ 'date' => (string) ( $in['date'] ?? '' ), 'start_time_id' => (int) ( $in['start_time_id'] ?? 0 ), 'rate_id' => (int) ( $in['rate_id'] ?? 0 ), 'passengers' => is_array( $in['passengers'] ?? null ) ? $in['passengers'] : [] ] );
 			}
 		);
 	}
