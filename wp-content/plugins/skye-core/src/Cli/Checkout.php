@@ -221,6 +221,158 @@ final class Checkout {
 		WP_CLI::log( $days ? implode( "\n", self::outline( $days[0], '', 0, $depth + 1 ) ) : '(none)' );
 	}
 
+	/** The Booking Request both commands send: one traveller, the test contact. */
+	private static function booking_request( array $args, array $assoc ): array {
+		$booking = array_filter(
+			[
+				'activityId'  => (int) $args[0],
+				'rateId'      => isset( $assoc['rate'] ) ? (int) $assoc['rate'] : null,
+				'date'        => (string) $args[1],
+				'startTimeId' => isset( $assoc['start-time'] ) ? (int) $assoc['start-time'] : null,
+				'passengers'  => [ [ 'pricingCategoryId' => (int) $assoc['category'] ] ],
+			],
+			static fn( $v ) => null !== $v
+		);
+		$contact = [];
+		foreach ( self::TEST_CONTACT as $question => $value ) {
+			$contact[] = [ 'questionId' => $question, 'values' => [ $value ] ];
+		}
+		return [ 'mainContactDetails' => $contact, 'activityBookings' => [ $booking ] ];
+	}
+
+	/** What the checkout needs from the options answer, in full: ways to pay, amounts and every question. */
+	private static function print_options( array $res ): void {
+		foreach ( (array) ( $res['options'] ?? [] ) as $o ) {
+			WP_CLI::log( sprintf( 'OPTION %s "%s": %s %s · methods=%s · providers=%d', (string) ( $o['type'] ?? '?' ), (string) ( $o['label'] ?? '' ), (string) json_encode( $o['amount'] ?? null ), (string) ( $o['currency'] ?? '' ), (string) json_encode( $o['paymentMethods']['allowedMethods'] ?? null ), count( (array) ( $o['paymentMethods']['paymentProviders'] ?? [] ) ) ) );
+			foreach ( (array) ( $o['questions'] ?? [] ) as $q ) {
+				WP_CLI::log( '   option question: ' . self::question_line( $q ) );
+			}
+		}
+		foreach ( (array) ( $res['questions']['mainContactDetails'] ?? [] ) as $q ) {
+			WP_CLI::log( 'CONTACT question: ' . self::question_line( $q ) );
+		}
+		foreach ( (array) ( $res['questions']['activityBookings'] ?? [] ) as $b ) {
+			foreach ( (array) ( $b['questions'] ?? [] ) as $q ) {
+				WP_CLI::log( 'BOOKING question: ' . self::question_line( $q ) );
+			}
+			foreach ( (array) ( $b['passengers'] ?? [] ) as $p ) {
+				WP_CLI::log( sprintf( 'PASSENGER %s "%s" · details=%d · questions=%d · extras=%d', (string) ( $p['pricingCategoryId'] ?? '?' ), (string) ( $p['pricingCategoryTitle'] ?? '' ), count( (array) ( $p['passengerDetails'] ?? [] ) ), count( (array) ( $p['questions'] ?? [] ) ), count( (array) ( $p['extras'] ?? [] ) ) ) );
+				foreach ( array_merge( (array) ( $p['passengerDetails'] ?? [] ), (array) ( $p['questions'] ?? [] ) ) as $q ) {
+					WP_CLI::log( '   passenger question: ' . self::question_line( $q ) );
+				}
+			}
+		}
+	}
+
+	private static function question_line( mixed $q ): string {
+		if ( ! is_array( $q ) ) {
+			return (string) json_encode( $q );
+		}
+		$options = array_map( static fn( $o ) => is_array( $o ) ? (string) ( $o['value'] ?? $o['label'] ?? '' ) : (string) $o, (array) ( $q['answerOptions'] ?? $q['options'] ?? [] ) );
+		return sprintf( '%s "%s" %s%s%s', (string) ( $q['questionId'] ?? $q['id'] ?? '?' ), (string) ( $q['label'] ?? '' ), (string) ( $q['dataType'] ?? '' ), ! empty( $q['required'] ) ? ' REQUIRED' : '', $options ? ' options=' . json_encode( array_slice( $options, 0, 12 ), JSON_UNESCAPED_UNICODE ) : '' );
+	}
+
+	/**
+	 * Reserves one place for the test traveller the way the checkout will, prints what Bókun answers and releases it at once.
+	 *
+	 * This is the one command that touches real seats: the place is held for a few seconds, as
+	 * Joe Dole, with no notification sent. It stops before reserving if Bókun does not offer
+	 * "reserve for external payment" on this channel.
+	 *
+	 * ## OPTIONS
+	 * <product_id>
+	 * : Bókun product (activity) ID.
+	 *
+	 * <date>
+	 * : Departure date, YYYY-MM-DD.
+	 *
+	 * --category=<id>
+	 * : Pricing category ID of the one traveller.
+	 *
+	 * [--rate=<id>]
+	 * : Rate ID.
+	 *
+	 * [--start-time=<id>]
+	 * : Start time ID.
+	 *
+	 * [--currency=<code>]
+	 * : Default GBP.
+	 *
+	 * [--keep]
+	 * : Do not release the reservation (it expires by itself after at most 30 minutes).
+	 *
+	 * @subcommand reserve-test
+	 */
+	public function reserve_test( array $args, array $assoc ): void {
+		$bokun = Bokun::from_config();
+		if ( ! $bokun ) {
+			WP_CLI::error( 'Bókun is not configured.' );
+		}
+		if ( 1 !== preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $args[1] ?? '' ) ) ) {
+			WP_CLI::error( 'The date must be YYYY-MM-DD.' );
+		}
+		$request  = self::booking_request( $args, $assoc );
+		$currency = strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) );
+		$method   = 'RESERVE_FOR_EXTERNAL_PAYMENT';
+		try {
+			$options = $bokun->post( '/checkout.json/options/booking-request', $request, [ 'currency' => $currency ] );
+		} catch ( BokunException $e ) {
+			WP_CLI::error( 'Options: ' . $e->getMessage() );
+		}
+		self::print_options( $options );
+		$option = null;
+		foreach ( (array) ( $options['options'] ?? [] ) as $o ) {
+			if ( in_array( $method, (array) ( $o['paymentMethods']['allowedMethods'] ?? [] ), true ) ) {
+				$option = $o;
+				break;
+			}
+		}
+		if ( ! $option ) {
+			WP_CLI::error( "Bókun does not offer $method on this booking channel, so nothing was reserved. The methods it offers are listed above." );
+		}
+		$missing = [];
+		foreach ( (array) ( $options['questions']['mainContactDetails'] ?? [] ) as $q ) {
+			if ( ! empty( $q['required'] ) && ! isset( self::TEST_CONTACT[ (string) ( $q['questionId'] ?? '' ) ] ) ) {
+				$missing[] = (string) ( $q['questionId'] ?? '?' );
+			}
+		}
+		if ( $missing ) {
+			WP_CLI::error( 'Bókun requires contact answers the test traveller does not have (' . implode( ', ', $missing ) . '), so nothing was reserved.' );
+		}
+		$body = [
+			'checkoutOption'                => (string) $option['type'],
+			'paymentMethod'                 => $method,
+			'source'                        => 'DIRECT_REQUEST',
+			'directBooking'                 => $request,
+			'sendNotificationToMainContact' => false,
+		];
+		try {
+			$res = $bokun->post( '/checkout.json/submit', $body, [ 'currency' => $currency ] );
+		} catch ( BokunException $e ) {
+			WP_CLI::error( 'Submit: ' . $e->getMessage() . ' · nothing was reserved.' );
+		}
+		unset( $res['travelDocuments'] );
+		WP_CLI::log( '== RESERVED ==' );
+		WP_CLI::log( implode( "\n", self::outline( $res, '', 0, 3 ) ) );
+		$code = (string) ( $res['booking']['confirmationCode'] ?? '' );
+		if ( '' === $code ) {
+			WP_CLI::warning( 'No confirmation code where expected (booking.confirmationCode): find the Joe Dole booking in Bókun and cancel it by hand.' );
+			return;
+		}
+		if ( isset( $assoc['keep'] ) ) {
+			WP_CLI::success( "Reserved as $code and kept. It expires by itself; cancel it in Bókun if you do not use it." );
+			return;
+		}
+		try {
+			$aborted = $bokun->post( '/booking.json/' . rawurlencode( $code ) . '/abort-reserved' );
+			WP_CLI::log( '== RELEASED ==' );
+			WP_CLI::log( implode( "\n", self::outline( $aborted, '', 0, 2 ) ) );
+			WP_CLI::success( "Reservation $code released." );
+		} catch ( BokunException $e ) {
+			WP_CLI::warning( "Reserved as $code but the release failed (" . $e->getMessage() . '): cancel the Joe Dole booking in Bókun by hand.' );
+		}
+	}
+
 	/**
 	 * Asks Bókun what a booking would need and cost, without making it: checkout options and questions.
 	 *
@@ -246,7 +398,7 @@ final class Checkout {
 	 * : Default GBP.
 	 *
 	 * [--depth=<n>]
-	 * : How deep to print nested data. Default 6.
+	 * : Also print the outline of the whole answer, this deep.
 	 *
 	 * ## EXAMPLES
 	 *     wp skye checkout options 60870 2027-05-14 --category=12345 --rate=678 --start-time=910 --currency=EUR
@@ -259,26 +411,17 @@ final class Checkout {
 		if ( 1 !== preg_match( '/^\d{4}-\d{2}-\d{2}$/', (string) ( $args[1] ?? '' ) ) ) {
 			WP_CLI::error( 'The date must be YYYY-MM-DD.' );
 		}
-		$booking = array_filter(
-			[
-				'activityId'  => (int) $args[0],
-				'rateId'      => isset( $assoc['rate'] ) ? (int) $assoc['rate'] : null,
-				'date'        => (string) $args[1],
-				'startTimeId' => isset( $assoc['start-time'] ) ? (int) $assoc['start-time'] : null,
-				'passengers'  => [ [ 'pricingCategoryId' => (int) $assoc['category'] ] ],
-			],
-			static fn( $v ) => null !== $v
-		);
-		$contact = [];
-		foreach ( self::TEST_CONTACT as $question => $value ) {
-			$contact[] = [ 'questionId' => $question, 'values' => [ $value ] ];
-		}
+		$request  = self::booking_request( $args, $assoc );
+		$currency = strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) );
 		try {
-			$res = $bokun->post( '/checkout.json/options/booking-request', [ 'mainContactDetails' => $contact, 'activityBookings' => [ $booking ] ], [ 'currency' => strtoupper( (string) ( $assoc['currency'] ?? 'GBP' ) ) ] );
+			$res = $bokun->post( '/checkout.json/options/booking-request', $request, [ 'currency' => $currency ] );
 		} catch ( BokunException $e ) {
 			WP_CLI::error( $e->getMessage() );
 		}
-		WP_CLI::log( implode( "\n", self::outline( $res, '', 0, max( 1, (int) ( $assoc['depth'] ?? 6 ) ) ) ) );
+		self::print_options( $res );
+		if ( isset( $assoc['depth'] ) ) {
+			WP_CLI::log( implode( "\n", self::outline( $res, '', 0, max( 1, (int) $assoc['depth'] ) ) ) );
+		}
 		WP_CLI::success( 'Nothing was booked.' );
 	}
 }
